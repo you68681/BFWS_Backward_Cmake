@@ -1,0 +1,4 @@
+/home/chao/BFWS-CMAKE/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/chao/BFWS-CMAKE/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/chao/BFWS-CMAKE/cmake-build-debug/CMakeFiles/libff.dir
+/home/chao/BFWS-CMAKE/cmake-build-debug/CMakeFiles/bfws.dir

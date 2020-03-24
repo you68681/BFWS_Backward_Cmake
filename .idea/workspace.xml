@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated>
+      <config projectName="siw_ffparser_cmake" targetName="bfws" />
+      <config projectName="siw_ffparser_cmake" targetName="libff" />
+    </generated>
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="3acd68c1-f902-41d3-86a9-5c6f992e3429" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="ProjectId" id="1YmcnF7eK3CTUJOcbTzabzOi8AB" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../LAPKT-edit" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="dynamic.analysis.tools.profiler" />
+  </component>
+  <component name="RunManager" selected="CMake Application.bfws">
+    <configuration name="bfws" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="--domain $PROJECT_DIR$/../LAPKT-public/benchmarks/ipc-2011/elevators/domain.pddl --problem $PROJECT_DIR$/../LAPKT-public/benchmarks/ipc-2011/elevators/p01.pddl --max_novelty 2 --k-BFWS true" PASS_PARENT_ENVS_2="true" PROJECT_NAME="siw_ffparser_cmake" TARGET_NAME="bfws" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="siw_ffparser_cmake" RUN_TARGET_NAME="bfws">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="libff" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="siw_ffparser_cmake" TARGET_NAME="libff" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="CMake Application.bfws" />
+      <item itemvalue="CMake Application.libff" />
+    </list>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3acd68c1-f902-41d3-86a9-5c6f992e3429" name="Default Changelist" comment="" />
+      <created>1583551374411</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1583551374411</updated>
+      <workItem from="1583551375848" duration="13422000" />
+      <workItem from="1583586998504" duration="7608000" />
+      <workItem from="1583731169877" duration="11603000" />
+      <workItem from="1583745299001" duration="3379000" />
+      <workItem from="1583844918404" duration="17578000" />
+      <workItem from="1583932939450" duration="1236000" />
+      <workItem from="1584007495719" duration="46000" />
+      <workItem from="1584862431631" duration="20378000" />
+      <workItem from="1584891381029" duration="2217000" />
+      <workItem from="1584967053211" duration="411000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="291" y="120" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1584967434449">
+      <screen x="67" y="27" width="1533" height="873" />
+    </state>
+    <state x="291" y="120" key="#com.intellij.execution.impl.EditConfigurationsDialog/67.27.1533.873@67.27.1533.873" timestamp="1584967434449" />
+    <state x="697" y="218" width="262" height="488" key="#xdebugger.XInspectDialog" timestamp="1583588889111">
+      <screen x="67" y="27" width="1533" height="873" />
+    </state>
+    <state x="697" y="218" width="262" height="488" key="#xdebugger.XInspectDialog/67.27.1533.873@67.27.1533.873" timestamp="1583588889111" />
+    <state x="685" y="157" width="410" height="610" key="#xdebugger.evaluate" timestamp="1583565032819">
+      <screen x="67" y="27" width="1533" height="873" />
+    </state>
+    <state x="685" y="157" width="410" height="610" key="#xdebugger.evaluate/67.27.1533.873@67.27.1533.873" timestamp="1583565032819" />
+    <state width="560" height="466" key="DebuggerActiveHint" timestamp="1584887149656">
+      <screen x="67" y="27" width="1533" height="873" />
+    </state>
+    <state width="560" height="466" key="DebuggerActiveHint/67.27.1533.873@67.27.1533.873" timestamp="1584887149656" />
+    <state x="365" y="211" width="515" height="536" key="EnvironmentVariablesDialog" timestamp="1584967251359">
+      <screen x="67" y="27" width="1533" height="873" />
+    </state>
+    <state x="365" y="211" width="515" height="536" key="EnvironmentVariablesDialog/67.27.1533.873@67.27.1533.873" timestamp="1584967251359" />
+    <state x="616" y="220" width="424" height="484" key="FileChooserDialogImpl" timestamp="1584967460774">
+      <screen x="67" y="27" width="1533" height="873" />
+    </state>
+    <state x="616" y="220" width="424" height="484" key="FileChooserDialogImpl/67.27.1533.873@67.27.1533.873" timestamp="1584967460774" />
+    <state width="1479" height="223" key="GridCell.Tab.0.bottom" timestamp="1584966909634">
+      <screen x="67" y="27" width="1533" height="873" />
+    </state>
+    <state width="1479" height="223" key="GridCell.Tab.0.bottom/67.27.1533.873@67.27.1533.873" timestamp="1584966909634" />
+    <state width="1479" height="223" key="GridCell.Tab.0.center" timestamp="1584966909632">
+      <screen x="67" y="27" width="1533" height="873" />
+    </state>
+    <state width="1479" height="223" key="GridCell.Tab.0.center/67.27.1533.873@67.27.1533.873" timestamp="1584966909632" />
+    <state width="1479" height="223" key="GridCell.Tab.0.left" timestamp="1584966909632">
+      <screen x="67" y="27" width="1533" height="873" />
+    </state>
+    <state width="1479" height="223" key="GridCell.Tab.0.left/67.27.1533.873@67.27.1533.873" timestamp="1584966909632" />
+    <state width="1479" height="223" key="GridCell.Tab.0.right" timestamp="1584966909634">
+      <screen x="67" y="27" width="1533" height="873" />
+    </state>
+    <state width="1479" height="223" key="GridCell.Tab.0.right/67.27.1533.873@67.27.1533.873" timestamp="1584966909634" />
+    <state width="1479" height="223" key="GridCell.Tab.1.bottom" timestamp="1584966909636">
+      <screen x="67" y="27" width="1533" height="873" />
+    </state>
+    <state width="1479" height="223" key="GridCell.Tab.1.bottom/67.27.1533.873@67.27.1533.873" timestamp="1584966909636" />
+    <state width="1479" height="223" key="GridCell.Tab.1.center" timestamp="1584966909636">
+      <screen x="67" y="27" width="1533" height="873" />
+    </state>
+    <state width="1479" height="223" key="GridCell.Tab.1.center/67.27.1533.873@67.27.1533.873" timestamp="1584966909636" />
+    <state width="1479" height="223" key="GridCell.Tab.1.left" timestamp="1584966909635">
+      <screen x="67" y="27" width="1533" height="873" />
+    </state>
+    <state width="1479" height="223" key="GridCell.Tab.1.left/67.27.1533.873@67.27.1533.873" timestamp="1584966909635" />
+    <state width="1479" height="223" key="GridCell.Tab.1.right" timestamp="1584966909636">
+      <screen x="67" y="27" width="1533" height="873" />
+    </state>
+    <state width="1479" height="223" key="GridCell.Tab.1.right/67.27.1533.873@67.27.1533.873" timestamp="1584966909636" />
+    <state x="109" y="114" key="SettingsEditor" timestamp="1584967380648">
+      <screen x="67" y="27" width="1533" height="873" />
+    </state>
+    <state x="109" y="114" key="SettingsEditor/67.27.1533.873@67.27.1533.873" timestamp="1584967380648" />
+    <state width="766" height="437" key="XDebugger.FullValuePopup" timestamp="1584865647110">
+      <screen x="67" y="27" width="1533" height="873" />
+    </state>
+    <state width="766" height="437" key="XDebugger.FullValuePopup/67.27.1533.873@67.27.1533.873" timestamp="1584865647110" />
+    <state x="488" y="290" key="com.intellij.ide.util.TipDialog" timestamp="1584967064230">
+      <screen x="67" y="27" width="1533" height="873" />
+    </state>
+    <state x="488" y="290" key="com.intellij.ide.util.TipDialog/67.27.1533.873@67.27.1533.873" timestamp="1584967064230" />
+    <state x="487" y="80" width="683" height="764" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1583910225931">
+      <screen x="67" y="27" width="1533" height="873" />
+    </state>
+    <state x="487" y="80" width="683" height="764" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/67.27.1533.873@67.27.1533.873" timestamp="1583910225931" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/src/main.cxx</url>
+          <line>198</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/../BFWS-public-master/src/bfws_2h.hxx</url>
+          <line>654</line>
+          <option name="timeStamp" value="34" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/../LAPKT-public/interfaces/agnostic/h_1.hxx</url>
+          <line>169</line>
+          <option name="timeStamp" value="60" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/src/main.cxx</url>
+          <line>471</line>
+          <option name="timeStamp" value="63" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/../LAPKT-public/interfaces/agnostic/novelty_partition.hxx</url>
+          <line>295</line>
+          <option name="timeStamp" value="81" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/../BFWS-public-master/src/bfws_2h.hxx</url>
+          <line>673</line>
+          <option name="timeStamp" value="82" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/../BFWS-public-master/src/bfws_2h.hxx</url>
+          <line>675</line>
+          <option name="timeStamp" value="83" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="CMakeRunConfiguration">
+        <watch expression="fl" language="ObjectiveC" />
+      </configuration>
+    </watches-manager>
+  </component>
+</project>
