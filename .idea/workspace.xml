@@ -13,7 +13,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3acd68c1-f902-41d3-86a9-5c6f992e3429" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BBWS" beforeDir="false" afterPath="$PROJECT_DIR$/BBWS" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BBWS/src/bfws_2h.hxx" beforeDir="false" afterPath="$PROJECT_DIR$/BBWS/src/bfws_2h.hxx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BBWS/src/bfws_2h_consistency.hxx" beforeDir="false" afterPath="$PROJECT_DIR$/BBWS/src/bfws_2h_consistency.hxx" afterDir="false" />
@@ -120,7 +119,7 @@
       <workItem from="1586241687158" duration="3361000" />
       <workItem from="1586246271008" duration="1120000" />
       <workItem from="1586248710438" duration="188000" />
-      <workItem from="1586248917860" duration="760000" />
+      <workItem from="1586248917860" duration="1584000" />
     </task>
     <servers />
   </component>
