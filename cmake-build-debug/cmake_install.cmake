@@ -1,4 +1,4 @@
-# Install script for directory: /home/chao/BFWS-CMAKE
+# Install script for directory: /xenon/BFWS_Backward_Cmake
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/chao/BFWS-CMAKE/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/xenon/BFWS_Backward_Cmake/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

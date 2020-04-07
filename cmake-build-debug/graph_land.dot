@@ -1,0 +1,11 @@
+digraph L {
+23 [label="(HANDEMPTY)"];
+27 [label="(ON B A)"];
+22 [label="(CLEAR B)"];
+24 [label="(CLEAR C)"];
+28 [label="(ON C H)"];
+26 [label="(ONTABLE A)"];
+25 [label="(ONTABLE H)"];
+26 -> 27 [label="n"];
+25 -> 28 [label="n"];
+}

@@ -30,7 +30,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include <action.hxx>
 #include <cond_eff.hxx>
 #include <strips_state.hxx>
-#include <bkd_search_prob.hxx>
+#include <bwd_search_prob.hxx>
+#include <fwd_search_prob.hxx>
 
 #include <novelty_partition.hxx>
 #include <landmark_graph.hxx>
@@ -74,7 +75,8 @@ namespace po = boost::program_options;
 
 //NIR: Model 
 using	aptk::STRIPS_Problem;
-using	aptk::agnostic::bkd_Search_Problem;
+using	aptk::agnostic::bwd_Search_Problem;
+using	aptk::agnostic::Fwd_Search_Problem;
 using	aptk::Action;
 
 
@@ -117,23 +119,23 @@ using	aptk::search::bfws_2h::BFWS_2H_Consistency_M;
  */
 
 //NIR: Heuristics
-typedef         H2_Heuristic<bkd_Search_Problem>                  H2_Fwd;
-typedef         Landmarks_Graph_Generator<bkd_Search_Problem>     Gen_Lms_Fwd;
-typedef         Landmarks_Count_Heuristic<bkd_Search_Problem>     H_Lmcount_Fwd;
-typedef         Landmarks_Graph_Manager<bkd_Search_Problem>       Land_Graph_Man;
+typedef         H2_Heuristic<Fwd_Search_Problem>                  H2_Fwd;
+typedef         Landmarks_Graph_Generator<bwd_Search_Problem>     Gen_Lms_Fwd;
+typedef         Landmarks_Count_Heuristic<bwd_Search_Problem>     H_Lmcount_Fwd;
+typedef         Landmarks_Graph_Manager<bwd_Search_Problem>       Land_Graph_Man;
 
 
 
 // NIR: Node representations for each search algorithm
-typedef		aptk::search::bfws_4h::Node< bkd_Search_Problem, aptk::State >	Search_Node_4h;
-typedef		aptk::search::bfws_2h::Node< bkd_Search_Problem, aptk::State >	Search_Node_2h;
+typedef		aptk::search::bfws_4h::Node< bwd_Search_Problem, aptk::State >	Search_Node_4h;
+typedef		aptk::search::bfws_2h::Node< bwd_Search_Problem, aptk::State >	Search_Node_2h;
 
 // NIR: Novelty functions for each node type. Novelty partition expects class
 // node to define partition() function. '_2' version expects partition2() function.  
-typedef         Novelty_Partition<bkd_Search_Problem, Search_Node_4h>               H_Novel_Fwd_4h;
-typedef         Novelty_Partition_2<bkd_Search_Problem, Search_Node_4h>             H_Novel_2_Fwd_4h;
+typedef         Novelty_Partition<bwd_Search_Problem, Search_Node_4h>               H_Novel_Fwd_4h;
+typedef         Novelty_Partition_2<bwd_Search_Problem, Search_Node_4h>             H_Novel_2_Fwd_4h;
 
-typedef         Novelty_Partition<bkd_Search_Problem, Search_Node_2h>               H_Novel_Fwd_2h;
+typedef         Novelty_Partition<bwd_Search_Problem, Search_Node_2h>               H_Novel_Fwd_2h;
 
 
 
@@ -150,27 +152,27 @@ typedef		Open_List< Tie_Breaking_Algorithm_2h, Search_Node_2h >	                
 
 
 // NIR: Now we define the heuristics
-typedef		H1_Heuristic<bkd_Search_Problem, H_Add_Evaluation_Function>	H_Add_Fwd;
-typedef		Relaxed_Plan_Heuristic< bkd_Search_Problem, H_Add_Fwd >		H_Add_Rp_Fwd;
+typedef		H1_Heuristic<bwd_Search_Problem, H_Add_Evaluation_Function>	H_Add_Fwd;
+typedef		Relaxed_Plan_Heuristic< bwd_Search_Problem, H_Add_Fwd >		H_Add_Rp_Fwd;
 
-typedef         Layered_H_Max< bkd_Search_Problem >				      Alt_H_Max;
-typedef         FF_Relaxed_Plan_Heuristic< bkd_Search_Problem, Alt_H_Max, unsigned >     Classic_FF_H_Max;
+typedef         Layered_H_Max< bwd_Search_Problem >				      Alt_H_Max;
+typedef         FF_Relaxed_Plan_Heuristic< bwd_Search_Problem, Alt_H_Max, unsigned >     Classic_FF_H_Max;
 
 // NIR: Now we're ready to define the BFS algorithm we're going to use, H_Lmcount can be used only with goals,
 // or with landmarks computed from s0
- typedef	BFWS_2H< bkd_Search_Problem, H_Novel_Fwd_2h, H_Lmcount_Fwd, H_Add_Rp_Fwd,  BFS_Open_List_2h>                       k_BFWS;
- typedef	BFWS_2H_M< bkd_Search_Problem, H_Novel_Fwd_2h, H_Lmcount_Fwd, H_Add_Rp_Fwd,  BFS_Open_List_2h >                    k_BFWS_M;
- typedef        BFWS_4H< bkd_Search_Problem, H_Novel_Fwd_4h, H_Lmcount_Fwd, H_Novel_2_Fwd_4h, H_Add_Rp_Fwd,  BFS_Open_List_4h >    BFWS_w_hlm_hadd;
+ typedef	BFWS_2H< bwd_Search_Problem, H_Novel_Fwd_2h, H_Lmcount_Fwd, H_Add_Rp_Fwd,  BFS_Open_List_2h>                       k_BFWS;
+ typedef	BFWS_2H_M< bwd_Search_Problem, H_Novel_Fwd_2h, H_Lmcount_Fwd, H_Add_Rp_Fwd,  BFS_Open_List_2h >                    k_BFWS_M;
+ typedef        BFWS_4H< bwd_Search_Problem, H_Novel_Fwd_4h, H_Lmcount_Fwd, H_Novel_2_Fwd_4h, H_Add_Rp_Fwd,  BFS_Open_List_4h >    BFWS_w_hlm_hadd;
 
 // NIR: Consistency Search variants
- typedef	BFWS_2H_Consistency< bkd_Search_Problem, H_Novel_Fwd_2h, H_Lmcount_Fwd, H_Add_Rp_Fwd,  BFS_Open_List_2h >    k_BFWS_Consistency;
- typedef	BFWS_2H_Consistency_M< bkd_Search_Problem, H_Novel_Fwd_2h, H_Lmcount_Fwd, H_Add_Rp_Fwd, BFS_Open_List_2h >   k_BFWS_Consistency_M;
+ typedef	BFWS_2H_Consistency< bwd_Search_Problem, H_Novel_Fwd_2h, H_Lmcount_Fwd, H_Add_Rp_Fwd,  BFS_Open_List_2h >    k_BFWS_Consistency;
+ typedef	BFWS_2H_Consistency_M< bwd_Search_Problem, H_Novel_Fwd_2h, H_Lmcount_Fwd, H_Add_Rp_Fwd, BFS_Open_List_2h >   k_BFWS_Consistency_M;
 
 
 
 
 template <typename Search_Engine>
-void bfws_options( bkd_Search_Problem&	search_prob, Search_Engine& bfs_engine, unsigned& max_novelty, Landmarks_Graph& graph){
+void bfws_options( bwd_Search_Problem&	search_prob, Search_Engine& bfs_engine, unsigned& max_novelty, Landmarks_Graph& graph){
 
 	bfs_engine.set_max_novelty( max_novelty );
 	bfs_engine.set_use_novelty( true );
@@ -184,7 +186,7 @@ void bfws_options( bkd_Search_Problem&	search_prob, Search_Engine& bfs_engine, u
 	//     space for novelty > 1 tuples 
 	H_Add_Rp_Fwd hadd( search_prob );
 	float h_init=0;
-	const aptk::State* s_0 = search_prob.init();
+	const aptk::State* s_0 = search_prob.init_state();
 	hadd.eval( *s_0, h_init );
 	
 	bfs_engine.set_arity( max_novelty, graph.num_landmarks()*h_init );
@@ -367,13 +369,16 @@ int main( int argc, char** argv ) {
 	std::cout << "\t#Actions: " << prob.num_actions() << std::endl;
 	std::cout << "\t#Fluents: " << prob.num_fluents() << std::endl;
 
-	bkd_Search_Problem	search_prob( &prob );
-
-	prob.compute_edeletes();	
-
+	bwd_Search_Problem	search_prob( &prob );
+	Fwd_Search_Problem  fwd_search_prob (&prob);
+	if (!prob.has_conditional_effects()){
+	    auto* h2 =new H2_Fwd (fwd_search_prob);
+	    h2->compute_edeletes(prob);
+	    search_prob.set_h2_fwd(h2);
+	} else
+	    prob.compute_edeletes();
 	Gen_Lms_Fwd    gen_lms( search_prob );
 	Landmarks_Graph graph( prob );
-
 	gen_lms.set_only_goals( true );
 	//gen_lms.set_goal_ordering( false );
 	
@@ -382,7 +387,11 @@ int main( int argc, char** argv ) {
 	std::cout << "Goals found: " << graph.num_landmarks() << std::endl;
 	std::cout << "Goals_Edges found: " << graph.num_landmarks_and_edges() << std::endl;
 
-	//graph.print( std::cout );       
+	graph.print( std::cout );
+    std::ofstream	graph_stream;
+    graph_stream.open("graph_land.dot");
+	graph.print_dot(graph_stream);
+	graph_stream.close();
 
 
 	bool found_plan = false;
@@ -651,7 +660,7 @@ int main( int argc, char** argv ) {
 	    //     space for novelty > 1 tuples 
 	    H_Add_Rp_Fwd hadd( search_prob );
 	    float h_init=0;
-	    const aptk::State* s_0 = search_prob.init();
+	    const aptk::State* s_0 = search_prob.init_state();
 	    hadd.eval( *s_0, h_init );
 	    
 	    bfs_engine.set_arity_2( max_novelty,  h_init );
