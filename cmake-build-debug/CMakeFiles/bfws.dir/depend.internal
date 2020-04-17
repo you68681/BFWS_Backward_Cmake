@@ -240,12 +240,23 @@ CMakeFiles/bfws.dir/LAPKT-public/src/memory.cxx.o
  ../LAPKT-public/include/aptk/memory.hxx
  /xenon/BFWS_Backward_Cmake/LAPKT-public/src/memory.cxx
 CMakeFiles/bfws.dir/src/main.cxx.o
+ ../BBWS/src/bfws_2h.hxx
+ ../BBWS/src/bfws_2h_M.hxx
+ ../BBWS/src/bfws_2h_consistency.hxx
+ ../BBWS/src/bfws_2h_consistency_M.hxx
+ ../BBWS/src/bfws_4h.hxx
+ ../BBWS/src/new_node_comparer.hxx
+ ../BBWS/src/novelty_partition_2.hxx
+ ../BBWS/src/rp_heuristic_bfws.hxx
  ../LAPKT-public/external/libff/ff.h
  ../LAPKT-public/external/libff/libff.h
  ../LAPKT-public/include/aptk/bit_array.hxx
  ../LAPKT-public/include/aptk/bit_set.hxx
+ ../LAPKT-public/include/aptk/closed_list.hxx
  ../LAPKT-public/include/aptk/ext_math.hxx
+ ../LAPKT-public/include/aptk/hash_table.hxx
  ../LAPKT-public/include/aptk/heuristic.hxx
+ ../LAPKT-public/include/aptk/jenkins_12bit.hxx
  ../LAPKT-public/include/aptk/open_list.hxx
  ../LAPKT-public/include/aptk/resources_control.hxx
  ../LAPKT-public/include/aptk/search_prob.hxx

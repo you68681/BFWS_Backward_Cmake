@@ -2,8 +2,8 @@
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
-      <config projectName="siw_ffparser_cmake" targetName="bfws" />
       <config projectName="siw_ffparser_cmake" targetName="libff" />
+      <config projectName="siw_ffparser_cmake" targetName="bfws" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -13,11 +13,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3acd68c1-f902-41d3-86a9-5c6f992e3429" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/BBWS" beforeDir="false" afterPath="$PROJECT_DIR$/BBWS" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BBWS/src/bfws_2h.hxx" beforeDir="false" afterPath="$PROJECT_DIR$/BBWS/src/bfws_2h.hxx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BBWS/src/bfws_2h_consistency.hxx" beforeDir="false" afterPath="$PROJECT_DIR$/BBWS/src/bfws_2h_consistency.hxx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BBWS/src/bfws_4h.hxx" beforeDir="false" afterPath="$PROJECT_DIR$/BBWS/src/bfws_4h.hxx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BBWS/src/rp_heuristic_bfws.hxx" beforeDir="false" afterPath="$PROJECT_DIR$/BBWS/src/rp_heuristic_bfws.hxx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TargetDirectories.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TargetDirectories.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/bfws.dir/CXX.includecache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/bfws.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/bfws.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/bfws.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/bfws.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/bfws.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/bfws.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/bfws.dir/depend.internal" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/bfws.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/bfws.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/bfws.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/bfws.dir/flags.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/bfws.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/bfws.dir/link.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/bfws.dir/src/main.cxx.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/libff.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/libff.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/libff.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/libff.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/libff.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/libff.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/libff.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/libff.dir/flags.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/libff.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/libff.dir/link.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/cmake_install.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/execution.details" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/execution.details" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/plan.ipc" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/plan.ipc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/siw_ffparser_cmake.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/siw_ffparser_cmake.cbp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +73,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/LAPKT-public/external/libff" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/../LAPKT-edit/LAPKT-public/interfaces/agnostic" />
     </key>
@@ -119,7 +141,10 @@
       <workItem from="1586241687158" duration="3361000" />
       <workItem from="1586246271008" duration="1120000" />
       <workItem from="1586248710438" duration="188000" />
-      <workItem from="1586248917860" duration="1584000" />
+      <workItem from="1586248917860" duration="2836000" />
+      <workItem from="1587103231158" duration="18000" />
+      <workItem from="1587106475523" duration="54000" />
+      <workItem from="1587106604161" duration="638000" />
     </task>
     <servers />
   </component>
@@ -161,30 +186,30 @@
       <screen x="67" y="27" width="1533" height="873" />
     </state>
     <state x="365" y="211" width="515" height="536" key="EnvironmentVariablesDialog/67.27.1533.873@67.27.1533.873" timestamp="1584967251359" />
-    <state x="516" y="212" width="430" height="486" key="FileChooserDialogImpl" timestamp="1586248896472">
+    <state x="516" y="212" width="430" height="486" key="FileChooserDialogImpl" timestamp="1586254430904">
       <screen x="0" y="31" width="1440" height="820" />
     </state>
-    <state x="516" y="212" width="430" height="486" key="FileChooserDialogImpl/0.31.1440.820@0.31.1440.820" timestamp="1586248896472" />
+    <state x="516" y="212" width="430" height="486" key="FileChooserDialogImpl/0.31.1440.820@0.31.1440.820" timestamp="1586254430904" />
     <state x="616" y="220" width="424" height="484" key="FileChooserDialogImpl/67.27.1533.873@67.27.1533.873" timestamp="1584967460774" />
-    <state width="1388" height="242" key="GridCell.Tab.0.bottom" timestamp="1586245890185">
+    <state width="1388" height="242" key="GridCell.Tab.0.bottom" timestamp="1587103248358">
       <screen x="0" y="31" width="1440" height="820" />
     </state>
-    <state width="1388" height="242" key="GridCell.Tab.0.bottom/0.31.1440.820@0.31.1440.820" timestamp="1586245890185" />
+    <state width="1388" height="242" key="GridCell.Tab.0.bottom/0.31.1440.820@0.31.1440.820" timestamp="1587103248358" />
     <state width="1479" height="223" key="GridCell.Tab.0.bottom/67.27.1533.873@67.27.1533.873" timestamp="1584966909634" />
-    <state width="1388" height="242" key="GridCell.Tab.0.center" timestamp="1586245890185">
+    <state width="1388" height="242" key="GridCell.Tab.0.center" timestamp="1587103248358">
       <screen x="0" y="31" width="1440" height="820" />
     </state>
-    <state width="1388" height="242" key="GridCell.Tab.0.center/0.31.1440.820@0.31.1440.820" timestamp="1586245890185" />
+    <state width="1388" height="242" key="GridCell.Tab.0.center/0.31.1440.820@0.31.1440.820" timestamp="1587103248358" />
     <state width="1479" height="223" key="GridCell.Tab.0.center/67.27.1533.873@67.27.1533.873" timestamp="1584966909632" />
-    <state width="1388" height="242" key="GridCell.Tab.0.left" timestamp="1586245890184">
+    <state width="1388" height="242" key="GridCell.Tab.0.left" timestamp="1587103248357">
       <screen x="0" y="31" width="1440" height="820" />
     </state>
-    <state width="1388" height="242" key="GridCell.Tab.0.left/0.31.1440.820@0.31.1440.820" timestamp="1586245890184" />
+    <state width="1388" height="242" key="GridCell.Tab.0.left/0.31.1440.820@0.31.1440.820" timestamp="1587103248357" />
     <state width="1479" height="223" key="GridCell.Tab.0.left/67.27.1533.873@67.27.1533.873" timestamp="1584966909632" />
-    <state width="1388" height="242" key="GridCell.Tab.0.right" timestamp="1586245890185">
+    <state width="1388" height="242" key="GridCell.Tab.0.right" timestamp="1587103248358">
       <screen x="0" y="31" width="1440" height="820" />
     </state>
-    <state width="1388" height="242" key="GridCell.Tab.0.right/0.31.1440.820@0.31.1440.820" timestamp="1586245890185" />
+    <state width="1388" height="242" key="GridCell.Tab.0.right/0.31.1440.820@0.31.1440.820" timestamp="1587103248358" />
     <state width="1479" height="223" key="GridCell.Tab.0.right/67.27.1533.873@67.27.1533.873" timestamp="1584966909634" />
     <state width="1388" height="236" key="GridCell.Tab.1.bottom" timestamp="1586245890174">
       <screen x="0" y="31" width="1440" height="820" />
@@ -215,10 +240,10 @@
     </state>
     <state width="720" height="411" key="XDebugger.FullValuePopup/0.31.1440.820@0.31.1440.820" timestamp="1585995183002" />
     <state width="766" height="437" key="XDebugger.FullValuePopup/67.27.1533.873@67.27.1533.873" timestamp="1584865647110" />
-    <state x="395" y="278" key="com.intellij.ide.util.TipDialog" timestamp="1586248710746">
+    <state x="395" y="278" key="com.intellij.ide.util.TipDialog" timestamp="1587103282081">
       <screen x="0" y="31" width="1440" height="820" />
     </state>
-    <state x="395" y="278" key="com.intellij.ide.util.TipDialog/0.31.1440.820@0.31.1440.820" timestamp="1586248710746" />
+    <state x="395" y="278" key="com.intellij.ide.util.TipDialog/0.31.1440.820@0.31.1440.820" timestamp="1587103282081" />
     <state x="488" y="290" key="com.intellij.ide.util.TipDialog/67.27.1533.873@67.27.1533.873" timestamp="1584967064230" />
     <state x="487" y="80" width="683" height="764" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1583910225931">
       <screen x="67" y="27" width="1533" height="873" />

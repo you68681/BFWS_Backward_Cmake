@@ -1,0 +1,12 @@
+Plan found with cost: 8
+1. (STACK H A)
+2. (PICK-UP H)
+3. (STACK A C)
+4. (PICK-UP A)
+5. (STACK C B)
+6. (UNSTACK C H)
+7. (PUT-DOWN B)
+8. (UNSTACK B A)
+Time: 0.001395
+Generated: 27
+Expanded: 10
