@@ -13,11 +13,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3acd68c1-f902-41d3-86a9-5c6f992e3429" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/BBWS" beforeDir="false" afterPath="$PROJECT_DIR$/BBWS" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BBWS/src/bfws_2h.hxx" beforeDir="false" afterPath="$PROJECT_DIR$/BBWS/src/bfws_2h.hxx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BBWS/src/bfws_2h_consistency.hxx" beforeDir="false" afterPath="$PROJECT_DIR$/BBWS/src/bfws_2h_consistency.hxx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BBWS/src/bfws_4h.hxx" beforeDir="false" afterPath="$PROJECT_DIR$/BBWS/src/bfws_4h.hxx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BBWS/src/rp_heuristic_bfws.hxx" beforeDir="false" afterPath="$PROJECT_DIR$/BBWS/src/rp_heuristic_bfws.hxx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LAPKT-public/interfaces/agnostic/bwd_search_prob.cxx" beforeDir="false" afterPath="$PROJECT_DIR$/LAPKT-public/interfaces/agnostic/bwd_search_prob.cxx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LAPKT-public/interfaces/agnostic/bwd_search_prob.hxx" beforeDir="false" afterPath="$PROJECT_DIR$/LAPKT-public/interfaces/agnostic/bwd_search_prob.hxx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LAPKT-public/interfaces/agnostic/h_1.hxx" beforeDir="false" afterPath="$PROJECT_DIR$/LAPKT-public/interfaces/agnostic/h_1.hxx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.15.3/CMakeSystem.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.15.3/CMakeSystem.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TargetDirectories.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TargetDirectories.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/bfws.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/bfws.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/bfws.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/bfws.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/bfws.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/bfws.dir/depend.internal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/bfws.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/bfws.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/bfws.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/bfws.dir/flags.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/bfws.dir/src/main.cxx.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/bfws.dir/src/main.cxx.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/libff.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/libff.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/libff.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/libff.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/libff.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/libff.dir/flags.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/bfws" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/bfws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/cmake_install.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/execution.details" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/execution.details" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/graph_land.dot" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/graph_land.dot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/plan.ipc" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/plan.ipc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/siw_ffparser_cmake.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/siw_ffparser_cmake.cbp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.cxx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cxx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +67,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../LAPKT-edit" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -57,7 +83,7 @@
     </key>
   </component>
   <component name="RunManager" selected="CMake Application.bfws">
-    <configuration name="bfws" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="--domain $PROJECT_DIR$/LAPKT-public/benchmarks/ipc-2011/blocksworld/domain.pddl --problem $PROJECT_DIR$/LAPKT-public/benchmarks/ipc-2011/blocksworld/instances/blocksaips_test.pddl --max_novelty 2 --k-BFWS true" PASS_PARENT_ENVS_2="true" PROJECT_NAME="siw_ffparser_cmake" TARGET_NAME="bfws" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="siw_ffparser_cmake" RUN_TARGET_NAME="bfws">
+    <configuration name="bfws" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="--domain $PROJECT_DIR$/LAPKT-public/benchmarks/ipc-2011/blocksworld/domain.pddl --problem $PROJECT_DIR$/LAPKT-public/benchmarks/ipc-2011/blocksworld/instances/blocksaips39.pddl --max_novelty 2 --k-BFWS true" PASS_PARENT_ENVS_2="true" PROJECT_NAME="siw_ffparser_cmake" TARGET_NAME="bfws" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="siw_ffparser_cmake" RUN_TARGET_NAME="bfws">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -120,6 +146,15 @@
       <workItem from="1586246271008" duration="1120000" />
       <workItem from="1586248710438" duration="188000" />
       <workItem from="1586248917860" duration="1584000" />
+      <workItem from="1586254749565" duration="17929000" />
+      <workItem from="1586593900986" duration="15440000" />
+      <workItem from="1586756757709" duration="9830000" />
+      <workItem from="1586767077268" duration="479000" />
+      <workItem from="1586769930355" duration="152000" />
+      <workItem from="1586770417571" duration="1369000" />
+      <workItem from="1586814105091" duration="493000" />
+      <workItem from="1586825471177" duration="67000" />
+      <workItem from="1587106210996" duration="576000" />
     </task>
     <servers />
   </component>
@@ -131,19 +166,20 @@
       <screen x="0" y="31" width="1440" height="820" />
     </state>
     <state x="313" y="149" width="806" height="679" key="#New_File_Extensions/0.31.1440.820@0.31.1440.820" timestamp="1585494871604" />
-    <state x="179" y="167" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586243375193">
-      <screen x="0" y="31" width="1440" height="820" />
+    <state x="291" y="120" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586770455709">
+      <screen x="67" y="27" width="1533" height="873" />
     </state>
     <state x="179" y="167" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.31.1440.820@0.31.1440.820" timestamp="1586243375193" />
-    <state x="291" y="120" key="#com.intellij.execution.impl.EditConfigurationsDialog/67.27.1533.873@67.27.1533.873" timestamp="1584967434449" />
+    <state x="291" y="120" key="#com.intellij.execution.impl.EditConfigurationsDialog/67.27.1533.873@67.27.1533.873" timestamp="1586770455709" />
     <state x="392" y="293" width="648" height="391" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1585494236796">
       <screen x="0" y="31" width="1440" height="820" />
     </state>
     <state x="392" y="293" width="648" height="391" key="#com.intellij.fileTypes.FileTypeChooser/0.31.1440.820@0.31.1440.820" timestamp="1585494236796" />
-    <state x="455" y="216" width="530" height="503" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1585499825628">
-      <screen x="0" y="31" width="1440" height="820" />
+    <state x="551" y="224" width="524" height="507" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1586764366305">
+      <screen x="67" y="27" width="1533" height="873" />
     </state>
     <state x="455" y="216" width="530" height="503" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.31.1440.820@0.31.1440.820" timestamp="1585499825628" />
+    <state x="551" y="224" width="524" height="507" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/67.27.1533.873@67.27.1533.873" timestamp="1586764366305" />
     <state x="697" y="218" width="262" height="488" key="#xdebugger.XInspectDialog" timestamp="1583588889111">
       <screen x="67" y="27" width="1533" height="873" />
     </state>
@@ -152,60 +188,60 @@
       <screen x="67" y="27" width="1533" height="873" />
     </state>
     <state x="685" y="157" width="410" height="610" key="#xdebugger.evaluate/67.27.1533.873@67.27.1533.873" timestamp="1583565032819" />
-    <state width="527" height="438" key="DebuggerActiveHint" timestamp="1586245660294">
-      <screen x="0" y="31" width="1440" height="820" />
+    <state width="560" height="466" key="DebuggerActiveHint" timestamp="1586763415814">
+      <screen x="67" y="27" width="1533" height="873" />
     </state>
     <state width="527" height="438" key="DebuggerActiveHint/0.31.1440.820@0.31.1440.820" timestamp="1586245660294" />
-    <state width="560" height="466" key="DebuggerActiveHint/67.27.1533.873@67.27.1533.873" timestamp="1584887149656" />
+    <state width="560" height="466" key="DebuggerActiveHint/67.27.1533.873@67.27.1533.873" timestamp="1586763415814" />
     <state x="365" y="211" width="515" height="536" key="EnvironmentVariablesDialog" timestamp="1584967251359">
       <screen x="67" y="27" width="1533" height="873" />
     </state>
     <state x="365" y="211" width="515" height="536" key="EnvironmentVariablesDialog/67.27.1533.873@67.27.1533.873" timestamp="1584967251359" />
-    <state x="516" y="212" width="430" height="486" key="FileChooserDialogImpl" timestamp="1586248896472">
-      <screen x="0" y="31" width="1440" height="820" />
+    <state x="616" y="220" width="430" height="486" key="FileChooserDialogImpl" timestamp="1587106249692">
+      <screen x="67" y="27" width="1533" height="873" />
     </state>
     <state x="516" y="212" width="430" height="486" key="FileChooserDialogImpl/0.31.1440.820@0.31.1440.820" timestamp="1586248896472" />
-    <state x="616" y="220" width="424" height="484" key="FileChooserDialogImpl/67.27.1533.873@67.27.1533.873" timestamp="1584967460774" />
-    <state width="1388" height="242" key="GridCell.Tab.0.bottom" timestamp="1586245890185">
-      <screen x="0" y="31" width="1440" height="820" />
+    <state x="616" y="220" width="424" height="484" key="FileChooserDialogImpl/67.27.1533.873@67.27.1533.873" timestamp="1587106249692" />
+    <state width="1317" height="221" key="GridCell.Tab.0.bottom" timestamp="1586771188627">
+      <screen x="67" y="27" width="1533" height="873" />
     </state>
     <state width="1388" height="242" key="GridCell.Tab.0.bottom/0.31.1440.820@0.31.1440.820" timestamp="1586245890185" />
-    <state width="1479" height="223" key="GridCell.Tab.0.bottom/67.27.1533.873@67.27.1533.873" timestamp="1584966909634" />
-    <state width="1388" height="242" key="GridCell.Tab.0.center" timestamp="1586245890185">
-      <screen x="0" y="31" width="1440" height="820" />
+    <state width="1317" height="221" key="GridCell.Tab.0.bottom/67.27.1533.873@67.27.1533.873" timestamp="1586771188627" />
+    <state width="1317" height="221" key="GridCell.Tab.0.center" timestamp="1586771188627">
+      <screen x="67" y="27" width="1533" height="873" />
     </state>
     <state width="1388" height="242" key="GridCell.Tab.0.center/0.31.1440.820@0.31.1440.820" timestamp="1586245890185" />
-    <state width="1479" height="223" key="GridCell.Tab.0.center/67.27.1533.873@67.27.1533.873" timestamp="1584966909632" />
-    <state width="1388" height="242" key="GridCell.Tab.0.left" timestamp="1586245890184">
-      <screen x="0" y="31" width="1440" height="820" />
+    <state width="1317" height="221" key="GridCell.Tab.0.center/67.27.1533.873@67.27.1533.873" timestamp="1586771188627" />
+    <state width="1317" height="221" key="GridCell.Tab.0.left" timestamp="1586771188627">
+      <screen x="67" y="27" width="1533" height="873" />
     </state>
     <state width="1388" height="242" key="GridCell.Tab.0.left/0.31.1440.820@0.31.1440.820" timestamp="1586245890184" />
-    <state width="1479" height="223" key="GridCell.Tab.0.left/67.27.1533.873@67.27.1533.873" timestamp="1584966909632" />
-    <state width="1388" height="242" key="GridCell.Tab.0.right" timestamp="1586245890185">
-      <screen x="0" y="31" width="1440" height="820" />
+    <state width="1317" height="221" key="GridCell.Tab.0.left/67.27.1533.873@67.27.1533.873" timestamp="1586771188627" />
+    <state width="1317" height="221" key="GridCell.Tab.0.right" timestamp="1586771188627">
+      <screen x="67" y="27" width="1533" height="873" />
     </state>
     <state width="1388" height="242" key="GridCell.Tab.0.right/0.31.1440.820@0.31.1440.820" timestamp="1586245890185" />
-    <state width="1479" height="223" key="GridCell.Tab.0.right/67.27.1533.873@67.27.1533.873" timestamp="1584966909634" />
-    <state width="1388" height="236" key="GridCell.Tab.1.bottom" timestamp="1586245890174">
-      <screen x="0" y="31" width="1440" height="820" />
+    <state width="1317" height="221" key="GridCell.Tab.0.right/67.27.1533.873@67.27.1533.873" timestamp="1586771188627" />
+    <state width="1287" height="326" key="GridCell.Tab.1.bottom" timestamp="1586767037695">
+      <screen x="67" y="27" width="1533" height="873" />
     </state>
     <state width="1388" height="236" key="GridCell.Tab.1.bottom/0.31.1440.820@0.31.1440.820" timestamp="1586245890174" />
-    <state width="1479" height="223" key="GridCell.Tab.1.bottom/67.27.1533.873@67.27.1533.873" timestamp="1584966909636" />
-    <state width="1388" height="236" key="GridCell.Tab.1.center" timestamp="1586245890174">
-      <screen x="0" y="31" width="1440" height="820" />
+    <state width="1287" height="326" key="GridCell.Tab.1.bottom/67.27.1533.873@67.27.1533.873" timestamp="1586767037695" />
+    <state width="1287" height="326" key="GridCell.Tab.1.center" timestamp="1586767037695">
+      <screen x="67" y="27" width="1533" height="873" />
     </state>
     <state width="1388" height="236" key="GridCell.Tab.1.center/0.31.1440.820@0.31.1440.820" timestamp="1586245890174" />
-    <state width="1479" height="223" key="GridCell.Tab.1.center/67.27.1533.873@67.27.1533.873" timestamp="1584966909636" />
-    <state width="1388" height="236" key="GridCell.Tab.1.left" timestamp="1586245890173">
-      <screen x="0" y="31" width="1440" height="820" />
+    <state width="1287" height="326" key="GridCell.Tab.1.center/67.27.1533.873@67.27.1533.873" timestamp="1586767037695" />
+    <state width="1287" height="326" key="GridCell.Tab.1.left" timestamp="1586767037694">
+      <screen x="67" y="27" width="1533" height="873" />
     </state>
     <state width="1388" height="236" key="GridCell.Tab.1.left/0.31.1440.820@0.31.1440.820" timestamp="1586245890173" />
-    <state width="1479" height="223" key="GridCell.Tab.1.left/67.27.1533.873@67.27.1533.873" timestamp="1584966909635" />
-    <state width="1388" height="236" key="GridCell.Tab.1.right" timestamp="1586245890174">
-      <screen x="0" y="31" width="1440" height="820" />
+    <state width="1287" height="326" key="GridCell.Tab.1.left/67.27.1533.873@67.27.1533.873" timestamp="1586767037694" />
+    <state width="1287" height="326" key="GridCell.Tab.1.right" timestamp="1586767037695">
+      <screen x="67" y="27" width="1533" height="873" />
     </state>
     <state width="1388" height="236" key="GridCell.Tab.1.right/0.31.1440.820@0.31.1440.820" timestamp="1586245890174" />
-    <state width="1479" height="223" key="GridCell.Tab.1.right/67.27.1533.873@67.27.1533.873" timestamp="1584966909636" />
+    <state width="1287" height="326" key="GridCell.Tab.1.right/67.27.1533.873@67.27.1533.873" timestamp="1586767037695" />
     <state x="109" y="114" key="SettingsEditor" timestamp="1584967380648">
       <screen x="67" y="27" width="1533" height="873" />
     </state>
@@ -215,11 +251,11 @@
     </state>
     <state width="720" height="411" key="XDebugger.FullValuePopup/0.31.1440.820@0.31.1440.820" timestamp="1585995183002" />
     <state width="766" height="437" key="XDebugger.FullValuePopup/67.27.1533.873@67.27.1533.873" timestamp="1584865647110" />
-    <state x="395" y="278" key="com.intellij.ide.util.TipDialog" timestamp="1586248710746">
-      <screen x="0" y="31" width="1440" height="820" />
+    <state x="488" y="290" key="com.intellij.ide.util.TipDialog" timestamp="1586756800355">
+      <screen x="67" y="27" width="1533" height="873" />
     </state>
     <state x="395" y="278" key="com.intellij.ide.util.TipDialog/0.31.1440.820@0.31.1440.820" timestamp="1586248710746" />
-    <state x="488" y="290" key="com.intellij.ide.util.TipDialog/67.27.1533.873@67.27.1533.873" timestamp="1584967064230" />
+    <state x="488" y="290" key="com.intellij.ide.util.TipDialog/67.27.1533.873@67.27.1533.873" timestamp="1586756800355" />
     <state x="487" y="80" width="683" height="764" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1583910225931">
       <screen x="67" y="27" width="1533" height="873" />
     </state>
@@ -230,7 +266,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/../BFWS-public-master/src/bfws_2h.hxx</url>
-          <line>654</line>
+          <line>652</line>
           <option name="timeStamp" value="34" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
@@ -245,23 +281,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/../BFWS-public-master/src/bfws_2h.hxx</url>
-          <line>673</line>
+          <line>671</line>
           <option name="timeStamp" value="82" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/../BFWS-public-master/src/bfws_2h.hxx</url>
-          <line>675</line>
+          <line>673</line>
           <option name="timeStamp" value="83" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/LAPKT-public/interfaces/agnostic/landmark_count.hxx</url>
           <line>205</line>
           <option name="timeStamp" value="94" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/src/main.cxx</url>
-          <line>485</line>
-          <option name="timeStamp" value="99" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/../BBWS/src/bfws_2h.hxx</url>
@@ -294,27 +325,33 @@
           <option name="timeStamp" value="145" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/src/main.cxx</url>
-          <line>379</line>
-          <option name="timeStamp" value="171" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/src/main.cxx</url>
-          <line>338</line>
-          <option name="timeStamp" value="175" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/LAPKT-public/interfaces/agnostic/h_1.hxx</url>
-          <line>321</line>
-          <option name="timeStamp" value="176" />
+          <line>186</line>
+          <option name="timeStamp" value="207" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/BBWS/src/rp_heuristic_bfws.hxx</url>
+          <line>128</line>
+          <option name="timeStamp" value="260" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/src/main.cxx</url>
+          <line>490</line>
+          <option name="timeStamp" value="261" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/BBWS/src/bfws_2h.hxx</url>
+          <line>645</line>
+          <option name="timeStamp" value="263" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="CMakeRunConfiguration">
-        <watch expression="m_strips_model.goal()" language="ObjectiveC" />
-        <watch expression="task().init()" language="ObjectiveC" />
-        <watch expression="m_root" language="ObjectiveC" />
+        <watch expression="m_succ_gen_v2" language="ObjectiveC" />
+        <watch expression="m_rp_precs" language="ObjectiveC" />
+        <watch expression="m_strips_model.empty_prec_actions()" language="ObjectiveC" />
+        <watch expression="std::numeric_limits&lt;unsigned&gt;::max()" language="ObjectiveC" />
       </configuration>
     </watches-manager>
   </component>

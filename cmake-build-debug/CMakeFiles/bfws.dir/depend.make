@@ -239,12 +239,23 @@ CMakeFiles/bfws.dir/LAPKT-public/src/bit_set.cxx.o: ../LAPKT-public/src/bit_set.
 CMakeFiles/bfws.dir/LAPKT-public/src/memory.cxx.o: ../LAPKT-public/include/aptk/memory.hxx
 CMakeFiles/bfws.dir/LAPKT-public/src/memory.cxx.o: ../LAPKT-public/src/memory.cxx
 
+CMakeFiles/bfws.dir/src/main.cxx.o: ../BBWS/src/bfws_2h.hxx
+CMakeFiles/bfws.dir/src/main.cxx.o: ../BBWS/src/bfws_2h_M.hxx
+CMakeFiles/bfws.dir/src/main.cxx.o: ../BBWS/src/bfws_2h_consistency.hxx
+CMakeFiles/bfws.dir/src/main.cxx.o: ../BBWS/src/bfws_2h_consistency_M.hxx
+CMakeFiles/bfws.dir/src/main.cxx.o: ../BBWS/src/bfws_4h.hxx
+CMakeFiles/bfws.dir/src/main.cxx.o: ../BBWS/src/new_node_comparer.hxx
+CMakeFiles/bfws.dir/src/main.cxx.o: ../BBWS/src/novelty_partition_2.hxx
+CMakeFiles/bfws.dir/src/main.cxx.o: ../BBWS/src/rp_heuristic_bfws.hxx
 CMakeFiles/bfws.dir/src/main.cxx.o: ../LAPKT-public/external/libff/ff.h
 CMakeFiles/bfws.dir/src/main.cxx.o: ../LAPKT-public/external/libff/libff.h
 CMakeFiles/bfws.dir/src/main.cxx.o: ../LAPKT-public/include/aptk/bit_array.hxx
 CMakeFiles/bfws.dir/src/main.cxx.o: ../LAPKT-public/include/aptk/bit_set.hxx
+CMakeFiles/bfws.dir/src/main.cxx.o: ../LAPKT-public/include/aptk/closed_list.hxx
 CMakeFiles/bfws.dir/src/main.cxx.o: ../LAPKT-public/include/aptk/ext_math.hxx
+CMakeFiles/bfws.dir/src/main.cxx.o: ../LAPKT-public/include/aptk/hash_table.hxx
 CMakeFiles/bfws.dir/src/main.cxx.o: ../LAPKT-public/include/aptk/heuristic.hxx
+CMakeFiles/bfws.dir/src/main.cxx.o: ../LAPKT-public/include/aptk/jenkins_12bit.hxx
 CMakeFiles/bfws.dir/src/main.cxx.o: ../LAPKT-public/include/aptk/open_list.hxx
 CMakeFiles/bfws.dir/src/main.cxx.o: ../LAPKT-public/include/aptk/resources_control.hxx
 CMakeFiles/bfws.dir/src/main.cxx.o: ../LAPKT-public/include/aptk/search_prob.hxx

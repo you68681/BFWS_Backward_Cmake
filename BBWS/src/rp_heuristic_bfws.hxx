@@ -63,7 +63,7 @@ public:
 	}
 
   	virtual void 
-	compute( const State& s, float& h_val, std::vector<Action_Idx>& pref_ops, std::vector<Action_Idx>* copy_rel_plan = NULL, Fluent_Vec* goals = NULL ) {
+    	compute( const State& s, float& h_val, std::vector<Action_Idx>& pref_ops, std::vector<Action_Idx>* copy_rel_plan = NULL, Fluent_Vec* goals = NULL ) {
 
 		m_base_heuristic.eval( s, h_val );
 		if ( h_val == infty  )
@@ -84,8 +84,8 @@ public:
 	
 		std::vector<const Action*> relaxed_plan;
 //       change the m_strips_model.goal() to init()
-//		const Fluent_Vec& G = goals ? *goals : m_strips_model.goal();
-        const Fluent_Vec& G = goals ? *goals : m_strips_model.init();
+		const Fluent_Vec& G = goals ? *goals : m_strips_model.goal();
+//        const Fluent_Vec& G = goals ? *goals : m_strips_model.init();
 
 		// 1. Add to the pending queue best supporters for goal fluents
 		for ( unsigned k = 0; k < G.size(); k++ ) {

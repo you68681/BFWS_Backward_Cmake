@@ -44,6 +44,7 @@ public:
 	virtual	int		num_actions() const;
 	virtual State*		make_state( const Fluent_Vec& s ) const;
 	virtual State*		init_state () const;
+    virtual State*		goal_state () const;
     Fluent_Vec&		init()	  			{ return task().goal(); }
     Fluent_Vec&		goal()	  			{ return task().init(); }
     const Fluent_Vec&	init() const  			{ return task().goal(); }

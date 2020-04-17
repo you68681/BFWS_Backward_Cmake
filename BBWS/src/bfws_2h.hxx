@@ -241,7 +241,7 @@ public:
 		m_relevant_fluents_h->ignore_rp_h_value(true);
 		m_relevant_fluents_h->eval( *s, h, po, rel_plan  );
 
-		if( h == std::numeric_limits<unsigned>::max() ) //rel_plan infty
+		if( h == std::numeric_limits<unsigned>::max() )
 			n->relaxed_deadend() = true;
 		
 
