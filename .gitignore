@@ -278,3 +278,5 @@ siw-bkparser-cmake/CMakeLists.txt
 *.xml
 *.cmake
 *.txt
+
+TEST.cpp

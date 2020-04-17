@@ -61,10 +61,20 @@ State*	bwd_Search_Problem::init_state() const {
 	std::sort( s0->fluent_vec().begin(), s0->fluent_vec().end() );
 	s0->update_hash();
 	std::cout<<"Fwd_Search_Problem::init()  return"<<std::endl;
-	s0->print(std::cout);
-	//std::cout<<s0<<std::endl;
 	return s0;
 }
+
+    State*	bwd_Search_Problem::goal_state() const {
+
+        State* s0 = new State( task() );
+
+        for(unsigned i = 0; i < task().init().size(); i++)
+            s0->set(task().init()[i]);
+
+        std::sort( s0->fluent_vec().begin(), s0->fluent_vec().end() );
+        s0->update_hash();
+        return s0;
+    }
 
 bool	bwd_Search_Problem::goal( const State& s ) const {
 	return s.entails( task().init() );

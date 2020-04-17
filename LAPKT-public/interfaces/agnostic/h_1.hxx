@@ -156,7 +156,6 @@ public:
 		h_out = h == infty ? std::numeric_limits<Cost_Type>::max() : (Cost_Type)h;
 		
 	}
-
 	
 	virtual void eval_reachability( const State& s, float& h_val, Fluent_Vec* persist_fluents = NULL ) {
 		m_already_updated.reset();
@@ -170,6 +169,7 @@ public:
 	virtual void eval( const State& s, float& h_val,  std::vector<Action_Idx>& pref_ops ) {
 		eval( s, h_val );
 	}
+
 
 
 	void print_values( std::ostream& os ) const {

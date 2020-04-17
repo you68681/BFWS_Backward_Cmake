@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /xenon/clion-2019.3.5/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /xenon/BFWS_Backward_Cmake
 -- The C compiler identification is GNU 7.5.0
 -- The CXX compiler identification is GNU 7.5.0
@@ -14,6 +15,9 @@
 -- Detecting CXX compile features
 -- Detecting CXX compile features - done
 -- Found Boost: /usr/include (found version "1.65.1") found components:  program_options 
+=======
+/home/chao/CLion-2019.3.1/clion-2019.3.1/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/chao/BFWS_Backward_Cmake
+>>>>>>> 8502f5375b7cc24194e8b9d458ad79b0229d292d
 -- Configuring done
 -- Generating done
--- Build files have been written to: /xenon/BFWS_Backward_Cmake/cmake-build-debug
+-- Build files have been written to: /home/chao/BFWS_Backward_Cmake/cmake-build-debug

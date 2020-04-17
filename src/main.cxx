@@ -150,8 +150,12 @@ typedef		Open_List< Tie_Breaking_Algorithm_4h, Search_Node_4h >	          	     
 typedef		Open_List< Tie_Breaking_Algorithm_2h, Search_Node_2h >	                        BFS_Open_List_2h;
 
 
-
 // NIR: Now we define the heuristics
+
+/**chao edit
+ *  change the 	H_Add_Fwd (bwd to fwd)
+ */
+
 typedef		H1_Heuristic<bwd_Search_Problem, H_Add_Evaluation_Function>	H_Add_Fwd;
 typedef		Relaxed_Plan_Heuristic< bwd_Search_Problem, H_Add_Fwd >		H_Add_Rp_Fwd;
 
@@ -186,7 +190,11 @@ void bfws_options( bwd_Search_Problem&	search_prob, Search_Engine& bfs_engine, u
 	//     space for novelty > 1 tuples 
 	H_Add_Rp_Fwd hadd( search_prob );
 	float h_init=0;
-	const aptk::State* s_0 = search_prob.init_state();
+	/** chao edit
+	 * change the search_prob.init_state() to search_prob,goal_state()
+	 */
+	//const aptk::State* s_0 = search_prob.init_state();
+    const aptk::State* s_0 = search_prob.goal_state();
 	hadd.eval( *s_0, h_init );
 	
 	bfs_engine.set_arity( max_novelty, graph.num_landmarks()*h_init );
