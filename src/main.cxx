@@ -385,6 +385,10 @@ int main( int argc, char** argv ) {
 	    search_prob.set_h2_fwd(h2);
 	} else
 	    prob.compute_edeletes();
+    std::ofstream	h2_stream;
+    h2_stream.open("h2.txt");
+    search_prob.h2_fwd().print_values(h2_stream);
+    h2_stream.close();
 	Gen_Lms_Fwd    gen_lms( search_prob );
 	Landmarks_Graph graph( prob );
 	gen_lms.set_only_goals( true );
@@ -395,11 +399,11 @@ int main( int argc, char** argv ) {
 	std::cout << "Goals found: " << graph.num_landmarks() << std::endl;
 	std::cout << "Goals_Edges found: " << graph.num_landmarks_and_edges() << std::endl;
 
-	graph.print( std::cout );
-    std::ofstream	graph_stream;
-    graph_stream.open("graph_land.dot");
-	graph.print_dot(graph_stream);
-	graph_stream.close();
+	//graph.print( std::cout );
+    //std::ofstream	graph_stream;
+    //graph_stream.open("graph_land.dot");
+	//graph.print_dot(graph_stream);
+	//graph_stream.close();
 
 
 	bool found_plan = false;
