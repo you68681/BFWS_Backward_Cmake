@@ -11,7 +11,6 @@ else:
 	lwaptk_base_dir = '/home/nirlipo/Sandboxes/LAPKT-public'
 	#lwaptk_base_dir = '/media/sf_Sandboxes/LAPKT-public'
 
-
 common_env.Append( CCFLAGS = [ '-Wall', '-std=c++11' ] )
 
 if int(debug) == 1 :

@@ -1,6 +1,7 @@
 import os
 
 lapkt_base_dir = os.environ.get('LAPKT_PATH')
+#lapkt_base_dir ="/home/chao/BFWS_Backward_Cmake/LAPKT-public"
 
 if lapkt_base_dir is None:
 	sys.exit("ERROR: define Environmental Variable!\n export LAPKT_PATH = \"LAPKT_root_folder_location\"")

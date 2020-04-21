@@ -4,6 +4,7 @@ import sys
 
 LAPKT_ROOT = os.environ.get("LAPKT_PATH")
 
+
 def main() :
 
         if LAPKT_ROOT is None:

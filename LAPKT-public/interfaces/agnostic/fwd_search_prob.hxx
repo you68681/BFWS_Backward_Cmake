@@ -24,7 +24,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include <strips_prob.hxx>
 #include <aptk/search_prob.hxx>
 #include <action.hxx>
-
 #include <strips_state.hxx>
 
 namespace aptk {

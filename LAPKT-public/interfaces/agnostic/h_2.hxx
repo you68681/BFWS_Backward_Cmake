@@ -67,6 +67,7 @@ public:
 		//      to iterate through all of them when evaluating, similar to h1
 		m_already_updated.resize( (F*F + F)/2 );
 		m_updated.resize( (F*F + F)/2 );
+		tmp_updated.resize((F*F + F)/2);
 		m_relevant_actions.resize( (F*F + F)/2 );
 
 		for ( unsigned i = 0; i < m_strips_model.num_actions(); i++ ) {
@@ -600,6 +601,9 @@ protected:
 	}
 
 
+    /**
+     * original version
+
 	void compute_mutexes_only() {
 
 		while ( !m_updated.empty() ) {
@@ -632,6 +636,10 @@ protected:
 					for ( unsigned j = i; j < action.add_vec().size(); j++ ) {
 						unsigned q = action.add_vec()[j];
 						float curr_value = value(p,q);
+						if (H2_Helper::pair_index(p,q)== H2_Helper::pair_index(1,2))
+                        {
+						    std::cout<<"find"<<std::endl;
+                        }
 						if ( curr_value == 0.0f ) continue;
 						value(p,q) = 0.0f;
                         //if (value(20,28)==0.0f)
@@ -676,13 +684,31 @@ protected:
 							h2_pre_noop = std::max( h2_pre_noop, value(r,s) );
 
 							if ( h2_pre_noop == infty ) {
+                                if (H2_Helper::pair_index(p,r)== H2_Helper::pair_index(1,2))
+                                {
+                                    std::cout<<"find"<<std::endl;
+                                }
 
 							    //Check the reverse other: if action adding precondition s do not conflict with r, then value(r,s)==infy should be ignored.
 							    //This may be an artifact of the relevant_actions datastructure and the action order propagation
+
                                 for (auto act_add_s : m_strips_model.actions_adding(s)) {
                                     int as = act_add_s->index();
                                     if( ! interferes( as , r ) ){
-                                        float h2_pre_s_noop = op_value(as);
+                                        float h2_pre_s_noop = 0;
+                                        for ( unsigned i = 0; i < act_add_s->prec_vec().size(); i++ ) {
+                                            unsigned p = act_add_s->prec_vec()[i];
+                                            for (unsigned j = i; j < act_add_s->prec_vec().size(); j++) {
+                                                unsigned q = act_add_s->prec_vec()[j];
+                                                float curr_value = value(p, q);
+                                                if (curr_value==infty) {
+                                                    h2_pre_s_noop=infty;
+                                                    break;
+                                                }
+                                            }
+                                        }
+
+                                        //float h2_pre_s_noop = op_value(as);
                                         if (  h2_pre_s_noop == infty ) continue;
 
                                         for ( auto t : act_add_s->prec_vec() ) {
@@ -701,9 +727,7 @@ protected:
 
                                     }
                                 }
-                                /**chao add
-                                 *  if  anyone of the r,s pair can not be set to 0 when consider the relevant_actions, we should break.
-                                 */
+
                                  if (h2_pre_noop == infty){
                                      break;
                                  }
@@ -715,10 +739,7 @@ protected:
 						if ( h2_pre_noop == infty ) continue;
 
 						value(p,r) = 0.0f;
-						//if (value(20,28)==0.0f)
-                       // {
-						//    std::cout<<"find"<<std::endl;
-                        //}
+
 						int curr_idx = H2_Helper::pair_index(p,r);
 						if ( !m_already_updated.isset( curr_idx ) ) {
 							m_updated.push_back( curr_idx );
@@ -737,6 +758,163 @@ protected:
 
 
     }
+*/
+    void compute_mutexes_only() {
+        std::vector<float>			m_values_record;
+        bool different  = true;
+        while (different || !tmp_updated.empty())  {
+
+            m_values_record=m_values;
+            tmp_updated.clear();
+
+            //unsigned p = m_updated.front();
+
+            //m_updated.pop_front();
+            //m_already_updated.unset(p);
+            for (int p : m_updated) {
+
+                m_already_updated.unset( p);
+
+                for (std::set<unsigned>::iterator action_it = m_relevant_actions[p].begin();
+                     action_it != m_relevant_actions[p].end(); ++action_it) {
+
+                    const Action &action = *(m_strips_model.actions()[*action_it]);
+                    unsigned a = action.index();
+
+                    op_value(a) = eval(action.prec_vec());
+                    if (op_value(a) == infty) continue;
+
+                    for (unsigned i = 0; i < action.add_vec().size(); i++) {
+                        unsigned p = action.add_vec()[i];
+                        for (unsigned j = i; j < action.add_vec().size(); j++) {
+                            unsigned q = action.add_vec()[j];
+                            float curr_value = value(p, q);
+                            if (curr_value == 0.0f) continue;
+                            value(p, q) = 0.0f;
+
+                            int curr_idx = H2_Helper::pair_index(p, q);
+                            if (!m_already_updated.isset(curr_idx)) {
+                                tmp_updated.push_back(curr_idx);
+                                m_already_updated.set(curr_idx);
+                            }
+                            curr_idx = H2_Helper::pair_index(p, p);
+                            if (!m_already_updated.isset(curr_idx)) {
+                                tmp_updated.push_back(curr_idx);
+                                m_already_updated.set(curr_idx);
+                            }
+                            curr_idx = H2_Helper::pair_index(q, q);
+                            if (!m_already_updated.isset(curr_idx)) {
+                                tmp_updated.push_back(curr_idx);
+                                m_already_updated.set(curr_idx);
+                            }
+
+                        }
+
+                        for (unsigned r = 0; r < m_strips_model.num_fluents(); r++) {
+
+                            if (interferes(a, r) || value(p, r) == 0.0f) continue;
+                            float h2_pre_noop = std::max(op_value(a), value(r, r));
+                            if (h2_pre_noop == infty) continue;
+
+                            for (unsigned j = 0; j < action.prec_vec().size(); j++) {
+                                unsigned s = action.prec_vec()[j];
+
+                                h2_pre_noop = std::max(h2_pre_noop, value(r, s));
+
+                                if (h2_pre_noop == infty) {
+
+                                    //Check the reverse other: if action adding precondition s do not conflict with r, then value(r,s)==infy should be ignored.
+                                    //This may be an artifact of the relevant_actions datastructure and the action order propagation
+
+                                    for (auto act_add_s : m_strips_model.actions_adding(s)) {
+                                        int as = act_add_s->index();
+                                        if (!interferes(as, r)) {
+                                            float h2_pre_s_noop = eval(act_add_s->prec_vec());
+                                            //float h2_pre_s_noop = op_value(as);
+                                            if (h2_pre_s_noop == infty) continue;
+
+                                            for (auto t : act_add_s->prec_vec()) {
+                                                h2_pre_s_noop = std::max(h2_pre_s_noop, value(t, r));
+                                                if (h2_pre_s_noop == infty) {
+                                                    h2_pre_noop = infty;
+                                                    break;
+                                                }
+                                            }
+
+                                            //If the order of the propagation affect the result, then correct the he_pre_noop
+                                            if (h2_pre_s_noop != infty) {
+                                                h2_pre_noop = 0.0f;
+                                                break;
+                                            }
+
+                                        }
+                                    }
+
+                                    if (h2_pre_noop == infty) {
+                                        break;
+                                    }
+
+
+                                }
+                            }
+
+                            if (h2_pre_noop == infty) continue;
+
+                            value(p, r) = 0.0f;
+
+                            int curr_idx = H2_Helper::pair_index(p, r);
+                            if (!m_already_updated.isset(curr_idx)) {
+                                tmp_updated.push_back(curr_idx);
+                                m_already_updated.set(curr_idx);
+                            }
+                            curr_idx = H2_Helper::pair_index(r, r);
+                            if (!m_already_updated.isset(curr_idx)) {
+                                tmp_updated.push_back(curr_idx);
+                                m_already_updated.set(curr_idx);
+                            }
+                        }
+
+                    }
+                }
+            }
+            if (compare(m_values,m_values_record)){
+                different= false;
+
+            }
+
+            for (int p:tmp_updated) {
+                m_updated.push_back(p);
+
+            }
+
+        }
+
+
+    }
+    bool compare(std::vector<float>vec_1,std::vector<float>vec_2){
+
+
+        unsigned int size_1 = vec_1.size();
+        unsigned int size_2 = vec_2.size();
+
+
+        if( size_1 != size_2 ){
+            return false;
+        } else if ( size_1 == 0 ){
+            return false;
+        } else {
+            for( 	std::vector<float>::iterator ite1 = vec_1.begin(), ite2 = vec_2.begin();
+                    ite1 != vec_1.end(), ite2 != vec_2.end();
+                    ite1++, ite2++
+                    ){
+                if( *ite1 != *ite2 ){
+                    return false;
+                    break;
+                }
+            }
+        }
+        return true;
+    }
 		
 
 
@@ -750,6 +928,8 @@ protected:
 	std::vector< std::set<unsigned> >       m_relevant_actions;
 	boost::circular_buffer<int>		m_updated;
 	Bit_Set					m_already_updated;
+    boost::circular_buffer<int>		tmp_updated;
+
 };
 
 }
