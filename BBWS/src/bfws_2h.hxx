@@ -200,6 +200,7 @@ public:
 	typedef 	Closed_List< Search_Node >			        Closed_List_Type;
 	typedef         aptk::agnostic::Landmarks_Graph_Manager<Search_Model>   Landmarks_Graph_Manager;
 
+
 	BFWS_2H( 	const Search_Model& search_problem ) 
 	: m_problem( search_problem ), m_exp_count(0), m_gen_count(0), m_dead_end_count(0), m_open_repl_count(0),m_max_depth( infty ), m_max_novelty(1), m_time_budget(infty), m_lgm(NULL), m_max_h2n(no_such_index), m_max_r(no_such_index), m_verbose( true ),  m_use_novelty(true), m_use_novelty_pruning(false), m_use_rp(true), m_use_rp_from_init_only(false) {
 		m_first_h = new First_Heuristic( search_problem );
@@ -324,6 +325,104 @@ public:
 */
 		}
 	}
+	/**
+	 * chao edit
+	 * @param n
+	 * @param s
+	 */
+    void    set_relplan_edit( Search_Node* n, State* s ){
+
+        bool flag= true;
+        std::vector<Action_Idx>	po;
+        std::vector<Action_Idx>	rel_plan;
+        unsigned h = 0;
+
+        m_relevant_fluents_h->ignore_rp_h_value(true);
+        m_relevant_fluents_h->eval( *s, h, po, rel_plan,flag  );
+
+        if( h == std::numeric_limits<unsigned>::max() )
+            n->relaxed_deadend() = true;
+
+
+#ifdef DEBUG
+        for ( unsigned p = 0; p < this->problem().task().num_fluents(); p++ ) {
+			if (!m_rp_h->is_relaxed_plan_relevant(p)) continue;
+			n->rp_vec()->push_back( p );
+			n->rp_set()->set( p );
+		}
+
+		std::cout << "rel_plan size: "<< rel_plan.size() << " "<<std::flush;
+#endif
+        /**
+         * Reserve space
+         */
+        if( !n->rp_vec() ){
+            n->rp_vec() = new Fluent_Vec;
+            n->rp_set() = new Fluent_Set( this->problem().task().num_fluents() );
+        }
+        else{
+            n->rp_vec()->clear();
+            n->rp_set()->reset();
+
+        }
+
+        for(std::vector<Action_Idx>::iterator it_a = rel_plan.begin();
+            it_a != rel_plan.end(); it_a++ ){
+            const Action* a = this->problem().task().actions()[*it_a];
+
+            //Add Conditional Effects
+            if( !a->ceff_vec().empty() ){
+                for( unsigned i = 0; i < a->ceff_vec().size(); i++ ){
+                    Conditional_Effect* ce = a->ceff_vec()[i];
+                    for ( auto p : ce->add_vec() ) {
+                        if ( ! n->rp_set()->isset( p ) ){
+                            n->rp_vec()->push_back( p );
+                            n->rp_set()->set( p );
+#ifdef DEBUG
+                            std::cout << this->problem().task().fluents()[add[i]]->signature() << std::endl;
+#endif
+                        }
+                    }
+                }
+            }
+
+            const Fluent_Vec& pre = a->prec_vec();
+
+#ifdef DEBUG
+            std::cout << this->problem().task().actions()[*it_a]->signature() << std::endl;
+#endif
+            for ( unsigned i = 0; i < pre.size(); i++ )
+            {
+                if ( ! n->rp_set()->isset( pre[i] ) )
+                {
+                    n->rp_vec()->push_back( pre[i] );
+                    n->rp_set()->set( pre[i] );
+#ifdef DEBUG
+                    std::cout << this->problem().task().fluents()[add[i]]->signature() << std::endl;
+#endif
+                }
+            }
+
+/*
+			const Fluent_Vec& add = a->add_vec();
+
+#ifdef DEBUG
+			std::cout << this->problem().task().actions()[*it_a]->signature() << std::endl;
+#endif
+			for ( unsigned i = 0; i < add.size(); i++ )
+			{
+				if ( ! n->rp_set()->isset( add[i] ) )
+				{
+					n->rp_vec()->push_back( add[i] );
+					n->rp_set()->set( add[i] );
+#ifdef DEBUG
+					std::cout << this->problem().task().fluents()[add[i]]->signature() << std::endl;
+#endif
+				}
+			}
+*/
+        }
+    }
 
 	virtual void	start( float B = infty) {
 		m_max_depth = B;
@@ -332,7 +431,15 @@ public:
 		m_first_h->init();		
 
 		if(m_use_rp)
-		  set_relplan( this->m_root, this->m_root->state() );
+		    /**
+		     * original
+		     */
+		  //set_relplan( this->m_root, this->m_root->state() );
+		    /** chao edi
+		     */
+            m_root_edit = new Search_Node(m_problem.goal_state(), 0.0f, no_op, NULL, m_problem.num_actions());
+		     
+            set_relplan( this->m_root, this->m_root_edit->state() );
 
 		//if using the landmark manager to count goals or landmarks
 		if(m_lgm){				
@@ -386,6 +493,7 @@ public:
 		inc_gen();
 	}
 
+
 	
 	virtual void      eval( Search_Node* candidate ) {
 
@@ -430,7 +538,14 @@ public:
 					static Fluent_Vec added, deleted;
 					added.clear(); deleted.clear();
 					candidate->parent()->state()->progress_lazy_state(  this->problem().task().actions()[ candidate->action() ], &added, &deleted  );	
-					set_relplan( candidate, candidate->parent()->state() );
+					/**original
+					 *
+					 */
+					//set_relplan( candidate, candidate->parent()->state() );
+					/**chao edit
+					 *
+					 */
+					 set_relplan_edit(candidate, candidate->parent()->state());
 					candidate->parent()->state()->regress_lazy_state(  this->problem().task().actions()[ candidate->action() ], &added, &deleted );					
 				}
 				else
@@ -802,6 +917,7 @@ protected:
 	float					m_t0;
 
 	Search_Node*				m_root;
+    Search_Node*				m_root_edit;
 	std::vector<Action_Idx> 		m_app_set;
 	Landmarks_Graph_Manager*                m_lgm;
 

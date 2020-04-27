@@ -600,10 +600,6 @@ protected:
 		
 	}
 
-
-    /**
-     * original version
-
 	void compute_mutexes_only() {
 
 		while ( !m_updated.empty() ) {
@@ -617,35 +613,18 @@ protected:
 
 				const Action& action = *(m_strips_model.actions()[*action_it]);
 				unsigned a = action.index();
-                //if (a==127|| a==114 || a==174){
-                //    std::cout<<"find"<<std::endl;
-                //}
-
-
-
 				op_value(a) = eval( action.prec_vec() );
 				if ( op_value(a) == infty ) continue;
-				//if (a==127|| a==114 || a==174){
-				//    std::cout<<"find"<<std::endl;
-				//}
-                //if (a==29){
-                //    std::cout<<"find"<<std::endl;
-                //}
+
 				for ( unsigned i = 0; i < action.add_vec().size(); i++ ) {
 					unsigned p = action.add_vec()[i];
 					for ( unsigned j = i; j < action.add_vec().size(); j++ ) {
 						unsigned q = action.add_vec()[j];
 						float curr_value = value(p,q);
-						if (H2_Helper::pair_index(p,q)== H2_Helper::pair_index(1,2))
-                        {
-						    std::cout<<"find"<<std::endl;
-                        }
+
 						if ( curr_value == 0.0f ) continue;
 						value(p,q) = 0.0f;
-                        //if (value(20,28)==0.0f)
-                        //{
-                        //    std::cout<<"find"<<std::endl;
-                        //}
+
 						int curr_idx = H2_Helper::pair_index(p,q);
 						if ( !m_already_updated.isset( curr_idx ) ) {
 							m_updated.push_back( curr_idx );
@@ -666,23 +645,18 @@ protected:
 
 					for ( unsigned r = 0; r < m_strips_model.num_fluents(); r++ ) {
 
-					    //if (r==92){
-					    //    std::cout<<"find"<<std::endl;
-					    //}
-                        //if (r==105){
-                        //    std::cout<<"find"<<std::endl;
-                        //}
+
 						if ( interferes( a, r ) || value( p, r ) == 0.0f ) continue;
 						float h2_pre_noop = std::max( op_value(a), value(r,r) );
 						if ( h2_pre_noop == infty ) continue;
-                        //if (r==13){
-                        //    std::cout<<"find"<<std::endl;
-                        //}
+
 						for ( unsigned j = 0; j < action.prec_vec().size(); j++ ) {
-							unsigned s = action.prec_vec()[j];
+                            unsigned s = action.prec_vec()[j];
 
-							h2_pre_noop = std::max( h2_pre_noop, value(r,s) );
+                            h2_pre_noop = std::max(h2_pre_noop, value(r, s));
+                        }
 
+							/**
 							if ( h2_pre_noop == infty ) {
                                 if (H2_Helper::pair_index(p,r)== H2_Helper::pair_index(1,2))
                                 {
@@ -735,7 +709,7 @@ protected:
 
                             }
 						}
-						
+						**/
 						if ( h2_pre_noop == infty ) continue;
 
 						value(p,r) = 0.0f;
@@ -749,7 +723,15 @@ protected:
 						if ( !m_already_updated.isset( curr_idx ) ) {
 							m_updated.push_back( curr_idx );
 							m_already_updated.set( curr_idx );
-						}													
+						}
+						/** new add
+						 *
+						 */
+                        curr_idx = H2_Helper::pair_index(p,p);
+                        if ( !m_already_updated.isset( curr_idx ) ) {
+                            m_updated.push_back( curr_idx );
+                            m_already_updated.set( curr_idx );
+                        }
 					}
 
 				}
@@ -758,7 +740,10 @@ protected:
 
 
     }
-*/
+
+    /**chao edit
+     *
+
     void compute_mutexes_only() {
         std::vector<float>			m_values_record;
         bool different  = true;
@@ -891,6 +876,7 @@ protected:
 
 
     }
+    */
     bool compare(std::vector<float>vec_1,std::vector<float>vec_2){
 
 

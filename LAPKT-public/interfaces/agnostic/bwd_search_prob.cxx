@@ -20,6 +20,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <bwd_search_prob.hxx>
 #include <algorithm>
+#include <fstream>
 
 namespace aptk {
 
@@ -127,6 +128,13 @@ State * bwd_Search_Problem::next(const State& s, Action_Idx a)const  {
 //    std::cout<<"BBBBBBBBBB"<<std::endl;
 //     succ->print(std::cout);
 	succ->update_hash();
+
+    std::ofstream h2_stream;
+    h2_stream.open("action_record.txt",std::ios::app);
+    s.print(h2_stream);
+    act.print(task(),h2_stream);
+    succ->print(h2_stream);
+    h2_stream.close();
 
 	return succ;
 }
