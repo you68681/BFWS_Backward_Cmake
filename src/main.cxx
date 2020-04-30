@@ -377,6 +377,7 @@ int main( int argc, char** argv ) {
 	std::cout << "\t#Actions: " << prob.num_actions() << std::endl;
 	std::cout << "\t#Fluents: " << prob.num_fluents() << std::endl;
 
+
 	bwd_Search_Problem	search_prob( &prob );
 	Fwd_Search_Problem  fwd_search_prob (&prob);
 	if (!prob.has_conditional_effects()){

@@ -119,14 +119,14 @@ float	bwd_Search_Problem::cost( const State& s, Action_Idx a ) const {
 State * bwd_Search_Problem::next(const State& s, Action_Idx a)const  {
 
 //    std::cout<<"NNNNNNNN"<<std::endl;
-//    s.print(std::cout);
+    s.print(std::cout);
 	const Action& act = *(task().actions().at(a));
 //	std::cout<<"VVVVVVVV"<<std::endl;
-//	act.print(task(),std::cout);
+	act.print(task(),std::cout);
 //	State* succ = s.progress_through( act );
 	State* succ = s.regress_through( act );
 //    std::cout<<"BBBBBBBBBB"<<std::endl;
-//     succ->print(std::cout);
+     succ->print(std::cout);
 	succ->update_hash();
 
     std::ofstream h2_stream;
