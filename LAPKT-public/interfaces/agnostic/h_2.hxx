@@ -623,7 +623,6 @@ protected:
 						float curr_value = value(p,q);
 
 						if ( curr_value == 0.0f ) continue;
-
 						value(p,q) = 0.0f;
 
 						int curr_idx = H2_Helper::pair_index(p,q);
@@ -712,8 +711,6 @@ protected:
 						}
 						**/
 						if ( h2_pre_noop == infty ) continue;
-
-
 						value(p,r) = 0.0f;
 
 						int curr_idx = H2_Helper::pair_index(p,r);

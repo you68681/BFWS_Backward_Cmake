@@ -68,7 +68,7 @@ void	get_problem_description( std::string pddl_domain_path,
 	Fluent_Vec negFluents;
 	Fluent_Set negFluentsSet;
     std::map <unsigned , unsigned > dic;
-    negFluentsSet.resize(strips_problem.fluents().size()+1);
+    negFluentsSet.resize(strips_problem.fluents().size()+G.size());
 
 	for (unsigned p : G){
         if (std::find(I.begin(), I.end(), p) != I.end()){

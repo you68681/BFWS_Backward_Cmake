@@ -497,8 +497,8 @@ public:
 	
 	virtual void      eval( Search_Node* candidate ) {
 
-		
-		if(m_lgm){
+
+        if(m_lgm){
 			//Update land/goal counter up to parent node
 			if(candidate->parent())
 				candidate->parent()->update_land_graph( m_lgm );
@@ -527,7 +527,9 @@ public:
 
 		//Count land/goal unachieved
 		m_second_h->eval( *(candidate->state()), candidate->h2n());
-		
+        if (5== candidate->h2n()){
+            std::cout<<"find"<<std::endl;
+        }
 
 		//If relevant fluents are in use
 		if(m_use_rp && !m_use_rp_from_init_only){
@@ -558,6 +560,7 @@ public:
 			m_max_h2n = candidate->h2n();
 			m_max_r = 0;
 			if ( m_verbose ) {
+
 				std::cout << "--[" << m_max_h2n  <<" / " << m_max_r <<"]--" << std::endl;				
 			}
 		}

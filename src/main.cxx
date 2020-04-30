@@ -386,7 +386,8 @@ int main( int argc, char** argv ) {
 	    search_prob.set_h2_fwd(h2);
 	} else
 	    prob.compute_edeletes();
-    std::ofstream	h2_stream;
+
+	std::ofstream	h2_stream;
     h2_stream.open("h2.txt");
     search_prob.h2_fwd().print_values(h2_stream);
     h2_stream.close();
@@ -398,7 +399,8 @@ int main( int argc, char** argv ) {
 	gen_lms.compute_lm_graph_set_additive( graph );
 	
 	std::cout << "Goals found: " << graph.num_landmarks() << std::endl;
-	std::cout << "Goals_Edges found: " << graph.num_landmarks_and_edges() << std::endl;
+	std::cout << "Goals_aa"
+              "Edges found: " << graph.num_landmarks_and_edges() << std::endl;
 
 	//graph.print( std::cout );
     //std::ofstream	graph_stream;
