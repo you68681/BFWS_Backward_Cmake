@@ -527,9 +527,7 @@ public:
 
 		//Count land/goal unachieved
 		m_second_h->eval( *(candidate->state()), candidate->h2n());
-        if (5== candidate->h2n()){
-            std::cout<<"find"<<std::endl;
-        }
+
 
 		//If relevant fluents are in use
 		if(m_use_rp && !m_use_rp_from_init_only){

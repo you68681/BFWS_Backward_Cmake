@@ -391,6 +391,20 @@ int main( int argc, char** argv ) {
     h2_stream.open("h2.txt");
     search_prob.h2_fwd().print_values(h2_stream);
     h2_stream.close();
+
+    std::ofstream	action_stream;
+    action_stream.open("action.txt");
+    for (unsigned i=0; i<search_prob.task().num_actions(); i++){
+        auto act = (search_prob.task().actions().at(i));
+        act->print(search_prob.task(),action_stream);
+
+    }
+    action_stream.close();
+
+
+
+
+
 	Gen_Lms_Fwd    gen_lms( search_prob );
 	Landmarks_Graph graph( prob );
 	gen_lms.set_only_goals( true );
