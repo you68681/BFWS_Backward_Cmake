@@ -34,7 +34,7 @@ namespace aptk
 	class Fluent;
 	class Conditional_Effect;
 	
-	
+	typedef     std::vector<std::vector<unsigned >>  Fluent_chao;
 	typedef		std::vector<bool>				Bool_Vec;
 	typedef		std::vector<bool*>				Bool_Vec_Ptr;
 	typedef		std::vector<unsigned>				Fluent_Vec;

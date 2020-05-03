@@ -65,7 +65,7 @@ State*	bwd_Search_Problem::init_state() const {
 	return s0;
 }
 
-    State*	bwd_Search_Problem::goal_state() const {
+State*	bwd_Search_Problem::goal_state() const {
 
         State* s0 = new State( task() );
 
@@ -101,6 +101,16 @@ bool	bwd_Search_Problem::is_applicable( const State& s, Action_Idx a ) const {
 	//return act.can_be_applied_on(s);
 }
 
+/** chao edit
+ *
+ */
+bool	bwd_Search_Problem::is_applicable_edit( const State& s, Action_Idx a, std::vector<bool> negation ) const {
+
+        const Action& act = *(task().actions().at(a));
+        return act.can_be_regressed_from_edit(s, negation);
+        //return act.can_be_applied_on(s);
+}
+
 void	bwd_Search_Problem::applicable_set( const State& s, std::vector<Action_Idx>& app_set ) const {
 	//m_task->applicable_actions( s, app_set );
 	m_task->applicable_actions_v2( s, app_set ); 
@@ -119,14 +129,15 @@ float	bwd_Search_Problem::cost( const State& s, Action_Idx a ) const {
 State * bwd_Search_Problem::next(const State& s, Action_Idx a)const  {
 
 //    std::cout<<"NNNNNNNN"<<std::endl;
-    s.print(std::cout);
+//    s.print(std::cout);
 	const Action& act = *(task().actions().at(a));
 //	std::cout<<"VVVVVVVV"<<std::endl;
-	act.print(task(),std::cout);
+//	act.print(task(),std::cout);
 //	State* succ = s.progress_through( act );
-	State* succ = s.regress_through( act );
+//	State* succ = s.regress_through( act );
+    State* succ = s.regress_through_without_check( act );
 //    std::cout<<"BBBBBBBBBB"<<std::endl;
-     succ->print(std::cout);
+//     succ->print(std::cout);
 	succ->update_hash();
 
 	/**

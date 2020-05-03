@@ -101,3 +101,4 @@ void	Action::print( const STRIPS_Problem& prob, std::ostream& os ) const {
 }
 
 }
+

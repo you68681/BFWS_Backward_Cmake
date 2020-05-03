@@ -123,6 +123,24 @@ namespace aptk
 		return p.fluents().size()-1;
 	}
 
+	/** chao edit
+	 *
+	 */
+	void STRIPS_Problem::set_negation( STRIPS_Problem& p, const Fluent_Vec& negation_vec )
+    {
+        if ( p.m_in_negation.empty() )
+            p.m_in_negation.resize( p.num_fluents(), false );
+        else
+            for ( unsigned k = 0; k < p.num_fluents(); k++ )
+                p.m_in_negation[k] = false;
+
+        p.negation().assign( negation_vec.begin(), negation_vec.end() );
+
+        for ( unsigned k = 0; k < negation_vec.size(); k++ )
+            p.m_in_negation[ negation_vec[k] ] = true;
+
+    }
+
 	void	STRIPS_Problem::set_init( STRIPS_Problem& p, const Fluent_Vec& init_vec )
 	{
 #ifdef DEBUG

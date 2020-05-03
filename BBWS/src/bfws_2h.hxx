@@ -104,7 +104,7 @@ public:
 			      
 		
 	}
-  
+
         void                    update_land_graph(Landmarks_Graph_Manager* lgm){
 		Node_Vec_Ptr path( gn_unit()+1 );
 		Node_Vec_Ptr_Rit rit = path.rbegin();
@@ -231,7 +231,8 @@ public:
 	 * computing a relaxed plan, and marking the fluents
 	 * added by actions in relaxed plan as relevant
 	 */
-	
+
+
 	void    set_relplan( Search_Node* n, State* s ){
 
 		
@@ -670,6 +671,24 @@ public:
 		m_open.insert(n);
 		inc_gen();
 	}
+	/** chao add
+	 *
+	 * @param node
+	 */
+	void                    set_negation(Search_Node *node){
+	    m_in_negation.clear();
+	    m_in_negation.resize(problem().task().num_fluents(), false);
+        while (node->parent()){
+            for (unsigned p: problem().task().negation()){
+                if (node->state()->entails(p)){
+                    m_in_negation[ p ] = TRUE;
+                }
+
+            }
+            node=node->parent();
+
+        }
+    }
 	
 	virtual void 			process(  Search_Node *head ) {
 
@@ -686,11 +705,20 @@ public:
 
 		if(m_lgm)
 			head->update_land_graph( m_lgm );
-		
+
+		set_negation(head);
+
 		std::vector< aptk::Action_Idx > app_set;
 //		this->problem().applicable_set_v2( *(head->state()), app_set );
         for (unsigned i = 0; i < this->problem().num_actions(); ++i ) {
-            if (this->problem().is_applicable( *(head->state()), i )){
+            /**original version
+             *
+             */
+//            if (this->problem().is_applicable( *(head->state()), i )){
+              /** chao edit
+               *
+               */
+            if (this->problem().is_applicable_edit( *(head->state()), i,m_in_negation )){
                 app_set.push_back(i);
             }
         }
@@ -716,6 +744,10 @@ public:
            for (auto p: head->state()->fluent_vec()){
                for (auto new_p: a_ptr->prec_vec()){
                    if (a_ptr->add_set().isset(p)) continue;
+                   /** chao edit
+                    *
+                    */
+                   if (m_in_negation[new_p] or m_in_negation[p]) continue;
                    if (this->problem().h2_fwd().is_mutex(p,new_p)){
                        is_mutex= true;
                        break;
@@ -930,6 +962,7 @@ protected:
 	bool                                    m_use_novelty_pruning;
         bool                                    m_use_rp;
 	bool                                    m_use_rp_from_init_only;
+    std::vector<bool>	 						m_in_negation;
 
 };
 

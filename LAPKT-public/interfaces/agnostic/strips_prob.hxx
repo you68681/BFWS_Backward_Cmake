@@ -165,6 +165,11 @@ namespace aptk
 		static unsigned 	add_fluent( STRIPS_Problem& p, std::string signature );
 
 		static void		set_init( STRIPS_Problem& p, const Fluent_Vec& init );
+		/** chao add
+		 *
+		 */
+		static void     set_negation(STRIPS_Problem& p, const Fluent_Vec& negation);
+
 	    static void		set_goal( STRIPS_Problem& p, const Fluent_Vec& goal, bool createEndOp = false, bool keep_original_goal = false );
 
 		static void		make_delete_relaxation( const STRIPS_Problem& orig, STRIPS_Problem& relaxed );
@@ -177,11 +182,12 @@ namespace aptk
 		const std::vector< const Action*>&
 					actions() const			{ return m_const_actions; }
 
-
 		Fluent_Vec&		init()	  			{ return m_init; }
+        Fluent_Vec&		negation()	  			{ return m_negation; }
 		Fluent_Vec&		goal()	  			{ return m_goal; }
 		const Fluent_Vec&	init() const  			{ return m_init; }
-		const Fluent_Vec&	goal() const  			{ return m_goal; }
+		const Fluent_Vec&	goal() const  			{ return m_goal;}
+		const Fluent_Vec&	negation() const  			{ return m_negation; }
 	        agnostic::Mutex_Set&    mutexes()                       { return m_mutexes; }
 		std::vector<const Action*>&		
 		 			actions_adding( unsigned f )		{ return m_adding[f]; }
@@ -232,6 +238,8 @@ namespace aptk
 		bool			is_in_init( unsigned f ) const	{ return m_in_init[f]; }
 		bool			is_in_goal( unsigned f )	{ return m_in_goal[f]; }
 		bool			is_in_goal( unsigned f ) const	{ return m_in_goal[f]; }
+        bool			is_in_negation( unsigned f )	{ return m_in_negation[f]; }
+        bool			is_in_negation( unsigned f ) const	{ return m_in_negation[f]; }
 
 		void                    print_fluent_vec(const Fluent_Vec &a);
 		unsigned                end_operator() { return m_end_operator_id; }
@@ -283,12 +291,20 @@ namespace aptk
 		std::vector<const Fluent*>						m_const_fluents;
 		Fluent_Vec		 						m_init;
 		Fluent_Vec		 						m_goal;
+		/** chao edit
+		 *
+		 */
+        Fluent_Vec		 						m_negation;
 		Fluent_Action_Table	 						m_adding;
 		Fluent_Action_Table	 						m_requiring;
 		Fluent_Action_Table	 						m_deleting;
 		Fluent_Action_Table	 						m_edeleting;
 		std::vector<bool>	 						m_in_init;
 		std::vector<bool>	 						m_in_goal;
+		/** chao edit
+		 *
+		 */
+        std::vector<bool>	 						    m_in_negation;
 		unsigned                 						m_end_operator_id;
 	  	std::map<std::string,int> 						m_fluents_map;
 		agnostic::Successor_Generator						m_succ_gen;

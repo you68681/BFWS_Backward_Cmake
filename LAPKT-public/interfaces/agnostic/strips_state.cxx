@@ -196,27 +196,26 @@ State* State::regress_through_without_check( const Action& a ) const
     {
 
         State* succ = new State( problem() );
-        for ( unsigned k = 0; k < m_fluent_vec.size(); k++ )
-            if ( !a.asserts( m_fluent_vec[k] ) )
-            {
+        for ( unsigned k = 0; k < m_fluent_vec.size(); k++ ) {
+            //if (problem().is_in_negation(k)) {
+            //    succ->set(m_fluent_vec[k]);
+            //}
+            if (!a.asserts(m_fluent_vec[k])) {
                 //Check Conditional Effects
-                if( !a.ceff_vec().empty() )
-                {
+                if (!a.ceff_vec().empty()) {
                     bool asserts = false;
-                    for( unsigned i = 0; i < a.ceff_vec().size() && !asserts; i++ )
-                    {
-                        Conditional_Effect* ce = a.ceff_vec()[i];
-                        if( ce->can_be_applied_on( *this, true) )
-                            if( ce->asserts( m_fluent_vec[k] ) )
+                    for (unsigned i = 0; i < a.ceff_vec().size() && !asserts; i++) {
+                        Conditional_Effect *ce = a.ceff_vec()[i];
+                        if (ce->can_be_applied_on(*this, true))
+                            if (ce->asserts(m_fluent_vec[k]))
                                 asserts = true;
                     }
-                    if( !asserts )
-                        succ->set( m_fluent_vec[k] );
-                }
-                else
-                    succ->set( m_fluent_vec[k] );
+                    if (!asserts)
+                        succ->set(m_fluent_vec[k]);
+                } else
+                    succ->set(m_fluent_vec[k]);
             }
-
+        }
         succ->set( a.prec_vec() );
 
         //Add Conditional Effects

@@ -387,7 +387,70 @@ int main( int argc, char** argv ) {
 	} else
 	    prob.compute_edeletes();
 
-	std::ofstream	h2_stream;
+    /** chao edit
+     * 
+     */
+    aptk::Fluent_chao m_relevant_fluents;
+    aptk::Fluent_Vec  m_new_init;
+    aptk::Fluent_Vec  goal_record;
+    m_relevant_fluents.resize(prob.num_fluents() );
+
+    for ( unsigned i = 0; i < prob.num_actions(); i++ ) {
+
+        auto a = (prob.actions()[i]);
+
+        // Relevant if the fluent is in the precondition
+        for ( unsigned j = 0; j < a->add_vec().size(); ++j ) {
+            for (unsigned k = 0; k < a->add_vec().size(); ++k) {
+                if ( a->add_vec()[j]!= a->add_vec()[k]){
+                    m_relevant_fluents[a->add_vec()[j]].push_back(a->add_vec()[k]);
+                    }
+            }
+        }
+    }
+    m_new_init=prob.goal();
+    goal_record=prob.goal();
+    for (unsigned p : goal_record){
+        for (unsigned q: m_relevant_fluents[p]){
+            bool goal_flag=TRUE;
+            bool init_flag=TRUE;
+            if (std::find(m_new_init.begin(), m_new_init.end(), q) != m_new_init.end()) {
+                continue;
+            }
+            else{
+                for (unsigned w: m_new_init){
+                    if (search_prob.h2_fwd().is_mutex(w,q)){
+                        goal_flag=FALSE;
+                        break;
+                    }
+                }
+                if (goal_flag)
+                {
+                    for (unsigned e: prob.init()){
+                        if (search_prob.h2_fwd().is_mutex(e,q)){
+                            init_flag=FALSE;
+                            break;
+                        }
+                    }
+                }
+            }
+         if (goal_flag and init_flag){
+             if (std::find(m_new_init.begin(), m_new_init.end(), q) != m_new_init.end()) {
+                 continue;
+             }
+             prob.goal().push_back(q);
+             m_new_init.push_back(q);
+         }
+        }
+    }
+
+    STRIPS_Problem::set_goal( prob, m_new_init);
+
+
+
+
+
+        std::ofstream	h2_stream;
     h2_stream.open("h2.txt");
     search_prob.h2_fwd().print_values(h2_stream);
     h2_stream.close();

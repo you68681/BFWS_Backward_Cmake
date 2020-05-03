@@ -21,6 +21,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef __APTK_ACTION__
 #define __APTK_ACTION__
 
+class Node_Type;
+
 #include <types.hxx>
 #include <strips_prob.hxx>
 #include <strips_state.hxx>
@@ -85,6 +87,7 @@ public:
 
 	bool		           	can_be_applied_on( const State& s ) const ;
 	bool				can_be_regressed_from( const State& s ) const;
+    bool				can_be_regressed_from_edit( const State& s, Bool_Vec &negation) const;
 
 	void		           	set_cost( float c ) { m_cost = c; }
 	float		           	cost() const { return m_cost; }
@@ -180,6 +183,44 @@ inline bool	Action::edeletes( unsigned f ) const
 	return edel_set().isset(f);
 }
 
+/** chao edit
+ *
+ */
+
+inline bool	Action::can_be_regressed_from_edit( const State& s,  Bool_Vec& negation) const {
+    // Relevance testing
+    bool relevant = false;
+    for ( unsigned k = 0; k < add_vec().size() && !relevant; k++ )
+        if ( s.entails( add_vec()[k] ) ) relevant = true;
+
+    for( unsigned i = 0; i < ceff_vec().size() && !relevant; i++ )
+    {
+        for ( unsigned k = 0; k < ceff_vec()[i]->add_vec().size() && !relevant; k++ )
+            if( s.entails( ceff_vec()[i]->add_vec()[k] ) )
+                relevant = true;
+    }
+
+
+    if (!relevant) return false;
+    // Now test if no deletes from a are entailed by s
+    for ( unsigned k = 0; k < del_vec().size(); k++ )
+        if ( s.entails( del_vec()[k] ) ) {
+            if (negation[del_vec()[k]]){
+                continue;
+            }
+            return false;
+        }
+
+    for( unsigned i = 0; i < ceff_vec().size(); i++ )
+    {
+        for ( unsigned k = 0; k < ceff_vec()[i]->del_vec().size(); k++ )
+            if( s.entails( ceff_vec()[i]->del_vec()[k] ) )
+                return false;
+
+    }
+
+    return true;
+}
 
 inline bool	Action::can_be_regressed_from( const State& s ) const {
 	// Relevance testing

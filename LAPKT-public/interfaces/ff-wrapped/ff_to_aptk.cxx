@@ -67,6 +67,8 @@ void	get_problem_description( std::string pddl_domain_path,
      */
 	Fluent_Vec negFluents;
 	Fluent_Set negFluentsSet;
+	Fluent_Vec negIndexs;
+
     std::map <unsigned , unsigned > dic;
     negFluentsSet.resize(strips_problem.fluents().size()+G.size());
 
@@ -82,6 +84,7 @@ void	get_problem_description( std::string pddl_domain_path,
 	    std::stringstream buffer;
 	    buffer<<"(not-"<<strips_problem.fluents()[p]->signature()<<")";
 	    unsigned  fl_idx = aptk::STRIPS_Problem::add_fluent(strips_problem,buffer.str());
+	    negIndexs.push_back(fl_idx);
         dic.insert(std::pair<int, int>(p, fl_idx));
 	    I.push_back(fl_idx);
 
@@ -89,7 +92,7 @@ void	get_problem_description( std::string pddl_domain_path,
 
 
 
-
+    STRIPS_Problem::set_negation( strips_problem, negIndexs);
 	STRIPS_Problem::set_init( strips_problem, I);
 	STRIPS_Problem::set_goal( strips_problem, G);
 
