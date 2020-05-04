@@ -7,7 +7,7 @@ set(CMAKE_CXX_STANDARD 14)
 include_directories(src)
 
 #SET CORRECT PATH TO LAPKT
-set(LAPKT_PATH "/home/chao/BFWS_Backward_Cmake/LAPKT-public")
+set(LAPKT_PATH "/xenon/BFWS_Backward_Cmake/LAPKT-public")
 
 #Bring the headers, such as Student.h into the project
 include_directories(
@@ -15,7 +15,7 @@ include_directories(
         ${LAPKT_PATH}/interfaces/ff-wrapped/
         ${LAPKT_PATH}/include/
         ${LAPKT_PATH}/external/
-        /home/chao/BFWS_Backward_Cmake/BBWS/src
+        /xenon/BFWS_Backward_Cmake/BBWS/src
         )
 
 
