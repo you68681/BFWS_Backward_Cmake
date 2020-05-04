@@ -378,6 +378,7 @@ int main( int argc, char** argv ) {
 	std::cout << "\t#Fluents: " << prob.num_fluents() << std::endl;
 
 
+
 	bwd_Search_Problem	search_prob( &prob );
 	Fwd_Search_Problem  fwd_search_prob (&prob);
 	if (!prob.has_conditional_effects()){
@@ -386,10 +387,16 @@ int main( int argc, char** argv ) {
 	    search_prob.set_h2_fwd(h2);
 	} else
 	    prob.compute_edeletes();
+//    float h_val=0;
+//	auto* h2_edit =new H2_Fwd (fwd_search_prob);
+
+//	h2_edit->compute_edit(prob,h_val);
+//	search_prob.set_h2_fwd(h2_edit);
+
 
     /** chao edit
-     * 
-     */
+     *      */
+
     aptk::Fluent_chao m_relevant_fluents;
     aptk::Fluent_Vec  m_new_init;
     aptk::Fluent_Vec  goal_record;
@@ -413,7 +420,6 @@ int main( int argc, char** argv ) {
     for (unsigned p : goal_record){
         for (unsigned q: m_relevant_fluents[p]){
             bool goal_flag=TRUE;
-            bool init_flag=TRUE;
             if (std::find(m_new_init.begin(), m_new_init.end(), q) != m_new_init.end()) {
                 continue;
             }
@@ -424,17 +430,17 @@ int main( int argc, char** argv ) {
                         break;
                     }
                 }
-                if (goal_flag)
-                {
-                    for (unsigned e: prob.init()){
-                        if (search_prob.h2_fwd().is_mutex(e,q)){
-                            init_flag=FALSE;
-                            break;
-                        }
-                    }
-                }
+                //if (goal_flag)
+                //{
+                //	for (unsigned e: prob.init()){
+                //        if (search_prob.h2_fwd().is_mutex(e,q)){
+                //            init_flag=FALSE;
+                //            break;
+                //        }
+                //    }
+                //}
             }
-         if (goal_flag and init_flag){
+         if (goal_flag){
              if (std::find(m_new_init.begin(), m_new_init.end(), q) != m_new_init.end()) {
                  continue;
              }
@@ -450,7 +456,8 @@ int main( int argc, char** argv ) {
 
 
 
-        std::ofstream	h2_stream;
+
+    std::ofstream	h2_stream;
     h2_stream.open("h2.txt");
     search_prob.h2_fwd().print_values(h2_stream);
     h2_stream.close();
@@ -476,7 +483,7 @@ int main( int argc, char** argv ) {
 	gen_lms.compute_lm_graph_set_additive( graph );
 	
 	std::cout << "Goals found: " << graph.num_landmarks() << std::endl;
-	std::cout << "Goals_aa"
+	std::cout << "Goals"
               "Edges found: " << graph.num_landmarks_and_edges() << std::endl;
 
 	//graph.print( std::cout );
