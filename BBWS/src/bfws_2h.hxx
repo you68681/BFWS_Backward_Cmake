@@ -706,8 +706,8 @@ public:
 		if(m_lgm)
 			head->update_land_graph( m_lgm );
 
-		set_negation(head);
-
+//		set_negation(head);
+        m_in_negation=this->problem().task().get_negation();
 		std::vector< aptk::Action_Idx > app_set;
 //		this->problem().applicable_set_v2( *(head->state()), app_set );
         for (unsigned i = 0; i < this->problem().num_actions(); ++i ) {
