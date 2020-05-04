@@ -240,7 +240,8 @@ namespace aptk
 		bool			is_in_goal( unsigned f ) const	{ return m_in_goal[f]; }
         bool			is_in_negation( unsigned f )	{ return m_in_negation[f]; }
         bool			is_in_negation( unsigned f ) const	{ return m_in_negation[f]; }
-
+        std::vector<bool> get_negation()         {return m_in_negation;}
+        std::vector<bool> get_negation()     const    {return m_in_negation;}
 		void                    print_fluent_vec(const Fluent_Vec &a);
 		unsigned                end_operator() { return m_end_operator_id; }
       	        unsigned                end_operator() const { return m_end_operator_id; }

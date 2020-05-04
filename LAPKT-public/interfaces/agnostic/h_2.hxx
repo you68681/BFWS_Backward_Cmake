@@ -216,13 +216,24 @@ public:
 		compute_mutexes_only();
 		extract_edeletes( prob );
 
-		
+
 #ifdef DEBUG
 		print_values(std::cout);
 		prob.print_actions(std::cout);
 #endif
 	}
+    void compute_edit( STRIPS_Problem& prob,float& h_val ){
+        m_already_updated.reset();
+        m_updated.clear();
+        initialize( prob.init() );
+        compute();
 
+
+#ifdef DEBUG
+        print_values(std::cout);
+		prob.print_actions(std::cout);
+#endif
+    }
 	void compute_edeletes_aij( STRIPS_Problem& prob ){
 		compute_mutexes_only_aij();
 		extract_edeletes( prob );
