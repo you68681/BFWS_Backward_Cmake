@@ -83,7 +83,7 @@ def cmd(command,result_dict,file):
     result_dict[file]=dict()
     subp = subprocess.Popen(command,shell=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE,encoding="utf-8")
     try:
-        subp.wait(600)
+        subp.wait(800)
     except:
             result_dict[file]["Plan found with cost"] = "--"
             result_dict[file]["Total time"] = "--"
@@ -135,7 +135,7 @@ def write(output_list, output_file):
             writer.writerow(row)
 
 def run_bfws(domain):
-    subprocess.Popen("mkdir /home/ubuntu/new-sample-pddl-results-edit/"+domain, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, encoding="utf-8")
+    subprocess.Popen("mkdir /home/ubuntu/Nir_results/negation_ignore/"+domain, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, encoding="utf-8")
     path = os.path.join("/home/ubuntu/new-pddl-domains",domain,"instances")
     domain_path=os.path.join("/home/ubuntu/new-pddl-domains",domain,"domain.pddl")
     files = os.listdir( path)
@@ -144,7 +144,7 @@ def run_bfws(domain):
     files.sort()
     for file in files:
         print(file)
-        cmd("/xenon/BFWS_Backward_Cmake/cmake-build-debug/bfws --domain "+ domain_path+" --problem "+os.path.join(path,file)+" --output /home/ubuntu/new-sample-pddl-results-edit/"+domain+"/" + file + "_result.txt --max_novelty 2 --k-BFWS true",result_dict,file)
+        cmd("/xenon/BFWS_Backward_Cmake/cmake-build-debug/bfws --domain "+ domain_path+" --problem "+os.path.join(path,file)+" --output /home/ubuntu/Nir_results/negation_ignore/"+domain+"/" + file + "_result.txt --max_novelty 2 --k-BFWS true",result_dict,file)
     result_out_put = {}
 
     out_put_list = []
@@ -165,7 +165,7 @@ def run_bfws(domain):
             temp_list.append(result_out_put[key][i])
         out_put_list.append(temp_list)
 
-    write(out_put_list,os.path.join("/home/ubuntu/new-sample-pddl-results-edit",domain,"result.csv"))
+    write(out_put_list,os.path.join("/home/ubuntu/Nir_results/negation_ignore",domain,"result.csv"))
 
 def start():
     files = os.listdir("/home/ubuntu/new-pddl-domains")
