@@ -83,7 +83,7 @@ def cmd(command,result_dict,file):
     result_dict[file]=dict()
     subp = subprocess.Popen(command,shell=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE,encoding="utf-8")
     try:
-        subp.wait(800)
+        subp.wait(600)
     except:
             result_dict[file]["Plan found with cost"] = "--"
             result_dict[file]["Total time"] = "--"

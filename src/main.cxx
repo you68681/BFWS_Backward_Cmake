@@ -408,11 +408,21 @@ int main( int argc, char** argv ) {
 
         // Relevant if the fluent is in the precondition
         for ( unsigned j = 0; j < a->add_vec().size(); ++j ) {
+            // only allow 1 action to add relevant fluents. TRY min h2.value_op(i)
+            //if( !m_relevant_fluents[a->add_vec()[j]].empty() ) continue;
             for (unsigned k = 0; k < a->add_vec().size(); ++k) {
-                if ( a->add_vec()[j]!= a->add_vec()[k]){
+                if ( a->add_vec()[j]!= a->add_vec()[k] ){
                     m_relevant_fluents[a->add_vec()[j]].push_back(a->add_vec()[k]);
+
                     }
             }
+//            for (unsigned k = 0; k < a->prec_vec().size(); ++k) {
+//                unsigned prec = a->prec_vec()[k];
+//                if ( a->add_vec()[j]!= prec && !a->del_set().isset(prec) ){
+//                    m_relevant_fluents[a->add_vec()[j]].push_back(prec);
+//
+//                }
+//            }
         }
     }
     m_new_init=prob.goal();
@@ -449,7 +459,7 @@ int main( int argc, char** argv ) {
          }
         }
     }
-
+    // add the fluents to our goal state. if want to ignore added fluents, just comment this.
     STRIPS_Problem::set_goal( prob, m_new_init);
 
 
@@ -483,7 +493,7 @@ int main( int argc, char** argv ) {
 	gen_lms.compute_lm_graph_set_additive( graph );
 	
 	std::cout << "Goals found: " << graph.num_landmarks() << std::endl;
-	std::cout << "Goals"
+	std::cout << "Goals_"
               "Edges found: " << graph.num_landmarks_and_edges() << std::endl;
 
 	//graph.print( std::cout );

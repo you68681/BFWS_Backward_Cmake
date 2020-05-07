@@ -705,20 +705,22 @@ public:
 
 		if(m_lgm)
 			head->update_land_graph( m_lgm );
-
+        //get negation from parent state.
 //		set_negation(head);
-        m_in_negation=this->problem().task().get_negation();
+         //get all negation
+        //m_in_negation=this->problem().task().get_negation();
 		std::vector< aptk::Action_Idx > app_set;
 //		this->problem().applicable_set_v2( *(head->state()), app_set );
         for (unsigned i = 0; i < this->problem().num_actions(); ++i ) {
             /**original version
              *
              */
-//            if (this->problem().is_applicable( *(head->state()), i )){
+            if (this->problem().is_applicable( *(head->state()), i )){
               /** chao edit
                *
                */
-            if (this->problem().is_applicable_edit( *(head->state()), i,m_in_negation )){
+             // ignore the negation impact
+            //if (this->problem().is_applicable_edit( *(head->state()), i,m_in_negation )){
                 app_set.push_back(i);
             }
         }
@@ -747,7 +749,8 @@ public:
                    /** chao edit
                     *
                     */
-                   if (m_in_negation[new_p] or m_in_negation[p]) continue;
+                    //ignore the negation in mutex check
+                   //if (m_in_negation[new_p] or m_in_negation[p]) continue;
                    if (this->problem().h2_fwd().is_mutex(p,new_p)){
                        is_mutex= true;
                        break;

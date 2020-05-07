@@ -90,4 +90,4 @@ CMakeLists.txt
 
 TEST.cpp
 
-venv
+venv/
