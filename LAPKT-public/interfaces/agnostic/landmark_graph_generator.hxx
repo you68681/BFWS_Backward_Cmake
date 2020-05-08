@@ -85,16 +85,23 @@ public:
 		//		unsigned q = m_strips_model.goal()[j];
 
 		for ( unsigned i = 0; i < search_prob.goal().size(); i++ ) {
+
 		    unsigned p = search_prob.goal()[i];
+            //if (this->m_strips_model.get_negation()[p]) continue;
 		    for ( unsigned j = i+1; j < search_prob.goal().size(); j++ ) {
 		        unsigned q = search_prob.goal()[j];
+                //if (this->m_strips_model.get_negation()[q]) continue;
 
 
 				/**
 				 * If all actions adding p edel q, then p must precede q
 				 */
 
-				const std::vector<const Action*>& add_acts_p = m_strips_model.actions_adding( p );
+				/** chao edit
+				 *
+				 */
+                const std::vector<const Action*>& add_acts_p = m_strips_model.actions_requiring(p) ;
+				//const std::vector<const Action*>& add_acts_p = m_strips_model.actions_adding( p );
 				
 				bool all_actions_edel_q = true;
 				for ( unsigned k = 0; k < add_acts_p.size(); k++ ) {
@@ -109,8 +116,11 @@ public:
 				/**
 				 * If all actions adding q edel p, then q must precede p
 				 */
-				
-				const std::vector<const Action*>& add_acts_q = m_strips_model.actions_adding( q );
+				/** chao edit
+				 *
+				 */
+                const std::vector<const Action*>& add_acts_q = m_strips_model.actions_requiring(q);
+				//const std::vector<const Action*>& add_acts_q = m_strips_model.actions_adding( q );
 				bool all_actions_edel_p = true;
 				for ( unsigned k = 0; k < add_acts_q.size(); k++ ) {
 					//add_acts_q[k]->print( m_strips_model, std::cout );
