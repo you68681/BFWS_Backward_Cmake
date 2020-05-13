@@ -376,43 +376,75 @@ public:
 protected:
 
 	void extract_edeletes( STRIPS_Problem& prob ){
-		for ( unsigned p = 0 ; p < m_strips_model.num_fluents(); p++ ){
-			for ( unsigned a = 0; a < m_strips_model.num_actions(); a++ ){
-				bool is_edelete = false;
-				Action& action = *(prob.actions()[a]);
+		for ( unsigned p = 0 ; p < m_strips_model.num_fluents(); p++ ) {
+            for (unsigned a = 0; a < m_strips_model.num_actions(); a++) {
+                bool is_edelete = false;
+                bool is_bwd_edelete = false;
+                Action &action = *(prob.actions()[a]);
 
-				for ( unsigned i = 0; i < action.add_vec().size(); i++ ){
-					unsigned q = action.add_vec()[i];
-					if ( value(p,q) == infty ){
-						is_edelete = true;
-						prob.actions()[a]->edel_vec().push_back( p );					
-						prob.actions()[a]->edel_set().set( p );
-						prob.actions_edeleting( p ).push_back( (const Action*) &action );
-						break;
-					}
-				}
+                for (unsigned i = 0; i < action.add_vec().size(); i++) {
+                    unsigned q = action.add_vec()[i];
+                    if (value(p, q) == infty) {
+                        is_edelete = true;
+                        prob.actions()[a]->edel_vec().push_back(p);
+                        prob.actions()[a]->edel_set().set(p);
+                        prob.actions_edeleting(p).push_back((const Action *) &action);
+                        break;
+                    }
+                }
 
-				if ( is_edelete ) continue;
+                if (is_edelete) continue;
 
-				for ( unsigned i = 0; i < action.prec_vec().size(); i++ ){
-					unsigned r = action.prec_vec()[i];
-					if ( !action.add_set().isset(p) && value( p, r ) == infty ){
-						prob.actions()[a]->edel_vec().push_back( p );
-						prob.actions()[a]->edel_set().set( p );
-						prob.actions_edeleting( p ).push_back( (const Action*) &action );
-						break;
-					}
-				}
+                for (unsigned i = 0; i < action.prec_vec().size(); i++) {
+                    unsigned r = action.prec_vec()[i];
+                    if (!action.add_set().isset(p) && value(p, r) == infty) {
+                        prob.actions()[a]->edel_vec().push_back(p);
+                        prob.actions()[a]->edel_set().set(p);
+                        prob.actions_edeleting(p).push_back((const Action *) &action);
+                        break;
+                    }
+                }
 
-				if ( !action.edel_set().isset(p) && action.del_set().isset(p) ){
-					prob.actions()[a]->edel_vec().push_back( p );
-					prob.actions()[a]->edel_set().set( p );
-					prob.actions_edeleting( p ).push_back( (const Action*) &action );
-				}
+                if (!action.edel_set().isset(p) && action.del_set().isset(p)) {
+                    prob.actions()[a]->edel_vec().push_back(p);
+                    prob.actions()[a]->edel_set().set(p);
+                    prob.actions_edeleting(p).push_back((const Action *) &action);
+                }
 
-			}
-		}
-	
+            }
+            for (unsigned a = 0; a < m_strips_model.num_actions(); a++) {
+                bool is_bwd_edelete = false;
+                Action &action = *(prob.actions()[a]);
+                //backward edel (regression)
+                for (unsigned i = 0; i < action.prec_vec().size(); i++) {
+                    unsigned q = action.prec_vec()[i];
+                    if (value(p, q) == infty) {
+                        is_bwd_edelete = true;
+                        prob.actions()[a]->bwd_edel_vec().push_back(p);
+                        prob.actions()[a]->bwd_edel_set().set(p);
+                        prob.actions_bwd_edeleting(p).push_back((const Action *) &action);
+                        break;
+                    }
+                }
+                if (is_bwd_edelete) continue;
+
+                for (unsigned i = 0; i < action.add_vec().size(); i++) {
+                    unsigned r = action.add_vec()[i];
+                    if (!action.prec_set().isset(p) && value(p, r) == infty) {
+                        prob.actions()[a]->bwd_edel_vec().push_back(p);
+                        prob.actions()[a]->bwd_edel_set().set(p);
+                        prob.actions_bwd_edeleting(p).push_back((const Action *) &action);
+                        break;
+                    }
+                }
+
+                if (!action.edel_set().isset(p) && action.add_set().isset(p)) {
+                    prob.actions()[a]->bwd_edel_vec().push_back(p);
+                    prob.actions()[a]->bwd_edel_set().set(p);
+                    prob.actions_bwd_edeleting(p).push_back((const Action *) &action);
+                }
+            }
+        }
 	}
 
 	void initialize_ceffs_and_emtpy_precs(){

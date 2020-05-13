@@ -107,7 +107,11 @@ public:
 				for ( unsigned k = 0; k < add_acts_p.size(); k++ ) {
 					//add_acts_p[k]->print( m_strips_model, std::cout );
 					//std::cout << m_strips_model.fluents().at(p)->signature() << " edel " << m_strips_model.fluents().at(q)->signature() << "? " <<std::endl;
-					if( ! add_acts_p[k]->edel_set().isset( q ) ){					
+					//if( ! add_acts_p[k]->edel_set().isset( q ) ){
+                    /** chao edit
+                     *  regression
+                    */
+                    if( ! add_acts_p[k]->bwd_edel_set().isset( q ) ){
 						all_actions_edel_q = false;
 						break;
 					}      
@@ -125,8 +129,12 @@ public:
 				for ( unsigned k = 0; k < add_acts_q.size(); k++ ) {
 					//add_acts_q[k]->print( m_strips_model, std::cout );
 					//std::cout << m_strips_model.fluents().at(q)->signature() << " edel " << m_strips_model.fluents().at(p)->signature() << "? " <<std::endl;
-					if( ! add_acts_q[k]->edel_set().isset( p ) ){				       
-						all_actions_edel_p = false;
+					//if( ! add_acts_q[k]->edel_set().isset( p ) ){
+					/** chao edit
+					 *  rgression
+					 */
+                    if( ! add_acts_q[k]->bwd_edel_set().isset( p ) ){
+                        all_actions_edel_p = false;
 						break;
 					}      
 				}
