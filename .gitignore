@@ -91,3 +91,5 @@ CMakeLists.txt
 TEST.cpp
 
 venv/
+
+cmake-build-release/
