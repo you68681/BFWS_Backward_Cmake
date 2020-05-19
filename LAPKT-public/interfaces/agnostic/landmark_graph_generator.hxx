@@ -175,6 +175,7 @@ public:
 		//	}
 		//}
         for ( Fluent_Vec::const_iterator it = search_prob.goal().begin();
+
              it != search_prob.goal().end(); it++ ) {
         	graph.add_landmark( *it );
         	if ( ! m_strips_model.is_in_goal( *it ) ) {

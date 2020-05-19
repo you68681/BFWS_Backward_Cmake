@@ -136,31 +136,84 @@ public:
 			Landmarks_Graph::Node*n = *it;
 			if( ! n->is_consumed() ) {
 					h_val++;
-				
+				//std::cout<<h_val<<m_strips_model.fluents()[n->fluent()]->signature()<<std::endl;
 			}
-	
+
 			if( !n->required_by_gn().empty() ){
-				for( std::vector< Landmarks_Graph::Node* >::const_iterator it_r = n->required_by_gn().begin(); it_r != n->required_by_gn().end(); it_r++ )
-					if( ! (*it_r)->is_consumed_once() ){
-						//std::cout << " "<< m_strips_model.fluents()[ n->fluent() ]->signature() << std::endl;							
-						h_val++;			
-					}
+				for( std::vector< Landmarks_Graph::Node* >::const_iterator it_r = n->required_by_gn().begin(); it_r != n->required_by_gn().end(); it_r++ ) {
+                    //Landmarks_Graph::Node *n_r = *it_r;
+                    if( ! (*it_r)->is_consumed_once() ){
+                    //if (!n_r->is_consumed_once()) {
+                        //std::cout << " "<< m_strips_model.fluents()[ n->fluent() ]->signature() << std::endl;
+                        h_val++;
+                        //std::cout<<h_val<<m_strips_model.fluents()[n_r->fluent()]->signature()<<std::endl;
+                    }
+                }
 			}
-								
-		
+
+
 			if( ! n->required_by().empty() ){
-				for( std::vector< Landmarks_Graph::Node* >::const_iterator it_r = n->required_by().begin(); it_r != n->required_by().end(); it_r++ )
-					if( ! (*it_r)->is_consumed() ){
-						//std::cout << " "<< m_strips_model.fluents()[ n->fluent() ]->signature() << std::endl;							
-						h_val++;
-						//	break;
-					}
+				for( std::vector< Landmarks_Graph::Node* >::const_iterator it_r = n->required_by().begin(); it_r != n->required_by().end(); it_r++ ) {
+                    //Landmarks_Graph::Node *n_l = *it_r;
+                    if( ! (*it_r)->is_consumed() ){
+                    //if (!n_l->is_consumed_once()) {
+                        //std::cout << " "<< m_strips_model.fluents()[ n->fluent() ]->signature() << std::endl;
+                        h_val++;
+                        //	break;
+                        //std::cout<<h_val<<m_strips_model.fluents()[n_l->fluent()]->signature()<<std::endl;
+                    }
+                }
 			}
 
 
 
 		}
 	}
+	/** chao edit test
+	 *
+	 * @param s
+	 * @param h_val
+	 */
+    virtual void eval_edit( const State& s ) {
+        if (!m_graph) return;
+        unsigned h_val = 0;
+        for ( std::vector< Landmarks_Graph::Node* >::const_iterator it = m_graph->nodes().begin(); it != m_graph->nodes().end(); it++ ) {
+            Landmarks_Graph::Node*n = *it;
+            if( ! n->is_consumed() ) {
+                h_val++;
+                std::cout<<h_val<<m_strips_model.fluents()[n->fluent()]->signature()<<std::endl;
+            }
+
+            if( !n->required_by_gn().empty() ){
+                for( std::vector< Landmarks_Graph::Node* >::const_iterator it_r = n->required_by_gn().begin(); it_r != n->required_by_gn().end(); it_r++ ) {
+                    Landmarks_Graph::Node *n_r = *it_r;
+                    //if( ! (*it_r)->is_consumed_once() ){
+                    if (!n_r->is_consumed_once()) {
+                        //std::cout << " "<< m_strips_model.fluents()[ n->fluent() ]->signature() << std::endl;
+                        h_val++;
+                        std::cout<<h_val<<m_strips_model.fluents()[n_r->fluent()]->signature()<<std::endl;
+                    }
+                }
+            }
+
+
+            if( ! n->required_by().empty() ){
+                for( std::vector< Landmarks_Graph::Node* >::const_iterator it_r = n->required_by().begin(); it_r != n->required_by().end(); it_r++ ) {
+                    Landmarks_Graph::Node *n_l = *it_r;
+                    //if( ! (*it_r)->is_consumed() ){
+                    if (!n_l->is_consumed_once()) {
+                        //std::cout << " "<< m_strips_model.fluents()[ n->fluent() ]->signature() << std::endl;
+                        h_val++;
+                        //	break;
+                        std::cout<<h_val<<m_strips_model.fluents()[n_l->fluent()]->signature()<<std::endl;
+                    }
+                }
+            }
+
+
+
+        }
+    }
 
 
 	void eval( const State& s, float& h_val,  std::vector<Action_Idx>& pref_ops ) {

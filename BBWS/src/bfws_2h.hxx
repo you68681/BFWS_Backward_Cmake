@@ -366,13 +366,18 @@ public:
             n->rp_set()->reset();
 
         }
-
+//    if (n->h2n()==6){
+//        std::cout<<"relax plan find"<<std::endl;
+//        s->print(std::cout);
+//    }
         for(std::vector<Action_Idx>::iterator it_a = rel_plan.begin();
             it_a != rel_plan.end(); it_a++ ){
             const Action* a = this->problem().task().actions()[*it_a];
-
+//            if (n->h2n()==6){
+//                a->print(this->problem().task(),std::cout);
+//            }
             //Add Conditional Effects
-            if( !a->ceff_vec().empty() ){
+         if( !a->ceff_vec().empty() ){
                 for( unsigned i = 0; i < a->ceff_vec().size(); i++ ){
                     Conditional_Effect* ce = a->ceff_vec()[i];
                     for ( auto p : ce->add_vec() ) {
@@ -527,7 +532,11 @@ public:
 		}
 
 		//Count land/goal unachieved
+
 		m_second_h->eval( *(candidate->state()), candidate->h2n());
+//        if (candidate->h2n()==1){
+//            std::cout<<"find"<<std::endl;
+//        }
 
 
 		//If relevant fluents are in use
@@ -559,14 +568,22 @@ public:
 			m_max_h2n = candidate->h2n();
 			m_max_r = 0;
 			if ( m_verbose ) {
+                static Fluent_Vec added, deleted;
+                added.clear(); deleted.clear();
 
+			    if (candidate->parent()!=NULL){
+                    candidate->parent()->state()->progress_lazy_state(  this->problem().task().actions()[ candidate->action() ], &added, &deleted  );
+                    candidate->parent()->state()->print(std::cout);
+                    candidate->parent()->state()->regress_lazy_state(  this->problem().task().actions()[ candidate->action() ], &added, &deleted );
+			    }
+
+//			    //candidate->parent()->state()->print(std::cout);
+                m_second_h->eval_edit( *(candidate->state()));
 				std::cout << "--[" << m_max_h2n  <<" / " << m_max_r <<"]--" << std::endl;				
 			}
 		}
 
 	}
-
-
 	unsigned  rp_fl_achieved( Search_Node* n ){
 	       unsigned count = 0;
 	       static Fluent_Set counted( this->problem().task().num_fluents() );
@@ -598,8 +615,14 @@ public:
 			    const unsigned  p=pre[i];
 			    if (n_start->rp_set()->isset(p) && !counted.isset(p))
                 {
+//			        if(n->h2n()==9){
+//                        std::cout<<"====prec==="<<std::endl;
+//			        }
 			        count++;
 			        counted.set(p);
+//                    if(n->h2n()==9){
+//                        std::cout<< count<<problem().task().fluents()[p]->signature()<<std::endl;
+//                    }
                 }
 			}
 
@@ -622,10 +645,71 @@ public:
 		       
        }
 
+       /** chao test
+        *
+        * @param candidate
+        */
+       unsigned  rp_fl_achieved_eidt( Search_Node* n ){
+           unsigned count = 0;
+           static Fluent_Set counted( this->problem().task().num_fluents() );
+           Search_Node* n_start = n;
+           while( !n_start->rp_vec() ){
+               n_start = n_start->parent();
+           }
+
+           while( n->action()!= no_op && n != n_start ){
+
+               const Action* a = this->problem().task().actions()[ n->action() ];
+
+               //Add Conditional Effects
+               if( !a->ceff_vec().empty() ){
+                   for( unsigned i = 0; i < a->ceff_vec().size(); i++ ){
+                       Conditional_Effect* ce = a->ceff_vec()[i];
+                       for ( auto p : ce->add_vec() ) {
+                           if( n_start->rp_set()->isset( p ) && ! counted.isset(p) ){
+                               count++;
+                               counted.set( p );
+                           }
+                       }
+                   }
+               }
+
+
+               const  Fluent_Vec & pre=a->prec_vec();
+               for (unsigned i=0; i<pre.size();i++){
+                   const unsigned  p=pre[i];
+                   if (n_start->rp_set()->isset(p) && !counted.isset(p))
+                   {
+                       std::cout<<"====prec==="<<std::endl;
+                       count++;
+                       counted.set(p);
+                       std::cout<< count<<problem().task().fluents()[p]->signature()<<std::endl;
+                   }
+               }
+
+/*
+               const Fluent_Vec& add = a->add_vec();
+
+		       //std::cout << this->problem().task().actions()[*it_a]->signature() << std::endl;
+		       for ( unsigned i = 0; i < add.size(); i++ ){
+			       const unsigned p = add[i];
+			       if( n_start->rp_set()->isset( p ) && ! counted.isset(p) ){
+				       count++;
+				       counted.set( p );
+			       }
+		       }
+*/
+               n = n->parent();
+           }
+           counted.reset();
+           return count;
+
+       }
 	void			eval_relevant_fluents( Search_Node* candidate ) {
 		candidate->r() = rp_fl_achieved( candidate );
 		
 		if(candidate->r() > m_max_r ){
+		    //rp_fl_achieved_eidt(candidate);
 			m_max_r = candidate->r();
 			if ( m_verbose ) 
 				std::cout << "--[" << m_max_h2n  <<" / " << m_max_r <<"]--" << std::endl;			
@@ -711,6 +795,9 @@ public:
         //m_in_negation=this->problem().task().get_negation();
 		std::vector< aptk::Action_Idx > app_set;
 //		this->problem().applicable_set_v2( *(head->state()), app_set );
+//        if (head->h2n()==3){
+//            std::cout<<"find"<<std::endl;
+//        }
         for (unsigned i = 0; i < this->problem().num_actions(); ++i ) {
             /**original version
              *

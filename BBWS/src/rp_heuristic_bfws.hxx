@@ -76,6 +76,23 @@ public:
         actions_seen().reset();
         init_fluents().reset();
 
+        /** chao test
+         * original from current to init
+         * new from init to current
+         */
+//        for ( unsigned k = 0; k < s.fluent_vec().size(); k++ )
+//            init_fluents().set(s.fluent_vec()[k] );
+//        while ( !actions_pending().empty() )
+//            actions_pending().pop();
+//        std::vector<const Action*> relaxed_plan;
+//        const Fluent_Vec& G = this->m_strips_model.init();
+//
+//        for ( unsigned k = 0; k < G.size(); k++ ) {
+//
+//            if ( init_fluents().isset( G[k] ) ) continue;
+
+
+
         for ( unsigned k = 0; k < m_strips_model.init().size(); k++ )
             init_fluents().set(m_strips_model.init()[k] );
 
@@ -88,6 +105,7 @@ public:
 //        const Fluent_Vec& G = goals ? *goals : m_strips_model.init();
 
         // 1. Add to the pending queue best supporters for goal fluents
+
         for ( unsigned k = 0; k < G.size(); k++ ) {
 
             if ( init_fluents().isset( G[k] ) ) continue;

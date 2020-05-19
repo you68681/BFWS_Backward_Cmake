@@ -42,7 +42,7 @@ class Landmarks_Graph_Manager  {
 public:
 
 	Landmarks_Graph_Manager( const Search_Model& prob, Landmarks_Graph* lg ) 
-	:  m_strips_model( prob.task() )
+	:  m_strips_model( prob.task() ), search_prob(prob)
 	{
 		m_graph = lg;
 	}
@@ -125,21 +125,44 @@ public:
 		 */
         const Fluent_Vec& add = a->add_vec();
         const Fluent_Vec& pre = a->prec_vec();
+        bool fix_point_flag= true;
+        while (fix_point_flag){
+            bool tem_flag      = false;
+            for(Fluent_Vec::const_iterator it_pre = pre.begin(); it_pre != pre.end(); it_pre++){
+                unsigned p = *it_pre;
 
-        for(Fluent_Vec::const_iterator it_pre = pre.begin(); it_pre != pre.end(); it_pre++){
-            unsigned p = *it_pre;
+                if( m_graph->is_landmark(p) ){
+                    Landmarks_Graph::Node* n = m_graph->node(p);
+                    if( !n->is_consumed() )
+                        if( n->are_precedences_consumed()  && n->are_gn_precedences_consumed() ){
+                            if( !keep_consumed ) keep_consumed = new Bool_Vec_Ptr;
+                            //std::cout << "\t -- "<<p <<" - " << m_strips_model.fluents()[ p ]->signature() << std::endl;
+                            n->consume( );
+                            keep_consumed->push_back( n->is_consumed_ptr() );
 
-            if( m_graph->is_landmark(p) ){
-                Landmarks_Graph::Node* n = m_graph->node(p);
-                if( !n->is_consumed() )
-                    if( n->are_precedences_consumed()  && n->are_gn_precedences_consumed() ){
-                        if( !keep_consumed ) keep_consumed = new Bool_Vec_Ptr;
-                        //std::cout << "\t -- "<<p <<" - " << m_strips_model.fluents()[ p ]->signature() << std::endl;
-                        n->consume( );
-                        keep_consumed->push_back( n->is_consumed_ptr() );
-                    }
+                            fix_point_flag= true;
+                            tem_flag      =true;
+                            continue;
+                        }
+                }
+                if (!tem_flag)
+                    fix_point_flag= false;
             }
         }
+//        for(Fluent_Vec::const_iterator it_pre = pre.begin(); it_pre != pre.end(); it_pre++){
+//            unsigned p = *it_pre;
+//
+//            if( m_graph->is_landmark(p) ){
+//                Landmarks_Graph::Node* n = m_graph->node(p);
+//                if( !n->is_consumed() )
+//                    if( n->are_precedences_consumed()  && n->are_gn_precedences_consumed() ){
+//                        if( !keep_consumed ) keep_consumed = new Bool_Vec_Ptr;
+//                        //std::cout << "\t -- "<<p <<" - " << m_strips_model.fluents()[ p ]->signature() << std::endl;
+//                        n->consume( );
+//                        keep_consumed->push_back( n->is_consumed_ptr() );
+//                    }
+//            }
+//        }
 
         for(Fluent_Vec::const_iterator it_add = add.begin(); it_add != add.end(); it_add++){
             unsigned p = *it_add;
@@ -149,7 +172,11 @@ public:
                 Landmarks_Graph::Node* n = m_graph->node(p);
 
                 if( n->is_consumed() )
-                    if(  m_strips_model.is_in_goal(p) || (! n->are_requirements_consumed() ) || (! n->are_gn_requirements_consumed() ) )
+                    /**chao edit change the m_strips_model.is_in_goal to m_strips_model.is_in_init
+                     *
+                     */
+                    //if(  m_strips_model.is_in_goal(p) || (! n->are_requirements_consumed() ) || (! n->are_gn_requirements_consumed() ) )
+                     if(  m_strips_model.is_in_init(p) || (! n->are_requirements_consumed() ) || (! n->are_gn_requirements_consumed() ) )
                         unconsume = true;
 
 
@@ -286,9 +313,12 @@ public:
             if( m_graph->is_landmark(p) ){
                 bool unconsume = false;
                 Landmarks_Graph::Node* n = m_graph->node(p);
-
+                /** chao edit
+                 *  change m_strips_model.is_in_goal(p) to m_strips_model.is_in_init(p)
+                 */
                 if( n->is_consumed() )
-                    if(  m_strips_model.is_in_goal(p) || (! n->are_requirements_consumed() ) || (! n->are_gn_requirements_consumed() ) )
+                    //if(  m_strips_model.is_in_goal(p) || (! n->are_requirements_consumed() ) || (! n->are_gn_requirements_consumed() ) )
+                    if(  m_strips_model.is_in_init(p) || (! n->are_requirements_consumed() ) || (! n->are_gn_requirements_consumed() ) )
                         unconsume = true;
 
 
@@ -331,9 +361,12 @@ public:
 			if( m_graph->is_landmark(p) ){
 				bool unconsume = false;
 				Landmarks_Graph::Node* n = m_graph->node(p);
-
+                /** chao edit
+                  *  change m_strips_model.is_in_goal(p) to m_strips_model.is_in_init(p)
+                 */
 				if( n->is_consumed() )
-					if(  m_strips_model.is_in_goal(p) || (! n->are_requirements_consumed() ) || (! n->are_gn_requirements_consumed() ) )
+                    if(  m_strips_model.is_in_init(p) || (! n->are_requirements_consumed() ) || (! n->are_gn_requirements_consumed() ) )
+					//if(  m_strips_model.is_in_goal(p) || (! n->are_requirements_consumed() ) || (! n->are_gn_requirements_consumed() ) )
 						unconsume = true;
 				
 
@@ -384,7 +417,7 @@ public:
 	const	STRIPS_Problem&	 problem() const			{ return m_strips_model; }
 
 protected:
-
+    const Search_Model&           search_prob;
 	const STRIPS_Problem&			m_strips_model;	
 	Landmarks_Graph*                         m_graph;
 };

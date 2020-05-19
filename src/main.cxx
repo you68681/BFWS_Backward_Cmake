@@ -396,7 +396,7 @@ int main( int argc, char** argv ) {
 
     /** chao edit
      *      */
-
+//
 //    aptk::Fluent_chao m_relevant_fluents;
 //    aptk::Fluent_Vec  m_new_init;
 //    aptk::Fluent_Vec  goal_record;
@@ -496,11 +496,11 @@ int main( int argc, char** argv ) {
 	std::cout << "Goals_"
               "Edges found: " << graph.num_landmarks_and_edges() << std::endl;
 
-	//graph.print( std::cout );
-    //std::ofstream	graph_stream;
-    //graph_stream.open("graph_land.dot");
-	//graph.print_dot(graph_stream);
-	//graph_stream.close();
+	graph.print( std::cout );
+    std::ofstream	graph_stream;
+    graph_stream.open("graph_land.dot");
+	graph.print_dot(graph_stream);
+	graph_stream.close();
 
 
 	bool found_plan = false;
