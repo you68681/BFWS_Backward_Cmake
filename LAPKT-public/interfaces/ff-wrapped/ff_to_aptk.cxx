@@ -47,12 +47,26 @@ void	get_problem_description( std::string pddl_domain_path,
 	strips_problem.set_domain_name( FF::get_domain_name() );
 	strips_problem.set_problem_name( FF::get_problem_name() );
 
+
+    std::vector<unsigned > args;
+
+
 	for ( int i = 0; i < gnum_ft_conn; i++ )
 	{
 		if ( !get_detailed_fluent_names )
 		{
-			std::string ft_name = FF::get_ft_name(i);
-			STRIPS_Problem::add_fluent( strips_problem, ft_name);
+//			std::string ft_name = FF::get_ft_name(i);
+            /** chao edit
+             *
+             */
+            std::pair<std::string,std::vector<unsigned>> ft_member = FF::get_ft_name_edit(i,args);
+            std::string ft_name=ft_member.first;
+            std::vector<unsigned> constants_vector =ft_member.second;
+            /** chao edit
+             *
+             */
+			//STRIPS_Problem::add_fluent( strips_problem, ft_name);
+            STRIPS_Problem::add_fluent_edit( strips_problem, ft_name,constants_vector);
 			continue;
 		}
 		std::string ft_signature = FF::get_ft_name(i);
@@ -68,11 +82,16 @@ void	get_problem_description( std::string pddl_domain_path,
 	Fluent_Vec negFluents;
 	Fluent_Set negFluentsSet;
 	Fluent_Vec negIndexs;
+//	std::set<unsigned > goal_constants;
+
 
     std::map <unsigned , unsigned > dic;
     negFluentsSet.resize(strips_problem.fluents().size()+G.size());
 
 	for (unsigned p : G){
+//	    for (unsigned c : strips_problem.fluents()[p]->constants()){
+//	        goal_constants.insert(c);
+//	    }
         if (std::find(I.begin(), I.end(), p) != I.end()){
             continue;
         } else{
@@ -89,6 +108,26 @@ void	get_problem_description( std::string pddl_domain_path,
 	    I.push_back(fl_idx);
 
 	}
+//	bool object_flag= true;
+//	for (unsigned p: I){
+//	    if (strips_problem.fluents()[p]->constants().empty())
+//        {
+//	        object_flag=false;
+//        }
+//        for(unsigned c :strips_problem.fluents()[p]->constants()){
+//          if (goal_constants.find(c)!=goal_constants.end())
+//          {
+//              object_flag= false;
+//              break;
+//          }
+//
+//        }
+//        if (object_flag )
+//        {
+//            G.push_back(p);
+//        }
+//	}
+
 
 
 

@@ -115,6 +115,26 @@ namespace aptk
 		return p.actions().size()-1;
 	}
 
+	/** chao edit
+	 *
+	 * @param p
+	 * @param signature
+	 * @return
+	 */
+
+    unsigned STRIPS_Problem::add_fluent_edit( STRIPS_Problem& p, std::string signature,std::vector<unsigned > constants )
+    {
+        Fluent* new_fluent = new Fluent( p );
+        new_fluent->set_index( p.fluents().size() );
+        new_fluent->set_signature( signature );
+        new_fluent->set_constants(constants);
+        p.m_fluents_map[signature] = new_fluent->index();
+        p.increase_num_fluents();
+        p.fluents().push_back( new_fluent );
+        p.m_const_fluents.push_back( new_fluent );
+        return p.fluents().size()-1;
+    }
+
 	unsigned STRIPS_Problem::add_fluent( STRIPS_Problem& p, std::string signature )
 	{
 		Fluent* new_fluent = new Fluent( p );

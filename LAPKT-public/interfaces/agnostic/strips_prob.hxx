@@ -164,6 +164,14 @@ namespace aptk
 
 		static unsigned 	add_fluent( STRIPS_Problem& p, std::string signature );
 
+        /** chao edit
+         *
+         * @param p
+         * @param signature
+         * @return
+         */
+        static unsigned 	add_fluent_edit( STRIPS_Problem& p, std::string signature, std::vector<unsigned >);
+
 		static void		set_init( STRIPS_Problem& p, const Fluent_Vec& init );
 		/** chao add
 		 *
@@ -324,7 +332,8 @@ namespace aptk
 		mutable std::vector< Trigger >						m_triggers;
 		std::vector< std::set< unsigned> >					m_relevant_effects;
 	        agnostic::Mutex_Set             	                                m_mutexes;
-	  };
+
+    };
 
 }
 

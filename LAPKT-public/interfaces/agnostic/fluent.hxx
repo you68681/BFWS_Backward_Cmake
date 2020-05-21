@@ -36,12 +36,13 @@ public:
 
 	unsigned	index() const;
 	std::string	signature() const;
+	std::vector<unsigned > constants() const ;
 	Index_Vec&	pddl_objs_idx();
 	Index_Vec&	pddl_types_idx();
 
 	void		set_index( unsigned idx );
 	void		set_signature( std::string signature );
-
+	void		set_constants( std::vector<unsigned > constants );
 	STRIPS_Problem& problem();
 
 protected:
@@ -49,6 +50,10 @@ protected:
 	STRIPS_Problem&			m_problem;
 	unsigned			m_index;
 	std::string			m_signature;
+	/** chao_edit
+	 *
+	 */
+	 std::vector<unsigned > m_constants_vector;
 };
 
 inline unsigned		Fluent::index() const
@@ -61,6 +66,11 @@ inline	std::string	Fluent::signature() const
 	return m_signature;
 }
 
+inline std::vector<unsigned > Fluent:: constants() const
+{
+	return  m_constants_vector;
+}
+
 inline void	Fluent::set_index( unsigned idx ) 
 {
 	m_index = idx;
@@ -70,6 +80,11 @@ inline void	Fluent::set_signature( std::string sig )
 {
 	m_signature = sig;
 }
+
+inline void	Fluent::set_constants(std::vector<unsigned int> constants)
+	{
+		m_constants_vector = constants;
+	}
 
 }
 

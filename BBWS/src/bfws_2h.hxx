@@ -568,14 +568,14 @@ public:
 			m_max_h2n = candidate->h2n();
 			m_max_r = 0;
 			if ( m_verbose ) {
-                static Fluent_Vec added, deleted;
-                added.clear(); deleted.clear();
-
-			    if (candidate->parent()!=NULL){
-                    candidate->parent()->state()->progress_lazy_state(  this->problem().task().actions()[ candidate->action() ], &added, &deleted  );
-                    candidate->parent()->state()->print(std::cout);
-                    candidate->parent()->state()->regress_lazy_state(  this->problem().task().actions()[ candidate->action() ], &added, &deleted );
-			    }
+//                static Fluent_Vec added, deleted;
+//                added.clear(); deleted.clear();
+//
+//			    if (candidate->parent()!=NULL){
+//                    candidate->parent()->state()->progress_lazy_state(  this->problem().task().actions()[ candidate->action() ], &added, &deleted  );
+//                    candidate->parent()->state()->print(std::cout);
+//                    candidate->parent()->state()->regress_lazy_state(  this->problem().task().actions()[ candidate->action() ], &added, &deleted );
+//			    }
 
 //			    //candidate->parent()->state()->print(std::cout);
                 m_second_h->eval_edit( *(candidate->state()));

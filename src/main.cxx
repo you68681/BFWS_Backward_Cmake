@@ -370,6 +370,7 @@ int main( int argc, char** argv ) {
 	STRIPS_Problem	prob;
 	bool ignore_costs = vm["ignore_costs"].as<bool>();
 
+
 	aptk::FF_Parser::get_problem_description( vm["domain"].as<std::string>(), vm["problem"].as<std::string>(), prob, ignore_costs  );
 	std::cout << "PDDL problem description loaded: " << std::endl;
 	std::cout << "\tDomain: " << prob.domain_name() << std::endl;

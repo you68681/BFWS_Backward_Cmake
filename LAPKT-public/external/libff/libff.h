@@ -342,8 +342,89 @@ namespace FF
 		}
 	
 	}
+	/** chao edit
+	 *
+	 * @param index
+	 * @return
+	 */
+    inline std::pair<std::string,std::vector<unsigned>>	get_ft_name_edit( int index,std::vector<unsigned>& constants_vector)
+    {
+        constants_vector.clear();
+        Fact* f = &(grelevant_facts[index]);
+        int j;
 
-	inline std::string	get_ft_name( int index )
+        if ( f->predicate == -3 )
+        {
+            return std::make_pair("GOAL-REACHED",constants_vector);
+        }
+
+        if ( f->predicate == -1 )
+        {
+            std::string str( "(=" );
+            for ( j=0; j<2; j++ )
+            {
+                str += " ";
+                if ( f->args[j] >= 0 )
+                {
+                    str += gconstants[(f->args)[j]];
+                    constants_vector.push_back((f->args)[j]);
+                }
+                else
+                {
+                    str += "x";
+                    str += DECODE_VAR( f->args[j] );
+                }
+            }
+            str += ")";
+            return std::make_pair(str,constants_vector);
+        }
+
+        if ( f->predicate == -2 )
+        {
+            std::string str( "(!=" );
+            for ( j=0; j<2; j++ )
+            {
+                str += " ";
+                if ( f->args[j] >= 0 )
+                {
+                    str += gconstants[(f->args)[j]];
+                    constants_vector.push_back((f->args)[j]);
+                }
+                else
+                {
+                    str += "x";
+                    str += DECODE_VAR( f->args[j] );
+                }
+            }
+            str += ")";
+            return std::make_pair(str,constants_vector);
+        }
+
+        std::string str( "(" );
+        str += gpredicates[f->predicate];
+        if (garity[f->predicate] > 0 )
+            str += " ";
+        for ( j=0; j<garity[f->predicate]; j++ )
+        {
+            if ( f->args[j] >= 0 )
+            {
+                str += gconstants[(f->args)[j]];
+                constants_vector.push_back((f->args)[j]);
+
+            }
+            else
+            {
+                str += "x";
+                str += DECODE_VAR( f->args[j] );
+            }
+            if ( j < garity[f->predicate] -1 )
+                str += " ";
+        }
+        str += ")";
+        return std::make_pair(str,constants_vector);;
+    }
+
+	inline std::string	get_ft_name( int index)
 	{
 		Fact* f = &(grelevant_facts[index]);
 		int j;
@@ -402,6 +483,7 @@ namespace FF
 			if ( f->args[j] >= 0 ) 
 			{
 				str += gconstants[(f->args)[j]];
+
 			} 
 			else 
 			{
