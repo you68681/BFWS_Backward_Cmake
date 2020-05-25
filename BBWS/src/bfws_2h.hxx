@@ -331,15 +331,20 @@ public:
 	 * @param n
 	 * @param s
 	 */
-    void    set_relplan_edit( Search_Node* n, State* s ){
+    void    set_relplan_edit( Search_Node* n, State* s,Fluent_Vec unachived_goal  ){
 
+
+            if (n->h2n()==5){
+        std::cout<<"relax plan find"<<std::endl;
+        s->print(std::cout);
+             }
         bool flag= true;
         std::vector<Action_Idx>	po;
         std::vector<Action_Idx>	rel_plan;
         unsigned h = 0;
 
         m_relevant_fluents_h->ignore_rp_h_value(true);
-        m_relevant_fluents_h->eval( *s, h, po, rel_plan,flag  );
+        m_relevant_fluents_h->eval( *s, h, po, rel_plan,flag , unachived_goal );
 
         if( h == std::numeric_limits<unsigned>::max() )
             n->relaxed_deadend() = true;
@@ -366,14 +371,14 @@ public:
             n->rp_set()->reset();
 
         }
-//    if (n->h2n()==6){
+//    if (n->h2n()==5){
 //        std::cout<<"relax plan find"<<std::endl;
 //        s->print(std::cout);
 //    }
         for(std::vector<Action_Idx>::iterator it_a = rel_plan.begin();
             it_a != rel_plan.end(); it_a++ ){
             const Action* a = this->problem().task().actions()[*it_a];
-//            if (n->h2n()==6){
+//            if (n->h2n()==5){
 //                a->print(this->problem().task(),std::cout);
 //            }
             //Add Conditional Effects
@@ -502,6 +507,7 @@ public:
 
 	
 	virtual void      eval( Search_Node* candidate ) {
+        Fluent_Vec unachived_goal;
 
 
         if(m_lgm){
@@ -537,7 +543,7 @@ public:
 //        if (candidate->h2n()==1){
 //            std::cout<<"find"<<std::endl;
 //        }
-
+        unachived_goal= m_second_h->eval_goal_count(*(candidate->state()), unachived_goal);
 
 		//If relevant fluents are in use
 		if(m_use_rp && !m_use_rp_from_init_only){
@@ -555,7 +561,7 @@ public:
 					/**chao edit
 					 *
 					 */
-					 set_relplan_edit(candidate, candidate->parent()->state());
+					 set_relplan_edit(candidate, candidate->parent()->state(),unachived_goal);
 					candidate->parent()->state()->regress_lazy_state(  this->problem().task().actions()[ candidate->action() ], &added, &deleted );					
 				}
 				else
@@ -568,14 +574,16 @@ public:
 			m_max_h2n = candidate->h2n();
 			m_max_r = 0;
 			if ( m_verbose ) {
-//                static Fluent_Vec added, deleted;
-//                added.clear(); deleted.clear();
-//
-//			    if (candidate->parent()!=NULL){
-//                    candidate->parent()->state()->progress_lazy_state(  this->problem().task().actions()[ candidate->action() ], &added, &deleted  );
-//                    candidate->parent()->state()->print(std::cout);
-//                    candidate->parent()->state()->regress_lazy_state(  this->problem().task().actions()[ candidate->action() ], &added, &deleted );
-//			    }
+                static Fluent_Vec added, deleted;
+                added.clear(); deleted.clear();
+                if (candidate->action()!=-1){
+                    problem().task().actions()[candidate->action()]->print(problem().task(),std::cout);
+                }
+			    if (candidate->parent()!=NULL){
+                    candidate->parent()->state()->progress_lazy_state(  this->problem().task().actions()[ candidate->action() ], &added, &deleted  );
+                    candidate->parent()->state()->print(std::cout);
+                    candidate->parent()->state()->regress_lazy_state(  this->problem().task().actions()[ candidate->action() ], &added, &deleted );
+			    }
 
 //			    //candidate->parent()->state()->print(std::cout);
                 m_second_h->eval_edit( *(candidate->state()));
@@ -710,6 +718,13 @@ public:
 		
 		if(candidate->r() > m_max_r ){
 		    //rp_fl_achieved_eidt(candidate);
+            static Fluent_Vec added, deleted;
+            added.clear(); deleted.clear();
+            if (candidate->parent()!=NULL){
+                candidate->parent()->state()->progress_lazy_state(  this->problem().task().actions()[ candidate->action() ], &added, &deleted  );
+                candidate->parent()->state()->print(std::cout);
+                candidate->parent()->state()->regress_lazy_state(  this->problem().task().actions()[ candidate->action() ], &added, &deleted );
+            }
 			m_max_r = candidate->r();
 			if ( m_verbose ) 
 				std::cout << "--[" << m_max_h2n  <<" / " << m_max_r <<"]--" << std::endl;			
@@ -796,6 +811,9 @@ public:
 		std::vector< aptk::Action_Idx > app_set;
 //		this->problem().applicable_set_v2( *(head->state()), app_set );
 //        if (head->h2n()==3){
+//            std::cout<<"find"<<std::endl;
+//        }
+//        if (head->h2n()==13){
 //            std::cout<<"find"<<std::endl;
 //        }
         for (unsigned i = 0; i < this->problem().num_actions(); ++i ) {

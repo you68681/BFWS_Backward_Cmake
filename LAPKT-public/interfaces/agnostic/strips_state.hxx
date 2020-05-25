@@ -41,6 +41,15 @@ public:
 	Fluent_Set& fluent_set() 		{ return m_fluent_set; }
 	const Fluent_Vec& fluent_vec() const	{ return m_fluent_vec; }
 	const Fluent_Set& fluent_set() const	{ return m_fluent_set; }
+
+//	/** chao add
+//	 *
+//	 * @return
+//	 */
+//    Fluent_Vec& goal_vec() 		{ return m_goal_vec; }
+//    Fluent_Set& goal_set() 		{ return m_goal_set; }
+//    const Fluent_Vec& goal_vec() const	{ return m_goal_vec; }
+//    const Fluent_Set& goal_set() const	{ return m_goal_set; }
 	
 	unsigned value_for_var( unsigned var ) const { return 0 == m_fluent_set.isset(var) ? 0 : 1; }
 
@@ -49,6 +58,29 @@ public:
 	void	set( const Fluent_Vec& fv );
 	void	unset( const Fluent_Vec& fv );
 	void    reset();
+
+
+
+	/** chao edit
+	 *
+	 * @param f
+	 * @return
+	 */
+
+//    void	set_goal_set( unsigned f );
+//    void	set_goal_set( const unsigned& f );
+//    void	set_goal_unset(const unsigned& f );
+//    void	set_goal_unset( unsigned f );
+//    void	set_goal_set( const Fluent_Vec& fv );
+//    void	set_goal_unset( const Fluent_Vec& fv );
+//    void    set_goal_reset();
+//
+//
+//    bool	set_goal_entails( const Fluent_Vec& fv ) const;
+//
+//
+//    bool	set_goal_entails( unsigned f ) const { return goal_set().isset(f); }
+
 	bool	entails( unsigned f ) const { return fluent_set().isset(f); }
 	bool	entails( const State& s ) const;
 	bool	entails( const Fluent_Vec& fv ) const;
@@ -78,6 +110,8 @@ protected:
 
 	Fluent_Vec			m_fluent_vec;
 	Fluent_Set			m_fluent_set;
+    Fluent_Vec			m_goal_vec;
+    Fluent_Set			m_goal_set;
 	const STRIPS_Problem&		m_problem;
 	size_t				m_hash;
 };
@@ -101,6 +135,8 @@ inline	void State::set( unsigned f )
 	m_fluent_vec.push_back( f );
 	m_fluent_set.set( f );
 }
+
+
 
 inline	void State::set( const Fluent_Vec& f )
 {
@@ -182,6 +218,112 @@ inline bool	State::entails( const Fluent_Vec& fv, unsigned& num_unsat ) const
 	return num_unsat == 0;
 	
 }
+/** chao add
+ *
+ * @param os
+ * @param s
+ * @return
+ */
+
+//inline	void State::set_goal_set( unsigned f )
+//{
+//        if ( set_goal_entails(f) ) return;
+//        m_goal_vec.push_back( f );
+//        m_goal_set.set( f );
+//}
+//
+//inline	void State::set_goal_set(const unsigned& f )
+//    {
+//        if ( set_goal_entails(f) ) return;
+//        m_goal_vec.push_back( f );
+//        m_goal_set.set( f );
+//    }
+//
+//
+//inline	void State::set_goal_set( const Fluent_Vec& f )
+//{
+//
+//        for ( unsigned i = 0; i < f.size(); i++ )
+//        {
+//            if ( !set_goal_entails(f[i]) )
+//            {
+//                m_goal_vec.push_back(f[i]);
+//                m_goal_set.set(f[i]);
+//            }
+//        }
+//}
+//
+//
+//
+//inline	void State::set_goal_unset( unsigned f )
+//{
+//        if ( !set_goal_entails(f) ) return;
+//
+//        for ( unsigned k = 0; k < m_goal_vec.size(); k ++ )
+//            if ( m_goal_vec[k] == f )
+//            {
+//                for ( unsigned l = k+1; l < m_goal_vec.size(); l++ )
+//                    m_goal_vec[l-1] = m_goal_vec[l];
+//                m_goal_vec.resize( m_goal_vec.size()-1 );
+//                break;
+//            }
+//
+//        m_goal_set.unset( f );
+//    }
+//inline  void State::set_goal_unset(const unsigned& f )
+//{
+//        if ( !set_goal_entails(f) ) return;
+//
+//        for ( unsigned k = 0; k < m_goal_vec.size(); k ++ )
+//            if ( m_goal_vec[k] == f )
+//            {
+//                for ( unsigned l = k+1; l < m_goal_vec.size(); l++ )
+//                    m_goal_vec[l-1] = m_goal_vec[l];
+//                m_goal_vec.resize( m_goal_vec.size()-1 );
+//                break;
+//            }
+//
+//        m_goal_set.unset( f );
+//    }
+//
+//
+//
+//inline void State:: set_goal_unset(const Fluent_Vec& f)
+//
+//{
+//
+//        for ( unsigned i = 0; i < f.size(); i++ )
+//        {
+//            if ( !entails(f[i]) )
+//                continue;
+//            for ( unsigned k = 0; k < m_goal_vec.size(); k ++ )
+//                if ( m_goal_vec[k] == f[i] )
+//                {
+//                    for ( unsigned l = k+1; l < m_goal_vec.size(); l++ )
+//                        m_goal_vec[l-1] = m_goal_vec[l];
+//                    m_goal_vec.resize( m_goal_vec.size()-1 );
+//                    break;
+//                }
+//            m_goal_set.unset(f[i]);
+//        }
+//}
+//
+//
+//inline	void State::set_goal_reset(  )
+//    {
+//        m_goal_vec.clear();
+//        m_goal_set.reset();
+//    }
+//
+//inline bool	State::set_goal_entails( const Fluent_Vec& fv ) const
+//{
+//        for ( unsigned i = 0; i < fv.size(); i++ )
+//            if ( !goal_set().isset(fv[i]) ) {
+//                return false;
+//            }
+//        return true;
+//    }
+
 
 inline std::ostream& operator<<(std::ostream &os, State &s) {
   for(unsigned i = 0; i < s.fluent_vec().size(); i++) {

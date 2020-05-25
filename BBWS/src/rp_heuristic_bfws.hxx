@@ -70,7 +70,7 @@ public:
 	 * @param goals
 	 */
     virtual void
-    compute_edit( const State& s, float& h_val, std::vector<Action_Idx>& pref_ops, std::vector<Action_Idx>* copy_rel_plan = NULL, Fluent_Vec* goals = NULL ) {
+    compute_edit( const State& s, float& h_val, std::vector<Action_Idx>& pref_ops, Fluent_Vec unachived_goal, std::vector<Action_Idx>* copy_rel_plan = NULL, Fluent_Vec* goals = NULL ) {
         h_val = 0.0;
         // 0. Initialize data structures
         actions_seen().reset();
@@ -140,9 +140,22 @@ public:
 			a->print( m_strips_model, std::cout );
 			std::cout << "into the relaxed plan" << std::endl;
 #endif
+			bool continue_flag=true;
+
             if ( a->asserts( p->index() ) ) { // fluent asserted by action main effect
+                for(auto q : a->prec_vec())
+                {
+                    if (std::find(unachived_goal.begin(), unachived_goal.end(), q) != unachived_goal.end()){
+                        continue_flag= false;
+                        break;
+                    }
+                }
+                if (!continue_flag){
+                    continue;
+                }
                 for ( auto q : a->prec_vec() )
                     m_rp_precs.set(q);
+
                 if ( !extract_best_supporters_for( a->prec_vec(), relaxed_plan ) ) {
                     h_val = infty;
                     assert( false );
@@ -668,9 +681,9 @@ public:
 	 * chao edit
 	 */
     template <typename Cost_Type>
-    void eval( const State& s, Cost_Type& h_out, std::vector<Action_Idx>& pref_ops, std::vector<Action_Idx>& rel_plan, bool flag) {
+    void eval( const State& s, Cost_Type& h_out, std::vector<Action_Idx>& pref_ops, std::vector<Action_Idx>& rel_plan, bool flag, Fluent_Vec unachived_goal) {
         float h;
-        m_plan_extractor.compute_edit( s, h, pref_ops, &rel_plan );
+        m_plan_extractor.compute_edit( s, h, pref_ops, unachived_goal, &rel_plan );
         h_out = h == infty ? std::numeric_limits<Cost_Type>::max() : (Cost_Type)h;
     }
 

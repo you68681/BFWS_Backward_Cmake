@@ -76,9 +76,44 @@ void	get_problem_description( std::string pddl_domain_path,
 	FF::get_initial_state( I );
 	FF::get_goal_state( G );
 
+	/** chao edit add the constants
+	 *
+	 */
+
+	Fluent_Vec conFluents;
+    Fluent_Set conFluentsSet;
+    Fluent_Set conSet;
+    Fluent_Vec conIndexs;
+    std::map <unsigned , unsigned > con_dic;
+    conFluentsSet.resize(strips_problem.fluents().size()+I.size());
+    conSet.resize(strips_problem.fluents().size()+I.size());
+
+    for (unsigned p : I){
+
+        if (std::find(G.begin(), G.end(), p) != G.end()){
+            continue;
+        } else{
+            conFluents.push_back(p);
+        }
+    }
+
+    for (unsigned p: conFluents ){
+        conFluentsSet.set(p);
+        std::stringstream buffer;
+        buffer<<"(con-"<<strips_problem.fluents()[p]->signature()<<")";
+        unsigned  fl_idx = aptk::STRIPS_Problem::add_fluent(strips_problem,buffer.str());
+        con_dic.insert(std::pair<int, int>(p, fl_idx));
+        conSet.set(fl_idx);
+        conIndexs.push_back(fl_idx);
+        G.push_back(fl_idx);
+    }
+
+
+
     /** chao add the negation
      *
      */
+
 	Fluent_Vec negFluents;
 	Fluent_Set negFluentsSet;
 	Fluent_Vec negIndexs;
@@ -86,12 +121,15 @@ void	get_problem_description( std::string pddl_domain_path,
 
 
     std::map <unsigned , unsigned > dic;
-    negFluentsSet.resize(strips_problem.fluents().size()+G.size());
+    negFluentsSet.resize(strips_problem.fluents().size()+G.size()+I.size());
 
 	for (unsigned p : G){
 //	    for (unsigned c : strips_problem.fluents()[p]->constants()){
 //	        goal_constants.insert(c);
 //	    }
+        if (conSet.isset(p)){
+            continue;
+        }
         if (std::find(I.begin(), I.end(), p) != I.end()){
             continue;
         } else{
@@ -108,6 +146,7 @@ void	get_problem_description( std::string pddl_domain_path,
 	    I.push_back(fl_idx);
 
 	}
+
 //	bool object_flag= true;
 //	for (unsigned p: I){
 //	    if (strips_problem.fluents()[p]->constants().empty())
@@ -119,7 +158,7 @@ void	get_problem_description( std::string pddl_domain_path,
 //          {
 //              object_flag= false;
 //              break;
-//          }
+//          }if the flunet occured as the inital sate and doesn't occured in the goal state,
 //
 //        }
 //        if (object_flag )
@@ -253,6 +292,8 @@ void	get_problem_description( std::string pddl_domain_path,
 			for ( int j = 0; j < gef_conn[i].num_D; j++ )
 				op_dels.push_back( gef_conn[i].D[j] );
 
+
+
 			/** chao add the negation
 			 *
 			 */
@@ -269,8 +310,37 @@ void	get_problem_description( std::string pddl_domain_path,
                 }
             }
 
+            /** chao edit
+              *  if the flunet occured as the inital sate and doesn't occured in the goal state, this flunets should be added to the add list
+              */
+//            for ( int j = 0; j < op_precs.size(); j++ ){
+//                if (std::find(op_dels.begin(), op_dels.end(), op_precs[j]) != op_dels.end()){
+//                    continue;
+//                } else{
+//                    op_adds.push_back(op_precs[j]);
+//                }
+//            }
 
-			float op_cost = 0;
+
+            /** chao add the constants
+              *
+              */
+
+            for ( int j = 0; j < op_adds.size(); j++ ){
+                if (conFluentsSet.isset(op_adds[j])){
+                    op_adds.push_back(con_dic[op_adds[j]]);
+                }
+            }
+
+            for ( int j = 0; j < op_precs.size(); j++ ){
+                if (conFluentsSet.isset(op_precs[j]) and std::find(op_adds.begin(), op_adds.end(), con_dic[op_precs[j]]) == op_adds.end()){
+                    op_adds.push_back(con_dic[op_precs[j]]);
+                }
+            }
+
+
+
+            float op_cost = 0;
 			if(with_costs)
 			{
 				if ( gef_conn[i].num_IN == 0 ) {
@@ -308,6 +378,33 @@ void	get_problem_description( std::string pddl_domain_path,
 			op_idx = STRIPS_Problem::add_action( strips_problem, op_name, op_precs, op_adds, op_dels, cond_effects );
 			strips_problem.actions()[op_idx]->set_cost( op_cost );
 		}
+
+		/** chao add to make constant action
+		 *
+		 */
+
+		for (unsigned p: conFluents){
+            std::stringstream buffer;
+            buffer<<"--"<< strips_problem.fluents()[p]->signature()<<"--"<<strips_problem.fluents()[con_dic[p]]->signature()<<".";
+
+            Fluent_Vec  op_precs, op_adds, op_dels,cond_effects;
+            Conditional_Effect_Vec cond_effects_edit;
+
+
+            op_precs.push_back( p );
+
+            op_adds.push_back( con_dic[p]);
+            float op_cost = 0;
+
+            unsigned op_idx;
+            op_idx = STRIPS_Problem::add_action( strips_problem, buffer.str(), op_precs, op_adds, op_dels, cond_effects_edit );
+            strips_problem.actions()[op_idx]->set_cost( op_cost );
+
+
+
+        }
+
+
 	}
 	strips_problem.make_action_tables();
 	strips_problem.make_effect_tables();
