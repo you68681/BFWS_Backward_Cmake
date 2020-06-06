@@ -96,11 +96,6 @@
      (notexist sandw12)
      (notexist sandw13)
      (notexist sandw14)
-     (notexist sandw15)
-     (notexist sandw16)
-     (notexist sandw17)
-     (notexist sandw18)
-     (notexist sandw19)
   )
   (:goal
     (and

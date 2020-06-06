@@ -1,0 +1,156 @@
+ --- OK.
+ Match tree built with 67744 nodes.
+
+PDDL problem description loaded: 
+	Domain: HIKING
+	Problem: HIKING-4-5
+	#Actions: 67744
+	#Fluents: 159
+Goals found: 29
+Goals_Edges found: 51
+1. (AT_CAR CAR4 PLACE0)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+2. (AT_CAR CAR3 PLACE0)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+3. (AT_CAR CAR2 PLACE0)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+4. (AT_CAR CAR1 PLACE0)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+5. (AT_CAR CAR0 PLACE0)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+6. (UP TENT3)
+	Preceded by: (AT_TENT TENT3 PLACE0)
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+7. (AT_TENT TENT3 PLACE0)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (UP TENT3)
+	GN Required by: 
+8. (WALKED COUPLE3 PLACE0)
+	Preceded by: (not-(WALKED COUPLE3 PLACE6))
+	GN Preceded by: 
+	Required by: (AT_PERSON GIRL3 PLACE0), (AT_PERSON GUY3 PLACE0)
+	GN Required by: 
+9. (AT_PERSON GIRL3 PLACE0)
+	Preceded by: (WALKED COUPLE3 PLACE0), (not-(WALKED COUPLE3 PLACE6))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+10. (AT_PERSON GUY3 PLACE0)
+	Preceded by: (WALKED COUPLE3 PLACE0), (not-(WALKED COUPLE3 PLACE6))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+11. (UP TENT2)
+	Preceded by: (AT_TENT TENT2 PLACE0)
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+12. (AT_TENT TENT2 PLACE0)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (UP TENT2)
+	GN Required by: 
+13. (WALKED COUPLE2 PLACE0)
+	Preceded by: (not-(WALKED COUPLE2 PLACE6))
+	GN Preceded by: 
+	Required by: (AT_PERSON GIRL2 PLACE0), (AT_PERSON GUY2 PLACE0)
+	GN Required by: 
+14. (AT_PERSON GIRL2 PLACE0)
+	Preceded by: (WALKED COUPLE2 PLACE0), (not-(WALKED COUPLE2 PLACE6))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+15. (AT_PERSON GUY2 PLACE0)
+	Preceded by: (WALKED COUPLE2 PLACE0), (not-(WALKED COUPLE2 PLACE6))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+16. (DOWN TENT1)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+17. (AT_TENT TENT1 PLACE0)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+18. (WALKED COUPLE1 PLACE0)
+	Preceded by: (not-(WALKED COUPLE1 PLACE6))
+	GN Preceded by: 
+	Required by: (AT_PERSON GIRL1 PLACE0), (AT_PERSON GUY1 PLACE0)
+	GN Required by: 
+19. (AT_PERSON GIRL1 PLACE0)
+	Preceded by: (WALKED COUPLE1 PLACE0), (not-(WALKED COUPLE1 PLACE6))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+20. (AT_PERSON GUY1 PLACE0)
+	Preceded by: (WALKED COUPLE1 PLACE0), (not-(WALKED COUPLE1 PLACE6))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+21. (DOWN TENT0)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+22. (AT_TENT TENT0 PLACE0)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+23. (WALKED COUPLE0 PLACE0)
+	Preceded by: (not-(WALKED COUPLE0 PLACE6))
+	GN Preceded by: 
+	Required by: (AT_PERSON GIRL0 PLACE0), (AT_PERSON GUY0 PLACE0)
+	GN Required by: 
+24. (AT_PERSON GIRL0 PLACE0)
+	Preceded by: (WALKED COUPLE0 PLACE0), (not-(WALKED COUPLE0 PLACE6))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+25. (AT_PERSON GUY0 PLACE0)
+	Preceded by: (WALKED COUPLE0 PLACE0), (not-(WALKED COUPLE0 PLACE6))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+26. (not-(WALKED COUPLE3 PLACE6))
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (WALKED COUPLE3 PLACE0), (AT_PERSON GIRL3 PLACE0), (AT_PERSON GUY3 PLACE0)
+	GN Required by: 
+27. (not-(WALKED COUPLE2 PLACE6))
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (WALKED COUPLE2 PLACE0), (AT_PERSON GIRL2 PLACE0), (AT_PERSON GUY2 PLACE0)
+	GN Required by: 
+28. (not-(WALKED COUPLE1 PLACE6))
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (WALKED COUPLE1 PLACE0), (AT_PERSON GIRL1 PLACE0), (AT_PERSON GUY1 PLACE0)
+	GN Required by: 
+29. (not-(WALKED COUPLE0 PLACE6))
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (WALKED COUPLE0 PLACE0), (AT_PERSON GIRL0 PLACE0), (AT_PERSON GUY0 PLACE0)
+	GN Required by: 
+Starting search with k-BFWS...

@@ -73,10 +73,10 @@
   (:action walk_together
          :parameters ( ?x1 - tent ?x2 - place ?x3 - person ?x4 - place ?x5 - person ?x6 - couple)
          :precondition (and 
-(at_person ?x3 ?x4)(next ?x4 ?x2)(at_person ?x5 ?x4)(not (= ?x3 ?x5))(walked ?x6 ?x4)(partners ?x6 ?x3 ?x5) )
+(at_tent ?x1 ?x2)(up ?x1) (at_person ?x3 ?x4)(next ?x4 ?x2)(at_person ?x5 ?x4)(not (= ?x3 ?x5))(walked ?x6 ?x4)(partners ?x6 ?x3 ?x5) )
          :effect (and (at_person ?x3 ?x2)(not (at_person ?x3 ?x4))
 (at_person ?x5 ?x2)(not (at_person ?x5 ?x4))
-(walked ?x6 ?x2)(not (walked ?x6 ?x4)) (at_tent ?x1 ?x2)(up ?x1)
+(walked ?x6 ?x2)(not (walked ?x6 ?x4))
 )
 )
 

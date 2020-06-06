@@ -334,10 +334,11 @@ public:
     void    set_relplan_edit( Search_Node* n, State* s,Fluent_Vec unachived_goal  ){
 
 
-            if (n->h2n()==5){
-        std::cout<<"relax plan find"<<std::endl;
-        s->print(std::cout);
-             }
+//            if (n->h2n()==0){
+//        std::cout<<"relax plan find"<<std::endl;
+//        s->print(std::cout);
+//             }
+
         bool flag= true;
         std::vector<Action_Idx>	po;
         std::vector<Action_Idx>	rel_plan;
@@ -378,7 +379,7 @@ public:
         for(std::vector<Action_Idx>::iterator it_a = rel_plan.begin();
             it_a != rel_plan.end(); it_a++ ){
             const Action* a = this->problem().task().actions()[*it_a];
-//            if (n->h2n()==5){
+//            if (n->h2n()==1){
 //                a->print(this->problem().task(),std::cout);
 //            }
             //Add Conditional Effects
@@ -483,7 +484,7 @@ public:
 				std::cout << "h_add is infinite" << std::endl;
 			}
 #endif
-			inc_dead_end();								
+			inc_dead_end();
 			return;;
 		}
 		
@@ -538,12 +539,40 @@ public:
 		}
 
 		//Count land/goal unachieved
+		/** chao edit
+		 *
+		 */
 
-		m_second_h->eval( *(candidate->state()), candidate->h2n());
-//        if (candidate->h2n()==1){
+		if (candidate->state()==NULL){
+            static Fluent_Vec added, deleted;
+            added.clear(); deleted.clear();
+            candidate->parent()->state()->progress_lazy_state(  m_problem.task().actions()[ candidate->action() ] );
+            m_second_h->eval( *(candidate->state()), candidate->h2n(), (candidate->parent()->state()->fluent_vec()));
+            candidate->parent()->state()->regress_lazy_state(  this->problem().task().actions()[ candidate->action() ], &added, &deleted );
+        }
+		if (candidate->state()!=NULL)
+        m_second_h->eval( *(candidate->state()), candidate->h2n(),candidate->state()->fluent_vec());
+
+
+//        m_second_h->eval( *(candidate->state()), candidate->h2n());
+
+
+
+
+
+
+//		m_second_h->eval( *(candidate->state()), candidate->h2n());
+//        if (candidate->h2n()==13 ){
 //            std::cout<<"find"<<std::endl;
 //        }
-        unachived_goal= m_second_h->eval_goal_count(*(candidate->state()), unachived_goal);
+
+
+
+//        unachived_goal= m_second_h->eval_goal_count(*(candidate->state()), unachived_goal);
+
+//        if (unachived_goal.empty()){
+//            std::cout<<"find"<<std::endl;
+//        }
 
 		//If relevant fluents are in use
 		if(m_use_rp && !m_use_rp_from_init_only){
@@ -574,19 +603,23 @@ public:
 			m_max_h2n = candidate->h2n();
 			m_max_r = 0;
 			if ( m_verbose ) {
-                static Fluent_Vec added, deleted;
-                added.clear(); deleted.clear();
-                if (candidate->action()!=-1){
-                    problem().task().actions()[candidate->action()]->print(problem().task(),std::cout);
-                }
-			    if (candidate->parent()!=NULL){
-                    candidate->parent()->state()->progress_lazy_state(  this->problem().task().actions()[ candidate->action() ], &added, &deleted  );
-                    candidate->parent()->state()->print(std::cout);
-                    candidate->parent()->state()->regress_lazy_state(  this->problem().task().actions()[ candidate->action() ], &added, &deleted );
-			    }
+//                static Fluent_Vec added, deleted;
+//                added.clear(); deleted.clear();
+//                if (candidate->action()!=-1){
+//                    problem().task().actions()[candidate->action()]->print(problem().task(),std::cout);
+//                }
+//			    if (candidate->parent()!=NULL){
+//                    candidate->parent()->state()->progress_lazy_state(  this->problem().task().actions()[ candidate->action() ], &added, &deleted  );
+//                    candidate->parent()->state()->print(std::cout);
+//                    candidate->parent()->state()->regress_lazy_state(  this->problem().task().actions()[ candidate->action() ], &added, &deleted );
+//			    }
 
 //			    //candidate->parent()->state()->print(std::cout);
-                m_second_h->eval_edit( *(candidate->state()));
+//                if (m_max_h2n==0)
+//                {
+//                    std::cout<<'find'<<std::endl;
+//                }
+//                m_second_h->eval_edit( *(candidate->state()));
 				std::cout << "--[" << m_max_h2n  <<" / " << m_max_r <<"]--" << std::endl;				
 			}
 		}
@@ -718,14 +751,16 @@ public:
 		
 		if(candidate->r() > m_max_r ){
 		    //rp_fl_achieved_eidt(candidate);
-            static Fluent_Vec added, deleted;
-            added.clear(); deleted.clear();
-            if (candidate->parent()!=NULL){
-                candidate->parent()->state()->progress_lazy_state(  this->problem().task().actions()[ candidate->action() ], &added, &deleted  );
-                candidate->parent()->state()->print(std::cout);
-                candidate->parent()->state()->regress_lazy_state(  this->problem().task().actions()[ candidate->action() ], &added, &deleted );
-            }
+//            static Fluent_Vec added, deleted;
+//            added.clear(); deleted.clear();
+//            if (candidate->parent()!=NULL){
+//                candidate->parent()->state()->progress_lazy_state(  this->problem().task().actions()[ candidate->action() ], &added, &deleted  );
+//                candidate->parent()->state()->print(std::cout);
+//                candidate->parent()->state()->regress_lazy_state(  this->problem().task().actions()[ candidate->action() ], &added, &deleted );
+//            }
+
 			m_max_r = candidate->r();
+
 			if ( m_verbose ) 
 				std::cout << "--[" << m_max_h2n  <<" / " << m_max_r <<"]--" << std::endl;			
 			
@@ -871,6 +906,7 @@ public:
            } else{
                n = new Search_Node( succ, m_problem.cost( *(head->state()), a ), a, head, m_problem.num_actions()  );
            }
+
 
 			#ifdef DEBUG
 			if ( m_verbose ) {

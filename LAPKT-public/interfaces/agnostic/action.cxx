@@ -78,6 +78,7 @@ void Action::define_fluent_list(  const Fluent_Vec& in, Fluent_Vec& fluent_list,
 void	Action::print( const STRIPS_Problem& prob, std::ostream& os ) const {
 
 	os << "Action " << signature() << std::endl;
+
 	os << "\tPre(a) = {";
 	prob.print_fluent_vec( os, prec_vec() );
 	os << "}" << std::endl;

@@ -49,8 +49,6 @@
      (notexist sandw4)
      (notexist sandw5)
      (notexist sandw6)
-     (notexist sandw7)
-     (notexist sandw8)
   )
   (:goal
     (and

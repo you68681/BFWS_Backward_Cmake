@@ -79,34 +79,34 @@ void	get_problem_description( std::string pddl_domain_path,
 	/** chao edit add the constants
 	 *
 	 */
-
-	Fluent_Vec conFluents;
-    Fluent_Set conFluentsSet;
-    Fluent_Set conSet;
-    Fluent_Vec conIndexs;
-    std::map <unsigned , unsigned > con_dic;
-    conFluentsSet.resize(strips_problem.fluents().size()+I.size());
-    conSet.resize(strips_problem.fluents().size()+I.size());
-
-    for (unsigned p : I){
-
-        if (std::find(G.begin(), G.end(), p) != G.end()){
-            continue;
-        } else{
-            conFluents.push_back(p);
-        }
-    }
-
-    for (unsigned p: conFluents ){
-        conFluentsSet.set(p);
-        std::stringstream buffer;
-        buffer<<"(con-"<<strips_problem.fluents()[p]->signature()<<")";
-        unsigned  fl_idx = aptk::STRIPS_Problem::add_fluent(strips_problem,buffer.str());
-        con_dic.insert(std::pair<int, int>(p, fl_idx));
-        conSet.set(fl_idx);
-        conIndexs.push_back(fl_idx);
-        G.push_back(fl_idx);
-    }
+//
+//	Fluent_Vec conFluents;
+//    Fluent_Set conFluentsSet;
+//    Fluent_Set conSet;
+//    Fluent_Vec conIndexs;
+//    std::map <unsigned , unsigned > con_dic;
+//    conFluentsSet.resize(strips_problem.fluents().size()+I.size());
+//    conSet.resize(strips_problem.fluents().size()+I.size());
+//
+//    for (unsigned p : I){
+//
+//        if (std::find(G.begin(), G.end(), p) != G.end()){
+//            continue;
+//        } else{
+//            conFluents.push_back(p);
+//        }
+//    }
+//
+//    for (unsigned p: conFluents ){
+//        conFluentsSet.set(p);
+//        std::stringstream buffer;
+//        buffer<<"(con-"<<strips_problem.fluents()[p]->signature()<<")";
+//        unsigned  fl_idx = aptk::STRIPS_Problem::add_fluent(strips_problem,buffer.str());
+//        con_dic.insert(std::pair<int, int>(p, fl_idx));
+//        conSet.set(fl_idx);
+//        conIndexs.push_back(fl_idx);
+//        G.push_back(fl_idx);
+//    }
 
 
 
@@ -127,9 +127,9 @@ void	get_problem_description( std::string pddl_domain_path,
 //	    for (unsigned c : strips_problem.fluents()[p]->constants()){
 //	        goal_constants.insert(c);
 //	    }
-        if (conSet.isset(p)){
-            continue;
-        }
+//        if (conSet.isset(p)){
+//            continue;
+//        }
         if (std::find(I.begin(), I.end(), p) != I.end()){
             continue;
         } else{
@@ -170,7 +170,7 @@ void	get_problem_description( std::string pddl_domain_path,
 
 
 
-    STRIPS_Problem::set_negation( strips_problem, negIndexs);
+//    STRIPS_Problem::set_negation( strips_problem, negIndexs);
 	STRIPS_Problem::set_init( strips_problem, I);
 	STRIPS_Problem::set_goal( strips_problem, G);
 
@@ -326,17 +326,17 @@ void	get_problem_description( std::string pddl_domain_path,
               *
               */
 
-            for ( int j = 0; j < op_adds.size(); j++ ){
-                if (conFluentsSet.isset(op_adds[j])){
-                    op_adds.push_back(con_dic[op_adds[j]]);
-                }
-            }
-
-            for ( int j = 0; j < op_precs.size(); j++ ){
-                if (conFluentsSet.isset(op_precs[j]) and std::find(op_adds.begin(), op_adds.end(), con_dic[op_precs[j]]) == op_adds.end()){
-                    op_adds.push_back(con_dic[op_precs[j]]);
-                }
-            }
+//            for ( int j = 0; j < op_adds.size(); j++ ){
+//                if (conFluentsSet.isset(op_adds[j])){
+//                    op_adds.push_back(con_dic[op_adds[j]]);
+//                }
+//            }
+//
+//            for ( int j = 0; j < op_dels.size(); j++ ){
+//                if (conFluentsSet.isset(op_dels[j]) and std::find(op_adds.begin(), op_adds.end(), con_dic[op_dels[j]]) == op_adds.end()){
+//                    op_adds.push_back(con_dic[op_dels[j]]);
+//                }
+//            }
 
 
 
@@ -383,26 +383,26 @@ void	get_problem_description( std::string pddl_domain_path,
 		 *
 		 */
 
-		for (unsigned p: conFluents){
-            std::stringstream buffer;
-            buffer<<"--"<< strips_problem.fluents()[p]->signature()<<"--"<<strips_problem.fluents()[con_dic[p]]->signature()<<".";
-
-            Fluent_Vec  op_precs, op_adds, op_dels,cond_effects;
-            Conditional_Effect_Vec cond_effects_edit;
-
-
-            op_precs.push_back( p );
-
-            op_adds.push_back( con_dic[p]);
-            float op_cost = 0;
-
-            unsigned op_idx;
-            op_idx = STRIPS_Problem::add_action( strips_problem, buffer.str(), op_precs, op_adds, op_dels, cond_effects_edit );
-            strips_problem.actions()[op_idx]->set_cost( op_cost );
-
-
-
-        }
+//		for (unsigned p: conFluents){
+//            std::stringstream buffer;
+//            buffer<<"--"<< strips_problem.fluents()[p]->signature()<<"--"<<strips_problem.fluents()[con_dic[p]]->signature()<<".";
+//
+//            Fluent_Vec  op_precs, op_adds, op_dels,cond_effects;
+//            Conditional_Effect_Vec cond_effects_edit;
+//
+//
+//            op_precs.push_back( p );
+//
+//            op_adds.push_back( con_dic[p]);
+//            float op_cost = 0;
+//
+//            unsigned op_idx;
+//            op_idx = STRIPS_Problem::add_action( strips_problem, buffer.str(), op_precs, op_adds, op_dels, cond_effects_edit );
+//            strips_problem.actions()[op_idx]->set_cost( op_cost );
+//
+//
+//
+//        }
 
 
 	}

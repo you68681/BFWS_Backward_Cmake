@@ -78,7 +78,13 @@ State*	bwd_Search_Problem::goal_state() const {
     }
 
 bool	bwd_Search_Problem::goal( const State& s ) const {
-	return s.entails( task().init() );
+//	return s.entails( task().init() );
+	/** chao edit
+	 *
+	 */
+	return goal_state()->entails(s);
+
+
 
 }
 

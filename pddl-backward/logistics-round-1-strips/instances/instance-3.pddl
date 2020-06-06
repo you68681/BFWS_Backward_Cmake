@@ -175,8 +175,6 @@
           (at package5 city12-2)
           (at package4 city8-1)
           (at package3 city12-3)
-          (at package2 city12-2)
-          (at package1 city8-3))
    (:goal (and (at package9 city11-2)
                (at package8 city5-3)
                (at package7 city10-3)

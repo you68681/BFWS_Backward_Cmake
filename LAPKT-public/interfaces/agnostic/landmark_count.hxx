@@ -128,8 +128,14 @@ public:
 		eval(s,h);
 		h_val = h;
 	}
+	/** chao edit
+	 *
+	 * @param s
+	 * @param h_val
+	 * @param parent
+	 */
 
-	virtual void eval( const State& s, unsigned& h_val ) {
+	virtual void eval( const State& s, unsigned& h_val,  Fluent_Vec parent) {
 		if (!m_graph) return;
 		h_val = 0;
 		for ( std::vector< Landmarks_Graph::Node* >::const_iterator it = m_graph->nodes().begin(); it != m_graph->nodes().end(); it++ ) {
@@ -167,8 +173,28 @@ public:
 
 
 
+
+
 		}
+
+		for (unsigned p: parent){
+		    if (!this->m_strips_model.is_in_init(p)){
+		        h_val++;
+		    }
+		}
+
 	}
+//	/** chao edit
+//	 *
+//	 */
+//    virtual void eval_count( const State* s, unsigned& h_val ) {
+//        h_val = 0;
+//        for (unsigned p : s->fluent_vec()){
+//            if (!problem().init_state()->entails(p)){
+//                h_val++;
+//            }
+//        }
+//    }
 	/** chao edit test
 	 *
 	 * @param s
@@ -216,6 +242,8 @@ public:
 
         }
     }
+
+
 /** chao add goal count
  *
  * @param s

@@ -150,12 +150,30 @@ public:
 		float h;
 		m_already_updated.reset();
 		m_updated.clear();
+
 		initialize(s);				
 		compute();
 		h = eval_func( m_strips_model.goal().begin(), m_strips_model.goal().end() );
 		h_out = h == infty ? std::numeric_limits<Cost_Type>::max() : (Cost_Type)h;
 		
 	}
+	/** chao edit
+	 *
+	 * @tparam Cost_Type
+	 * @param s
+	 * @param h_out
+	 */
+//    template <typename Cost_Type>
+//    void eval_edit( const State& s, Cost_Type& h_out ) {
+//        float h;
+//        m_already_updated.reset();
+//        m_updated.clear();
+////        initialize_edit();
+////        compute();
+//        h = eval_func( s.fluent_vec().begin(), s.fluent_vec().end() );
+//        h_out = h == infty ? std::numeric_limits<Cost_Type>::max() : (Cost_Type)h;
+//
+//    }
 	
 	virtual void eval_reachability( const State& s, float& h_val, Fluent_Vec* persist_fluents = NULL ) {
 		m_already_updated.reset();
@@ -318,6 +336,41 @@ protected:
 			it != s.fluent_vec().end(); it++ )
 			set( *it, 0.0f );
 	}
+/** chao edit
+ *
+ */
+
+//    void	initialize_edit( )
+//    {
+//        for ( unsigned k = 0; k < m_strips_model.num_fluents(); k++ ) {
+//            m_values[k] = m_difficulties[k] = infty;
+//            m_best_supporters[k] = Best_Supporter( no_such_index, no_such_index );
+//        }
+//
+//        for ( unsigned k = 0; k < m_strips_model.empty_prec_actions().size(); k++ ) {
+//            const Action& a = *(m_strips_model.empty_prec_actions()[k]);
+//            float v =  ( cost_opt == H1_Cost_Function::Ignore_Costs ? 1.0f :
+//                         ( cost_opt == H1_Cost_Function::Use_Costs ? (float)a.cost()  : 1.0f + (float)a.cost()) );
+//
+//            for ( Fluent_Vec::const_iterator it = a.add_vec().begin();
+//                  it != a.add_vec().end(); it++ )
+//                update( *it, v, a.index(), no_such_index );
+//            // Conditional effects
+//            for ( unsigned j = 0; j < a.ceff_vec().size(); j++ )
+//            {
+//                const Conditional_Effect& ceff = *(a.ceff_vec()[j]);
+//                if ( !ceff.prec_vec().empty() ) continue;
+//                float v_eff = v;
+//                for ( Fluent_Vec::const_iterator it = ceff.add_vec().begin();
+//                      it != ceff.add_vec().end(); it++ )
+//                    update( *it, v_eff, a.index(), j );
+//            }
+//        }
+//
+//        for ( Fluent_Vec::const_iterator it = m_strips_model.init().begin();
+//              it != m_strips_model.init().end(); it++ )
+//            set( *it, 0.0f );
+//    }
 
 	void	compute(  ) 
 	{

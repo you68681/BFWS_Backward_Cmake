@@ -1,0 +1,8 @@
+ --- OK.
+ Match tree built with 72600 nodes.
+
+PDDL problem description loaded: 
+	Domain: HIKING
+	Problem: HIKING-5-6
+	#Actions: 72600
+	#Fluents: 145

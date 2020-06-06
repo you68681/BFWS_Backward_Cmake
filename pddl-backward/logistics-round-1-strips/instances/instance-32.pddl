@@ -43,8 +43,6 @@
           (at package5 city2-1)
           (at package4 city1-2)
           (at package3 city1-1)
-          (at package2 city2-2)
-          (at package1 city2-1))
    (:goal (and (at package5 city3-2)
                (at package4 city2-1)
                (at package3 city2-1))))

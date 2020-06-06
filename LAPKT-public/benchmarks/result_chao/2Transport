@@ -1,0 +1,560 @@
+ --- OK.
+ Match tree built with 40800 nodes.
+
+PDDL problem description loaded: 
+	Domain: TRANSPORT
+	Problem: TRANSPORT-CITY-SEQUENTIAL-50NODES-1000SIZE-4DEGREE-100MINDISTANCE-4TRUCKS-25PACKAGES-2014SEED
+	#Actions: 40800
+	#Fluents: 1595
+Goals found: 58
+Goals_Edges found: 83
+1. (CAPACITY TRUCK-4 CAPACITY-3)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+2. (AT TRUCK-4 CITY-LOC-45)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+3. (CAPACITY TRUCK-3 CAPACITY-2)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+4. (AT TRUCK-3 CITY-LOC-27)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+5. (CAPACITY TRUCK-2 CAPACITY-3)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+6. (AT TRUCK-2 CITY-LOC-14)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+7. (CAPACITY TRUCK-1 CAPACITY-3)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+8. (AT TRUCK-1 CITY-LOC-32)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+9. (AT PACKAGE-25 CITY-LOC-24)
+	Preceded by: (not-(AT PACKAGE-25 CITY-LOC-3))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+10. (AT PACKAGE-24 CITY-LOC-49)
+	Preceded by: (not-(AT PACKAGE-24 CITY-LOC-23))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+11. (AT PACKAGE-23 CITY-LOC-39)
+	Preceded by: (not-(AT PACKAGE-23 CITY-LOC-17))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+12. (AT PACKAGE-22 CITY-LOC-14)
+	Preceded by: (not-(AT PACKAGE-22 CITY-LOC-41))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+13. (AT PACKAGE-21 CITY-LOC-11)
+	Preceded by: (not-(AT PACKAGE-21 CITY-LOC-37))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+14. (AT PACKAGE-20 CITY-LOC-13)
+	Preceded by: (not-(AT PACKAGE-20 CITY-LOC-44))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+15. (AT PACKAGE-19 CITY-LOC-4)
+	Preceded by: (not-(AT PACKAGE-19 CITY-LOC-3))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+16. (AT PACKAGE-18 CITY-LOC-10)
+	Preceded by: (not-(AT PACKAGE-18 CITY-LOC-32))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+17. (AT PACKAGE-17 CITY-LOC-4)
+	Preceded by: (not-(AT PACKAGE-17 CITY-LOC-34))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+18. (AT PACKAGE-16 CITY-LOC-1)
+	Preceded by: (not-(AT PACKAGE-16 CITY-LOC-43))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+19. (AT PACKAGE-15 CITY-LOC-11)
+	Preceded by: (not-(AT PACKAGE-15 CITY-LOC-15))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+20. (AT PACKAGE-14 CITY-LOC-9)
+	Preceded by: (not-(AT PACKAGE-14 CITY-LOC-34))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+21. (AT PACKAGE-13 CITY-LOC-38)
+	Preceded by: (not-(AT PACKAGE-13 CITY-LOC-42))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+22. (AT PACKAGE-12 CITY-LOC-25)
+	Preceded by: (not-(AT PACKAGE-12 CITY-LOC-16))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+23. (AT PACKAGE-11 CITY-LOC-10)
+	Preceded by: (not-(AT PACKAGE-11 CITY-LOC-14))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+24. (AT PACKAGE-10 CITY-LOC-18)
+	Preceded by: (not-(AT PACKAGE-10 CITY-LOC-13))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+25. (AT PACKAGE-9 CITY-LOC-38)
+	Preceded by: (not-(AT PACKAGE-9 CITY-LOC-37))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+26. (AT PACKAGE-8 CITY-LOC-3)
+	Preceded by: (not-(AT PACKAGE-8 CITY-LOC-6))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+27. (AT PACKAGE-7 CITY-LOC-35)
+	Preceded by: (not-(AT PACKAGE-7 CITY-LOC-40))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+28. (AT PACKAGE-6 CITY-LOC-37)
+	Preceded by: (not-(AT PACKAGE-6 CITY-LOC-39))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+29. (AT PACKAGE-5 CITY-LOC-10)
+	Preceded by: (not-(AT PACKAGE-5 CITY-LOC-13))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+30. (AT PACKAGE-4 CITY-LOC-46)
+	Preceded by: (not-(AT PACKAGE-4 CITY-LOC-27))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+31. (AT PACKAGE-3 CITY-LOC-16)
+	Preceded by: (not-(AT PACKAGE-3 CITY-LOC-3))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+32. (AT PACKAGE-2 CITY-LOC-1)
+	Preceded by: (not-(AT PACKAGE-2 CITY-LOC-18))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+33. (AT PACKAGE-1 CITY-LOC-33)
+	Preceded by: (not-(AT PACKAGE-1 CITY-LOC-2))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+34. (not-(AT PACKAGE-25 CITY-LOC-3))
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (AT PACKAGE-25 CITY-LOC-24)
+	GN Required by: 
+35. (not-(AT PACKAGE-24 CITY-LOC-23))
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (AT PACKAGE-24 CITY-LOC-49)
+	GN Required by: 
+36. (not-(AT PACKAGE-23 CITY-LOC-17))
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (AT PACKAGE-23 CITY-LOC-39)
+	GN Required by: 
+37. (not-(AT PACKAGE-22 CITY-LOC-41))
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (AT PACKAGE-22 CITY-LOC-14)
+	GN Required by: 
+38. (not-(AT PACKAGE-21 CITY-LOC-37))
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (AT PACKAGE-21 CITY-LOC-11)
+	GN Required by: 
+39. (not-(AT PACKAGE-20 CITY-LOC-44))
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (AT PACKAGE-20 CITY-LOC-13)
+	GN Required by: 
+40. (not-(AT PACKAGE-19 CITY-LOC-3))
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (AT PACKAGE-19 CITY-LOC-4)
+	GN Required by: 
+41. (not-(AT PACKAGE-18 CITY-LOC-32))
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (AT PACKAGE-18 CITY-LOC-10)
+	GN Required by: 
+42. (not-(AT PACKAGE-17 CITY-LOC-34))
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (AT PACKAGE-17 CITY-LOC-4)
+	GN Required by: 
+43. (not-(AT PACKAGE-16 CITY-LOC-43))
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (AT PACKAGE-16 CITY-LOC-1)
+	GN Required by: 
+44. (not-(AT PACKAGE-15 CITY-LOC-15))
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (AT PACKAGE-15 CITY-LOC-11)
+	GN Required by: 
+45. (not-(AT PACKAGE-14 CITY-LOC-34))
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (AT PACKAGE-14 CITY-LOC-9)
+	GN Required by: 
+46. (not-(AT PACKAGE-13 CITY-LOC-42))
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (AT PACKAGE-13 CITY-LOC-38)
+	GN Required by: 
+47. (not-(AT PACKAGE-12 CITY-LOC-16))
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (AT PACKAGE-12 CITY-LOC-25)
+	GN Required by: 
+48. (not-(AT PACKAGE-11 CITY-LOC-14))
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (AT PACKAGE-11 CITY-LOC-10)
+	GN Required by: 
+49. (not-(AT PACKAGE-10 CITY-LOC-13))
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (AT PACKAGE-10 CITY-LOC-18)
+	GN Required by: 
+50. (not-(AT PACKAGE-9 CITY-LOC-37))
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (AT PACKAGE-9 CITY-LOC-38)
+	GN Required by: 
+51. (not-(AT PACKAGE-8 CITY-LOC-6))
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (AT PACKAGE-8 CITY-LOC-3)
+	GN Required by: 
+52. (not-(AT PACKAGE-7 CITY-LOC-40))
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (AT PACKAGE-7 CITY-LOC-35)
+	GN Required by: 
+53. (not-(AT PACKAGE-6 CITY-LOC-39))
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (AT PACKAGE-6 CITY-LOC-37)
+	GN Required by: 
+54. (not-(AT PACKAGE-5 CITY-LOC-13))
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (AT PACKAGE-5 CITY-LOC-10)
+	GN Required by: 
+55. (not-(AT PACKAGE-4 CITY-LOC-27))
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (AT PACKAGE-4 CITY-LOC-46)
+	GN Required by: 
+56. (not-(AT PACKAGE-3 CITY-LOC-3))
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (AT PACKAGE-3 CITY-LOC-16)
+	GN Required by: 
+57. (not-(AT PACKAGE-2 CITY-LOC-18))
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (AT PACKAGE-2 CITY-LOC-1)
+	GN Required by: 
+58. (not-(AT PACKAGE-1 CITY-LOC-2))
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (AT PACKAGE-1 CITY-LOC-33)
+	GN Required by: 
+Starting search with k-BFWS...
+EXCEDED, m_arity downgraded to 1 --> size: 77.3326 MB
+Fwd_Search_Problem::init()  return
+--[108 / 0]--
+--[108 / 1]--
+--[107 / 0]--
+--[107 / 1]--
+--[107 / 2]--
+--[107 / 3]--
+--[105 / 0]--
+--[105 / 1]--
+--[105 / 3]--
+--[104 / 0]--
+--[104 / 1]--
+--[104 / 2]--
+--[104 / 3]--
+--[102 / 0]--
+--[102 / 1]--
+--[101 / 0]--
+--[101 / 1]--
+--[101 / 2]--
+--[101 / 3]--
+--[99 / 0]--
+--[99 / 1]--
+--[99 / 2]--
+--[98 / 0]--
+--[98 / 1]--
+--[98 / 3]--
+--[96 / 0]--
+--[96 / 2]--
+--[96 / 3]--
+--[96 / 4]--
+--[94 / 0]--
+--[94 / 1]--
+--[94 / 2]--
+--[94 / 3]--
+--[94 / 4]--
+--[92 / 0]--
+--[92 / 1]--
+--[92 / 3]--
+--[92 / 4]--
+--[92 / 5]--
+--[92 / 6]--
+--[90 / 0]--
+--[90 / 1]--
+--[90 / 2]--
+--[90 / 3]--
+--[90 / 4]--
+--[90 / 5]--
+--[90 / 6]--
+--[88 / 0]--
+--[88 / 1]--
+--[88 / 3]--
+--[86 / 0]--
+--[86 / 1]--
+--[86 / 2]--
+--[86 / 3]--
+--[84 / 0]--
+--[84 / 2]--
+--[84 / 3]--
+--[84 / 4]--
+--[84 / 5]--
+--[84 / 6]--
+--[83 / 0]--
+--[83 / 1]--
+--[83 / 2]--
+--[83 / 3]--
+--[82 / 0]--
+--[82 / 1]--
+--[82 / 2]--
+--[82 / 3]--
+--[80 / 0]--
+--[80 / 3]--
+--[80 / 4]--
+--[80 / 5]--
+--[79 / 0]--
+--[79 / 2]--
+--[78 / 0]--
+--[78 / 1]--
+--[78 / 2]--
+--[78 / 3]--
+--[78 / 4]--
+--[76 / 0]--
+--[76 / 4]--
+--[76 / 5]--
+--[74 / 0]--
+--[74 / 1]--
+--[74 / 2]--
+--[74 / 3]--
+--[74 / 4]--
+--[74 / 5]--
+--[74 / 6]--
+--[74 / 7]--
+--[73 / 0]--
+--[73 / 2]--
+--[70 / 0]--
+--[70 / 1]--
+--[70 / 2]--
+--[70 / 3]--
+--[70 / 4]--
+--[70 / 5]--
+--[69 / 0]--
+--[69 / 4]--
+--[66 / 0]--
+--[66 / 1]--
+--[66 / 2]--
+--[66 / 3]--
+--[66 / 4]--
+--[66 / 5]--
+--[65 / 0]--
+--[65 / 2]--
+--[62 / 0]--
+--[62 / 2]--
+--[62 / 3]--
+--[62 / 4]--
+--[62 / 5]--
+--[62 / 6]--
+--[62 / 7]--
+--[60 / 0]--
+--[60 / 6]--
+--[58 / 0]--
+--[58 / 1]--
+--[58 / 2]--
+--[58 / 3]--
+--[58 / 4]--
+--[58 / 5]--
+--[57 / 0]--
+--[57 / 1]--
+--[57 / 2]--
+--[57 / 3]--
+--[54 / 0]--
+--[54 / 3]--
+--[54 / 4]--
+--[53 / 0]--
+--[53 / 2]--
+--[50 / 0]--
+--[50 / 1]--
+--[50 / 2]--
+--[50 / 3]--
+--[50 / 4]--
+--[49 / 0]--
+--[49 / 2]--
+--[49 / 3]--
+--[49 / 4]--
+--[49 / 5]--
+--[46 / 0]--
+--[46 / 4]--
+--[44 / 0]--
+--[44 / 4]--
+--[44 / 5]--
+--[44 / 6]--
+--[42 / 0]--
+--[42 / 2]--
+--[42 / 3]--
+--[42 / 4]--
+--[40 / 0]--
+--[40 / 4]--
+--[40 / 5]--
+--[40 / 6]--
+--[38 / 0]--
+--[38 / 1]--
+--[38 / 2]--
+--[38 / 3]--
+--[38 / 4]--
+--[38 / 5]--
+--[37 / 0]--
+--[37 / 2]--
+--[37 / 3]--
+--[37 / 4]--
+--[34 / 0]--
+--[34 / 3]--
+--[34 / 4]--
+--[33 / 0]--
+--[33 / 2]--
+--[33 / 3]--
+--[33 / 4]--
+--[31 / 0]--
+--[31 / 4]--
+--[30 / 0]--
+--[30 / 1]--
+--[30 / 2]--
+--[30 / 3]--
+--[30 / 4]--
+--[30 / 5]--
+--[29 / 0]--
+--[29 / 4]--
+--[27 / 0]--
+--[27 / 4]--
+--[27 / 5]--
+--[26 / 0]--
+--[26 / 5]--
+--[24 / 0]--
+--[24 / 1]--
+--[24 / 2]--
+--[24 / 3]--
+--[22 / 0]--
+--[22 / 2]--
+--[20 / 0]--
+--[20 / 2]--
+--[20 / 3]--
+--[19 / 0]--
+--[19 / 1]--
+--[19 / 3]--
+--[19 / 4]--
+--[19 / 5]--
+--[18 / 0]--
+--[18 / 3]--
+--[16 / 0]--
+--[16 / 1]--
+--[16 / 2]--
+--[16 / 3]--
+--[16 / 4]--
+--[15 / 0]--
+--[15 / 2]--
+--[15 / 3]--
+--[15 / 4]--
+--[14 / 0]--
+--[14 / 4]--
+--[12 / 0]--
+--[12 / 1]--
+--[12 / 2]--
+--[12 / 3]--
+--[12 / 4]--
+--[12 / 5]--
+--[11 / 0]--
+--[11 / 5]--
+--[11 / 6]--
+--[11 / 7]--
+--[11 / 8]--
+--[11 / 9]--
+--[10 / 0]--
+--[10 / 4]--
+--[10 / 6]--
+--[10 / 7]--
+--[10 / 8]--
+--[10 / 9]--
+--[9 / 0]--
+--[9 / 6]--
+--[9 / 8]--
+--[9 / 9]--
+--[8 / 0]--
+--[8 / 2]--
+--[8 / 3]--
+--[8 / 4]--
+--[8 / 5]--
+--[8 / 6]--
+--[8 / 8]--
+--[8 / 9]--
+--[8 / 10]--
+--[8 / 11]--
+--[8 / 12]--
+--[8 / 13]--
+--[8 / 14]--
+--[8 / 15]--
+--[8 / 16]--
+--[8 / 17]--
+--[8 / 18]--
+--[8 / 19]--
+--[8 / 20]--
+--[8 / 21]--

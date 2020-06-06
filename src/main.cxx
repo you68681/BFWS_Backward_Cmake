@@ -476,6 +476,7 @@ int main( int argc, char** argv ) {
     std::ofstream	action_stream;
     action_stream.open("action.txt");
     for (unsigned i=0; i<search_prob.task().num_actions(); i++){
+        action_stream<<i<<std::endl;
         auto act = (search_prob.task().actions().at(i));
         act->print(search_prob.task(),action_stream);
 

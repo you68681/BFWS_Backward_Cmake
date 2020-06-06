@@ -399,7 +399,12 @@ public:
 			candidate->set_po( po );
 			m_second_h->eval( *(candidate->state()), candidate->h2n(), candidate->po() );
 		}else
-			m_second_h->eval( *(candidate->state()), candidate->h2n());
+		    /** chao edit
+		     *
+		     */
+			//m_second_h->eval( *(candidate->state()), candidate->h2n());
+
+             m_second_h->eval( *(candidate->state()), candidate->h2n(),problem().init());
 		
 
 		// if(m_lgm)

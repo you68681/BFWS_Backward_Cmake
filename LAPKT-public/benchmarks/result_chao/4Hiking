@@ -1,0 +1,221 @@
+ --- OK.
+ Match tree built with 3582 nodes.
+
+PDDL problem description loaded: 
+	Domain: HIKING
+	Problem: HIKING-3-4
+	#Actions: 3582
+	#Fluents: 57
+Goals found: 22
+Goals_Edges found: 38
+1. (AT_CAR CAR3 PLACE0)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+2. (AT_CAR CAR2 PLACE0)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+3. (AT_CAR CAR1 PLACE0)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+4. (AT_CAR CAR0 PLACE0)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+5. (DOWN TENT2)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+6. (AT_TENT TENT2 PLACE0)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+7. (WALKED COUPLE2 PLACE0)
+	Preceded by: (not-(WALKED COUPLE2 PLACE2))
+	GN Preceded by: 
+	Required by: (AT_PERSON GIRL2 PLACE0), (AT_PERSON GUY2 PLACE0)
+	GN Required by: 
+8. (AT_PERSON GIRL2 PLACE0)
+	Preceded by: (WALKED COUPLE2 PLACE0), (not-(WALKED COUPLE2 PLACE2))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+9. (AT_PERSON GUY2 PLACE0)
+	Preceded by: (WALKED COUPLE2 PLACE0), (not-(WALKED COUPLE2 PLACE2))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+10. (DOWN TENT1)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+11. (AT_TENT TENT1 PLACE0)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+12. (WALKED COUPLE1 PLACE0)
+	Preceded by: (not-(WALKED COUPLE1 PLACE2))
+	GN Preceded by: 
+	Required by: (AT_PERSON GIRL1 PLACE0), (AT_PERSON GUY1 PLACE0)
+	GN Required by: 
+13. (AT_PERSON GIRL1 PLACE0)
+	Preceded by: (WALKED COUPLE1 PLACE0), (not-(WALKED COUPLE1 PLACE2))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+14. (AT_PERSON GUY1 PLACE0)
+	Preceded by: (WALKED COUPLE1 PLACE0), (not-(WALKED COUPLE1 PLACE2))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+15. (UP TENT0)
+	Preceded by: (AT_TENT TENT0 PLACE0)
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+16. (AT_TENT TENT0 PLACE0)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (UP TENT0)
+	GN Required by: 
+17. (WALKED COUPLE0 PLACE0)
+	Preceded by: (not-(WALKED COUPLE0 PLACE2))
+	GN Preceded by: 
+	Required by: (AT_PERSON GIRL0 PLACE0), (AT_PERSON GUY0 PLACE0)
+	GN Required by: 
+18. (AT_PERSON GIRL0 PLACE0)
+	Preceded by: (WALKED COUPLE0 PLACE0), (not-(WALKED COUPLE0 PLACE2))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+19. (AT_PERSON GUY0 PLACE0)
+	Preceded by: (WALKED COUPLE0 PLACE0), (not-(WALKED COUPLE0 PLACE2))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+20. (not-(WALKED COUPLE2 PLACE2))
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (WALKED COUPLE2 PLACE0), (AT_PERSON GIRL2 PLACE0), (AT_PERSON GUY2 PLACE0)
+	GN Required by: 
+21. (not-(WALKED COUPLE1 PLACE2))
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (WALKED COUPLE1 PLACE0), (AT_PERSON GIRL1 PLACE0), (AT_PERSON GUY1 PLACE0)
+	GN Required by: 
+22. (not-(WALKED COUPLE0 PLACE2))
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (WALKED COUPLE0 PLACE0), (AT_PERSON GIRL0 PLACE0), (AT_PERSON GUY0 PLACE0)
+	GN Required by: 
+Starting search with k-BFWS...
+Fwd_Search_Problem::init()  return
+--[41 / 0]--
+--[41 / 6]--
+--[41 / 10]--
+--[34 / 0]--
+--[34 / 6]--
+--[33 / 0]--
+--[33 / 1]--
+--[33 / 4]--
+--[33 / 5]--
+--[29 / 0]--
+--[29 / 2]--
+--[29 / 4]--
+--[29 / 5]--
+--[26 / 0]--
+--[26 / 1]--
+--[26 / 2]--
+--[26 / 3]--
+--[26 / 4]--
+--[26 / 5]--
+--[25 / 0]--
+--[25 / 1]--
+--[25 / 2]--
+--[25 / 3]--
+--[25 / 4]--
+--[25 / 5]--
+--[24 / 0]--
+--[24 / 1]--
+--[24 / 2]--
+--[24 / 3]--
+--[24 / 4]--
+--[24 / 5]--
+--[24 / 6]--
+--[23 / 0]--
+--[23 / 3]--
+--[23 / 4]--
+--[20 / 0]--
+--[20 / 3]--
+--[20 / 4]--
+--[20 / 5]--
+--[20 / 6]--
+--[20 / 7]--
+--[20 / 8]--
+--[20 / 9]--
+--[19 / 0]--
+--[19 / 1]--
+--[19 / 3]--
+--[19 / 4]--
+--[19 / 5]--
+--[18 / 0]--
+--[18 / 1]--
+--[18 / 3]--
+--[18 / 4]--
+--[18 / 5]--
+--[14 / 0]--
+--[14 / 2]--
+--[14 / 3]--
+--[14 / 4]--
+--[14 / 5]--
+--[13 / 0]--
+--[13 / 3]--
+--[13 / 4]--
+--[10 / 0]--
+--[10 / 3]--
+--[10 / 4]--
+--[10 / 5]--
+--[10 / 6]--
+--[10 / 7]--
+--[10 / 8]--
+--[10 / 9]--
+--[10 / 10]--
+--[10 / 11]--
+--[10 / 12]--
+--[10 / 13]--
+--[10 / 14]--
+--[10 / 15]--
+--[10 / 16]--
+--[9 / 0]--
+--[9 / 1]--
+--[9 / 2]--
+--[9 / 3]--
+--[9 / 4]--
+--[9 / 5]--
+--[9 / 6]--
+--[6 / 0]--
+--[6 / 1]--
+--[6 / 2]--
+--[6 / 3]--
+--[2 / 0]--
+--[2 / 1]--
+--[2 / 2]--
+--[2 / 3]--
+--[2 / 4]--
+--[0 / 0]--
+--[0 / 1]--
+Total time: 68.7858
+Nodes generated during search: 98998
+Nodes expanded during search: 12465
+Plan found with cost: 20
+Fast-BFS search completed in 68.7858 secs

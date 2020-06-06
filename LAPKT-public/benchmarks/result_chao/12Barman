@@ -1,0 +1,479 @@
+ --- OK.
+ Match tree built with 2554 nodes.
+
+PDDL problem description loaded: 
+	Domain: BARMAN
+	Problem: PROB
+	#Actions: 2554
+	#Fluents: 376
+Goals found: 61
+Goals_Edges found: 136
+1. (SHAKER-LEVEL SHAKER1 L0)
+	Preceded by: (not-(CONTAINS SHOT13 COCKTAIL7)), (not-(CONTAINS SHOT11 COCKTAIL1)), (not-(CONTAINS SHOT10 COCKTAIL2)), (not-(CONTAINS SHOT9 COCKTAIL11)), (not-(CONTAINS SHOT8 COCKTAIL10)), (not-(CONTAINS SHOT7 COCKTAIL6)), (not-(CONTAINS SHOT6 COCKTAIL5)), (not-(CONTAINS SHOT5 COCKTAIL7)), (not-(CONTAINS SHOT4 COCKTAIL3)), (not-(CONTAINS SHOT3 COCKTAIL4)), (not-(CONTAINS SHOT2 COCKTAIL9)), (not-(CONTAINS SHOT1 COCKTAIL8))
+	GN Preceded by: 
+	Required by: (EMPTY SHAKER1)
+	GN Required by: 
+2. (HANDEMPTY RIGHT)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+3. (HANDEMPTY LEFT)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+4. (EMPTY SHOT14)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+5. (EMPTY SHOT13)
+	Preceded by: (not-(CONTAINS SHOT13 COCKTAIL7))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+6. (EMPTY SHOT12)
+	Preceded by: (not-(CONTAINS SHOT12 INGREDIENT3))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+7. (EMPTY SHOT11)
+	Preceded by: (not-(CONTAINS SHOT11 COCKTAIL1))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+8. (EMPTY SHOT10)
+	Preceded by: (not-(CONTAINS SHOT10 COCKTAIL2))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+9. (EMPTY SHOT9)
+	Preceded by: (not-(CONTAINS SHOT9 COCKTAIL11))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+10. (EMPTY SHOT8)
+	Preceded by: (not-(CONTAINS SHOT8 COCKTAIL10))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+11. (EMPTY SHOT7)
+	Preceded by: (not-(CONTAINS SHOT7 COCKTAIL6))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+12. (EMPTY SHOT6)
+	Preceded by: (not-(CONTAINS SHOT6 COCKTAIL5))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+13. (EMPTY SHOT5)
+	Preceded by: (not-(CONTAINS SHOT5 COCKTAIL7))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+14. (EMPTY SHOT4)
+	Preceded by: (not-(CONTAINS SHOT4 COCKTAIL3))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+15. (EMPTY SHOT3)
+	Preceded by: (not-(CONTAINS SHOT3 COCKTAIL4))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+16. (EMPTY SHOT2)
+	Preceded by: (not-(CONTAINS SHOT2 COCKTAIL9))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+17. (EMPTY SHOT1)
+	Preceded by: (not-(CONTAINS SHOT1 COCKTAIL8))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+18. (EMPTY SHAKER1)
+	Preceded by: (SHAKER-LEVEL SHAKER1 L0), (not-(CONTAINS SHOT13 COCKTAIL7)), (not-(CONTAINS SHOT11 COCKTAIL1)), (not-(CONTAINS SHOT10 COCKTAIL2)), (not-(CONTAINS SHOT9 COCKTAIL11)), (not-(CONTAINS SHOT8 COCKTAIL10)), (not-(CONTAINS SHOT7 COCKTAIL6)), (not-(CONTAINS SHOT6 COCKTAIL5)), (not-(CONTAINS SHOT5 COCKTAIL7)), (not-(CONTAINS SHOT4 COCKTAIL3)), (not-(CONTAINS SHOT3 COCKTAIL4)), (not-(CONTAINS SHOT2 COCKTAIL9)), (not-(CONTAINS SHOT1 COCKTAIL8))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+19. (CLEAN SHOT14)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+20. (CLEAN SHOT13)
+	Preceded by: (not-(CONTAINS SHOT13 COCKTAIL7))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+21. (CLEAN SHOT12)
+	Preceded by: (not-(CONTAINS SHOT12 INGREDIENT3))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+22. (CLEAN SHOT11)
+	Preceded by: (not-(CONTAINS SHOT11 COCKTAIL1))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+23. (CLEAN SHOT10)
+	Preceded by: (not-(CONTAINS SHOT10 COCKTAIL2))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+24. (CLEAN SHOT9)
+	Preceded by: (not-(CONTAINS SHOT9 COCKTAIL11))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+25. (CLEAN SHOT8)
+	Preceded by: (not-(CONTAINS SHOT8 COCKTAIL10))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+26. (CLEAN SHOT7)
+	Preceded by: (not-(CONTAINS SHOT7 COCKTAIL6))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+27. (CLEAN SHOT6)
+	Preceded by: (not-(CONTAINS SHOT6 COCKTAIL5))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+28. (CLEAN SHOT5)
+	Preceded by: (not-(CONTAINS SHOT5 COCKTAIL7))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+29. (CLEAN SHOT4)
+	Preceded by: (not-(CONTAINS SHOT4 COCKTAIL3))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+30. (CLEAN SHOT3)
+	Preceded by: (not-(CONTAINS SHOT3 COCKTAIL4))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+31. (CLEAN SHOT2)
+	Preceded by: (not-(CONTAINS SHOT2 COCKTAIL9))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+32. (CLEAN SHOT1)
+	Preceded by: (not-(CONTAINS SHOT1 COCKTAIL8))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+33. (CLEAN SHAKER1)
+	Preceded by: (not-(CONTAINS SHOT13 COCKTAIL7)), (not-(CONTAINS SHOT11 COCKTAIL1)), (not-(CONTAINS SHOT10 COCKTAIL2)), (not-(CONTAINS SHOT9 COCKTAIL11)), (not-(CONTAINS SHOT8 COCKTAIL10)), (not-(CONTAINS SHOT7 COCKTAIL6)), (not-(CONTAINS SHOT6 COCKTAIL5)), (not-(CONTAINS SHOT5 COCKTAIL7)), (not-(CONTAINS SHOT4 COCKTAIL3)), (not-(CONTAINS SHOT3 COCKTAIL4)), (not-(CONTAINS SHOT2 COCKTAIL9)), (not-(CONTAINS SHOT1 COCKTAIL8))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+34. (ONTABLE SHOT14)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+35. (ONTABLE SHOT13)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+36. (ONTABLE SHOT12)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+37. (ONTABLE SHOT11)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+38. (ONTABLE SHOT10)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+39. (ONTABLE SHOT9)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+40. (ONTABLE SHOT8)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+41. (ONTABLE SHOT7)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+42. (ONTABLE SHOT6)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+43. (ONTABLE SHOT5)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+44. (ONTABLE SHOT4)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+45. (ONTABLE SHOT3)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+46. (ONTABLE SHOT2)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+47. (ONTABLE SHOT1)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+48. (ONTABLE SHAKER1)
+	Preceded by: (not-(CONTAINS SHOT13 COCKTAIL7)), (not-(CONTAINS SHOT11 COCKTAIL1)), (not-(CONTAINS SHOT10 COCKTAIL2)), (not-(CONTAINS SHOT9 COCKTAIL11)), (not-(CONTAINS SHOT8 COCKTAIL10)), (not-(CONTAINS SHOT7 COCKTAIL6)), (not-(CONTAINS SHOT6 COCKTAIL5)), (not-(CONTAINS SHOT5 COCKTAIL7)), (not-(CONTAINS SHOT4 COCKTAIL3)), (not-(CONTAINS SHOT3 COCKTAIL4)), (not-(CONTAINS SHOT2 COCKTAIL9)), (not-(CONTAINS SHOT1 COCKTAIL8))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+49. (not-(CONTAINS SHOT13 COCKTAIL7))
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (SHAKER-LEVEL SHAKER1 L0), (EMPTY SHOT13), (EMPTY SHAKER1), (CLEAN SHOT13), (CLEAN SHAKER1), (ONTABLE SHAKER1)
+	GN Required by: 
+50. (not-(CONTAINS SHOT12 INGREDIENT3))
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (EMPTY SHOT12), (CLEAN SHOT12)
+	GN Required by: 
+51. (not-(CONTAINS SHOT11 COCKTAIL1))
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (SHAKER-LEVEL SHAKER1 L0), (EMPTY SHOT11), (EMPTY SHAKER1), (CLEAN SHOT11), (CLEAN SHAKER1), (ONTABLE SHAKER1)
+	GN Required by: 
+52. (not-(CONTAINS SHOT10 COCKTAIL2))
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (SHAKER-LEVEL SHAKER1 L0), (EMPTY SHOT10), (EMPTY SHAKER1), (CLEAN SHOT10), (CLEAN SHAKER1), (ONTABLE SHAKER1)
+	GN Required by: 
+53. (not-(CONTAINS SHOT9 COCKTAIL11))
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (SHAKER-LEVEL SHAKER1 L0), (EMPTY SHOT9), (EMPTY SHAKER1), (CLEAN SHOT9), (CLEAN SHAKER1), (ONTABLE SHAKER1)
+	GN Required by: 
+54. (not-(CONTAINS SHOT8 COCKTAIL10))
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (SHAKER-LEVEL SHAKER1 L0), (EMPTY SHOT8), (EMPTY SHAKER1), (CLEAN SHOT8), (CLEAN SHAKER1), (ONTABLE SHAKER1)
+	GN Required by: 
+55. (not-(CONTAINS SHOT7 COCKTAIL6))
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (SHAKER-LEVEL SHAKER1 L0), (EMPTY SHOT7), (EMPTY SHAKER1), (CLEAN SHOT7), (CLEAN SHAKER1), (ONTABLE SHAKER1)
+	GN Required by: 
+56. (not-(CONTAINS SHOT6 COCKTAIL5))
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (SHAKER-LEVEL SHAKER1 L0), (EMPTY SHOT6), (EMPTY SHAKER1), (CLEAN SHOT6), (CLEAN SHAKER1), (ONTABLE SHAKER1)
+	GN Required by: 
+57. (not-(CONTAINS SHOT5 COCKTAIL7))
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (SHAKER-LEVEL SHAKER1 L0), (EMPTY SHOT5), (EMPTY SHAKER1), (CLEAN SHOT5), (CLEAN SHAKER1), (ONTABLE SHAKER1)
+	GN Required by: 
+58. (not-(CONTAINS SHOT4 COCKTAIL3))
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (SHAKER-LEVEL SHAKER1 L0), (EMPTY SHOT4), (EMPTY SHAKER1), (CLEAN SHOT4), (CLEAN SHAKER1), (ONTABLE SHAKER1)
+	GN Required by: 
+59. (not-(CONTAINS SHOT3 COCKTAIL4))
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (SHAKER-LEVEL SHAKER1 L0), (EMPTY SHOT3), (EMPTY SHAKER1), (CLEAN SHOT3), (CLEAN SHAKER1), (ONTABLE SHAKER1)
+	GN Required by: 
+60. (not-(CONTAINS SHOT2 COCKTAIL9))
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (SHAKER-LEVEL SHAKER1 L0), (EMPTY SHOT2), (EMPTY SHAKER1), (CLEAN SHOT2), (CLEAN SHAKER1), (ONTABLE SHAKER1)
+	GN Required by: 
+61. (not-(CONTAINS SHOT1 COCKTAIL8))
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (SHAKER-LEVEL SHAKER1 L0), (EMPTY SHOT1), (EMPTY SHAKER1), (CLEAN SHOT1), (CLEAN SHAKER1), (ONTABLE SHAKER1)
+	GN Required by: 
+Starting search with k-BFWS...
+EXCEDED, m_arity downgraded to 1 --> size: 6.45075 MB
+Fwd_Search_Problem::init()  return
+--[149 / 0]--
+--[147 / 0]--
+--[146 / 0]--
+--[143 / 0]--
+--[141 / 0]--
+--[139 / 0]--
+--[137 / 0]--
+--[137 / 1]--
+--[136 / 0]--
+--[136 / 1]--
+--[135 / 0]--
+--[135 / 1]--
+--[134 / 0]--
+--[134 / 1]--
+--[133 / 0]--
+--[133 / 1]--
+--[132 / 0]--
+--[132 / 1]--
+--[131 / 0]--
+--[131 / 1]--
+--[130 / 0]--
+--[130 / 1]--
+--[129 / 0]--
+--[129 / 1]--
+--[128 / 0]--
+--[128 / 1]--
+--[127 / 0]--
+--[127 / 1]--
+--[126 / 0]--
+--[126 / 1]--
+--[125 / 0]--
+--[125 / 1]--
+--[124 / 0]--
+--[124 / 1]--
+--[124 / 2]--
+--[124 / 5]--
+--[122 / 0]--
+--[122 / 1]--
+--[122 / 5]--
+--[122 / 6]--
+--[120 / 0]--
+--[120 / 5]--
+--[118 / 0]--
+--[118 / 1]--
+--[118 / 5]--
+--[118 / 6]--
+--[115 / 0]--
+--[115 / 1]--
+--[115 / 2]--
+--[115 / 4]--
+--[115 / 5]--
+--[115 / 6]--
+--[114 / 0]--
+--[114 / 1]--
+--[114 / 3]--
+--[114 / 5]--
+--[114 / 6]--
+--[113 / 0]--
+--[113 / 6]--
+--[111 / 0]--
+--[111 / 1]--
+--[111 / 5]--
+--[111 / 6]--
+--[109 / 0]--
+--[109 / 1]--
+--[109 / 3]--
+--[109 / 5]--
+--[109 / 6]--
+--[108 / 0]--
+--[108 / 6]--
+--[106 / 0]--
+--[106 / 1]--
+--[106 / 5]--
+--[106 / 6]--
+--[104 / 0]--
+--[104 / 1]--
+--[104 / 3]--
+--[104 / 4]--
+--[104 / 5]--
+--[104 / 7]--
+--[104 / 9]--
+--[104 / 10]--
+--[104 / 11]--
+--[104 / 13]--
+--[103 / 0]--
+--[103 / 1]--
+--[103 / 3]--
+--[103 / 5]--
+--[103 / 6]--
+--[102 / 0]--
+--[102 / 6]--
+--[100 / 0]--
+--[100 / 1]--
+--[100 / 5]--
+--[100 / 6]--
+--[98 / 0]--
+--[98 / 1]--
+--[98 / 3]--
+--[98 / 4]--
+--[98 / 5]--
+--[98 / 6]--
+--[98 / 7]--
+--[98 / 9]--
+--[98 / 10]--
+--[97 / 0]--
+--[97 / 1]--
+--[97 / 3]--
+--[97 / 4]--
+--[97 / 5]--
+--[97 / 6]--
+--[97 / 7]--
+--[97 / 8]--
+--[97 / 10]--
+--[96 / 0]--
+--[96 / 6]--
+--[94 / 0]--
+--[94 / 1]--
+--[94 / 5]--
+--[94 / 6]--
+--[92 / 0]--
+--[92 / 1]--
+--[92 / 3]--
+--[92 / 4]--
+--[92 / 5]--
+--[92 / 8]--
+--[92 / 9]--
+--[92 / 10]--
+--[91 / 0]--
+--[91 / 1]--
+--[91 / 3]--
+--[91 / 4]--
+--[91 / 5]--
+--[91 / 6]--
+--[91 / 7]--
+--[91 / 8]--
+--[91 / 9]--
+--[90 / 0]--
+--[90 / 6]--
+--[88 / 0]--
+--[88 / 1]--
+--[88 / 5]--
+--[88 / 6]--
+--[86 / 0]--
+--[86 / 1]--
+--[86 / 3]--
+--[86 / 4]--
+--[86 / 5]--
+--[86 / 6]--
+--[86 / 8]--
+--[86 / 9]--
+--[86 / 10]--
+--[85 / 0]--
+--[85 / 1]--
+--[85 / 3]--
+--[85 / 4]--
+--[85 / 5]--
+--[85 / 6]--
+--[85 / 7]--
+--[85 / 8]--
+--[85 / 9]--
+--[85 / 10]--

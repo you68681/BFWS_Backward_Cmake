@@ -1,0 +1,435 @@
+ --- OK.
+ Match tree built with 10390 nodes.
+
+PDDL problem description loaded: 
+	Domain: THOUGHTFUL-TYPED
+	Problem: THOUGHTFUL-S13-T7
+	#Actions: 10390
+	#Fluents: 690
+Goals found: 77
+Goals_Edges found: 449
+1. (HOME S0)
+	Preceded by: (ON S3 C3), (BOTTOMCOL C3), (FACEUP HA), (BOTTOMCOL SK), (FACEUP D2), (not-(HOME SK)), (not-(HOME CK))
+	GN Preceded by: 
+	Required by: (ON HK SA)
+	GN Required by: 
+2. (HOME H0)
+	Preceded by: (ON S2 SK), (BOTTOMCOL SK), (not-(HOME SK)), (not-(HOME HK))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+3. (HOME D0)
+	Preceded by: (FACEUP HA), (CLEAR D2), (not-(HOME DK))
+	GN Preceded by: 
+	Required by: (TALONPLAYABLE S5), (TOPTALON DA), (ONTALON DA H9)
+	GN Required by: 
+4. (HOME C0)
+	Preceded by: (FACEUP HA), (not-(HOME CK))
+	GN Preceded by: 
+	Required by: (TALONPLAYABLE S5), (ONTALON S8 CA), (ONTALON CA C6)
+	GN Required by: 
+5. (TALONPLAYABLE S5)
+	Preceded by: (HOME D0), (HOME C0), (TOPTALON DA), (ONTALON DA H9), (ONTALON H9 S4), (ONTALON S4 S8), (ONTALON S8 CA), (ONTALON CA C6), (ONTALON C6 H2), (ONTALON H2 H5), (ONTALON H5 C2), (ONTALON C2 H4), (ONTALON H4 C7), (ONTALON C7 ST), (ONTALON ST D9), (ONTALON D9 CK), (ONTALON CK H6), (ONTALON H6 S6), (ONTALON S6 DJ), (ONTALON DJ H8), (ONTALON H8 C8), (ONTALON C8 DK), (ONTALON DK HQ), (ONTALON HQ S5), (ONTALON S5 D4), (ONTALON D4 D6), (BOTTOMTALON D6), (FACEUP HA), (BOTTOMCOL SK), (not-(HOME SK))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+6. (TOPTALON DA)
+	Preceded by: (HOME D0), (FACEUP HA), (CLEAR D2), (not-(HOME DK))
+	GN Preceded by: 
+	Required by: (TALONPLAYABLE S5)
+	GN Required by: 
+7. (ONTALON DA H9)
+	Preceded by: (HOME D0), (FACEUP HA), (CLEAR D2), (not-(HOME HK)), (not-(HOME DK))
+	GN Preceded by: 
+	Required by: (TALONPLAYABLE S5)
+	GN Required by: 
+8. (ONTALON H9 S4)
+	Preceded by: (FACEUP HA), (BOTTOMCOL SK), (not-(HOME SK)), (not-(HOME HK))
+	GN Preceded by: 
+	Required by: (TALONPLAYABLE S5)
+	GN Required by: 
+9. (ONTALON S4 S8)
+	Preceded by: (FACEUP HA), (BOTTOMCOL SK), (not-(HOME SK))
+	GN Preceded by: 
+	Required by: (TALONPLAYABLE S5)
+	GN Required by: 
+10. (ONTALON S8 CA)
+	Preceded by: (HOME C0), (FACEUP HA), (BOTTOMCOL SK), (not-(HOME SK)), (not-(HOME CK))
+	GN Preceded by: 
+	Required by: (TALONPLAYABLE S5)
+	GN Required by: 
+11. (ONTALON CA C6)
+	Preceded by: (HOME C0), (FACEUP HA), (not-(HOME CK))
+	GN Preceded by: 
+	Required by: (TALONPLAYABLE S5)
+	GN Required by: 
+12. (ONTALON C6 H2)
+	Preceded by: (FACEUP HA), (not-(HOME HK)), (not-(HOME CK))
+	GN Preceded by: 
+	Required by: (TALONPLAYABLE S5)
+	GN Required by: 
+13. (ONTALON H2 H5)
+	Preceded by: (FACEUP HA), (not-(HOME HK))
+	GN Preceded by: 
+	Required by: (TALONPLAYABLE S5)
+	GN Required by: 
+14. (ONTALON H5 C2)
+	Preceded by: (FACEUP HA), (not-(HOME HK)), (not-(HOME CK))
+	GN Preceded by: 
+	Required by: (TALONPLAYABLE S5)
+	GN Required by: 
+15. (ONTALON C2 H4)
+	Preceded by: (FACEUP HA), (not-(HOME HK)), (not-(HOME CK))
+	GN Preceded by: 
+	Required by: (TALONPLAYABLE S5)
+	GN Required by: 
+16. (ONTALON H4 C7)
+	Preceded by: (FACEUP HA), (not-(HOME HK)), (not-(HOME CK))
+	GN Preceded by: 
+	Required by: (TALONPLAYABLE S5)
+	GN Required by: 
+17. (ONTALON C7 ST)
+	Preceded by: (FACEUP HA), (BOTTOMCOL SK), (not-(HOME SK)), (not-(HOME CK))
+	GN Preceded by: 
+	Required by: (TALONPLAYABLE S5)
+	GN Required by: 
+18. (ONTALON ST D9)
+	Preceded by: (FACEUP HA), (BOTTOMCOL SK), (not-(HOME SK)), (not-(HOME DK))
+	GN Preceded by: 
+	Required by: (TALONPLAYABLE S5)
+	GN Required by: 
+19. (ONTALON D9 CK)
+	Preceded by: (FACEUP HA), (not-(HOME DK)), (not-(HOME CK))
+	GN Preceded by: 
+	Required by: (TALONPLAYABLE S5)
+	GN Required by: 
+20. (ONTALON CK H6)
+	Preceded by: (FACEUP HA), (not-(HOME HK)), (not-(HOME CK))
+	GN Preceded by: 
+	Required by: (TALONPLAYABLE S5)
+	GN Required by: 
+21. (ONTALON H6 S6)
+	Preceded by: (FACEUP HA), (BOTTOMCOL SK), (not-(HOME SK)), (not-(HOME HK))
+	GN Preceded by: 
+	Required by: (TALONPLAYABLE S5)
+	GN Required by: 
+22. (ONTALON S6 DJ)
+	Preceded by: (FACEUP HA), (BOTTOMCOL SK), (not-(HOME SK)), (not-(HOME DK))
+	GN Preceded by: 
+	Required by: (TALONPLAYABLE S5)
+	GN Required by: 
+23. (ONTALON DJ H8)
+	Preceded by: (FACEUP HA), (not-(HOME HK)), (not-(HOME DK))
+	GN Preceded by: 
+	Required by: (TALONPLAYABLE S5)
+	GN Required by: 
+24. (ONTALON H8 C8)
+	Preceded by: (FACEUP HA), (not-(HOME HK)), (not-(HOME CK))
+	GN Preceded by: 
+	Required by: (TALONPLAYABLE S5)
+	GN Required by: 
+25. (ONTALON C8 DK)
+	Preceded by: (FACEUP HA), (not-(HOME DK)), (not-(HOME CK))
+	GN Preceded by: 
+	Required by: (TALONPLAYABLE S5)
+	GN Required by: 
+26. (ONTALON DK HQ)
+	Preceded by: (ON D5 C4), (ON C4 HJ), (ON HJ D7), (ON D7 D3), (ON D3 SQ), (BOTTOMCOL SQ), (FACEUP SJ), (ON SJ C9), (ON C9 H7), (ON H7 D8), (ON D8 DQ), (BOTTOMCOL DQ), (FACEUP HA), (BOTTOMCOL SK), (FACEUP CJ), (ON CJ S7), (BOTTOMCOL S7), (not-(HOME SK)), (not-(HOME HK)), (not-(HOME DK)), (not-(HOME CK))
+	GN Preceded by: 
+	Required by: (TALONPLAYABLE S5)
+	GN Required by: 
+27. (ONTALON HQ S5)
+	Preceded by: (ON D5 C4), (ON C4 HJ), (ON HJ D7), (ON D7 D3), (ON D3 SQ), (BOTTOMCOL SQ), (FACEUP SJ), (ON SJ C9), (ON C9 H7), (ON H7 D8), (ON D8 DQ), (BOTTOMCOL DQ), (FACEUP HA), (BOTTOMCOL SK), (FACEUP CJ), (ON CJ S7), (BOTTOMCOL S7), (not-(HOME SK)), (not-(HOME HK)), (not-(HOME DK)), (not-(HOME CK))
+	GN Preceded by: 
+	Required by: (TALONPLAYABLE S5)
+	GN Required by: 
+28. (ONTALON S5 D4)
+	Preceded by: (FACEUP HA), (BOTTOMCOL SK), (not-(HOME SK)), (not-(HOME DK))
+	GN Preceded by: 
+	Required by: (TALONPLAYABLE S5)
+	GN Required by: 
+29. (ONTALON D4 D6)
+	Preceded by: (FACEUP HA), (not-(HOME DK))
+	GN Preceded by: 
+	Required by: (TALONPLAYABLE S5)
+	GN Required by: 
+30. (BOTTOMTALON D6)
+	Preceded by: (FACEUP HA), (not-(HOME DK))
+	GN Preceded by: 
+	Required by: (TALONPLAYABLE S5)
+	GN Required by: 
+31. (FACEUP CQ)
+	Preceded by: (FACEUP HA), (not-(HOME CK))
+	GN Preceded by: 
+	Required by: (ON CQ D5)
+	GN Required by: 
+32. (CLEAR CQ)
+	Preceded by: (FACEUP HA), (not-(HOME CK))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+33. (ON CQ D5)
+	Preceded by: (FACEUP CQ), (ON D5 C4), (ON C4 HJ), (ON HJ D7), (ON D7 D3), (ON D3 SQ), (BOTTOMCOL SQ), (CLEAR HK), (FACEUP HA), (BOTTOMCOL SK), (not-(HOME SK)), (not-(HOME HK)), (not-(HOME DK)), (not-(HOME CK))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+34. (ON D5 C4)
+	Preceded by: (ON C4 HJ), (ON HJ D7), (ON D7 D3), (ON D3 SQ), (BOTTOMCOL SQ), (FACEUP HA), (BOTTOMCOL SK), (not-(HOME SK)), (not-(HOME HK)), (not-(HOME DK)), (not-(HOME CK))
+	GN Preceded by: 
+	Required by: (ONTALON DK HQ), (ONTALON HQ S5), (ON CQ D5)
+	GN Required by: 
+35. (ON C4 HJ)
+	Preceded by: (ON HJ D7), (ON D7 D3), (ON D3 SQ), (BOTTOMCOL SQ), (FACEUP HA), (BOTTOMCOL SK), (not-(HOME SK)), (not-(HOME HK)), (not-(HOME DK)), (not-(HOME CK))
+	GN Preceded by: 
+	Required by: (ONTALON DK HQ), (ONTALON HQ S5), (ON CQ D5), (ON D5 C4)
+	GN Required by: 
+36. (ON HJ D7)
+	Preceded by: (ON D7 D3), (ON D3 SQ), (BOTTOMCOL SQ), (FACEUP HA), (BOTTOMCOL SK), (not-(HOME SK)), (not-(HOME HK)), (not-(HOME DK))
+	GN Preceded by: 
+	Required by: (ONTALON DK HQ), (ONTALON HQ S5), (ON CQ D5), (ON D5 C4), (ON C4 HJ)
+	GN Required by: 
+37. (ON D7 D3)
+	Preceded by: (ON D3 SQ), (BOTTOMCOL SQ), (FACEUP HA), (BOTTOMCOL SK), (not-(HOME SK)), (not-(HOME DK))
+	GN Preceded by: 
+	Required by: (ONTALON DK HQ), (ONTALON HQ S5), (ON CQ D5), (ON D5 C4), (ON C4 HJ), (ON HJ D7)
+	GN Required by: 
+38. (ON D3 SQ)
+	Preceded by: (BOTTOMCOL SQ), (FACEUP HA), (BOTTOMCOL SK), (not-(HOME SK)), (not-(HOME DK))
+	GN Preceded by: 
+	Required by: (ONTALON DK HQ), (ONTALON HQ S5), (ON CQ D5), (ON D5 C4), (ON C4 HJ), (ON HJ D7), (ON D7 D3)
+	GN Required by: 
+39. (BOTTOMCOL SQ)
+	Preceded by: (FACEUP HA), (BOTTOMCOL SK), (not-(HOME SK))
+	GN Preceded by: 
+	Required by: (ONTALON DK HQ), (ONTALON HQ S5), (ON CQ D5), (ON D5 C4), (ON C4 HJ), (ON HJ D7), (ON D7 D3), (ON D3 SQ), (COLSPACE COLN0)
+	GN Required by: 
+40. (FACEUP DT)
+	Preceded by: (FACEUP HA)
+	GN Preceded by: 
+	Required by: (ON DT HT)
+	GN Required by: 
+41. (CLEAR DT)
+	Preceded by: (FACEUP HA)
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+42. (ON DT HT)
+	Preceded by: (FACEUP DT), (ON HT CT), (ON CT H3), (ON H3 S9), (ON S9 C5), (BOTTOMCOL C5), (CLEAR SJ), (FACEUP HA), (BOTTOMCOL SK), (CLEAR CJ), (not-(HOME SK)), (not-(HOME HK)), (not-(HOME DK)), (not-(HOME CK))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+43. (ON HT CT)
+	Preceded by: (ON CT H3), (ON H3 S9), (ON S9 C5), (BOTTOMCOL C5), (FACEUP HA), (BOTTOMCOL SK), (not-(HOME SK)), (not-(HOME HK)), (not-(HOME CK))
+	GN Preceded by: 
+	Required by: (ON DT HT)
+	GN Required by: 
+44. (ON CT H3)
+	Preceded by: (ON H3 S9), (ON S9 C5), (BOTTOMCOL C5), (FACEUP HA), (BOTTOMCOL SK), (not-(HOME SK)), (not-(HOME HK)), (not-(HOME CK))
+	GN Preceded by: 
+	Required by: (ON DT HT), (ON HT CT)
+	GN Required by: 
+45. (ON H3 S9)
+	Preceded by: (ON S9 C5), (BOTTOMCOL C5), (FACEUP HA), (BOTTOMCOL SK), (not-(HOME SK)), (not-(HOME HK)), (not-(HOME CK))
+	GN Preceded by: 
+	Required by: (ON DT HT), (ON HT CT), (ON CT H3)
+	GN Required by: 
+46. (ON S9 C5)
+	Preceded by: (BOTTOMCOL C5), (FACEUP HA), (BOTTOMCOL SK), (not-(HOME SK)), (not-(HOME CK))
+	GN Preceded by: 
+	Required by: (ON DT HT), (ON HT CT), (ON CT H3), (ON H3 S9)
+	GN Required by: 
+47. (BOTTOMCOL C5)
+	Preceded by: (FACEUP HA), (not-(HOME CK))
+	GN Preceded by: 
+	Required by: (ON DT HT), (ON HT CT), (ON CT H3), (ON H3 S9), (ON S9 C5), (COLSPACE COLN0)
+	GN Required by: 
+48. (FACEUP SJ)
+	Preceded by: (FACEUP HA)
+	GN Preceded by: 
+	Required by: (ONTALON DK HQ), (ONTALON HQ S5), (ON SJ C9)
+	GN Required by: 
+49. (CLEAR SJ)
+	Preceded by: (FACEUP HA)
+	GN Preceded by: 
+	Required by: (ON DT HT)
+	GN Required by: 
+50. (ON SJ C9)
+	Preceded by: (FACEUP SJ), (ON C9 H7), (ON H7 D8), (ON D8 DQ), (BOTTOMCOL DQ), (FACEUP HA), (BOTTOMCOL SK), (not-(HOME SK)), (not-(HOME HK)), (not-(HOME DK)), (not-(HOME CK))
+	GN Preceded by: 
+	Required by: (ONTALON DK HQ), (ONTALON HQ S5)
+	GN Required by: 
+51. (ON C9 H7)
+	Preceded by: (ON H7 D8), (ON D8 DQ), (BOTTOMCOL DQ), (FACEUP HA), (not-(HOME HK)), (not-(HOME DK)), (not-(HOME CK))
+	GN Preceded by: 
+	Required by: (ONTALON DK HQ), (ONTALON HQ S5), (ON SJ C9)
+	GN Required by: 
+52. (ON H7 D8)
+	Preceded by: (ON D8 DQ), (BOTTOMCOL DQ), (FACEUP HA), (not-(HOME HK)), (not-(HOME DK))
+	GN Preceded by: 
+	Required by: (ONTALON DK HQ), (ONTALON HQ S5), (ON SJ C9), (ON C9 H7)
+	GN Required by: 
+53. (ON D8 DQ)
+	Preceded by: (BOTTOMCOL DQ), (FACEUP HA), (not-(HOME DK))
+	GN Preceded by: 
+	Required by: (ONTALON DK HQ), (ONTALON HQ S5), (ON SJ C9), (ON C9 H7), (ON H7 D8)
+	GN Required by: 
+54. (BOTTOMCOL DQ)
+	Preceded by: (FACEUP HA), (not-(HOME DK))
+	GN Preceded by: 
+	Required by: (ONTALON DK HQ), (ONTALON HQ S5), (ON SJ C9), (ON C9 H7), (ON H7 D8), (ON D8 DQ), (COLSPACE COLN0)
+	GN Required by: 
+55. (FACEUP HK)
+	Preceded by: (FACEUP HA), (not-(HOME HK))
+	GN Preceded by: 
+	Required by: (ON HK SA), (COLSPACE COLN0)
+	GN Required by: 
+56. (CLEAR HK)
+	Preceded by: (FACEUP HA), (not-(HOME HK))
+	GN Preceded by: 
+	Required by: (ON CQ D5)
+	GN Required by: 
+57. (ON HK SA)
+	Preceded by: (HOME S0), (FACEUP HK), (ON SA S3), (ON S3 C3), (BOTTOMCOL C3), (FACEUP HA), (BOTTOMCOL SK), (FACEUP D2), (not-(HOME SK)), (not-(HOME HK)), (not-(HOME CK))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+58. (ON SA S3)
+	Preceded by: (ON S3 C3), (BOTTOMCOL C3), (FACEUP HA), (BOTTOMCOL SK), (FACEUP D2), (not-(HOME SK)), (not-(HOME CK))
+	GN Preceded by: 
+	Required by: (ON HK SA)
+	GN Required by: 
+59. (ON S3 C3)
+	Preceded by: (BOTTOMCOL C3), (FACEUP HA), (BOTTOMCOL SK), (not-(HOME SK)), (not-(HOME CK))
+	GN Preceded by: 
+	Required by: (HOME S0), (ON HK SA), (ON SA S3)
+	GN Required by: 
+60. (BOTTOMCOL C3)
+	Preceded by: (FACEUP HA), (not-(HOME CK))
+	GN Preceded by: 
+	Required by: (HOME S0), (ON HK SA), (ON SA S3), (ON S3 C3), (COLSPACE COLN0)
+	GN Required by: 
+61. (FACEUP HA)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (HOME S0), (HOME D0), (HOME C0), (TALONPLAYABLE S5), (TOPTALON DA), (ONTALON DA H9), (ONTALON H9 S4), (ONTALON S4 S8), (ONTALON S8 CA), (ONTALON CA C6), (ONTALON C6 H2), (ONTALON H2 H5), (ONTALON H5 C2), (ONTALON C2 H4), (ONTALON H4 C7), (ONTALON C7 ST), (ONTALON ST D9), (ONTALON D9 CK), (ONTALON CK H6), (ONTALON H6 S6), (ONTALON S6 DJ), (ONTALON DJ H8), (ONTALON H8 C8), (ONTALON C8 DK), (ONTALON DK HQ), (ONTALON HQ S5), (ONTALON S5 D4), (ONTALON D4 D6), (BOTTOMTALON D6), (FACEUP CQ), (CLEAR CQ), (ON CQ D5), (ON D5 C4), (ON C4 HJ), (ON HJ D7), (ON D7 D3), (ON D3 SQ), (BOTTOMCOL SQ), (FACEUP DT), (CLEAR DT), (ON DT HT), (ON HT CT), (ON CT H3), (ON H3 S9), (ON S9 C5), (BOTTOMCOL C5), (FACEUP SJ), (CLEAR SJ), (ON SJ C9), (ON C9 H7), (ON H7 D8), (ON D8 DQ), (BOTTOMCOL DQ), (FACEUP HK), (CLEAR HK), (ON HK SA), (ON SA S3), (ON S3 C3), (BOTTOMCOL C3), (ON S2 SK), (BOTTOMCOL SK), (FACEUP CJ), (CLEAR CJ), (ON CJ S7), (BOTTOMCOL S7), (FACEUP D2), (CLEAR D2), (BOTTOMCOL D2), (COLSPACE COLN0), (not-(HOME SK)), (not-(HOME HK)), (not-(HOME DK)), (not-(HOME CK))
+	GN Required by: 
+62. (CLEAR HA)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+63. (ON HA S2)
+	Preceded by: (ON S2 SK), (BOTTOMCOL SK), (not-(HOME SK)), (not-(HOME HK))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+64. (ON S2 SK)
+	Preceded by: (FACEUP HA), (BOTTOMCOL SK), (not-(HOME SK))
+	GN Preceded by: 
+	Required by: (HOME H0), (ON HA S2)
+	GN Required by: 
+65. (BOTTOMCOL SK)
+	Preceded by: (FACEUP HA)
+	GN Preceded by: 
+	Required by: (HOME S0), (HOME H0), (TALONPLAYABLE S5), (ONTALON H9 S4), (ONTALON S4 S8), (ONTALON S8 CA), (ONTALON C7 ST), (ONTALON ST D9), (ONTALON H6 S6), (ONTALON S6 DJ), (ONTALON DK HQ), (ONTALON HQ S5), (ONTALON S5 D4), (ON CQ D5), (ON D5 C4), (ON C4 HJ), (ON HJ D7), (ON D7 D3), (ON D3 SQ), (BOTTOMCOL SQ), (ON DT HT), (ON HT CT), (ON CT H3), (ON H3 S9), (ON S9 C5), (ON SJ C9), (ON HK SA), (ON SA S3), (ON S3 C3), (ON HA S2), (ON S2 SK), (ON CJ S7), (BOTTOMCOL S7), (COLSPACE COLN0)
+	GN Required by: 
+66. (FACEUP CJ)
+	Preceded by: (FACEUP HA)
+	GN Preceded by: 
+	Required by: (ONTALON DK HQ), (ONTALON HQ S5), (ON CJ S7)
+	GN Required by: 
+67. (CLEAR CJ)
+	Preceded by: (FACEUP HA)
+	GN Preceded by: 
+	Required by: (ON DT HT)
+	GN Required by: 
+68. (ON CJ S7)
+	Preceded by: (FACEUP HA), (BOTTOMCOL SK), (FACEUP CJ), (BOTTOMCOL S7), (not-(HOME SK)), (not-(HOME CK))
+	GN Preceded by: 
+	Required by: (ONTALON DK HQ), (ONTALON HQ S5)
+	GN Required by: 
+69. (BOTTOMCOL S7)
+	Preceded by: (FACEUP HA), (BOTTOMCOL SK), (not-(HOME SK))
+	GN Preceded by: 
+	Required by: (ONTALON DK HQ), (ONTALON HQ S5), (ON CJ S7), (COLSPACE COLN0)
+	GN Required by: 
+70. (FACEUP D2)
+	Preceded by: (FACEUP HA), (CLEAR D2)
+	GN Preceded by: 
+	Required by: (HOME S0), (ON HK SA), (ON SA S3), (BOTTOMCOL D2)
+	GN Required by: 
+71. (CLEAR D2)
+	Preceded by: (FACEUP HA)
+	GN Preceded by: 
+	Required by: (HOME D0), (TOPTALON DA), (ONTALON DA H9), (FACEUP D2), (BOTTOMCOL D2)
+	GN Required by: 
+72. (BOTTOMCOL D2)
+	Preceded by: (FACEUP HA), (FACEUP D2), (CLEAR D2), (not-(HOME DK))
+	GN Preceded by: 
+	Required by: (COLSPACE COLN0)
+	GN Required by: 
+73. (COLSPACE COLN0)
+	Preceded by: (BOTTOMCOL SQ), (BOTTOMCOL C5), (BOTTOMCOL DQ), (FACEUP HK), (BOTTOMCOL C3), (FACEUP HA), (BOTTOMCOL SK), (BOTTOMCOL S7), (BOTTOMCOL D2), (not-(HOME SK))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+74. (not-(HOME SK))
+	Preceded by: (FACEUP HA)
+	GN Preceded by: 
+	Required by: (HOME S0), (HOME H0), (TALONPLAYABLE S5), (ONTALON H9 S4), (ONTALON S4 S8), (ONTALON S8 CA), (ONTALON C7 ST), (ONTALON ST D9), (ONTALON H6 S6), (ONTALON S6 DJ), (ONTALON DK HQ), (ONTALON HQ S5), (ONTALON S5 D4), (ON CQ D5), (ON D5 C4), (ON C4 HJ), (ON HJ D7), (ON D7 D3), (ON D3 SQ), (BOTTOMCOL SQ), (ON DT HT), (ON HT CT), (ON CT H3), (ON H3 S9), (ON S9 C5), (ON SJ C9), (ON HK SA), (ON SA S3), (ON S3 C3), (ON HA S2), (ON S2 SK), (ON CJ S7), (BOTTOMCOL S7), (COLSPACE COLN0)
+	GN Required by: 
+75. (not-(HOME HK))
+	Preceded by: (FACEUP HA)
+	GN Preceded by: 
+	Required by: (HOME H0), (ONTALON DA H9), (ONTALON H9 S4), (ONTALON C6 H2), (ONTALON H2 H5), (ONTALON H5 C2), (ONTALON C2 H4), (ONTALON H4 C7), (ONTALON CK H6), (ONTALON H6 S6), (ONTALON DJ H8), (ONTALON H8 C8), (ONTALON DK HQ), (ONTALON HQ S5), (ON CQ D5), (ON D5 C4), (ON C4 HJ), (ON HJ D7), (ON DT HT), (ON HT CT), (ON CT H3), (ON H3 S9), (ON SJ C9), (ON C9 H7), (ON H7 D8), (FACEUP HK), (CLEAR HK), (ON HK SA), (ON HA S2)
+	GN Required by: 
+76. (not-(HOME DK))
+	Preceded by: (FACEUP HA)
+	GN Preceded by: 
+	Required by: (HOME D0), (TOPTALON DA), (ONTALON DA H9), (ONTALON ST D9), (ONTALON D9 CK), (ONTALON S6 DJ), (ONTALON DJ H8), (ONTALON C8 DK), (ONTALON DK HQ), (ONTALON HQ S5), (ONTALON S5 D4), (ONTALON D4 D6), (BOTTOMTALON D6), (ON CQ D5), (ON D5 C4), (ON C4 HJ), (ON HJ D7), (ON D7 D3), (ON D3 SQ), (ON DT HT), (ON SJ C9), (ON C9 H7), (ON H7 D8), (ON D8 DQ), (BOTTOMCOL DQ), (BOTTOMCOL D2)
+	GN Required by: 
+77. (not-(HOME CK))
+	Preceded by: (FACEUP HA)
+	GN Preceded by: 
+	Required by: (HOME S0), (HOME C0), (ONTALON S8 CA), (ONTALON CA C6), (ONTALON C6 H2), (ONTALON H5 C2), (ONTALON C2 H4), (ONTALON H4 C7), (ONTALON C7 ST), (ONTALON D9 CK), (ONTALON CK H6), (ONTALON H8 C8), (ONTALON C8 DK), (ONTALON DK HQ), (ONTALON HQ S5), (FACEUP CQ), (CLEAR CQ), (ON CQ D5), (ON D5 C4), (ON C4 HJ), (ON DT HT), (ON HT CT), (ON CT H3), (ON H3 S9), (ON S9 C5), (BOTTOMCOL C5), (ON SJ C9), (ON C9 H7), (ON HK SA), (ON SA S3), (ON S3 C3), (BOTTOMCOL C3), (ON CJ S7)
+	GN Required by: 
+Starting search with k-BFWS...
+EXCEDED, m_arity downgraded to 1 --> size: 41.0927 MB
+Fwd_Search_Problem::init()  return
+--[453 / 0]--
+--[453 / 3]--
+--[453 / 4]--
+--[453 / 5]--
+--[453 / 6]--
+--[453 / 7]--
+--[453 / 8]--
+--[453 / 9]--
+--[453 / 10]--
+--[453 / 11]--
+--[453 / 12]--
+--[453 / 13]--
+--[453 / 14]--
+--[453 / 15]--
+--[453 / 16]--
+--[453 / 17]--
+--[453 / 19]--
+--[453 / 20]--
+--[453 / 21]--
+--[453 / 22]--
+--[453 / 23]--
+--[453 / 24]--
+--[453 / 25]--
+--[453 / 26]--
+--[453 / 27]--
+--[453 / 28]--
+--[453 / 29]--
+--[453 / 30]--
+--[453 / 31]--
+--[453 / 32]--
+--[453 / 33]--
+--[453 / 34]--
+--[453 / 35]--
+--[453 / 36]--
+--[453 / 37]--
+--[453 / 38]--
+--[453 / 39]--

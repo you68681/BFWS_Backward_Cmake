@@ -76,6 +76,10 @@ public:
         actions_seen().reset();
         init_fluents().reset();
 
+//        m_base_heuristic.eval_edit( s, h_val );
+//        if ( h_val == infty  )
+//            return;
+
         /** chao test
          * original from current to init
          * new from init to current
@@ -92,7 +96,7 @@ public:
 //            if ( init_fluents().isset( G[k] ) ) continue;
 
 
-
+//
         for ( unsigned k = 0; k < m_strips_model.init().size(); k++ )
             init_fluents().set(m_strips_model.init()[k] );
 
@@ -112,7 +116,7 @@ public:
             const unsigned act_idx = m_base_heuristic.get_best_supporter( G[k] ).act_idx;
             if ( act_idx == no_such_index ) // No best supporter for fluent
             {
-                std::cerr << "No best supporter found for goal fluent ";
+//                std::cerr << "No best supporter found for goal fluent ";
                 std::cerr << m_strips_model.fluents()[G[k]]->signature() << std::endl;
                 return;
             }
@@ -143,16 +147,16 @@ public:
 			bool continue_flag=true;
 
             if ( a->asserts( p->index() ) ) { // fluent asserted by action main effect
-                for(auto q : a->prec_vec())
-                {
-                    if (std::find(unachived_goal.begin(), unachived_goal.end(), q) != unachived_goal.end()){
-                        continue_flag= false;
-                        break;
-                    }
-                }
-                if (!continue_flag){
-                    continue;
-                }
+//                for(auto q : a->prec_vec())
+//                {
+//                    if (std::find(unachived_goal.begin(), unachived_goal.end(), q) != unachived_goal.end()){
+//                        continue_flag= false;
+//                        break;
+//                    }
+//                }
+//                if (!continue_flag){
+//                    continue;
+//                }
                 for ( auto q : a->prec_vec() )
                     m_rp_precs.set(q);
 

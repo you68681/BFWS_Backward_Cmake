@@ -1,0 +1,8 @@
+ --- OK.
+ Match tree built with 61190 nodes.
+
+PDDL problem description loaded: 
+	Domain: TRANSPORT
+	Problem: TRANSPORT-CITY-SEQUENTIAL-60NODES-1000SIZE-4DEGREE-100MINDISTANCE-5TRUCKS-25PACKAGES-2014SEED
+	#Actions: 61190
+	#Fluents: 1975

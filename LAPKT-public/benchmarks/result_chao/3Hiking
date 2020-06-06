@@ -1,0 +1,208 @@
+ --- OK.
+ Match tree built with 24498 nodes.
+
+PDDL problem description loaded: 
+	Domain: HIKING
+	Problem: HIKING-3-4
+	#Actions: 24498
+	#Fluents: 121
+Goals found: 22
+Goals_Edges found: 38
+1. (AT_CAR CAR3 PLACE0)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+2. (AT_CAR CAR2 PLACE0)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+3. (AT_CAR CAR1 PLACE0)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+4. (AT_CAR CAR0 PLACE0)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+5. (UP TENT2)
+	Preceded by: (AT_TENT TENT2 PLACE0)
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+6. (AT_TENT TENT2 PLACE0)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (UP TENT2)
+	GN Required by: 
+7. (WALKED COUPLE2 PLACE0)
+	Preceded by: (not-(WALKED COUPLE2 PLACE6))
+	GN Preceded by: 
+	Required by: (AT_PERSON GIRL2 PLACE0), (AT_PERSON GUY2 PLACE0)
+	GN Required by: 
+8. (AT_PERSON GIRL2 PLACE0)
+	Preceded by: (WALKED COUPLE2 PLACE0), (not-(WALKED COUPLE2 PLACE6))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+9. (AT_PERSON GUY2 PLACE0)
+	Preceded by: (WALKED COUPLE2 PLACE0), (not-(WALKED COUPLE2 PLACE6))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+10. (DOWN TENT1)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+11. (AT_TENT TENT1 PLACE0)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+12. (WALKED COUPLE1 PLACE0)
+	Preceded by: (not-(WALKED COUPLE1 PLACE6))
+	GN Preceded by: 
+	Required by: (AT_PERSON GIRL1 PLACE0), (AT_PERSON GUY1 PLACE0)
+	GN Required by: 
+13. (AT_PERSON GIRL1 PLACE0)
+	Preceded by: (WALKED COUPLE1 PLACE0), (not-(WALKED COUPLE1 PLACE6))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+14. (AT_PERSON GUY1 PLACE0)
+	Preceded by: (WALKED COUPLE1 PLACE0), (not-(WALKED COUPLE1 PLACE6))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+15. (DOWN TENT0)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+16. (AT_TENT TENT0 PLACE0)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+17. (WALKED COUPLE0 PLACE0)
+	Preceded by: (not-(WALKED COUPLE0 PLACE6))
+	GN Preceded by: 
+	Required by: (AT_PERSON GIRL0 PLACE0), (AT_PERSON GUY0 PLACE0)
+	GN Required by: 
+18. (AT_PERSON GIRL0 PLACE0)
+	Preceded by: (WALKED COUPLE0 PLACE0), (not-(WALKED COUPLE0 PLACE6))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+19. (AT_PERSON GUY0 PLACE0)
+	Preceded by: (WALKED COUPLE0 PLACE0), (not-(WALKED COUPLE0 PLACE6))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+20. (not-(WALKED COUPLE2 PLACE6))
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (WALKED COUPLE2 PLACE0), (AT_PERSON GIRL2 PLACE0), (AT_PERSON GUY2 PLACE0)
+	GN Required by: 
+21. (not-(WALKED COUPLE1 PLACE6))
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (WALKED COUPLE1 PLACE0), (AT_PERSON GIRL1 PLACE0), (AT_PERSON GUY1 PLACE0)
+	GN Required by: 
+22. (not-(WALKED COUPLE0 PLACE6))
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (WALKED COUPLE0 PLACE0), (AT_PERSON GIRL0 PLACE0), (AT_PERSON GUY0 PLACE0)
+	GN Required by: 
+Starting search with k-BFWS...
+Fwd_Search_Problem::init()  return
+--[41 / 0]--
+--[41 / 5]--
+--[41 / 6]--
+--[41 / 9]--
+--[41 / 10]--
+--[41 / 11]--
+--[39 / 0]--
+--[39 / 6]--
+--[39 / 7]--
+--[39 / 8]--
+--[39 / 9]--
+--[38 / 0]--
+--[38 / 6]--
+--[38 / 7]--
+--[38 / 8]--
+--[38 / 9]--
+--[35 / 0]--
+--[35 / 1]--
+--[35 / 2]--
+--[35 / 3]--
+--[35 / 4]--
+--[35 / 5]--
+--[35 / 8]--
+--[35 / 9]--
+--[34 / 0]--
+--[34 / 5]--
+--[34 / 6]--
+--[34 / 7]--
+--[33 / 0]--
+--[33 / 5]--
+--[33 / 7]--
+--[32 / 0]--
+--[32 / 1]--
+--[32 / 2]--
+--[32 / 3]--
+--[32 / 4]--
+--[32 / 5]--
+--[32 / 6]--
+--[32 / 7]--
+--[32 / 8]--
+--[32 / 9]--
+--[31 / 0]--
+--[31 / 2]--
+--[31 / 3]--
+--[31 / 4]--
+--[28 / 0]--
+--[28 / 3]--
+--[28 / 4]--
+--[28 / 5]--
+--[28 / 6]--
+--[28 / 7]--
+--[28 / 8]--
+--[28 / 9]--
+--[28 / 10]--
+--[28 / 11]--
+--[28 / 12]--
+--[28 / 13]--
+--[28 / 14]--
+--[28 / 15]--
+--[28 / 16]--
+--[28 / 17]--
+--[28 / 18]--
+--[28 / 19]--
+--[28 / 20]--
+--[28 / 21]--
+--[28 / 22]--
+--[28 / 23]--
+--[28 / 24]--
+--[28 / 25]--
+--[28 / 26]--
+--[28 / 27]--
+--[28 / 28]--
+--[28 / 29]--
+--[28 / 30]--
+--[28 / 31]--
+--[28 / 32]--
+--[28 / 33]--
+--[28 / 34]--
+--[28 / 35]--
+--[28 / 36]--
+--[28 / 37]--
+--[28 / 38]--
+--[28 / 39]--
+--[28 / 40]--
+--[28 / 41]--
+--[28 / 42]--

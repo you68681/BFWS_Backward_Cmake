@@ -1,0 +1,244 @@
+ --- OK.
+ Match tree built with 1029 nodes.
+
+PDDL problem description loaded: 
+	Domain: THOUGHTFUL-TYPED
+	Problem: THOUGHTFUL-S5-T4
+	#Actions: 1029
+	#Fluents: 203
+Goals found: 39
+Goals_Edges found: 214
+1. (HOME S0)
+	Preceded by: (FACEUP CA), (FACEUP DA), (not-(HOME S5))
+	GN Preceded by: 
+	Required by: (COLSPACE COLN0)
+	GN Required by: 
+2. (HOME H0)
+	Preceded by: (FACEUP CA), (FACEUP DA), (FACEUP SA), (not-(HOME H5))
+	GN Preceded by: 
+	Required by: (TALONPLAYABLE S2), (ONTALON H3 HA), (ONTALON HA H5)
+	GN Required by: 
+3. (HOME D0)
+	Preceded by: (FACEUP CA), (BOTTOMCOL D2), (FACEUP SA), (not-(HOME D5))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+4. (HOME C0)
+	Preceded by: (ON D3 C5), (BOTTOMCOL C5), (FACEUP DA), (FACEUP SA), (not-(HOME D5)), (not-(HOME C5))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+5. (TALONPLAYABLE S2)
+	Preceded by: (HOME H0), (TOPTALON C4), (ONTALON C4 C3), (ONTALON C3 H3), (ONTALON H3 HA), (ONTALON HA H5), (ONTALON H5 H4), (ONTALON H4 C2), (ONTALON C2 S2), (ONTALON S2 H2), (ONTALON H2 S5), (BOTTOMTALON S5), (FACEUP CA), (FACEUP DA), (FACEUP SA), (not-(HOME S5))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+6. (TOPTALON C4)
+	Preceded by: (FACEUP CA), (BOTTOMCOL C5), (FACEUP DA), (FACEUP SA), (not-(HOME C5))
+	GN Preceded by: 
+	Required by: (TALONPLAYABLE S2)
+	GN Required by: 
+7. (ONTALON C4 C3)
+	Preceded by: (FACEUP CA), (BOTTOMCOL C5), (FACEUP DA), (FACEUP SA), (not-(HOME C5))
+	GN Preceded by: 
+	Required by: (TALONPLAYABLE S2)
+	GN Required by: 
+8. (ONTALON C3 H3)
+	Preceded by: (FACEUP CA), (BOTTOMCOL C5), (FACEUP DA), (FACEUP SA), (not-(HOME H5)), (not-(HOME C5))
+	GN Preceded by: 
+	Required by: (TALONPLAYABLE S2)
+	GN Required by: 
+9. (ONTALON H3 HA)
+	Preceded by: (HOME H0), (FACEUP CA), (FACEUP DA), (FACEUP SA), (not-(HOME H5))
+	GN Preceded by: 
+	Required by: (TALONPLAYABLE S2)
+	GN Required by: 
+10. (ONTALON HA H5)
+	Preceded by: (HOME H0), (FACEUP CA), (FACEUP DA), (FACEUP SA), (not-(HOME H5))
+	GN Preceded by: 
+	Required by: (TALONPLAYABLE S2)
+	GN Required by: 
+11. (ONTALON H5 H4)
+	Preceded by: (FACEUP CA), (FACEUP DA), (FACEUP SA), (not-(HOME H5))
+	GN Preceded by: 
+	Required by: (TALONPLAYABLE S2)
+	GN Required by: 
+12. (ONTALON H4 C2)
+	Preceded by: (FACEUP CA), (BOTTOMCOL C5), (FACEUP DA), (FACEUP SA), (not-(HOME H5)), (not-(HOME C5))
+	GN Preceded by: 
+	Required by: (TALONPLAYABLE S2)
+	GN Required by: 
+13. (ONTALON C2 S2)
+	Preceded by: (FACEUP CA), (BOTTOMCOL C5), (FACEUP DA), (FACEUP SA), (not-(HOME S5)), (not-(HOME C5))
+	GN Preceded by: 
+	Required by: (TALONPLAYABLE S2)
+	GN Required by: 
+14. (ONTALON S2 H2)
+	Preceded by: (FACEUP CA), (FACEUP DA), (FACEUP SA), (not-(HOME S5)), (not-(HOME H5))
+	GN Preceded by: 
+	Required by: (TALONPLAYABLE S2)
+	GN Required by: 
+15. (ONTALON H2 S5)
+	Preceded by: (FACEUP CA), (FACEUP DA), (FACEUP SA), (not-(HOME S5)), (not-(HOME H5))
+	GN Preceded by: 
+	Required by: (TALONPLAYABLE S2)
+	GN Required by: 
+16. (BOTTOMTALON S5)
+	Preceded by: (FACEUP CA), (FACEUP DA), (FACEUP SA), (not-(HOME S5))
+	GN Preceded by: 
+	Required by: (TALONPLAYABLE S2)
+	GN Required by: 
+17. (FACEUP S3)
+	Preceded by: (FACEUP CA), (FACEUP DA), (FACEUP SA)
+	GN Preceded by: 
+	Required by: (ON S3 D5)
+	GN Required by: 
+18. (CLEAR S3)
+	Preceded by: (FACEUP CA), (FACEUP DA), (FACEUP SA)
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+19. (ON S3 D5)
+	Preceded by: (FACEUP S3), (ON D5 D4), (ON D4 S4), (BOTTOMCOL S4), (FACEUP CA), (FACEUP DA), (FACEUP SA), (not-(HOME S5)), (not-(HOME D5))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+20. (ON D5 D4)
+	Preceded by: (ON D4 S4), (BOTTOMCOL S4), (FACEUP CA), (FACEUP DA), (FACEUP SA), (not-(HOME S5)), (not-(HOME D5))
+	GN Preceded by: 
+	Required by: (ON S3 D5)
+	GN Required by: 
+21. (ON D4 S4)
+	Preceded by: (BOTTOMCOL S4), (FACEUP CA), (FACEUP DA), (FACEUP SA), (not-(HOME S5)), (not-(HOME D5))
+	GN Preceded by: 
+	Required by: (ON S3 D5), (ON D5 D4)
+	GN Required by: 
+22. (BOTTOMCOL S4)
+	Preceded by: (FACEUP CA), (FACEUP DA), (FACEUP SA), (not-(HOME S5))
+	GN Preceded by: 
+	Required by: (ON S3 D5), (ON D5 D4), (ON D4 S4), (COLSPACE COLN0)
+	GN Required by: 
+23. (FACEUP CA)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (HOME S0), (HOME H0), (HOME D0), (TALONPLAYABLE S2), (TOPTALON C4), (ONTALON C4 C3), (ONTALON C3 H3), (ONTALON H3 HA), (ONTALON HA H5), (ONTALON H5 H4), (ONTALON H4 C2), (ONTALON C2 S2), (ONTALON S2 H2), (ONTALON H2 S5), (BOTTOMTALON S5), (FACEUP S3), (CLEAR S3), (ON S3 D5), (ON D5 D4), (ON D4 S4), (BOTTOMCOL S4), (ON D3 C5), (BOTTOMCOL C5), (CLEAR DA), (ON DA D2), (BOTTOMCOL D2), (CLEAR SA), (BOTTOMCOL SA), (COLSPACE COLN0), (not-(HOME S5)), (not-(HOME H5)), (not-(HOME D5)), (not-(HOME C5))
+	GN Required by: 
+24. (CLEAR CA)
+	Preceded by: (FACEUP DA), (FACEUP SA)
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+25. (ON CA D3)
+	Preceded by: (ON D3 C5), (BOTTOMCOL C5), (FACEUP DA), (FACEUP SA), (not-(HOME D5)), (not-(HOME C5))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+26. (ON D3 C5)
+	Preceded by: (FACEUP CA), (BOTTOMCOL C5), (FACEUP DA), (FACEUP SA), (not-(HOME D5)), (not-(HOME C5))
+	GN Preceded by: 
+	Required by: (HOME C0), (ON CA D3)
+	GN Required by: 
+27. (BOTTOMCOL C5)
+	Preceded by: (FACEUP CA), (FACEUP DA), (FACEUP SA)
+	GN Preceded by: 
+	Required by: (HOME C0), (TOPTALON C4), (ONTALON C4 C3), (ONTALON C3 H3), (ONTALON H4 C2), (ONTALON C2 S2), (ON CA D3), (ON D3 C5), (COLSPACE COLN0)
+	GN Required by: 
+28. (FACEUP DA)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (HOME S0), (HOME H0), (HOME C0), (TALONPLAYABLE S2), (TOPTALON C4), (ONTALON C4 C3), (ONTALON C3 H3), (ONTALON H3 HA), (ONTALON HA H5), (ONTALON H5 H4), (ONTALON H4 C2), (ONTALON C2 S2), (ONTALON S2 H2), (ONTALON H2 S5), (BOTTOMTALON S5), (FACEUP S3), (CLEAR S3), (ON S3 D5), (ON D5 D4), (ON D4 S4), (BOTTOMCOL S4), (CLEAR CA), (ON CA D3), (ON D3 C5), (BOTTOMCOL C5), (BOTTOMCOL D2), (CLEAR SA), (BOTTOMCOL SA), (COLSPACE COLN0), (not-(HOME S5)), (not-(HOME H5)), (not-(HOME D5)), (not-(HOME C5))
+	GN Required by: 
+29. (CLEAR DA)
+	Preceded by: (FACEUP CA), (FACEUP SA)
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+30. (ON DA D2)
+	Preceded by: (FACEUP CA), (BOTTOMCOL D2), (FACEUP SA), (not-(HOME D5))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+31. (BOTTOMCOL D2)
+	Preceded by: (FACEUP CA), (FACEUP DA), (FACEUP SA), (not-(HOME D5))
+	GN Preceded by: 
+	Required by: (HOME D0), (ON DA D2), (COLSPACE COLN0)
+	GN Required by: 
+32. (FACEUP SA)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (HOME H0), (HOME D0), (HOME C0), (TALONPLAYABLE S2), (TOPTALON C4), (ONTALON C4 C3), (ONTALON C3 H3), (ONTALON H3 HA), (ONTALON HA H5), (ONTALON H5 H4), (ONTALON H4 C2), (ONTALON C2 S2), (ONTALON S2 H2), (ONTALON H2 S5), (BOTTOMTALON S5), (FACEUP S3), (CLEAR S3), (ON S3 D5), (ON D5 D4), (ON D4 S4), (BOTTOMCOL S4), (CLEAR CA), (ON CA D3), (ON D3 C5), (BOTTOMCOL C5), (CLEAR DA), (ON DA D2), (BOTTOMCOL D2), (COLSPACE COLN0), (not-(HOME S5)), (not-(HOME H5)), (not-(HOME D5)), (not-(HOME C5))
+	GN Required by: 
+33. (CLEAR SA)
+	Preceded by: (FACEUP CA), (FACEUP DA)
+	GN Preceded by: 
+	Required by: (COLSPACE COLN0)
+	GN Required by: 
+34. (BOTTOMCOL SA)
+	Preceded by: (FACEUP CA), (FACEUP DA), (not-(HOME S5))
+	GN Preceded by: 
+	Required by: (COLSPACE COLN0)
+	GN Required by: 
+35. (COLSPACE COLN0)
+	Preceded by: (HOME S0), (BOTTOMCOL S4), (FACEUP CA), (BOTTOMCOL C5), (FACEUP DA), (BOTTOMCOL D2), (FACEUP SA), (CLEAR SA), (BOTTOMCOL SA), (not-(HOME C5))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+36. (not-(HOME S5))
+	Preceded by: (FACEUP CA), (FACEUP DA), (FACEUP SA)
+	GN Preceded by: 
+	Required by: (HOME S0), (TALONPLAYABLE S2), (ONTALON C2 S2), (ONTALON S2 H2), (ONTALON H2 S5), (BOTTOMTALON S5), (ON S3 D5), (ON D5 D4), (ON D4 S4), (BOTTOMCOL S4), (BOTTOMCOL SA)
+	GN Required by: 
+37. (not-(HOME H5))
+	Preceded by: (FACEUP CA), (FACEUP DA), (FACEUP SA)
+	GN Preceded by: 
+	Required by: (HOME H0), (ONTALON C3 H3), (ONTALON H3 HA), (ONTALON HA H5), (ONTALON H5 H4), (ONTALON H4 C2), (ONTALON S2 H2), (ONTALON H2 S5)
+	GN Required by: 
+38. (not-(HOME D5))
+	Preceded by: (FACEUP CA), (FACEUP DA), (FACEUP SA)
+	GN Preceded by: 
+	Required by: (HOME D0), (HOME C0), (ON S3 D5), (ON D5 D4), (ON D4 S4), (ON CA D3), (ON D3 C5), (ON DA D2), (BOTTOMCOL D2)
+	GN Required by: 
+39. (not-(HOME C5))
+	Preceded by: (FACEUP CA), (FACEUP DA), (FACEUP SA)
+	GN Preceded by: 
+	Required by: (HOME C0), (TOPTALON C4), (ONTALON C4 C3), (ONTALON C3 H3), (ONTALON H4 C2), (ONTALON C2 S2), (ON CA D3), (ON D3 C5), (COLSPACE COLN0)
+	GN Required by: 
+Starting search with k-BFWS...
+Fwd_Search_Problem::init()  return
+--[218 / 0]--
+--[218 / 3]--
+--[218 / 4]--
+--[218 / 5]--
+--[218 / 10]--
+--[218 / 11]--
+--[218 / 13]--
+--[218 / 14]--
+--[218 / 15]--
+--[218 / 16]--
+--[218 / 17]--
+--[218 / 18]--
+--[218 / 19]--
+--[218 / 20]--
+--[218 / 22]--
+--[218 / 23]--
+--[218 / 24]--
+--[218 / 25]--
+--[218 / 26]--
+--[218 / 27]--
+--[218 / 28]--
+--[218 / 29]--
+--[218 / 30]--
+--[218 / 32]--
+--[218 / 33]--
+--[218 / 34]--
+--[218 / 36]--
+--[218 / 37]--
+--[218 / 39]--
+--[218 / 41]--
+--[216 / 0]--
+--[214 / 0]--
+Total time: 1.06814
+Nodes generated during search: 16326
+Nodes expanded during search: 2837
+Plan found with cost: 46
+Fast-BFS search completed in 1.06814 secs

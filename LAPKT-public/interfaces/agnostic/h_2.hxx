@@ -754,9 +754,13 @@ protected:
 						}
 						**/
 						if ( h2_pre_noop == infty ) continue;
-						value(p,r) = 0.0f;
 
-						int curr_idx = H2_Helper::pair_index(p,r);
+						value(p,r) = 0.0f;
+                        int curr_idx = H2_Helper::pair_index(p,r);
+
+//                        if (curr_idx==H2_Helper::pair_index(42, 74)){
+//                            std::cout<<"find"<<std::endl;
+//                        }
 						if ( !m_already_updated.isset( curr_idx ) ) {
 							m_updated.push_back( curr_idx );
 							m_already_updated.set( curr_idx );

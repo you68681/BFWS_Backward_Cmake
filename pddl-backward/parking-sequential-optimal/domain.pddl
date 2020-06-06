@@ -33,7 +33,8 @@
 			(car-clear ?car)
 			(car-clear ?cardest)
 			(at-curb-num ?car ?curbsrc)
-			(at-curb ?cardest) 
+			(at-curb ?cardest)
+                        (not (= ?car ?cardest)) 
 		)
 		:effect (and 
 			(not (car-clear ?cardest))
@@ -51,6 +52,8 @@
 			(car-clear ?car)
 			(curb-clear ?curbdest)
 			(behind-car ?car ?carsrc)
+                        (not (= ?car ?carsrc))
+
 		)
 		:effect (and 
 			(not (curb-clear ?curbdest))
@@ -69,6 +72,8 @@
 			(car-clear ?cardest)
 			(behind-car ?car ?carsrc)
 			(at-curb ?cardest) 
+                        (not (= ?car ?carsrc))
+                        (not (= ?car ?cardest))
 		)
 		:effect (and 
 			(not (car-clear ?cardest))
