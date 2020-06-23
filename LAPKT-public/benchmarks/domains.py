@@ -5,6 +5,7 @@ domains_11 = ['blocksworld','barman', 'elevators', 'floortile', 'nomystery','ope
 
 domains_14_sat = []
 domains_14_agl = []
+domains_ipc=[]
 
 # Domain and problem files
 benchmark_06 = {}
@@ -12,6 +13,7 @@ benchmark_11 = {}
 benchmark_14_sat = {}
 benchmark_14_agl = {}
 
+benchmark_ipc = {}
 benchmark_06['openstacks'] = []
 for i in range(1,10):
     benchmark_06['openstacks'].append(('domain.pddl', "problems/p0%d.pddl" % i))
@@ -148,7 +150,17 @@ for d in domains_14_sat:
                 raise Exception( "missmatching domain and problem files" )
                 
             benchmark_14_sat[d] = zip( domains, problems )
-    
+
+domains_ipc=walk("/home/chao/BFWS_Backward_Cmake/LAPKT-public/benchmarks/ipc-2011").next()[1]
+for d in domains_ipc:
+    for (dirpath, dirnames, filenames) in walk('/home/chao/BFWS_Backward_Cmake/LAPKT-public/benchmarks/ipc-2011/'+d):
+        domain="domain.pddl"
+        benchmark_ipc[d]=[(domain,prob) for prob in filenames]
+
+
+
+
+
 
 domains_14_agl = walk('ipc-2014/seq-agl').next()[1]
 for d in domains_14_agl:

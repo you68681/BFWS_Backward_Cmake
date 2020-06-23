@@ -61,6 +61,7 @@ void	Landmarks_Graph::following( unsigned p, Fluent_Vec& following  ) const {
 		following.push_back( n->required_by()[k]->fluent() );
 }
 
+
 void	Landmarks_Graph::add_landmark( unsigned p ) {
 	Node* n = new Node( p );
 	m_lm_graph.push_back( n );
@@ -68,7 +69,9 @@ void	Landmarks_Graph::add_landmark( unsigned p ) {
 	m_fl_to_node[p] = n;
 }
 
-void	Landmarks_Graph::add_landmark_for( unsigned p, unsigned q ) {
+
+
+    void	Landmarks_Graph::add_landmark_for( unsigned p, unsigned q ) {
 	Node* p_node = m_fl_to_node[p];
 	assert( p_node != NULL );
 	Node* q_node = m_fl_to_node[q];	

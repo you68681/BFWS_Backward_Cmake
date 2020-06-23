@@ -24,6 +24,7 @@ digraph L {
 95 [label="(not-(CONTAINS SHOT3 COCKTAIL3))"];
 96 [label="(not-(CONTAINS SHOT2 COCKTAIL2))"];
 97 [label="(not-(CONTAINS SHOT1 COCKTAIL4))"];
+43 [label="(UNSHAKED SHAKER1)"];
 94 -> 73 [label="n"];
 95 -> 73 [label="n"];
 96 -> 73 [label="n"];
@@ -41,6 +42,7 @@ digraph L {
 95 -> 80 [label="n"];
 96 -> 82 [label="n"];
 97 -> 84 [label="n"];
+43 -> 75 [label="n"];
 94 -> 75 [label="n"];
 95 -> 75 [label="n"];
 96 -> 75 [label="n"];

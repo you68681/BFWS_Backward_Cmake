@@ -280,7 +280,10 @@ public:
 
 	void	start( float B = infty) {
 		m_B = B;
+
 		m_root = new Search_Node( m_problem.init_state  (), 0.0f, no_op, NULL, m_problem.num_actions() );
+
+//        m_root_edit = new Search_Node( m_problem.goal_state(), 0.0f, no_op, NULL, m_problem.num_actions() );
 
 		m_first_h->init();
 		m_third_h->init();		
@@ -288,7 +291,15 @@ public:
 		if(m_lgm){				
 			m_lgm->apply_state( m_root->state()->fluent_vec(), m_root->land_consumed(), m_root->land_unconsumed() );
 			eval(m_root);
-			eval_po(m_root);	
+			/** original
+			 *
+			 */
+			//eval_po(m_root);
+			/** chao edit
+			 *
+			 */
+
+            eval_po_edit(m_root);
 			eval_novel( m_root );
 			eval_po_novel( m_root );				
 				
@@ -438,7 +449,37 @@ public:
 	void			eval_po( Search_Node* candidate ) {
 		std::vector<Action_Idx>* po = new  std::vector<Action_Idx>;
 		candidate->set_po2( po );
-		m_fourth_h->eval( *(candidate->state()), candidate->h4n(), candidate->po2() );
+		/** chao edit
+		 *
+		 */
+		//m_fourth_h->eval( *(candidate->state()), candidate->h4n(), candidate->po2() );
+        std::vector< aptk::Action_Idx > app_set;
+
+        for (unsigned i = 0; i < this->problem().num_actions(); ++i ) {
+
+            if (this->problem().is_applicable( *(candidate->state()), i )){
+                bool is_mutex = false;
+                const Action* a_ptr=this->problem().task().actions()[i];
+                for (auto p: candidate->state()->fluent_vec()){
+                    for (auto new_p: a_ptr->prec_vec()){
+                        if (a_ptr->add_set().isset(p)) continue;
+                        /** chao edit
+                         *
+                         */
+                        //ignore the negation in mutex check
+                        //if (m_in_negation[new_p] or m_in_negation[p]) continue;
+                        if (this->problem().h2_fwd().is_mutex(p,new_p)){
+                            is_mutex= true;
+                            break;
+                        }
+                    }
+                    if (is_mutex) break;
+
+                }
+                app_set.push_back(i);
+            }
+        }
+        m_fourth_h->eval_4h( *(candidate->state()), candidate->h4n(), app_set,candidate->po2() );
 		
 		if(candidate->h4n() < m_max_h4n ){
 			m_max_h4n = candidate->h4n();
@@ -449,6 +490,56 @@ public:
 
 
 	}
+	/** chao edit
+	 *
+	 * @param candidate
+	 */
+    void			eval_po_edit( Search_Node* candidate ) {
+        std::vector<Action_Idx>* po = new  std::vector<Action_Idx>;
+        candidate->set_po2( po );
+        /** chao edit
+         *
+         */
+        std::vector< aptk::Action_Idx > app_set;
+
+        for (unsigned i = 0; i < this->problem().num_actions(); ++i ) {
+
+                    if (this->problem().is_applicable( *(candidate->state()), i )){
+                bool is_mutex = false;
+                const Action* a_ptr=this->problem().task().actions()[i];
+                for (auto p: candidate->state()->fluent_vec()){
+                    for (auto new_p: a_ptr->prec_vec()){
+                        if (a_ptr->add_set().isset(p)) continue;
+                        /** chao edit
+                         *
+                         */
+                        //ignore the negation in mutex check
+                        //if (m_in_negation[new_p] or m_in_negation[p]) continue;
+                        if (this->problem().h2_fwd().is_mutex(p,new_p)){
+                            is_mutex= true;
+                            break;
+                        }
+                    }
+                    if (is_mutex) break;
+
+                }
+                app_set.push_back(i);
+            }
+        }
+
+
+        m_fourth_h->eval_chao( *(candidate->state()),*(problem().goal_state()), candidate->h4n(), app_set, candidate->po2() );
+
+        if(candidate->h4n() < m_max_h4n ){
+            m_max_h4n = candidate->h4n();
+            if ( m_verbose )
+                std::cout << "--[" << m_max_h2n  <<" / " << m_max_h4n <<"]--" << std::endl;
+
+        }
+
+
+    }
+
 
 	void			eval_po_novel( Search_Node* candidate ) {
 		//candidate->partition2() = (m_third_h->goal_size() > candidate->h4n() ) ? candidate->h4n() : m_third_h->goal_size();
@@ -513,7 +604,16 @@ public:
 			head->update_land_graph( m_lgm );
 		
 		std::vector< aptk::Action_Idx > app_set;
-		this->problem().applicable_set_v2( *(head->state()), app_set );
+//		this->problem().applicable_set_v2( *(head->state()), app_set );
+        for (unsigned i = 0; i < this->problem().num_actions(); ++i ) {
+            /**original version
+             *
+             */
+            if (this->problem().is_applicable( *(head->state()), i )){
+
+                app_set.push_back(i);
+            }
+        }
 
 
 		// static 	Bit_Set		po( m_problem.num_actions() );
@@ -523,21 +623,55 @@ public:
 		// }
 
 		static 	Bit_Set		po2( m_problem.num_actions() );
-		po2.reset();		
+		po2.reset();
+
 
  		for( Action_Idx a : head->po2() ){
 			po2.set(a);
 		}
-
+        bool is_helpful;
 		for (unsigned i = 0; i < app_set.size(); ++i ) {
 			int a = app_set[i];
+            /** chao edit
+             *
+             */
+            bool is_mutex = false;
+            const Action* a_ptr=this->problem().task().actions()[a];
+            for (auto p: head->state()->fluent_vec()){
+                for (auto new_p: a_ptr->prec_vec()){
+                    if (a_ptr->add_set().isset(p)) continue;
 
-			//bool is_helpful = po.isset(a) or po2.isset(a);
-			bool is_helpful = po2.isset(a); 
+                    if (this->problem().h2_fwd().is_mutex(p,new_p)){
+                        is_mutex= true;
+                        break;
+                    }
+                }
+                if (is_mutex) break;
 
-			State *succ = is_helpful ? m_problem.next( *(head->state()), a ) : nullptr; 
-						
-			Search_Node* n = new Search_Node( succ, m_problem.cost( *(head->state()), a ), a, head, m_problem.num_actions()  );			
+            }
+
+            Search_Node* n= nullptr;
+            if (is_mutex){
+                continue;
+            } else{
+
+                is_helpful = po2.isset(a);
+
+			State *succ = is_helpful ? m_problem.next( *(head->state()), a ) : nullptr;
+
+			n = new Search_Node( succ, m_problem.cost( *(head->state()), a ), a, head, m_problem.num_actions()  );
+
+            }
+            /** original version
+             *
+             */
+            //bool is_helpful = po.isset(a) or po2.isset(a);
+//			bool is_helpful = po2.isset(a);
+//
+//
+//			State *succ = is_helpful ? m_problem.next( *(head->state()), a ) : nullptr;
+//
+//			Search_Node* n = new Search_Node( succ, m_problem.cost( *(head->state()), a ), a, head, m_problem.num_actions()  );
 			
 			#ifdef DEBUG
 			if ( m_verbose ) {
@@ -692,6 +826,7 @@ protected:
 	float					m_time_budget;
 	float					m_t0;
 	Search_Node*				m_root;
+    Search_Node*				m_root_edit;
 	std::vector<Action_Idx> 		m_app_set;
 	Landmarks_Graph_Manager*                m_lgm;
 	unsigned                                m_max_h2n;

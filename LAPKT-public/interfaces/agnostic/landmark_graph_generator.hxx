@@ -160,7 +160,11 @@ public:
 	}
   
 	void	compute_lm_graph_set_additive( Landmarks_Graph& graph ) {
-			
+        Bit_Set lm_set( m_strips_model.num_fluents() );
+        Bit_Set processed( m_strips_model.num_fluents() );
+
+
+
 		std::deque<unsigned> updated;
 		
 		// 1. Insert goal atoms as landmarks
@@ -179,10 +183,41 @@ public:
              it != search_prob.goal().end(); it++ ) {
         	graph.add_landmark( *it );
         	if ( ! m_strips_model.is_in_goal( *it ) ) {
+
         		updated.push_back( *it );
         	}
         }
 
+        while ( !updated.empty() ) {
+            unsigned p = updated.front();
+            updated.pop_front();
+
+
+
+            const std::vector<const Action*>& add_acts = m_strips_model.actions_requiring( p );
+            //std::cout << "Added by " << add_acts.size() << " actions" << std::endl;
+            if ( !add_acts.empty() ) {
+                lm_set.reset();
+                lm_set.add( add_acts[0]->add_set() );
+
+                for ( unsigned k = 1; k < add_acts.size(); k++ )
+                    lm_set.set_intersection( add_acts[k]->add_set() );
+            }
+
+            for (unsigned q : lm_set ) {
+                //if ( !m_collect_lm_in_init && m_strips_model.is_in_init(q) ) {
+                if ( !m_collect_lm_in_init && m_strips_model.is_in_goal(q) ) {
+                    continue;
+                }
+
+                if ( !graph.is_landmark(q) )
+                    graph.add_landmark( q );
+
+                graph.add_landmark_for( p, q );
+
+                updated.push_back( q );
+            }
+        }
 
 		if( m_only_goals ){
 			if(m_goal_ordering)
@@ -190,38 +225,95 @@ public:
 			return;
 		}
 		
-		Bit_Set lm_set( m_strips_model.num_fluents() );
-		Bit_Set processed( m_strips_model.num_fluents() );
-		
+//		Bit_Set lm_set( m_strips_model.num_fluents() );
+//		Bit_Set processed( m_strips_model.num_fluents() );
+
+
+        Bit_Set lm_set_chao( m_strips_model.num_fluents() );
+        Bit_Set processed_chao( m_strips_model.num_fluents() );
+
+        Bit_Set lm_set_chao_edl( m_strips_model.num_fluents() );
+        Bit_Set processed_chao_edl( m_strips_model.num_fluents() );
+
 		while ( !updated.empty() ) {
 			unsigned p = updated.front();
 			updated.pop_front(); 
 
-			if ( processed.isset(p) ) continue; 
-			processed.set(p);
+			if ( processed_chao.isset(p) ) continue;
+			processed_chao.set(p);
 
+            if ( processed_chao_edl.isset(p) ) continue;
+            processed_chao_edl.set(p);
+
+            /** original version
+             *
+             */
 			//std::cout << "Processing landmark: " << m_strips_model.fluents()[ p ]->signature() << std::endl;
-			const std::vector<const Action*>& add_acts = m_strips_model.actions_adding( p );
+//			const std::vector<const Action*>& add_acts = m_strips_model.actions_adding( p );
+//			//std::cout << "Added by " << add_acts.size() << " actions" << std::endl;
+//			if ( !add_acts.empty() ) {
+//				lm_set.reset();
+//				lm_set.add( add_acts[0]->prec_set() );
+//
+//				for ( unsigned k = 1; k < add_acts.size(); k++ )
+//					lm_set.set_intersection( add_acts[k]->prec_set() );
+//			}
+
+            const std::vector<const Action*>& add_acts = m_strips_model.actions_requiring( p );
 			//std::cout << "Added by " << add_acts.size() << " actions" << std::endl;
 			if ( !add_acts.empty() ) {
 				lm_set.reset();
-				lm_set.add( add_acts[0]->prec_set() );
-	
-				for ( unsigned k = 1; k < add_acts.size(); k++ ) 
-					lm_set.set_intersection( add_acts[k]->prec_set() ); 
-			}
-			
-			const std::vector< std::pair< unsigned, const Action*> >& add_acts_ce = 
-				m_strips_model.ceffs_adding( p );
-			
-			if ( !add_acts_ce.empty() ) {
+				lm_set.add( add_acts[0]->add_set() );
 
-				for ( unsigned k = 0; k < add_acts_ce.size(); k++ ) {
-					lm_set.set_intersection( add_acts_ce[k].second->prec_set() );
-					lm_set.set_intersection( add_acts_ce[k].second->ceff_vec()[ add_acts_ce[k].first ]->prec_set() );
-				}
-
+				for ( unsigned k = 1; k < add_acts.size(); k++ )
+					lm_set.set_intersection( add_acts[k]->add_set() );
 			}
+
+//            if ( !add_acts.empty() ) {
+//                lm_set_chao.reset();
+//                lm_set_chao.add( add_acts[0]->del_set() );
+//
+//                for ( unsigned k = 1; k < add_acts.size(); k++ )
+//                    lm_set_chao.set_intersection( add_acts[k]->del_set() );
+//            }
+
+            if ( !add_acts.empty() ) {
+                lm_set_chao_edl.reset();
+                lm_set_chao_edl.add( add_acts[0]->edel_set() );
+
+                for ( unsigned k = 1; k < add_acts.size(); k++ )
+                    lm_set_chao_edl.set_intersection( add_acts[k]->edel_set() );
+            }
+
+//            for (unsigned q : lm_set_chao ) {
+//                if (p==q)continue;
+//                graph.node(p)->add_del(graph.generate_del(q));
+//                if ( graph.is_landmark(q) ){
+//                    graph.add_landmark_for( q, p );
+//                }
+//
+//            }
+
+            for (unsigned q : lm_set_chao_edl ) {
+                if (p==q)continue;
+                graph.node(p)->add_edel(graph.generate_edel(q));
+                if (  graph.is_landmark(q) ){
+                    graph.add_landmark_for(q,p);
+                }
+            }
+
+
+//			const std::vector< std::pair< unsigned, const Action*> >& add_acts_ce =
+//				m_strips_model.ceffs_adding( p );
+//
+//			if ( !add_acts_ce.empty() ) {
+//
+//				for ( unsigned k = 0; k < add_acts_ce.size(); k++ ) {
+//					lm_set.set_intersection( add_acts_ce[k].second->prec_set() );
+//					lm_set.set_intersection( add_acts_ce[k].second->ceff_vec()[ add_acts_ce[k].first ]->prec_set() );
+//				}
+//
+//			}
 
 			//std::cout << "LM set size: " << lm_set.bits().count_elements() << std::endl;
 			/** change the is_in_init to is_in_goal()

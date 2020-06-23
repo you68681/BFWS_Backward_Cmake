@@ -134,6 +134,9 @@ public:
         }
 
         m_rp_precs.reset();
+//        for (unsigned p:m_strips_model.fluents()){
+//            m_rp_precs.set(p);
+//        }
         while ( !actions_pending().empty() ) {
             const Action* a = actions_pending().front();
             const Fluent* p = fluents_pending().front();
@@ -145,6 +148,15 @@ public:
 			std::cout << "into the relaxed plan" << std::endl;
 #endif
 			bool continue_flag=true;
+            /** chao edit
+            *
+           */
+
+//            if ( a->requires( p->index() ) ){
+//                for (unsigned p: a->del_vec()){
+//                    m_rp_precs.unset(p);
+//                }
+//            }
 
             if ( a->asserts( p->index() ) ) { // fluent asserted by action main effect
 //                for(auto q : a->prec_vec())
@@ -257,18 +269,231 @@ public:
         }
 
     }
+    /** chao edit
+     * with action check
+     */
+    virtual void
+    compute_action_edit( const State& s, float& h_val, std::vector<Action_Idx>& app_set, std::vector<Action_Idx>& pref_ops, std::vector<Action_Idx>* copy_rel_plan = NULL, Fluent_Vec* goals = NULL ) {
+        h_val = 0.0;
+        // 0. Initialize data structures
+        actions_seen().reset();
+        init_fluents().reset();
+
+
+        for ( unsigned k = 0; k < m_strips_model.init().size(); k++ )
+            init_fluents().set(m_strips_model.init()[k] );
+
+        while ( !actions_pending().empty() )
+            actions_pending().pop();
+
+        std::vector<const Action*> relaxed_plan;
+//       change the m_strips_model.goal() to init()
+        const Fluent_Vec& G = s.fluent_vec();
+//        const Fluent_Vec& G = goals ? *goals : m_strips_model.init();
+
+        // 1. Add to the pending queue best supporters for goal fluents
+
+        for ( unsigned k = 0; k < G.size(); k++ ) {
+
+            if ( init_fluents().isset( G[k] ) ) continue;
+            const unsigned act_idx = m_base_heuristic.get_best_supporter( G[k] ).act_idx;
+            if ( act_idx == no_such_index ) // No best supporter for fluent
+            {
+//                std::cerr << "No best supporter found for goal fluent ";
+                std::cerr << m_strips_model.fluents()[G[k]]->signature() << std::endl;
+                return;
+            }
+            const Action* sup = m_strips_model.actions()[ act_idx ];
+#ifdef DEBUG_RP_HEURISTIC
+            std::cout << "Goal: " << m_strips_model.fluents()[G[k]]->signature() << std::endl;
+			std::cout << "Value = " << m_base_heuristic.value( G[k] ) << std::endl;
+			std::cout << "Best supporter: " << sup->signature() << std::endl;
+#endif
+            fluents_pending().push( m_strips_model.fluents()[G[k]] );
+            actions_pending().push( sup );
+            actions_seen().set( sup->index() );
+            relaxed_plan.push_back( sup );
+
+        }
+
+        while ( !actions_pending().empty() ) {
+            const Action* a = actions_pending().front();
+            const Fluent* p = fluents_pending().front();
+            actions_pending().pop();
+            fluents_pending().pop();
+#ifdef DEBUG_RP_HEURISTIC
+            std::cout << "Getting action: " << std::endl;
+			a->print( m_strips_model, std::cout );
+			std::cout << "into the relaxed plan" << std::endl;
+#endif
+            bool continue_flag=true;
+
+            if ( a->asserts( p->index() ) ) { // fluent asserted by action main effect
+
+                if ( !extract_best_supporters_for( a->prec_vec(), relaxed_plan ) ) {
+                    h_val = infty;
+                    assert( false );
+                    return;
+                }
+                continue;
+            }
+        }
+
+        if(copy_rel_plan)
+            for(unsigned i = 0; i < relaxed_plan.size(); i++)
+                copy_rel_plan->push_back( relaxed_plan[i]->index() );
+
+        if(!m_ignore_rp_h_value)
+            h_val = 0.0f;
+
+#ifdef DEBUG_RP_HEURISTIC
+        std::cout << "\nRel Plan: ";
+#endif
+        for ( unsigned k = 0; k < relaxed_plan.size(); k++ ) {
+            if(!m_ignore_rp_h_value)
+                h_val += ( cost_opt == RP_Cost_Function::Ignore_Costs ? 1.0f : relaxed_plan[k]->cost() );
+            //const Fluent_Vec& precs = relaxed_plan[k]->prec_vec();
+#ifdef DEBUG_RP_HEURISTIC
+            std::cout << "\t "<< k <<": " << relaxed_plan[k]->signature() << std::endl;
+#endif
+        }
+
+        for (unsigned i = 0; i < app_set.size(); ++i) {
+            const Action& act = *(m_strips_model.actions()[app_set[i]]);
+            if (actions_seen().isset( act.index()) ) {
+                    pref_ops.push_back( act.index() );
+                }
+        }
+
+    }
+    /** chao edit
+     * with action check
+     */
+
+    virtual void
+    compute_action( const State& s, const State& init, float& h_val,  std::vector<Action_Idx>& app_set, std::vector<Action_Idx>& pref_ops, std::vector<Action_Idx>* copy_rel_plan = NULL, Fluent_Vec* goals = NULL ) {
+
+
+
+        m_base_heuristic.eval( init, h_val );
+        if ( h_val == infty  )
+            return;
+
+
+        // 0. Initialize data structures
+        actions_seen().reset();
+        init_fluents().reset();
+
+        for ( unsigned k = 0; k < init.fluent_vec().size(); k++ )
+            init_fluents().set( init.fluent_vec()[k] );
+
+        while ( !actions_pending().empty() )
+            actions_pending().pop();
+
+        std::vector<const Action*> relaxed_plan;
+//       change the m_strips_model.goal() to init()
+        const Fluent_Vec& G = goals ? *goals : m_strips_model.goal();
+//        const Fluent_Vec& G = goals ? *goals : m_strips_model.init();
+
+        // 1. Add to the pending queue best supporters for goal fluents
+        for ( unsigned k = 0; k < G.size(); k++ ) {
+
+            if ( init_fluents().isset( G[k] ) ) continue;
+            const unsigned act_idx = m_base_heuristic.get_best_supporter( G[k] ).act_idx;
+            if ( act_idx == no_such_index ) // No best supporter for fluent
+            {
+                std::cerr << "No best supporter found for goal fluent ";
+                std::cerr << m_strips_model.fluents()[G[k]]->signature() << std::endl;
+                return;
+            }
+            const Action* sup = m_strips_model.actions()[ act_idx ];
+#ifdef DEBUG_RP_HEURISTIC
+            std::cout << "Goal: " << m_strips_model.fluents()[G[k]]->signature() << std::endl;
+			std::cout << "Value = " << m_base_heuristic.value( G[k] ) << std::endl;
+			std::cout << "Best supporter: " << sup->signature() << std::endl;
+#endif
+            fluents_pending().push( m_strips_model.fluents()[G[k]] );
+            actions_pending().push( sup );
+            actions_seen().set( sup->index() );
+            relaxed_plan.push_back( sup );
+
+        }
+
+        while ( !actions_pending().empty() ) {
+            const Action* a = actions_pending().front();
+            const Fluent* p = fluents_pending().front();
+            actions_pending().pop();
+            fluents_pending().pop();
+#ifdef DEBUG_RP_HEURISTIC
+            std::cout << "Getting action: " << std::endl;
+			a->print( m_strips_model, std::cout );
+			std::cout << "into the relaxed plan" << std::endl;
+#endif
+            if ( a->asserts( p->index() ) ) { // fluent asserted by action main effect
+                if ( !extract_best_supporters_for( a->prec_vec(), relaxed_plan ) ) {
+                    h_val = infty;
+                    assert( false );
+                    return;
+                }
+                continue;
+            }
+
+            //assert( best_eff_index != no_such_index );
+
+        }
+
+        if(copy_rel_plan)
+            for(unsigned i = 0; i < relaxed_plan.size(); i++)
+                copy_rel_plan->push_back( relaxed_plan[i]->index() );
+
+        if(!m_ignore_rp_h_value)
+            h_val = 0.0f;
+
+#ifdef DEBUG_RP_HEURISTIC
+        std::cout << "\nRel Plan: ";
+#endif
+        for ( unsigned k = 0; k < relaxed_plan.size(); k++ ) {
+            if(!m_ignore_rp_h_value)
+                h_val += ( cost_opt == RP_Cost_Function::Ignore_Costs ? 1.0f : relaxed_plan[k]->cost() );
+            //const Fluent_Vec& precs = relaxed_plan[k]->prec_vec();
+#ifdef DEBUG_RP_HEURISTIC
+            std::cout << "\t "<< k <<": " << relaxed_plan[k]->signature() << std::endl;
+#endif
+        }
+
+
+        for (unsigned i = 0; i < app_set.size(); ++i) {
+            //Successor_Generator::Iterator it( s, m_strips_model.successor_generator().nodes() );
+            //int a = it.first();
+            //while ( a != -1 ) {
+            const Action& act = *(m_strips_model.actions()[app_set[i]]);
+            if (actions_seen().isset( act.index()) ) {
+                    pref_ops.push_back( act.index() );
+                }
+        }
+
+    }
+
 
   	virtual void 
     	compute( const State& s, float& h_val, std::vector<Action_Idx>& pref_ops, std::vector<Action_Idx>* copy_rel_plan = NULL, Fluent_Vec* goals = NULL ) {
+        /** original
+          *
+         */
+//		m_base_heuristic.eval( s, h_val );
+//		if ( h_val == infty  )
+//			return;
 
-		m_base_heuristic.eval( s, h_val );
+
+        /** chao edit
+         *
+         */
+        m_base_heuristic.eval( s, h_val );
 		if ( h_val == infty  )
 			return;
 
 
-
-					
-		// 0. Initialize data structures
+        // 0. Initialize data structures
 		actions_seen().reset();
 		init_fluents().reset();
 
@@ -664,7 +889,15 @@ public:
 		m_plan_extractor.compute( s, h, pref_ops );
 		h_out = h == infty ? std::numeric_limits<Cost_Type>::max() : (Cost_Type)h;
 	}
-
+	/** chao dit with action check
+	 *
+	 */
+    template <typename Cost_Type>
+    void eval_4h( const State& s, Cost_Type& h_out, std::vector<Action_Idx>& app_set, std::vector<Action_Idx>& pref_ops ) {
+        float h;
+        m_plan_extractor.compute_action_edit( s, h, app_set, pref_ops );
+        h_out = h == infty ? std::numeric_limits<Cost_Type>::max() : (Cost_Type)h;
+    }
 	
 	template <typename Cost_Type>
 	void eval( const State& s, Cost_Type& h_out, Cost_Type& h_out_rp, std::vector<Action_Idx>& pref_ops ) {
@@ -681,6 +914,15 @@ public:
 		m_plan_extractor.compute( s, h, pref_ops, &rel_plan );		
 		h_out = h == infty ? std::numeric_limits<Cost_Type>::max() : (Cost_Type)h;
 	}
+    template <typename Cost_Type>
+    /** chao edit
+     * with action check
+     */
+    void eval_chao( const State& s, const State& init,Cost_Type& h_out, std::vector<Action_Idx>& app_set, std::vector<Action_Idx>& pref_ops ) {
+        float h;
+        m_plan_extractor.compute_action( s, init, h, app_set, pref_ops);
+        h_out = h == infty ? std::numeric_limits<Cost_Type>::max() : (Cost_Type)h;
+    }
 	/**
 	 * chao edit
 	 */

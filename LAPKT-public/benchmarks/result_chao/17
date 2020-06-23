@@ -1,244 +1,427 @@
  --- OK.
- Match tree built with 1029 nodes.
+ Match tree built with 2728 nodes.
 
 PDDL problem description loaded: 
-	Domain: THOUGHTFUL-TYPED
-	Problem: THOUGHTFUL-S5-T4
-	#Actions: 1029
-	#Fluents: 203
-Goals found: 39
-Goals_Edges found: 214
-1. (HOME S0)
-	Preceded by: (FACEUP CA), (FACEUP DA), (not-(HOME S5))
+	Domain: BARMAN
+	Problem: PROB
+	#Actions: 2728
+	#Fluents: 401
+Goals found: 65
+Goals_Edges found: 142
+1. (SHAKER-LEVEL SHAKER1 L0)
+	Preceded by: (not-(CONTAINS SHOT13 COCKTAIL1)), (not-(CONTAINS SHOT11 COCKTAIL11)), (not-(CONTAINS SHOT10 COCKTAIL3)), (not-(CONTAINS SHOT9 COCKTAIL2)), (not-(CONTAINS SHOT8 COCKTAIL5)), (not-(CONTAINS SHOT7 COCKTAIL7)), (not-(CONTAINS SHOT6 COCKTAIL6)), (not-(CONTAINS SHOT5 COCKTAIL4)), (not-(CONTAINS SHOT4 COCKTAIL1)), (not-(CONTAINS SHOT3 COCKTAIL8)), (not-(CONTAINS SHOT2 COCKTAIL9)), (not-(CONTAINS SHOT1 COCKTAIL10))
 	GN Preceded by: 
-	Required by: (COLSPACE COLN0)
+	Required by: (EMPTY SHAKER1)
 	GN Required by: 
-2. (HOME H0)
-	Preceded by: (FACEUP CA), (FACEUP DA), (FACEUP SA), (not-(HOME H5))
-	GN Preceded by: 
-	Required by: (TALONPLAYABLE S2), (ONTALON H3 HA), (ONTALON HA H5)
-	GN Required by: 
-3. (HOME D0)
-	Preceded by: (FACEUP CA), (BOTTOMCOL D2), (FACEUP SA), (not-(HOME D5))
-	GN Preceded by: 
-	Required by: 
-	GN Required by: 
-4. (HOME C0)
-	Preceded by: (ON D3 C5), (BOTTOMCOL C5), (FACEUP DA), (FACEUP SA), (not-(HOME D5)), (not-(HOME C5))
-	GN Preceded by: 
-	Required by: 
-	GN Required by: 
-5. (TALONPLAYABLE S2)
-	Preceded by: (HOME H0), (TOPTALON C4), (ONTALON C4 C3), (ONTALON C3 H3), (ONTALON H3 HA), (ONTALON HA H5), (ONTALON H5 H4), (ONTALON H4 C2), (ONTALON C2 S2), (ONTALON S2 H2), (ONTALON H2 S5), (BOTTOMTALON S5), (FACEUP CA), (FACEUP DA), (FACEUP SA), (not-(HOME S5))
-	GN Preceded by: 
-	Required by: 
-	GN Required by: 
-6. (TOPTALON C4)
-	Preceded by: (FACEUP CA), (BOTTOMCOL C5), (FACEUP DA), (FACEUP SA), (not-(HOME C5))
-	GN Preceded by: 
-	Required by: (TALONPLAYABLE S2)
-	GN Required by: 
-7. (ONTALON C4 C3)
-	Preceded by: (FACEUP CA), (BOTTOMCOL C5), (FACEUP DA), (FACEUP SA), (not-(HOME C5))
-	GN Preceded by: 
-	Required by: (TALONPLAYABLE S2)
-	GN Required by: 
-8. (ONTALON C3 H3)
-	Preceded by: (FACEUP CA), (BOTTOMCOL C5), (FACEUP DA), (FACEUP SA), (not-(HOME H5)), (not-(HOME C5))
-	GN Preceded by: 
-	Required by: (TALONPLAYABLE S2)
-	GN Required by: 
-9. (ONTALON H3 HA)
-	Preceded by: (HOME H0), (FACEUP CA), (FACEUP DA), (FACEUP SA), (not-(HOME H5))
-	GN Preceded by: 
-	Required by: (TALONPLAYABLE S2)
-	GN Required by: 
-10. (ONTALON HA H5)
-	Preceded by: (HOME H0), (FACEUP CA), (FACEUP DA), (FACEUP SA), (not-(HOME H5))
-	GN Preceded by: 
-	Required by: (TALONPLAYABLE S2)
-	GN Required by: 
-11. (ONTALON H5 H4)
-	Preceded by: (FACEUP CA), (FACEUP DA), (FACEUP SA), (not-(HOME H5))
-	GN Preceded by: 
-	Required by: (TALONPLAYABLE S2)
-	GN Required by: 
-12. (ONTALON H4 C2)
-	Preceded by: (FACEUP CA), (BOTTOMCOL C5), (FACEUP DA), (FACEUP SA), (not-(HOME H5)), (not-(HOME C5))
-	GN Preceded by: 
-	Required by: (TALONPLAYABLE S2)
-	GN Required by: 
-13. (ONTALON C2 S2)
-	Preceded by: (FACEUP CA), (BOTTOMCOL C5), (FACEUP DA), (FACEUP SA), (not-(HOME S5)), (not-(HOME C5))
-	GN Preceded by: 
-	Required by: (TALONPLAYABLE S2)
-	GN Required by: 
-14. (ONTALON S2 H2)
-	Preceded by: (FACEUP CA), (FACEUP DA), (FACEUP SA), (not-(HOME S5)), (not-(HOME H5))
-	GN Preceded by: 
-	Required by: (TALONPLAYABLE S2)
-	GN Required by: 
-15. (ONTALON H2 S5)
-	Preceded by: (FACEUP CA), (FACEUP DA), (FACEUP SA), (not-(HOME S5)), (not-(HOME H5))
-	GN Preceded by: 
-	Required by: (TALONPLAYABLE S2)
-	GN Required by: 
-16. (BOTTOMTALON S5)
-	Preceded by: (FACEUP CA), (FACEUP DA), (FACEUP SA), (not-(HOME S5))
-	GN Preceded by: 
-	Required by: (TALONPLAYABLE S2)
-	GN Required by: 
-17. (FACEUP S3)
-	Preceded by: (FACEUP CA), (FACEUP DA), (FACEUP SA)
-	GN Preceded by: 
-	Required by: (ON S3 D5)
-	GN Required by: 
-18. (CLEAR S3)
-	Preceded by: (FACEUP CA), (FACEUP DA), (FACEUP SA)
-	GN Preceded by: 
-	Required by: 
-	GN Required by: 
-19. (ON S3 D5)
-	Preceded by: (FACEUP S3), (ON D5 D4), (ON D4 S4), (BOTTOMCOL S4), (FACEUP CA), (FACEUP DA), (FACEUP SA), (not-(HOME S5)), (not-(HOME D5))
-	GN Preceded by: 
-	Required by: 
-	GN Required by: 
-20. (ON D5 D4)
-	Preceded by: (ON D4 S4), (BOTTOMCOL S4), (FACEUP CA), (FACEUP DA), (FACEUP SA), (not-(HOME S5)), (not-(HOME D5))
-	GN Preceded by: 
-	Required by: (ON S3 D5)
-	GN Required by: 
-21. (ON D4 S4)
-	Preceded by: (BOTTOMCOL S4), (FACEUP CA), (FACEUP DA), (FACEUP SA), (not-(HOME S5)), (not-(HOME D5))
-	GN Preceded by: 
-	Required by: (ON S3 D5), (ON D5 D4)
-	GN Required by: 
-22. (BOTTOMCOL S4)
-	Preceded by: (FACEUP CA), (FACEUP DA), (FACEUP SA), (not-(HOME S5))
-	GN Preceded by: 
-	Required by: (ON S3 D5), (ON D5 D4), (ON D4 S4), (COLSPACE COLN0)
-	GN Required by: 
-23. (FACEUP CA)
+2. (HANDEMPTY RIGHT)
 	Preceded by: 
 	GN Preceded by: 
-	Required by: (HOME S0), (HOME H0), (HOME D0), (TALONPLAYABLE S2), (TOPTALON C4), (ONTALON C4 C3), (ONTALON C3 H3), (ONTALON H3 HA), (ONTALON HA H5), (ONTALON H5 H4), (ONTALON H4 C2), (ONTALON C2 S2), (ONTALON S2 H2), (ONTALON H2 S5), (BOTTOMTALON S5), (FACEUP S3), (CLEAR S3), (ON S3 D5), (ON D5 D4), (ON D4 S4), (BOTTOMCOL S4), (ON D3 C5), (BOTTOMCOL C5), (CLEAR DA), (ON DA D2), (BOTTOMCOL D2), (CLEAR SA), (BOTTOMCOL SA), (COLSPACE COLN0), (not-(HOME S5)), (not-(HOME H5)), (not-(HOME D5)), (not-(HOME C5))
-	GN Required by: 
-24. (CLEAR CA)
-	Preceded by: (FACEUP DA), (FACEUP SA)
-	GN Preceded by: 
 	Required by: 
 	GN Required by: 
-25. (ON CA D3)
-	Preceded by: (ON D3 C5), (BOTTOMCOL C5), (FACEUP DA), (FACEUP SA), (not-(HOME D5)), (not-(HOME C5))
-	GN Preceded by: 
-	Required by: 
-	GN Required by: 
-26. (ON D3 C5)
-	Preceded by: (FACEUP CA), (BOTTOMCOL C5), (FACEUP DA), (FACEUP SA), (not-(HOME D5)), (not-(HOME C5))
-	GN Preceded by: 
-	Required by: (HOME C0), (ON CA D3)
-	GN Required by: 
-27. (BOTTOMCOL C5)
-	Preceded by: (FACEUP CA), (FACEUP DA), (FACEUP SA)
-	GN Preceded by: 
-	Required by: (HOME C0), (TOPTALON C4), (ONTALON C4 C3), (ONTALON C3 H3), (ONTALON H4 C2), (ONTALON C2 S2), (ON CA D3), (ON D3 C5), (COLSPACE COLN0)
-	GN Required by: 
-28. (FACEUP DA)
+3. (HANDEMPTY LEFT)
 	Preceded by: 
 	GN Preceded by: 
-	Required by: (HOME S0), (HOME H0), (HOME C0), (TALONPLAYABLE S2), (TOPTALON C4), (ONTALON C4 C3), (ONTALON C3 H3), (ONTALON H3 HA), (ONTALON HA H5), (ONTALON H5 H4), (ONTALON H4 C2), (ONTALON C2 S2), (ONTALON S2 H2), (ONTALON H2 S5), (BOTTOMTALON S5), (FACEUP S3), (CLEAR S3), (ON S3 D5), (ON D5 D4), (ON D4 S4), (BOTTOMCOL S4), (CLEAR CA), (ON CA D3), (ON D3 C5), (BOTTOMCOL C5), (BOTTOMCOL D2), (CLEAR SA), (BOTTOMCOL SA), (COLSPACE COLN0), (not-(HOME S5)), (not-(HOME H5)), (not-(HOME D5)), (not-(HOME C5))
-	GN Required by: 
-29. (CLEAR DA)
-	Preceded by: (FACEUP CA), (FACEUP SA)
-	GN Preceded by: 
 	Required by: 
 	GN Required by: 
-30. (ON DA D2)
-	Preceded by: (FACEUP CA), (BOTTOMCOL D2), (FACEUP SA), (not-(HOME D5))
-	GN Preceded by: 
-	Required by: 
-	GN Required by: 
-31. (BOTTOMCOL D2)
-	Preceded by: (FACEUP CA), (FACEUP DA), (FACEUP SA), (not-(HOME D5))
-	GN Preceded by: 
-	Required by: (HOME D0), (ON DA D2), (COLSPACE COLN0)
-	GN Required by: 
-32. (FACEUP SA)
+4. (EMPTY SHOT15)
 	Preceded by: 
 	GN Preceded by: 
-	Required by: (HOME H0), (HOME D0), (HOME C0), (TALONPLAYABLE S2), (TOPTALON C4), (ONTALON C4 C3), (ONTALON C3 H3), (ONTALON H3 HA), (ONTALON HA H5), (ONTALON H5 H4), (ONTALON H4 C2), (ONTALON C2 S2), (ONTALON S2 H2), (ONTALON H2 S5), (BOTTOMTALON S5), (FACEUP S3), (CLEAR S3), (ON S3 D5), (ON D5 D4), (ON D4 S4), (BOTTOMCOL S4), (CLEAR CA), (ON CA D3), (ON D3 C5), (BOTTOMCOL C5), (CLEAR DA), (ON DA D2), (BOTTOMCOL D2), (COLSPACE COLN0), (not-(HOME S5)), (not-(HOME H5)), (not-(HOME D5)), (not-(HOME C5))
+	Required by: 
 	GN Required by: 
-33. (CLEAR SA)
-	Preceded by: (FACEUP CA), (FACEUP DA)
-	GN Preceded by: 
-	Required by: (COLSPACE COLN0)
-	GN Required by: 
-34. (BOTTOMCOL SA)
-	Preceded by: (FACEUP CA), (FACEUP DA), (not-(HOME S5))
-	GN Preceded by: 
-	Required by: (COLSPACE COLN0)
-	GN Required by: 
-35. (COLSPACE COLN0)
-	Preceded by: (HOME S0), (BOTTOMCOL S4), (FACEUP CA), (BOTTOMCOL C5), (FACEUP DA), (BOTTOMCOL D2), (FACEUP SA), (CLEAR SA), (BOTTOMCOL SA), (not-(HOME C5))
+5. (EMPTY SHOT14)
+	Preceded by: (not-(CONTAINS SHOT14 INGREDIENT4))
 	GN Preceded by: 
 	Required by: 
 	GN Required by: 
-36. (not-(HOME S5))
-	Preceded by: (FACEUP CA), (FACEUP DA), (FACEUP SA)
+6. (EMPTY SHOT13)
+	Preceded by: (not-(CONTAINS SHOT13 COCKTAIL1))
 	GN Preceded by: 
-	Required by: (HOME S0), (TALONPLAYABLE S2), (ONTALON C2 S2), (ONTALON S2 H2), (ONTALON H2 S5), (BOTTOMTALON S5), (ON S3 D5), (ON D5 D4), (ON D4 S4), (BOTTOMCOL S4), (BOTTOMCOL SA)
+	Required by: 
 	GN Required by: 
-37. (not-(HOME H5))
-	Preceded by: (FACEUP CA), (FACEUP DA), (FACEUP SA)
+7. (EMPTY SHOT12)
+	Preceded by: (not-(CONTAINS SHOT12 INGREDIENT4))
 	GN Preceded by: 
-	Required by: (HOME H0), (ONTALON C3 H3), (ONTALON H3 HA), (ONTALON HA H5), (ONTALON H5 H4), (ONTALON H4 C2), (ONTALON S2 H2), (ONTALON H2 S5)
+	Required by: 
 	GN Required by: 
-38. (not-(HOME D5))
-	Preceded by: (FACEUP CA), (FACEUP DA), (FACEUP SA)
+8. (EMPTY SHOT11)
+	Preceded by: (not-(CONTAINS SHOT11 COCKTAIL11))
 	GN Preceded by: 
-	Required by: (HOME D0), (HOME C0), (ON S3 D5), (ON D5 D4), (ON D4 S4), (ON CA D3), (ON D3 C5), (ON DA D2), (BOTTOMCOL D2)
+	Required by: 
 	GN Required by: 
-39. (not-(HOME C5))
-	Preceded by: (FACEUP CA), (FACEUP DA), (FACEUP SA)
+9. (EMPTY SHOT10)
+	Preceded by: (not-(CONTAINS SHOT10 COCKTAIL3))
 	GN Preceded by: 
-	Required by: (HOME C0), (TOPTALON C4), (ONTALON C4 C3), (ONTALON C3 H3), (ONTALON H4 C2), (ONTALON C2 S2), (ON CA D3), (ON D3 C5), (COLSPACE COLN0)
+	Required by: 
+	GN Required by: 
+10. (EMPTY SHOT9)
+	Preceded by: (not-(CONTAINS SHOT9 COCKTAIL2))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+11. (EMPTY SHOT8)
+	Preceded by: (not-(CONTAINS SHOT8 COCKTAIL5))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+12. (EMPTY SHOT7)
+	Preceded by: (not-(CONTAINS SHOT7 COCKTAIL7))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+13. (EMPTY SHOT6)
+	Preceded by: (not-(CONTAINS SHOT6 COCKTAIL6))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+14. (EMPTY SHOT5)
+	Preceded by: (not-(CONTAINS SHOT5 COCKTAIL4))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+15. (EMPTY SHOT4)
+	Preceded by: (not-(CONTAINS SHOT4 COCKTAIL1))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+16. (EMPTY SHOT3)
+	Preceded by: (not-(CONTAINS SHOT3 COCKTAIL8))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+17. (EMPTY SHOT2)
+	Preceded by: (not-(CONTAINS SHOT2 COCKTAIL9))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+18. (EMPTY SHOT1)
+	Preceded by: (not-(CONTAINS SHOT1 COCKTAIL10))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+19. (EMPTY SHAKER1)
+	Preceded by: (SHAKER-LEVEL SHAKER1 L0), (not-(CONTAINS SHOT13 COCKTAIL1)), (not-(CONTAINS SHOT11 COCKTAIL11)), (not-(CONTAINS SHOT10 COCKTAIL3)), (not-(CONTAINS SHOT9 COCKTAIL2)), (not-(CONTAINS SHOT8 COCKTAIL5)), (not-(CONTAINS SHOT7 COCKTAIL7)), (not-(CONTAINS SHOT6 COCKTAIL6)), (not-(CONTAINS SHOT5 COCKTAIL4)), (not-(CONTAINS SHOT4 COCKTAIL1)), (not-(CONTAINS SHOT3 COCKTAIL8)), (not-(CONTAINS SHOT2 COCKTAIL9)), (not-(CONTAINS SHOT1 COCKTAIL10))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+20. (CLEAN SHOT15)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+21. (CLEAN SHOT14)
+	Preceded by: (not-(CONTAINS SHOT14 INGREDIENT4))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+22. (CLEAN SHOT13)
+	Preceded by: (not-(CONTAINS SHOT13 COCKTAIL1))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+23. (CLEAN SHOT12)
+	Preceded by: (not-(CONTAINS SHOT12 INGREDIENT4))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+24. (CLEAN SHOT11)
+	Preceded by: (not-(CONTAINS SHOT11 COCKTAIL11))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+25. (CLEAN SHOT10)
+	Preceded by: (not-(CONTAINS SHOT10 COCKTAIL3))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+26. (CLEAN SHOT9)
+	Preceded by: (not-(CONTAINS SHOT9 COCKTAIL2))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+27. (CLEAN SHOT8)
+	Preceded by: (not-(CONTAINS SHOT8 COCKTAIL5))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+28. (CLEAN SHOT7)
+	Preceded by: (not-(CONTAINS SHOT7 COCKTAIL7))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+29. (CLEAN SHOT6)
+	Preceded by: (not-(CONTAINS SHOT6 COCKTAIL6))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+30. (CLEAN SHOT5)
+	Preceded by: (not-(CONTAINS SHOT5 COCKTAIL4))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+31. (CLEAN SHOT4)
+	Preceded by: (not-(CONTAINS SHOT4 COCKTAIL1))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+32. (CLEAN SHOT3)
+	Preceded by: (not-(CONTAINS SHOT3 COCKTAIL8))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+33. (CLEAN SHOT2)
+	Preceded by: (not-(CONTAINS SHOT2 COCKTAIL9))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+34. (CLEAN SHOT1)
+	Preceded by: (not-(CONTAINS SHOT1 COCKTAIL10))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+35. (CLEAN SHAKER1)
+	Preceded by: (not-(CONTAINS SHOT13 COCKTAIL1)), (not-(CONTAINS SHOT11 COCKTAIL11)), (not-(CONTAINS SHOT10 COCKTAIL3)), (not-(CONTAINS SHOT9 COCKTAIL2)), (not-(CONTAINS SHOT8 COCKTAIL5)), (not-(CONTAINS SHOT7 COCKTAIL7)), (not-(CONTAINS SHOT6 COCKTAIL6)), (not-(CONTAINS SHOT5 COCKTAIL4)), (not-(CONTAINS SHOT4 COCKTAIL1)), (not-(CONTAINS SHOT3 COCKTAIL8)), (not-(CONTAINS SHOT2 COCKTAIL9)), (not-(CONTAINS SHOT1 COCKTAIL10))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+36. (ONTABLE SHOT15)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+37. (ONTABLE SHOT14)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+38. (ONTABLE SHOT13)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+39. (ONTABLE SHOT12)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+40. (ONTABLE SHOT11)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+41. (ONTABLE SHOT10)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+42. (ONTABLE SHOT9)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+43. (ONTABLE SHOT8)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+44. (ONTABLE SHOT7)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+45. (ONTABLE SHOT6)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+46. (ONTABLE SHOT5)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+47. (ONTABLE SHOT4)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+48. (ONTABLE SHOT3)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+49. (ONTABLE SHOT2)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+50. (ONTABLE SHOT1)
+	Preceded by: 
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+51. (ONTABLE SHAKER1)
+	Preceded by: (not-(CONTAINS SHOT13 COCKTAIL1)), (not-(CONTAINS SHOT11 COCKTAIL11)), (not-(CONTAINS SHOT10 COCKTAIL3)), (not-(CONTAINS SHOT9 COCKTAIL2)), (not-(CONTAINS SHOT8 COCKTAIL5)), (not-(CONTAINS SHOT7 COCKTAIL7)), (not-(CONTAINS SHOT6 COCKTAIL6)), (not-(CONTAINS SHOT5 COCKTAIL4)), (not-(CONTAINS SHOT4 COCKTAIL1)), (not-(CONTAINS SHOT3 COCKTAIL8)), (not-(CONTAINS SHOT2 COCKTAIL9)), (not-(CONTAINS SHOT1 COCKTAIL10))
+	GN Preceded by: 
+	Required by: 
+	GN Required by: 
+52. (not-(CONTAINS SHOT14 INGREDIENT4))
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (EMPTY SHOT14), (CLEAN SHOT14)
+	GN Required by: 
+53. (not-(CONTAINS SHOT13 COCKTAIL1))
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (SHAKER-LEVEL SHAKER1 L0), (EMPTY SHOT13), (EMPTY SHAKER1), (CLEAN SHOT13), (CLEAN SHAKER1), (ONTABLE SHAKER1)
+	GN Required by: 
+54. (not-(CONTAINS SHOT12 INGREDIENT4))
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (EMPTY SHOT12), (CLEAN SHOT12)
+	GN Required by: 
+55. (not-(CONTAINS SHOT11 COCKTAIL11))
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (SHAKER-LEVEL SHAKER1 L0), (EMPTY SHOT11), (EMPTY SHAKER1), (CLEAN SHOT11), (CLEAN SHAKER1), (ONTABLE SHAKER1)
+	GN Required by: 
+56. (not-(CONTAINS SHOT10 COCKTAIL3))
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (SHAKER-LEVEL SHAKER1 L0), (EMPTY SHOT10), (EMPTY SHAKER1), (CLEAN SHOT10), (CLEAN SHAKER1), (ONTABLE SHAKER1)
+	GN Required by: 
+57. (not-(CONTAINS SHOT9 COCKTAIL2))
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (SHAKER-LEVEL SHAKER1 L0), (EMPTY SHOT9), (EMPTY SHAKER1), (CLEAN SHOT9), (CLEAN SHAKER1), (ONTABLE SHAKER1)
+	GN Required by: 
+58. (not-(CONTAINS SHOT8 COCKTAIL5))
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (SHAKER-LEVEL SHAKER1 L0), (EMPTY SHOT8), (EMPTY SHAKER1), (CLEAN SHOT8), (CLEAN SHAKER1), (ONTABLE SHAKER1)
+	GN Required by: 
+59. (not-(CONTAINS SHOT7 COCKTAIL7))
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (SHAKER-LEVEL SHAKER1 L0), (EMPTY SHOT7), (EMPTY SHAKER1), (CLEAN SHOT7), (CLEAN SHAKER1), (ONTABLE SHAKER1)
+	GN Required by: 
+60. (not-(CONTAINS SHOT6 COCKTAIL6))
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (SHAKER-LEVEL SHAKER1 L0), (EMPTY SHOT6), (EMPTY SHAKER1), (CLEAN SHOT6), (CLEAN SHAKER1), (ONTABLE SHAKER1)
+	GN Required by: 
+61. (not-(CONTAINS SHOT5 COCKTAIL4))
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (SHAKER-LEVEL SHAKER1 L0), (EMPTY SHOT5), (EMPTY SHAKER1), (CLEAN SHOT5), (CLEAN SHAKER1), (ONTABLE SHAKER1)
+	GN Required by: 
+62. (not-(CONTAINS SHOT4 COCKTAIL1))
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (SHAKER-LEVEL SHAKER1 L0), (EMPTY SHOT4), (EMPTY SHAKER1), (CLEAN SHOT4), (CLEAN SHAKER1), (ONTABLE SHAKER1)
+	GN Required by: 
+63. (not-(CONTAINS SHOT3 COCKTAIL8))
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (SHAKER-LEVEL SHAKER1 L0), (EMPTY SHOT3), (EMPTY SHAKER1), (CLEAN SHOT3), (CLEAN SHAKER1), (ONTABLE SHAKER1)
+	GN Required by: 
+64. (not-(CONTAINS SHOT2 COCKTAIL9))
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (SHAKER-LEVEL SHAKER1 L0), (EMPTY SHOT2), (EMPTY SHAKER1), (CLEAN SHOT2), (CLEAN SHAKER1), (ONTABLE SHAKER1)
+	GN Required by: 
+65. (not-(CONTAINS SHOT1 COCKTAIL10))
+	Preceded by: 
+	GN Preceded by: 
+	Required by: (SHAKER-LEVEL SHAKER1 L0), (EMPTY SHOT1), (EMPTY SHAKER1), (CLEAN SHOT1), (CLEAN SHAKER1), (ONTABLE SHAKER1)
 	GN Required by: 
 Starting search with k-BFWS...
+EXCEDED, m_arity downgraded to 1 --> size: 7.73805 MB
 Fwd_Search_Problem::init()  return
---[218 / 0]--
---[218 / 3]--
---[218 / 4]--
---[218 / 5]--
---[218 / 10]--
---[218 / 11]--
---[218 / 13]--
---[218 / 14]--
---[218 / 15]--
---[218 / 16]--
---[218 / 17]--
---[218 / 18]--
---[218 / 19]--
---[218 / 20]--
---[218 / 22]--
---[218 / 23]--
---[218 / 24]--
---[218 / 25]--
---[218 / 26]--
---[218 / 27]--
---[218 / 28]--
---[218 / 29]--
---[218 / 30]--
---[218 / 32]--
---[218 / 33]--
---[218 / 34]--
---[218 / 36]--
---[218 / 37]--
---[218 / 39]--
---[218 / 41]--
---[216 / 0]--
---[214 / 0]--
-Total time: 1.06814
-Nodes generated during search: 16326
-Nodes expanded during search: 2837
-Plan found with cost: 46
-Fast-BFS search completed in 1.06814 secs
+--[156 / 0]--
+--[154 / 0]--
+--[153 / 0]--
+--[150 / 0]--
+--[148 / 0]--
+--[147 / 0]--
+--[144 / 0]--
+--[143 / 0]--
+--[141 / 0]--
+--[141 / 1]--
+--[140 / 0]--
+--[140 / 1]--
+--[139 / 0]--
+--[139 / 1]--
+--[138 / 0]--
+--[138 / 1]--
+--[137 / 0]--
+--[137 / 1]--
+--[136 / 0]--
+--[136 / 1]--
+--[135 / 0]--
+--[135 / 1]--
+--[134 / 0]--
+--[134 / 1]--
+--[133 / 0]--
+--[133 / 1]--
+--[132 / 0]--
+--[132 / 1]--
+--[131 / 0]--
+--[131 / 1]--
+--[130 / 0]--
+--[130 / 1]--
+--[129 / 0]--
+--[129 / 1]--
+--[128 / 0]--
+--[128 / 1]--
+--[127 / 0]--
+--[127 / 1]--
+--[127 / 2]--
+--[126 / 0]--
+--[126 / 1]--
+--[124 / 0]--
+--[124 / 5]--
+--[122 / 0]--
+--[122 / 1]--
+--[122 / 5]--
+--[122 / 6]--
+--[120 / 0]--
+--[120 / 5]--
+--[118 / 0]--
+--[118 / 1]--
+--[118 / 5]--
+--[118 / 6]--
+--[115 / 0]--
+--[115 / 1]--
+--[115 / 2]--
+--[115 / 4]--
+--[115 / 5]--
+--[115 / 6]--
+--[114 / 0]--
+--[114 / 1]--
+--[114 / 3]--
+--[114 / 5]--
+--[114 / 6]--
+--[113 / 0]--
+--[113 / 7]--
+--[111 / 0]--
+--[111 / 1]--
+--[111 / 5]--
+--[111 / 6]--
+--[109 / 0]--
+--[109 / 1]--
+--[109 / 3]--
+--[109 / 5]--
+--[109 / 6]--
+--[108 / 0]--
+--[108 / 6]--
+--[106 / 0]--
+--[106 / 1]--
+--[106 / 5]--
+--[106 / 6]--
+--[104 / 0]--
+--[104 / 1]--
+--[104 / 3]--
+--[104 / 4]--
+--[104 / 5]--
+--[104 / 7]--
+--[104 / 9]--
+--[104 / 10]--

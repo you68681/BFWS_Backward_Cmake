@@ -1,2 +1,5 @@
 No output plan file specified, defaulting to 'plan.ipc'
-Segmentation fault (core dumped)
+
+ff: can't find operator file: ipc-2014/seq-sat/Barman/domain.pddl
+
+: No such file or directory

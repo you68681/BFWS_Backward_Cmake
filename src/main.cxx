@@ -388,6 +388,7 @@ int main( int argc, char** argv ) {
 	    search_prob.set_h2_fwd(h2);
 	} else
 	    prob.compute_edeletes();
+
 //    float h_val=0;
 //	auto* h2_edit =new H2_Fwd (fwd_search_prob);
 
@@ -468,20 +469,20 @@ int main( int argc, char** argv ) {
 
 
 
-    std::ofstream	h2_stream;
-    h2_stream.open("h2.txt");
-    search_prob.h2_fwd().print_values(h2_stream);
-    h2_stream.close();
-
-    std::ofstream	action_stream;
-    action_stream.open("action.txt");
-    for (unsigned i=0; i<search_prob.task().num_actions(); i++){
-        action_stream<<i<<std::endl;
-        auto act = (search_prob.task().actions().at(i));
-        act->print(search_prob.task(),action_stream);
-
-    }
-    action_stream.close();
+//    std::ofstream	h2_stream;
+//    h2_stream.open("h2.txt");
+//    search_prob.h2_fwd().print_values(h2_stream);
+//    h2_stream.close();
+//
+//    std::ofstream	action_stream;
+//    action_stream.open("action.txt");
+//    for (unsigned i=0; i<search_prob.task().num_actions(); i++){
+//        action_stream<<i<<std::endl;
+//        auto act = (search_prob.task().actions().at(i));
+//        act->print(search_prob.task(),action_stream);
+//
+//    }
+//    action_stream.close();
 
 
 
@@ -753,10 +754,10 @@ int main( int argc, char** argv ) {
 	     * Use landmark count instead of goal count
 	     */
 	    Gen_Lms_Fwd    gen_lms( search_prob );
-	    gen_lms.set_only_goals( false );	   
+	    gen_lms.set_only_goals( false);
 	    Landmarks_Graph graph1( prob );
 	    gen_lms.compute_lm_graph_set_additive( graph1 );
-	 
+
 	    Land_Graph_Man lgm( search_prob, &graph1);
 	    bfs_engine.use_land_graph_manager( &lgm );
 
@@ -771,8 +772,11 @@ int main( int argc, char** argv ) {
 	    //     space for novelty > 1 tuples 
 	    H_Add_Rp_Fwd hadd( search_prob );
 	    float h_init=0;
-	    const aptk::State* s_0 = search_prob.init_state();
-	    hadd.eval( *s_0, h_init );
+//	    const aptk::State* s_0 = search_prob.init_state();
+/** chao edit
+ *
+ */     const aptk::State* s_0= search_prob.goal_state();
+        hadd.eval( *s_0, h_init );
 	    
 	    bfs_engine.set_arity_2( max_novelty,  h_init );
 

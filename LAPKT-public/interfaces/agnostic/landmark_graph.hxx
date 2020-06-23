@@ -46,7 +46,16 @@ public:
 	
 		~Node() {
 		}
-
+        /** chao edit
+         *
+         * @param n
+         */
+		void	add_del( Node* n ) {
+			m_del.push_back( n );
+		}
+		void	add_edel( Node* n ) {
+			m_edel.push_back( n );
+		}
 		void	add_precedent( Node* n ) {
 			m_preceded_by.push_back( n );
 		}
@@ -69,6 +78,24 @@ public:
 		bool*           is_consumed_ptr() { return &m_consumed; }
 		void            consume(){ m_consumed = true; m_consumed_once = true; }
 		void            unconsume(){ m_consumed = false; }
+		/** chao add
+		 *
+		 * @return
+		 */
+		bool            are_del_consumed() const{
+			if(  m_del.empty() ) return true;
+			for ( std::vector<Node* >::const_iterator it = m_del.begin(); it != m_del.end(); it++ )
+				if( !(*it)->is_consumed() )
+					return false;
+			return true;
+		}
+		bool            are_edel_consumed() const{
+			if(  m_edel.empty() ) return true;
+			for ( std::vector<Node* >::const_iterator it = m_edel.begin(); it != m_edel.end(); it++ )
+				if( !(*it)->is_consumed() )
+					return false;
+			return true;
+		}
 		bool            are_precedences_consumed() const{
 			if(  m_preceded_by.empty() ) return true;
 			for ( std::vector<Node* >::const_iterator it = m_preceded_by.begin(); it != m_preceded_by.end(); it++ )
@@ -106,7 +133,25 @@ public:
 			return m_preceded_by;
 		}
 
-		
+		/** chao add
+		 *
+		 * @param nq
+		 * @return
+		 */
+		bool		is_del( Node* nq)  const {
+			if(  m_del.empty() ) return false;
+			for ( std::vector<Node* >::const_iterator it = m_del.begin(); it != m_del.end(); it++ )
+				if( *it == nq )
+					return true;
+			return false;
+		}
+		bool		is_edel( Node* nq)  const {
+			if(  m_edel.empty() ) return false;
+			for ( std::vector<Node* >::const_iterator it = m_edel.begin(); it != m_edel.end(); it++ )
+				if( *it == nq )
+					return true;
+			return false;
+		}
 		bool		is_preceded_by( Node* nq)  const {
 			if(  m_preceded_by.empty() ) return false;
 			for ( std::vector<Node* >::const_iterator it = m_preceded_by.begin(); it != m_preceded_by.end(); it++ )
@@ -141,6 +186,18 @@ public:
 				preceded_by_gn() const {
 			return m_preceded_by_gn;
 		}
+		/** chao add
+		 *
+		 * @return
+		 */
+		const std::vector<Node* >&
+		get_del() const {
+			return m_del;
+		}
+		const std::vector<Node* >&
+		get_edel() const {
+			return m_edel;
+		}
 
 		const std::vector<Node* >&
 				required_by() const {
@@ -160,6 +217,9 @@ public:
 		std::vector<Node* >	m_preceded_by_gn;
 		std::vector<Node* >	m_required_by;
 		std::vector<Node* >	m_required_by_gn;
+		std::vector<Node* > m_del;
+		std::vector<Node* > m_edel;
+
 	};
 
 	Landmarks_Graph(const STRIPS_Problem& p);
@@ -172,7 +232,17 @@ public:
 	void				preceding( unsigned p, Fluent_Vec& preceding ) const;
 	void				greedy_preceding( unsigned p, Fluent_Vec& greedy_preceding ) const;
 	void				following( unsigned p, Fluent_Vec& following ) const;
-	
+	/** chao add
+	 *
+	 * @param p
+	 */
+	Node*				generate_del( unsigned p ){        Node* n = new Node( p );
+		return n;
+	};
+	Node*				generate_edel( unsigned p ){        Node* n = new Node( p );
+		return n;
+	};
+
 	void				add_landmark( unsigned p );
 	void				add_landmark_for( unsigned p, unsigned q );
 
