@@ -32,6 +32,7 @@ namespace aptk {
 class STRIPS_Problem;
 class State;
 class Action;
+class Negation_Action;
 
 namespace agnostic {
 

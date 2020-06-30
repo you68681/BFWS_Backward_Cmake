@@ -49,8 +49,8 @@ public:
     Fluent_Vec&		goal()	  			{ return task().init(); }
     /** chao edit
      */
-    Fluent_Vec&		negation()	  			{ return task().negation(); }
-    const Fluent_Vec&	negation() const  			{ return task().negation(); }
+    Fluent_Vec&		init_negation()	  			{ return task().init_negation(); }
+    const Fluent_Vec&	init_negation() const  			{ return task().init_negation(); }
     const Fluent_Vec&	init() const  			{ return task().goal(); }
     const Fluent_Vec&	goal() const  			{ return task().init(); }
 	virtual bool		goal( const State& s ) const;

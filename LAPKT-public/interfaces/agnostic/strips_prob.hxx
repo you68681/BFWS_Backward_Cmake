@@ -151,6 +151,12 @@ namespace aptk
 		void			set_problem_name( std::string name ) { m_problem_name = name; }
 		std::string		domain_name() const { return m_domain_name; }
 		std::string		problem_name() const { return m_problem_name; }
+        /** chao edit
+         *
+         * @return
+         */
+        unsigned 		num_negation_fluents() const		{ return m_negation_num_fluents; }
+        unsigned 		num_negation_actions() const		{ return m_negation_num_actions; }
 
 		unsigned 		num_fluents() const		{ return m_num_fluents; }
 		unsigned 		num_actions() const		{ return m_num_actions; }
@@ -162,6 +168,13 @@ namespace aptk
 						    const Fluent_Vec& pre, const Fluent_Vec& add, const Fluent_Vec& del,
 						    const Conditional_Effect_Vec& ceffs, float cost = 1.0f );
 
+        /** chao edit
+         *
+         */
+        static unsigned 	add_negation_action( STRIPS_Problem& p, std::string signature,
+                                       const Fluent_Vec& pre, const Fluent_Vec& add, const Fluent_Vec& del,
+                                       const Conditional_Effect_Vec& ceffs, float cost = 1.0f );
+
 		static unsigned 	add_fluent( STRIPS_Problem& p, std::string signature );
 
         /** chao edit
@@ -171,12 +184,13 @@ namespace aptk
          * @return
          */
         static unsigned 	add_fluent_edit( STRIPS_Problem& p, std::string signature, std::vector<unsigned >);
+        static unsigned 	add_fluent_negation( STRIPS_Problem& p, std::string signature);
 
 		static void		set_init( STRIPS_Problem& p, const Fluent_Vec& init );
 		/** chao add
 		 *
 		 */
-		static void     set_negation(STRIPS_Problem& p, const Fluent_Vec& negation);
+		static void     set_init_negation(STRIPS_Problem& p, const Fluent_Vec& negation);
 
 	    static void		set_goal( STRIPS_Problem& p, const Fluent_Vec& goal, bool createEndOp = false, bool keep_original_goal = false );
 
@@ -184,19 +198,77 @@ namespace aptk
 
 	  	
 		Fluent_Ptr_Vec&		fluents() 			{ return m_fluents; }
+		/** chao add
+		 *
+		 * @return
+		 */
+//        const std::vector< const Negation_Fluent*>&
+//        negation_fluents() const			{ return m_const_negation_fluents; }
+//        Negation_Fluent_Ptr_Vec&		negation_fluents() 			{ return m_negation_fluents; }
+//
+//        Negation_Action_Ptr_Vec&		negation_actions() 			{ return m_negation_actions; }
+        const std::vector< const Fluent*>&
+        negation_fluents() const			{ return m_const_negation_fluents; }
+        Fluent_Ptr_Vec&		negation_fluents() 			{ return m_negation_fluents; }
+
+        Action_Ptr_Vec&		negation_actions() 			{ return m_negation_actions; }
+
 		Action_Ptr_Vec&		actions() 			{ return m_actions; }
 		const std::vector< const Fluent*>&	
 					fluents() const			{ return m_const_fluents; }
 		const std::vector< const Action*>&
 					actions() const			{ return m_const_actions; }
-
+		/** chao add
+		 *
+		 */
+//        const std::vector< const Negation_Action*>&
+//        negation_actions() const			{ return m_const_negation_actions; }
+        const std::vector< const Action*>&
+        negation_actions() const			{ return m_const_negation_actions; }
 		Fluent_Vec&		init()	  			{ return m_init; }
-        Fluent_Vec&		negation()	  			{ return m_negation; }
+        Fluent_Vec&		init_negation()	  			{ return m_init_negation; }
 		Fluent_Vec&		goal()	  			{ return m_goal; }
 		const Fluent_Vec&	init() const  			{ return m_init; }
 		const Fluent_Vec&	goal() const  			{ return m_goal;}
-		const Fluent_Vec&	negation() const  			{ return m_negation; }
+		const Fluent_Vec&	init_negation() const  			{ return m_init_negation; }
 	        agnostic::Mutex_Set&    mutexes()                       { return m_mutexes; }
+
+	    /** chao add
+	     *
+	     * @param f
+	     * @return
+	     */
+        std::vector<const Action*>&
+        actions_negation_adding( unsigned f )		{ return m_negation_adding[f]; }
+        std::vector< std::pair< unsigned, const Action*> >&
+        ceffs_negation_adding( unsigned f )		{ return m_negation_ceffs_adding[f]; }
+        std::vector<const Action*>&
+        actions_negation_deleting( unsigned f )		{ return m_negation_deleting[f]; }
+
+
+        std::vector<const Action*>&
+        actions_negation_edeleting( unsigned f )		{ return m_negation_edeleting[f]; }
+        std::vector<const Action*>&
+        actions_negation_bwd_edeleting( unsigned f )		{ return m_negation_bwd_edeleting[f]; }
+
+        std::vector<const Action*>&
+        actions_negation_requiring( unsigned f )		{ return m_negation_requiring[f]; }
+        const std::vector<const Action*>&
+        actions_negation_adding( unsigned f ) const	{ return m_negation_adding[f]; }
+        const std::vector<const Action*>&
+        actions_negation_deleting( unsigned f ) const	{ return m_negation_deleting[f]; }
+        const std::vector<const Action*>&
+        actions_negation_edeleting( unsigned f ) const	{ return m_negation_edeleting[f]; }
+        const std::vector<const Action*>&
+        actions_negation_bwd_edeleting( unsigned f ) const	{ return m_negation_bwd_edeleting[f]; }
+        const std::vector<const Action*>&
+        actions_negation_requiring( unsigned f ) const	{ return m_negation_requiring[f]; }
+        /** chao add end
+         *
+         * @param f
+         * @return
+         */
+
 		std::vector<const Action*>&		
 		 			actions_adding( unsigned f )		{ return m_adding[f]; }
 
@@ -251,16 +323,21 @@ namespace aptk
 		bool			is_in_init( unsigned f ) const	{ return m_in_init[f]; }
 		bool			is_in_goal( unsigned f )	{ return m_in_goal[f]; }
 		bool			is_in_goal( unsigned f ) const	{ return m_in_goal[f]; }
-        bool			is_in_negation( unsigned f )	{ return m_in_negation[f]; }
-        bool			is_in_negation( unsigned f ) const	{ return m_in_negation[f]; }
-        std::vector<bool> get_negation()         {return m_in_negation;}
-        std::vector<bool> get_negation()     const    {return m_in_negation;}
+        bool			is_in_negation( unsigned f )	{ return m_in_init_negation[f]; }
+        bool			is_in_negation( unsigned f ) const	{ return m_in_init_negation[f]; }
+        std::vector<bool> get_init_negation()         {return m_in_init_negation;}
+        std::vector<bool> get_init_negation()     const    {return m_in_init_negation;}
 		void                    print_fluent_vec(const Fluent_Vec &a);
 		unsigned                end_operator() { return m_end_operator_id; }
       	        unsigned                end_operator() const { return m_end_operator_id; }
 	        unsigned                get_fluent_index(std::string signature);
 
 		void			make_action_tables(bool generate_match_tree = true);
+		/** chao add
+		 *
+		 * @param generate_match_tree
+		 */
+        void			make_negation_action_tables(bool generate_match_tree = true);
 
 		void			print( std::ostream& os ) const;
 		void			print_fluents( std::ostream& os ) const;
@@ -283,15 +360,38 @@ namespace aptk
 
 		const std::vector< Best_Supporter >&	effects() const { return m_effects; }
 		std::vector< Trigger >&			triggers()  const	{ return m_triggers; }
+		/** chao add
+		 *
+		 * @param p
+		 * @return
+		 */
+        const std::vector< Best_Supporter >&	negation_effects() const { return m_effects; }
+        std::vector< Trigger >&			negation_triggers()  const	{ return m_triggers; }
+
 		const std::set< unsigned >&		relevant_effects( unsigned p ) const { return m_relevant_effects[p]; }
+		/** chao edit
+		 *
+		 * @param p
+		 * @return
+		 */
+        const std::set< unsigned >&		relevant_negation_effects( unsigned p ) const { return m_negation_relevant_effects[p]; }
 
 		void					make_effect_tables();
+		/** chao add
+		 *
+		 */
+        void					make_negation_effect_tables();
 
 	protected:
-	
+	   /**chao_add
+	    *
+	    */
+        void			increase_num_negation_fluents()        	{ m_negation_num_fluents++; }
+        void			increase_num_negation_actions()        	{ m_negation_num_actions++; }
 		void			increase_num_fluents()        	{ m_num_fluents++; }
 		void			increase_num_actions()        	{ m_num_actions++; }
 		void			register_action_in_tables( Action* act );
+        void			register_negation_action_in_tables( Action* act );
 
 	protected:
 
@@ -299,16 +399,43 @@ namespace aptk
 		std::string								m_problem_name;
 		unsigned		 						m_num_fluents;
 		unsigned		 						m_num_actions;
+		/** chao edit
+		 *
+		 */
+        unsigned		 						m_negation_num_fluents;
+        unsigned		 						m_negation_num_actions;
+//        Negation_Action_Ptr_Vec		 						m_negation_actions;
+        Action_Ptr_Vec		 						m_negation_actions;
 		Action_Ptr_Vec		 						m_actions;
-		std::vector<const Action*>						m_const_actions;
+        std::vector<const Action*>						m_const_actions;
+//        std::vector<const Negation_Action*>						m_const_negation_actions;
+        std::vector<const Action*>						m_const_negation_actions;
 		Fluent_Ptr_Vec		 						m_fluents;
+		/** chao add
+		 *
+		 */
+//        Negation_Fluent_Ptr_Vec		 						m_negation_fluents;
+//        std::vector<const Negation_Fluent*>						m_const_negation_fluents;
+        Fluent_Ptr_Vec		 						m_negation_fluents;
+        std::vector<const Fluent*>						m_const_negation_fluents;
 		std::vector<const Fluent*>						m_const_fluents;
 		Fluent_Vec		 						m_init;
 		Fluent_Vec		 						m_goal;
 		/** chao edit
 		 *
 		 */
-        Fluent_Vec		 						m_negation;
+        Fluent_Vec		 						m_init_negation;
+
+        Fluent_Action_Table	 						m_negation_adding;
+        Fluent_Action_Table	 						m_negation_requiring;
+        Fluent_Action_Table	 						m_negation_deleting;
+        Fluent_Action_Table	 						m_negation_edeleting;
+        Fluent_Action_Table	 						m_negation_bwd_edeleting;
+        std::vector< std::vector< std::pair< unsigned, const Action* > > >	m_negation_ceffs_adding;
+        std::vector< std::set< unsigned> >					m_negation_relevant_effects;
+        std::vector< Best_Supporter >						m_negation_effects;
+        mutable std::vector< Trigger >						m_negation_triggers;
+
 		Fluent_Action_Table	 						m_adding;
 		Fluent_Action_Table	 						m_requiring;
 		Fluent_Action_Table	 						m_deleting;
@@ -319,9 +446,13 @@ namespace aptk
 		/** chao edit
 		 *
 		 */
-        std::vector<bool>	 						    m_in_negation;
+        std::vector<bool>	 						    m_in_init_negation;
 		unsigned                 						m_end_operator_id;
 	  	std::map<std::string,int> 						m_fluents_map;
+	  	/** chao edit
+	  	 *
+	  	 */
+        std::map<std::string,int> 						m_negation_fluents_map;
 		agnostic::Successor_Generator						m_succ_gen;
 		agnostic::Match_Tree							m_succ_gen_v2;
 		std::vector< const  Action* >   					m_empty_precs;

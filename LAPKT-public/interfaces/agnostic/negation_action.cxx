@@ -18,13 +18,13 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include <action.hxx>
+#include <negation_action.hxx>
 #include <iostream>
 
 namespace aptk 
 {
 
-Action::Action( STRIPS_Problem& p )
+Negation_Action::Negation_Action( STRIPS_Problem& p )
 	: m_cost( 1 ), m_active( true )
 {
 	prec_set().resize( p.num_fluents() );
@@ -35,20 +35,13 @@ Action::Action( STRIPS_Problem& p )
      *
      */
 	bwd_edel_set().resize(p.num_fluents());
-
-    prec_negation_set().resize( p.num_negation_fluents() );
-    add_negation_set().resize( p.num_negation_fluents() );
-    del_negation_set().resize( p.num_negation_fluents() );
-    edel_negation_set().resize( p.num_negation_fluents() );
-    bwd_negation_edel_set().resize(p.num_negation_fluents());
-
 }
 
-Action::~Action()
+Negation_Action::~Negation_Action()
 {
 }
 
-void Action::define( const Fluent_Vec& precs, const Fluent_Vec& adds, const Fluent_Vec& dels )
+void Negation_Action::define( const Fluent_Vec& precs, const Fluent_Vec& adds, const Fluent_Vec& dels )
 {
 	// define the precondition, adds and deletes
 	define_fluent_list( precs, prec_vec(), prec_set() );
@@ -65,39 +58,14 @@ void Action::define( const Fluent_Vec& precs, const Fluent_Vec& adds, const Flue
 	    m_prec_varval.push_back( std::make_pair(precs[i], 0) );
 }
 
-    void Action::define_negation( const Fluent_Vec& precs, const Fluent_Vec& adds, const Fluent_Vec& dels )
-    {
-        // define the precondition, adds and deletes
-        define_fluent_list( precs, prec_negation_vec(), prec_negation_set() );
-        define_fluent_list( adds, add_negation_vec(), add_negation_set() );
-        define_fluent_list( dels, del_negation_vec(), del_negation_set() );
-        define_fluent_list( dels, edel_negation_vec(), edel_negation_set() );
-        /** chao edit
-         *
-         */
-        define_fluent_list( dels, bwd_negation_edel_vec(), bwd_negation_edel_set() );
-
-        // TODO: This should be made far more complex when mutex's are properly computed
-        for ( unsigned i = 0; i < precs.size(); ++i)
-            m_negation_prec_varval.push_back( std::make_pair(precs[i], 0) );
-    }
-
-void Action::define( const Fluent_Vec& precs, const Fluent_Vec& adds, const Fluent_Vec& dels, const Conditional_Effect_Vec& ceffs )
+void Negation_Action::define( const Fluent_Vec& precs, const Fluent_Vec& adds, const Fluent_Vec& dels, const Conditional_Effect_Vec& ceffs )
 {
 	// define the precondition, adds, deletes and conditional effects
 	define( precs, adds, dels );
-	m_negation_cond_effects = ceffs;
+	m_cond_effects = ceffs;	
 }
 
-void Action::define_negation( const Fluent_Vec& precs, const Fluent_Vec& adds, const Fluent_Vec& dels, const Conditional_Effect_Vec& ceffs )
-    {
-        // define the precondition, adds, deletes and conditional effects
-        define_negation( precs, adds, dels );
-        m_cond_effects = ceffs;
-    }
-
-
-void Action::define_fluent_list(  const Fluent_Vec& in, Fluent_Vec& fluent_list, Fluent_Set& fluent_set )
+void Negation_Action::define_fluent_list(  const Fluent_Vec& in, Fluent_Vec& fluent_list, Fluent_Set& fluent_set )
 {
 	for ( unsigned k = 0; k < in.size(); k++ )
 	{
@@ -106,7 +74,7 @@ void Action::define_fluent_list(  const Fluent_Vec& in, Fluent_Vec& fluent_list,
 	}
 }
 
-void	Action::print( const STRIPS_Problem& prob, std::ostream& os ) const {
+void	Negation_Action::print( const STRIPS_Problem& prob, std::ostream& os ) const {
 
 	os << "Action " << signature() << std::endl;
 

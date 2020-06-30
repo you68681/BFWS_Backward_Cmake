@@ -44,10 +44,20 @@ namespace agnostic {
 //		bool 	is_reachable( const Fluent_Vec& s, const Fluent_Vec& g, const Bit_Set& excluded );
         bool 	is_reachable(const Fluent_Vec& s, const Fluent_Vec& g, const Bit_Set& excluded );
 		void	get_reachable_actions( const Fluent_Vec& s, const Fluent_Vec& g,  Bit_Set& reach_actions );
+		/** chao add
+		 *
+		 */
+        void	get_reachable_negation_actions( const Fluent_Vec& s, const Fluent_Vec& g,  Bit_Set& reach_actions );
 	protected:
 
 		bool	apply_actions();
 		void	initialize( const Fluent_Vec& s );
+		/** chao add
+		 *
+		 */
+        bool	check_negation( const Fluent_Vec& set );
+        bool	apply_negation_actions();
+        void	initialize_negation( const Fluent_Vec& s );
 		bool	check( const Fluent_Vec& set );
 
 		void	print_reachable_atoms();
@@ -56,6 +66,12 @@ namespace agnostic {
 		const STRIPS_Problem&		m_problem;
 		std::vector<bool>	m_reachable_atoms;
 		std::vector<bool>	m_reach_next;
+		/** chao add
+		 *
+		 */
+        std::vector<bool>	m_reachable_negation_atoms;
+        std::vector<bool>	m_reach_negation_next;
+        Bit_Set			m_negation_action_mask;
 		Bit_Set			m_action_mask;
 
 

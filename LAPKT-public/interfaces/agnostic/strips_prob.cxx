@@ -21,9 +21,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include <strips_prob.hxx>
 #include <action.hxx>
 #include <fluent.hxx>
+#include <negation_fluent.hxx>
+#include <negation_action.hxx>
 #include <cassert>
 #include <map>
 #include <iostream>
+#include "negation_fluent.hxx"
 
 namespace aptk
 {
@@ -32,7 +35,7 @@ namespace aptk
 		: m_domain_name(dom_name), m_problem_name( prob_name ), 
 		m_num_fluents( 0 ), m_num_actions( 0 ), m_end_operator_id( no_such_index ),
 		  m_succ_gen( *this ), m_succ_gen_v2( *this ), m_has_cond_effs(false), m_verbose(true), 
-		  m_mutexes( *this )
+		  m_mutexes( *this ),m_negation_num_fluents( 0 ), m_negation_num_actions( 0 )
 	{
 	}
 
@@ -62,36 +65,90 @@ namespace aptk
 				std::cout << "\n Match tree built with " << m_succ_gen_v2.count() << " nodes.\n" << std::endl;
 		}
 	}
+    void	STRIPS_Problem::make_negation_action_tables( bool generate_match_tree )
+    {
+        m_negation_requiring.resize( negation_fluents().size() );
+        m_negation_deleting.resize( negation_fluents().size() );
+        m_negation_edeleting.resize( negation_fluents().size() );
+        /**chao edit
+         *
+         */
+        m_negation_bwd_edeleting.resize( negation_fluents().size() );
+        m_negation_adding.resize( negation_fluents().size() );
+        m_negation_ceffs_adding.resize( negation_fluents().size() );
 
-	void	STRIPS_Problem::register_action_in_tables( Action* a )
+        for ( unsigned k = 0; k < negation_actions().size(); k++ )
+            register_negation_action_in_tables( negation_actions()[k] );
+
+        //m_succ_gen.build();
+        if(generate_match_tree){
+            m_succ_gen_v2.build();
+            if (m_verbose)
+                std::cout << "\n Match tree built with " << m_succ_gen_v2.count() << " nodes.\n" << std::endl;
+        }
+    }
+    void	STRIPS_Problem::register_action_in_tables( Action* a )
+    {
+        if ( a->prec_vec().empty() ) {
+            m_empty_precs.push_back(a);
+        }
+        else {
+            for ( unsigned k = 0; k < a->prec_vec().size(); k++ )
+                actions_requiring(a->prec_vec()[k]).push_back( a );
+        }
+        for ( unsigned k = 0; k < a->add_vec().size(); k++ )
+            actions_adding(a->add_vec()[k]).push_back(a);
+
+        for ( unsigned k = 0; k < a->ceff_vec().size(); k++ )
+            for ( unsigned i = 0; i < a->ceff_vec()[k]->add_vec().size(); i++ )
+                ceffs_adding( a->ceff_vec()[k]->add_vec()[i] ).push_back( std::make_pair( k, a ) );
+
+        for ( unsigned k = 0; k < a->del_vec().size(); k++ )
+            actions_deleting(a->del_vec()[k]).push_back(a);
+
+        //register conditional effects
+
+        for ( unsigned i = 0; i < a->ceff_vec().size(); i++ )
+        {
+            for ( unsigned k = 0; k < a->ceff_vec()[i]->prec_vec().size(); k++ )
+                actions_requiring(a->ceff_vec()[i]->prec_vec()[k]).push_back( a );
+            for ( unsigned k = 0; k < a->ceff_vec()[i]->add_vec().size(); k++ )
+                actions_adding(a->ceff_vec()[i]->add_vec()[k]).push_back(a);
+            for ( unsigned k = 0; k < a->ceff_vec()[i]->del_vec().size(); k++ )
+                actions_deleting(a->ceff_vec()[i]->del_vec()[k]).push_back(a);
+        }
+
+    }
+
+	void	STRIPS_Problem::register_negation_action_in_tables( Action* a )
 	{
-		if ( a->prec_vec().empty() ) {
+		if ( a->prec_negation_vec().empty() ) {
 			m_empty_precs.push_back(a);
 		}
 		else {
-			for ( unsigned k = 0; k < a->prec_vec().size(); k++ )
-				actions_requiring(a->prec_vec()[k]).push_back( a );
+			for ( unsigned k = 0; k < a->prec_negation_vec().size(); k++ )
+				actions_negation_requiring(a->prec_negation_vec()[k]).push_back( a );
 		}
-		for ( unsigned k = 0; k < a->add_vec().size(); k++ )
-			actions_adding(a->add_vec()[k]).push_back(a);
+		for ( unsigned k = 0; k < a->add_negation_vec().size(); k++ )
+			actions_negation_adding(a->add_negation_vec()[k]).push_back(a);
 
-		for ( unsigned k = 0; k < a->ceff_vec().size(); k++ )
-			for ( unsigned i = 0; i < a->ceff_vec()[k]->add_vec().size(); i++ )
-				ceffs_adding( a->ceff_vec()[k]->add_vec()[i] ).push_back( std::make_pair( k, a ) );
+		for ( unsigned k = 0; k < a->ceff_negation_vec().size(); k++ )
+			for ( unsigned i = 0; i < a->ceff_negation_vec()[k]->add_vec().size(); i++ )
+				ceffs_negation_adding( a->ceff_negation_vec()[k]->add_vec()[i] ).push_back( std::make_pair( k, a ) );
 
-		for ( unsigned k = 0; k < a->del_vec().size(); k++ )
-			actions_deleting(a->del_vec()[k]).push_back(a);	
+		for ( unsigned k = 0; k < a->del_negation_vec().size(); k++ )
+			actions_negation_deleting(a->del_negation_vec()[k]).push_back(a);
 		
 		//register conditional effects
 		
-		for ( unsigned i = 0; i < a->ceff_vec().size(); i++ )
+		for ( unsigned i = 0; i < a->ceff_negation_vec().size(); i++ )
 		{
-			for ( unsigned k = 0; k < a->ceff_vec()[i]->prec_vec().size(); k++ )
-				actions_requiring(a->ceff_vec()[i]->prec_vec()[k]).push_back( a );
-			for ( unsigned k = 0; k < a->ceff_vec()[i]->add_vec().size(); k++ )
-				actions_adding(a->ceff_vec()[i]->add_vec()[k]).push_back(a);
-			for ( unsigned k = 0; k < a->ceff_vec()[i]->del_vec().size(); k++ )
-				actions_deleting(a->ceff_vec()[i]->del_vec()[k]).push_back(a);	
+			for ( unsigned k = 0; k < a->ceff_negation_vec()[i]->prec_vec().size(); k++ )
+				actions_negation_requiring(a->ceff_negation_vec()[i]->prec_vec()[k]).push_back( a );
+			for ( unsigned k = 0; k < a->ceff_negation_vec()[i]->add_vec().size(); k++ )
+				actions_negation_adding(a->ceff_negation_vec()[i]->add_vec()[k]).push_back(a);
+			for ( unsigned k = 0; k < a->ceff_negation_vec()[i]->del_vec().size(); k++ )
+				actions_negation_deleting(a->ceff_negation_vec()[i]->del_vec()[k]).push_back(a);
 		}
 		
 	}
@@ -114,7 +171,46 @@ namespace aptk
 		p.m_const_actions.push_back( new_act );
 		return p.actions().size()-1;
 	}
+	/** chao add for negation action
+	 *
+	 * @return
+	 */
+//    unsigned STRIPS_Problem::add_negation_action( STRIPS_Problem& p, std::string signature,
+//                                         const Fluent_Vec& pre, const Fluent_Vec& add, const Fluent_Vec& del,
+//                                         const Conditional_Effect_Vec& ceffs, float cost )
+//    {
+//        if( ! p.has_conditional_effects() )
+//            if( ! ceffs.empty() )
+//                p.notify_cond_eff_in_action();
+//
+//        Negation_Action* new_act = new Negation_Action( p );
+//        new_act->set_signature( signature );
+//        new_act->define( pre, add, del, ceffs );
+//        p.increase_num_negation_actions();
+//        p.negation_actions().push_back( new_act );
+//        new_act->set_index( p.negation_actions().size()-1 );
+//        new_act->set_cost( cost );
+//        p.m_const_negation_actions.push_back( new_act );
+//        return p.negation_actions().size()-1;
+//    }
+    unsigned STRIPS_Problem::add_negation_action( STRIPS_Problem& p, std::string signature,
+                                         const Fluent_Vec& pre, const Fluent_Vec& add, const Fluent_Vec& del,
+                                         const Conditional_Effect_Vec& ceffs, float cost )
+    {
+        if( ! p.has_conditional_effects() )
+            if( ! ceffs.empty() )
+                p.notify_cond_eff_in_action();
 
+        Action* new_act = new Action( p );
+        new_act->set_signature( signature );
+        new_act->define_negation( pre, add, del, ceffs );
+        p.increase_num_negation_actions();
+        p.negation_actions().push_back( new_act );
+        new_act->set_index( p.negation_actions().size()-1 );
+        new_act->set_cost( cost );
+        p.m_const_negation_actions.push_back( new_act );
+        return p.negation_actions().size()-1;
+    }
 	/** chao edit
 	 *
 	 * @param p
@@ -124,7 +220,7 @@ namespace aptk
 
     unsigned STRIPS_Problem::add_fluent_edit( STRIPS_Problem& p, std::string signature,std::vector<unsigned > constants )
     {
-        Fluent* new_fluent = new Fluent( p );
+            Fluent* new_fluent = new Fluent( p );
         new_fluent->set_index( p.fluents().size() );
         new_fluent->set_signature( signature );
         new_fluent->set_constants(constants);
@@ -133,6 +229,29 @@ namespace aptk
         p.fluents().push_back( new_fluent );
         p.m_const_fluents.push_back( new_fluent );
         return p.fluents().size()-1;
+    }
+
+//    unsigned STRIPS_Problem::add_fluent_negation( STRIPS_Problem& p, std::string signature )
+//    {
+//        Negation_Fluent* new_fluent = new Negation_Fluent( p );
+//        new_fluent->set_index( p.negation_fluents().size() );
+//        new_fluent->set_signature( signature );
+//        p.m_negation_fluents_map[signature] = new_fluent->index();
+//        p.increase_num_negation_fluents();
+//        p.negation_fluents().push_back( new_fluent );
+//        p.m_const_negation_fluents.push_back( new_fluent );
+//        return p.negation_fluents().size()-1;
+//    }
+    unsigned STRIPS_Problem::add_fluent_negation( STRIPS_Problem& p, std::string signature )
+    {
+        Fluent* new_fluent = new Fluent( p );
+        new_fluent->set_index( p.negation_fluents().size() );
+        new_fluent->set_signature( signature );
+        p.m_negation_fluents_map[signature] = new_fluent->index();
+        p.increase_num_negation_fluents();
+        p.negation_fluents().push_back( new_fluent );
+        p.m_const_negation_fluents.push_back( new_fluent );
+        return p.negation_fluents().size()-1;
     }
 
 	unsigned STRIPS_Problem::add_fluent( STRIPS_Problem& p, std::string signature )
@@ -150,18 +269,18 @@ namespace aptk
 	/** chao edit
 	 *
 	 */
-	void STRIPS_Problem::set_negation( STRIPS_Problem& p, const Fluent_Vec& negation_vec )
+	void STRIPS_Problem::set_init_negation( STRIPS_Problem& p, const Fluent_Vec& negation_vec )
     {
-        if ( p.m_in_negation.empty() )
-            p.m_in_negation.resize( p.num_fluents(), false );
+        if ( p.m_in_init_negation.empty() )
+            p.m_in_init_negation.resize( p.num_fluents(), false );
         else
             for ( unsigned k = 0; k < p.num_fluents(); k++ )
-                p.m_in_negation[k] = false;
+                p.m_in_init_negation[k] = false;
 
-        p.negation().assign( negation_vec.begin(), negation_vec.end() );
+        p.init_negation().assign( negation_vec.begin(), negation_vec.end() );
 
         for ( unsigned k = 0; k < negation_vec.size(); k++ )
-            p.m_in_negation[ negation_vec[k] ] = true;
+            p.m_in_init_negation[ negation_vec[k] ] = true;
 
     }
 
@@ -387,4 +506,42 @@ namespace aptk
 		}
 		
 	}
+
+    void	STRIPS_Problem::make_negation_effect_tables() {
+        m_negation_relevant_effects.resize( num_negation_fluents() );
+
+        for ( unsigned i = 0; i < num_negation_actions(); i++ ) {
+
+            const Action& a = *(negation_actions()[i]);
+
+            // Make action inconditional effect
+            if ( !a.add_negation_vec().empty() ) {
+                Best_Supporter eff( i, no_such_index );
+                m_negation_effects.push_back( eff );
+                m_negation_triggers.push_back( Trigger( num_fluents(), a.prec_negation_vec(), a.add_negation_vec() ) );
+                // Relevant if the fluent is in the precondition
+                for ( unsigned j = 0; j < a.prec_negation_vec().size(); ++j ) {
+                    m_negation_relevant_effects[a.prec_negation_vec()[j]].insert(m_negation_effects.size()-1);
+                }
+            }
+
+            // Relevant if the fluent is in the head of a conditional effect
+            for ( unsigned j = 0; j < a.ceff_vec().size(); ++j ) {
+
+                const Conditional_Effect& ceff = *(a.ceff_vec()[j]);
+                // Make action conditional effect
+                Best_Supporter eff( i, j );
+                m_negation_effects.push_back( eff );
+                m_negation_triggers.push_back( Trigger( num_fluents(), a.prec_vec(), ceff.prec_vec(), ceff.add_vec() ) );
+                for ( unsigned k = 0; k < a.prec_vec().size(); k++ ) {
+                    m_negation_relevant_effects[a.prec_vec()[k]].insert(m_effects.size()-1);
+                }
+
+                for ( unsigned k = 0; k < ceff.prec_vec().size(); ++k) {
+                    m_negation_relevant_effects[ceff.prec_vec()[k]].insert(m_effects.size()-1);
+                }
+            }
+        }
+
+    }
 }

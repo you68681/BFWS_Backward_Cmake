@@ -345,22 +345,51 @@ public:
 		 /**
 		  * change the  m_strips_model.init() to  prob.goal()
 		  */
-
+//        Fluent_Vec chao;
 		Bit_Set reach_actions;
+//		reach_actions.resize(search_prob.task().num_negation_actions());
+//		for (int i=0; i<search_prob.task().negation_actions().size();i++){
+//            auto a = search_prob.task().negation_actions()[i];
+//		    for (unsigned p: search_prob.goal()){
+//		        if (a->add_negation_set().isset(p*2)){
+//		            reach_actions.set(a->index());
+//		            chao.push_back(a->index());
+//                    break;
+//		        }
+//		    }
+//		}
 		//m_reachability->get_reachable_actions( m_strips_model.init() , m_strips_model.goal() , reach_actions  );
 		//float h_goal;
 		//State init_s( m_strips_model );
 		//init_s.set( m_strips_model.init() );
 		//m_h1.eval( init_s, h_goal );
-        m_reachability->get_reachable_actions( search_prob.init() , search_prob.goal() , reach_actions  );
+//		Fluent_Vec special_goal;
+//            for ( unsigned k = 0; k < search_prob.task().negation_fluents().size(); k++ ){
+//                unsigned index=search_prob.task().negation_fluents()[k]->index();
+//                if ( index%2==0&& std::find(search_prob.goal().begin(), search_prob.goal().end(), index/2) != search_prob.goal().end()){
+//                    special_goal.push_back(k);
+//                    k++;
+//                    continue;
+//                } else{
+//                    special_goal.push_back(k);
+//                }
+//		}
+//        m_reachability->get_reachable_actions( search_prob.init() , search_prob.goal() , reach_actions  );
+        m_reachability->get_reachable_negation_actions( search_prob.init() , search_prob.goal() , reach_actions  );
         float h_goal;
         State init_s( m_strips_model );
-        init_s.set( search_prob.init() );
+        /** chao edit
+         *
+         */
+//        init_s.set( search_prob.init() );
+        init_s.set( search_prob.goal() );
         m_h1.eval( init_s, h_goal );
 
 		for(unsigned p = 1; p <  m_strips_model.num_fluents(); p++){
 			
-			if( ! graph.is_landmark(p) ) continue;
+//			if( ! graph.is_landmark(p) ) continue;
+
+            if( std::find(search_prob.init().begin(), search_prob.init().end(), p)==search_prob.init().end() ) continue;
 			Action_Ptr_Const_Vec best_supp;
 				
 			m_h1.get_best_supporters( p, best_supp );

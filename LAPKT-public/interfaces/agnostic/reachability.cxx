@@ -32,6 +32,13 @@ Reachability_Test::Reachability_Test( const STRIPS_Problem& p )
 	m_reachable_atoms.resize( m_problem.fluents().size() );
 	m_reach_next.resize( m_problem.fluents().size() );
 	m_action_mask.resize( m_problem.actions().size() );
+	/** chao add
+	 *
+	 */
+    m_reachable_negation_atoms.resize( m_problem.negation_fluents().size() );
+    m_reach_negation_next.resize( m_problem.negation_fluents().size() );
+    m_negation_action_mask.resize( m_problem.negation_actions().size() );
+
 
 
 }
@@ -59,7 +66,29 @@ void	Reachability_Test::initialize( const Fluent_Vec& s)
 	}
 }
 
-std::vector <std::string> split(const std::string &str, const std::string &pattern) {
+/** chao edit
+ *
+ */
+
+    void	Reachability_Test::initialize_negation( const Fluent_Vec& s)
+    {
+        for ( unsigned i = 0; i < m_reachable_negation_atoms.size(); i++ )
+            m_reachable_negation_atoms[i] = false;
+
+
+        m_negation_action_mask.reset();
+
+        for ( unsigned i = 0; i < s.size(); i++ ) {
+
+#ifdef DEBUG
+            std::cout << "Fluent " << m_problem.fluents()[s[i]]->signature() << " initially true" << std::endl;
+#endif
+            m_reachable_negation_atoms[ s[i] ] = true;
+
+        }
+    }
+
+    std::vector <std::string> split(const std::string &str, const std::string &pattern) {
         std::vector<std::string> res;
         if (str == "")
             return res;
@@ -162,6 +191,95 @@ bool	Reachability_Test::apply_actions() {
 	return fixed_point;
 }
 
+/** chao add
+ *
+ * @return
+ */
+    bool	Reachability_Test::apply_negation_actions() {
+
+        bool fixed_point = true;
+        m_reach_negation_next = m_reachable_negation_atoms;
+
+        for ( unsigned i = 0; i < m_problem.negation_actions().size(); i++ )
+        {
+            if ( m_negation_action_mask.isset(i) ) continue;
+
+            const Action* a = m_problem.negation_actions()[i];
+            // Check if applicable
+//		const Fluent_Vec&	pi = a->prec_vec();
+            const Fluent_Vec&	pi = a->del_vec();
+
+
+//        for ( unsigned j = 0; j < pi.size(); j++ )
+//            if ( !m_reachable_atoms[pi[j]] )
+//            {
+//                applicable = false;
+//                break;
+//            }
+
+            bool relevant = false;
+
+            for ( unsigned k = 0; k < a->add_negation_vec().size() && !relevant; k++ )
+                if ( m_reachable_negation_atoms[ a->add_negation_vec()[k] ] )
+                    relevant = true;
+
+
+
+            if ( ! relevant) continue;
+
+#ifdef DEBUG
+            std::cout << "Applying " << a->signature() << std::endl;
+#endif
+
+            // Apply effects
+            //regression for delete the add_vec
+
+            const Fluent_Vec& ai = a->prec_negation_vec();
+            for ( unsigned j = 0; j < ai.size(); j++ ) {
+
+                if ( !m_reachable_negation_atoms[ai[j]] ) {
+                    m_reach_negation_next[ai[j]] = true;
+                    fixed_point = false;
+                }
+            }
+
+
+            bool all_ce_applied = true;
+
+            for( unsigned j = 0; j < a->ceff_negation_vec().size(); j++ ) {
+
+                const Fluent_Vec&	pi = a->ceff_negation_vec()[j]->prec_vec();
+                bool			applicable = true;
+
+                for ( unsigned k = 0; k < pi.size(); k++ )
+                    if ( !m_reachable_negation_atoms[pi[k]] ) {
+                        applicable = false;
+                        break;
+                    }
+
+                if ( !applicable ) {
+                    all_ce_applied = false;
+                    continue;
+                }
+
+                const Fluent_Vec&	ai = a->ceff_negation_vec()[j]->add_vec();
+
+                for ( unsigned k = 0; k < ai.size(); k++ ) {
+
+                    if ( !m_reachable_negation_atoms[ai[k]] ) {
+
+                        m_reach_negation_next[ai[k]] = true;
+                        fixed_point = false;
+                    }
+                }
+
+            }
+            if ( all_ce_applied ) m_negation_action_mask.set(i);
+        }
+        m_reachable_negation_atoms = m_reach_negation_next;
+        return fixed_point;
+    }
+
 void	Reachability_Test::print_reachable_atoms() {
 
 	for (unsigned k = 0; k < m_reachable_atoms.size(); k++ )
@@ -201,6 +319,47 @@ void	Reachability_Test::get_reachable_actions( const Fluent_Vec& s, const Fluent
 		
 	}
 }
+
+
+    void	Reachability_Test::get_reachable_negation_actions( const Fluent_Vec& s, const Fluent_Vec& g,  Bit_Set& reach_actions ) {
+
+        initialize_negation(s);
+
+        while ( !apply_negation_actions() )
+        {
+#ifdef DEBUG
+            std::cout << "Reachable atoms:" << std::endl;
+		print_reachable_atoms();
+#endif
+
+            if ( check_negation( g ) )
+                break;
+        }
+
+        reach_actions.resize( m_problem.negation_actions().size() );
+        for ( unsigned i = 0; i < m_problem.negation_actions().size(); i++ ){
+            const Action* a = m_problem.negation_actions()[i];
+            // Check if applicable
+            bool applicable = true;
+            const Fluent_Vec& pi = a->del_negation_vec();
+
+            for ( unsigned j = 0; j < pi.size(); j++ )
+            if ( m_reachable_negation_atoms[pi[j]] )
+            {
+                applicable = false;
+                break;
+            }
+
+            bool relevant = false;
+
+            for ( unsigned k = 0; k < a->add_negation_vec().size() && !relevant; k++ )
+                if ( m_reachable_negation_atoms[ a->add_negation_vec()[k] ] )
+                    relevant = true;
+
+            if(applicable&&relevant) reach_actions.set(i);
+
+        }
+    }
 
 bool	Reachability_Test::is_reachable( const Fluent_Vec& s, const Fluent_Vec& g ) {
 
@@ -280,6 +439,30 @@ bool	Reachability_Test::check( const Fluent_Vec& g )  {
 			return false;
 	return true;
 }
+
+    bool	Reachability_Test::check_negation( const Fluent_Vec& g )  {
+        bool goal_check= true;
+        for (unsigned i=0;i<m_reachable_negation_atoms.size();i++){
+
+            if (i%2==0&& m_reachable_negation_atoms[i] && std::find(g.begin(),g.end(),i/2)!=g.end()){
+                continue;
+            } else{
+                if (i%2==0&&m_reachable_negation_atoms[i]){
+                    goal_check= false;
+                    if (m_reachable_negation_atoms[i+1]){
+                        goal_check=true;
+                    } else{
+                        break;
+                    }
+                } else{
+                    continue;
+                }
+
+            }
+
+        }
+        return  goal_check;
+    }
 
 
 }

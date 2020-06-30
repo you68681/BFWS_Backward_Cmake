@@ -20,6 +20,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <ff_to_aptk.hxx>
 #include <action.hxx>
+#include <negation_action.hxx>
 #include <iostream>
 #include <algorithm>
 #include <sstream>
@@ -62,6 +63,7 @@ void	get_problem_description( std::string pddl_domain_path,
             std::pair<std::string,std::vector<unsigned>> ft_member = FF::get_ft_name_edit(i,args);
             std::string ft_name=ft_member.first;
             std::vector<unsigned> constants_vector =ft_member.second;
+
             /** chao edit
              *
              */
@@ -72,9 +74,30 @@ void	get_problem_description( std::string pddl_domain_path,
 		std::string ft_signature = FF::get_ft_name(i);
 		STRIPS_Problem::add_fluent( strips_problem, ft_signature  );
 	}
-	Fluent_Vec I, G;
+    	Fluent_Vec I, G;
 	FF::get_initial_state( I );
 	FF::get_goal_state( G );
+    Fluent_Ptr_Vec q=strips_problem.fluents();
+
+    for ( int i = 0; i < gnum_ft_conn; i++ )
+    {
+        if ( !get_detailed_fluent_names )
+        {
+
+            std::pair<std::string,std::vector<unsigned>> ft_member = FF::get_ft_name_edit(i,args);
+            std::string ft_name=ft_member.first;
+            STRIPS_Problem::add_fluent_negation( strips_problem, ft_name);
+            std::stringstream buffer;
+            std::string ft_negation_name=ft_member.first;
+            buffer<<"(not-"<<ft_negation_name<<")";
+            aptk::STRIPS_Problem::add_fluent_negation(strips_problem,buffer.str());
+
+            continue;
+        }
+        std::string ft_signature = FF::get_ft_name(i);
+        STRIPS_Problem::add_fluent( strips_problem, ft_signature  );
+    }
+
 
 	/** chao edit add the constants
 	 *
@@ -147,6 +170,7 @@ void	get_problem_description( std::string pddl_domain_path,
 
 	}
 
+
 //	bool object_flag= true;
 //	for (unsigned p: I){
 //	    if (strips_problem.fluents()[p]->constants().empty())
@@ -173,6 +197,10 @@ void	get_problem_description( std::string pddl_domain_path,
 //    STRIPS_Problem::set_negation( strips_problem, negIndexs);
 	STRIPS_Problem::set_init( strips_problem, I);
 	STRIPS_Problem::set_goal( strips_problem, G);
+
+
+
+
 
 	//	std::cout << "Operators in problem:" << gnum_ef_conn << std::endl;
 
@@ -282,21 +310,63 @@ void	get_problem_description( std::string pddl_domain_path,
 
 			std::string op_name = FF::get_op_name(i);
 			Fluent_Vec  op_precs, op_adds, op_dels;
+            Fluent_Vec  op_negation_precs, op_negation_adds, op_negation_dels;
 			Conditional_Effect_Vec cond_effects;
 
 
-			for ( int j = 0; j < gef_conn[i].num_PC; j++ )
-				op_precs.push_back( gef_conn[i].PC[j] );
+			for ( int j = 0; j < gef_conn[i].num_PC; j++ ){
+                op_precs.push_back( gef_conn[i].PC[j] );
+                op_negation_precs.push_back( gef_conn[i].PC[j]*2 );
+			}
+
 			for ( int j = 0; j < gef_conn[i].num_A; j++ )
-				op_adds.push_back( gef_conn[i].A[j] );
+            {
+                op_adds.push_back( gef_conn[i].A[j] );
+                op_negation_adds.push_back( gef_conn[i].A[j]*2 );
+            }
+
 			for ( int j = 0; j < gef_conn[i].num_D; j++ )
-				op_dels.push_back( gef_conn[i].D[j] );
+            {
+                op_dels.push_back( gef_conn[i].D[j] );
+                op_negation_dels.push_back( gef_conn[i].D[j]*2 );
+            }
+
+/** chao add for negation actions
+ *
+ */
+//            for ( int j = 0; j < op_negation_adds.size(); j++ ){
+//                if (negFluentsSet.isset(op_adds[j])){
+//                    op_dels.push_back(dic[op_adds[j]]);
+//                    op_precs.push_back(dic[op_adds[j]]);
+//                }
+//            }
+//            for ( int j = 0; j < op_negation_adds.size(); j++ ){
+//                    op_negation_dels.push_back(strips_problem.negation_fluents()[j*2+1]->index());
+//                    op_negation_precs.push_back(dic[op_adds[j]]);
+//                }
+//
+
+            /** chao edit for neation action
+             *
+             */
+            for ( int j = 0; j < op_negation_adds.size(); j++ ){
+                 {
+                    op_negation_dels.push_back(op_negation_adds[j]+1);
+                    op_negation_precs.push_back(op_negation_adds[j]+1);
+                }
+            }
+            for ( int j = 0; j < op_negation_dels.size(); j++ ){
+                if (op_negation_dels[j]%2==0)
+                {
+                    op_negation_adds.push_back(op_negation_dels[j]+1);
+                }
+            }
 
 
+            /** chao add the negation
+             *
+             */
 
-			/** chao add the negation
-			 *
-			 */
 			for ( int j = 0; j < op_adds.size(); j++ ){
                 if (negFluentsSet.isset(op_adds[j])){
                     op_dels.push_back(dic[op_adds[j]]);
@@ -339,7 +409,6 @@ void	get_problem_description( std::string pddl_domain_path,
 //            }
 
 
-
             float op_cost = 0;
 			if(with_costs)
 			{
@@ -377,7 +446,14 @@ void	get_problem_description( std::string pddl_domain_path,
 			unsigned op_idx;
 			op_idx = STRIPS_Problem::add_action( strips_problem, op_name, op_precs, op_adds, op_dels, cond_effects );
 			strips_problem.actions()[op_idx]->set_cost( op_cost );
+            unsigned op_negation_idx;
+            op_negation_idx = STRIPS_Problem::add_negation_action( strips_problem, op_name, op_negation_precs, op_negation_adds, op_negation_dels, cond_effects );
+            strips_problem.negation_actions()[op_negation_idx]->set_cost( op_cost );
 		}
+		/** chao add to negation
+		 *
+		 */
+
 
 		/** chao add to make constant action
 		 *
@@ -407,7 +483,9 @@ void	get_problem_description( std::string pddl_domain_path,
 
 	}
 	strips_problem.make_action_tables();
+    strips_problem.make_negation_action_tables(false);
 	strips_problem.make_effect_tables();
+	strips_problem.make_negation_effect_tables();
 	
 }
 

@@ -31,7 +31,9 @@ namespace aptk
 {
 
 	class Action;
+    class Negation_Action;
 	class Fluent;
+	class Negation_Fluent;
 	class Conditional_Effect;
 	
 	typedef     std::vector<std::vector<unsigned >>  Fluent_chao;
@@ -43,8 +45,10 @@ namespace aptk
 	typedef		std::pair<unsigned, unsigned>			Fluent_Pair;
 	typedef		Bit_Set						Fluent_Set;
 	typedef 	std::vector<Action* >				Action_Ptr_Vec;
+    typedef 	std::vector<Negation_Action* >				Negation_Action_Ptr_Vec;
 	typedef 	std::vector< const Action* >			Action_Ptr_Const_Vec;
 	typedef 	std::vector<Fluent* >				Fluent_Ptr_Vec;
+    typedef 	std::vector<Negation_Fluent* >				Negation_Fluent_Ptr_Vec;
 	typedef		std::vector<Conditional_Effect* > 		Conditional_Effect_Vec;
 	typedef		std::vector< std::vector< const Action* > >	Fluent_Action_Table;
 	typedef         std::vector< Action_Ptr_Vec >           	PDDLop_Action_Table;

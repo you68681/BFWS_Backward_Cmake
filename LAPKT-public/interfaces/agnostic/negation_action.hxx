@@ -18,8 +18,8 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __APTK_ACTION__
-#define __APTK_ACTION__
+#ifndef __APTK_NEGATION_ACTION__
+#define __APTK_NEGATION_ACTION__
 
 class Node_Type;
 
@@ -32,11 +32,11 @@ class Node_Type;
 namespace aptk
 {
 
-class Action
+class Negation_Action
 {
 public:
-	Action(STRIPS_Problem& p);
-	virtual ~Action();
+    Negation_Action(STRIPS_Problem& p);
+	virtual ~Negation_Action();
 
 	Fluent_Vec&	           	prec_vec() { return m_prec_vec; }
 	Fluent_Set&	           	prec_set() { return m_prec_set; }
@@ -61,49 +61,11 @@ public:
     const Fluent_Vec&	        bwd_edel_vec()  const { return m_bwd_edel_vec; }
     const Fluent_Set&	        bwd_edel_set()  const { return m_bwd_edel_set; }
 	const Conditional_Effect_Vec&   ceff_vec() const { return m_cond_effects; }
-
-	/** chao add
-	 *
-	 * @return
-	 */
-
-    Fluent_Vec&	           	prec_negation_vec() { return m_negation_prec_vec; }
-    Fluent_Set&	           	prec_negation_set() { return m_negation_prec_set; }
-    Fluent_Vec&	           	add_negation_vec()  { return m_negation_add_vec; }
-    Fluent_Set&	           	add_negation_set()  { return m_negation_add_set; }
-    Fluent_Vec&	           	del_negation_vec()  { return m_negation_del_vec; }
-    Fluent_Set&	           	del_negation_set()  { return m_negation_del_set; }
-    Fluent_Vec&	           	edel_negation_vec()  { return m_negation_edel_vec; }
-    Fluent_Set&	           	edel_negation_set()  { return m_negation_edel_set; }
-    Fluent_Vec&	           	bwd_negation_edel_vec()  { return m_negation_bwd_edel_vec; }
-    Fluent_Set&	           	bwd_negation_edel_set()  { return m_negation_bwd_edel_set; }
-    Conditional_Effect_Vec&    	ceff_negation_vec(){ return m_negation_cond_effects; }
-
-    const Fluent_Vec&		prec_negation_vec() const { return m_negation_prec_vec; }
-    const Fluent_Set&	        prec_negation_set() const { return m_negation_prec_set; }
-    const Fluent_Vec&	        add_negation_vec()  const { return m_negation_add_vec; }
-    const Fluent_Set&	        add_negation_set()  const { return m_negation_add_set; }
-    const Fluent_Vec&	        del_negation_vec()  const { return m_negation_del_vec; }
-    const Fluent_Set&	        del_negation_set()  const { return m_negation_del_set; }
-    const Fluent_Vec&	        edel_negation_vec()  const { return m_negation_edel_vec; }
-    const Fluent_Set&	        edel_negation_set()  const { return m_negation_edel_set; }
-    const Fluent_Vec&	        bwd_negation_edel_vec()  const { return m_negation_bwd_edel_vec; }
-    const Fluent_Set&	        bwd_negation_edel_set()  const { return m_negation_bwd_edel_set; }
-    const Conditional_Effect_Vec&   ceff_negation_vec() const { return m_negation_cond_effects; }
-
-    /** chao add end
-     *
-     * @return
-     */
-
-
+	
         bool                            has_ceff() const {return !m_cond_effects.empty(); }
 	/* Added for match trees */
 	VarVal_Vec&        prec_varval() { return m_prec_varval; }
 	const VarVal_Vec&  prec_varval() const { return m_prec_varval; }
-
-    VarVal_Vec&        prec_negation_varval() { return m_negation_prec_varval; }
-    const VarVal_Vec&  prec_negation_varval() const { return m_negation_prec_varval; }
 
 
 
@@ -117,11 +79,6 @@ public:
 	void		           	set_index( unsigned idx ) { m_index = idx; }
 
 	void		           	define( const Fluent_Vec& precs, const Fluent_Vec& adds, const Fluent_Vec& dels );
-	/** chao edit
-	 *
-	 */
-    void		           	define_negation( const Fluent_Vec& precs, const Fluent_Vec& adds, const Fluent_Vec& dels );
-    void		           	define_negation( const Fluent_Vec& precs, const Fluent_Vec& adds, const Fluent_Vec& dels, const Conditional_Effect_Vec& ceffs );
 	void		           	define( const Fluent_Vec& precs, const Fluent_Vec& adds, const Fluent_Vec& dels, const Conditional_Effect_Vec& ceffs );
 
 	void		           	define_fluent_list( const Fluent_Vec& in, Fluent_Vec& list, Fluent_Set& set );
@@ -145,11 +102,11 @@ public:
 
 	void				print( const STRIPS_Problem& prob, std::ostream& ) const;		
 
-	static bool	           	are_effect_interfering( const Action& a1, const Action& a2 );
-	static bool	           	deletes_precondition_of( const Action& a1, const Action& a2 );
-	static bool	           	deletes_precondition_of( const Action& a1, const Action& a2, Fluent_Vec& deleted );
+	static bool	           	are_effect_interfering( const Negation_Action& a1, const Action& a2 );
+	static bool	           	deletes_precondition_of( const Negation_Action& a1, const Negation_Action& a2 );
+	static bool	           	deletes_precondition_of( const Negation_Action& a1, const Negation_Action& a2, Fluent_Vec& deleted );
 
-	static bool	           	possible_supporter( const Action& a1, const Action& a2, Fluent_Vec& pvec );
+	static bool	           	possible_supporter( const Negation_Action& a1, const Negation_Action& a2, Fluent_Vec& pvec );
 protected:
 	// Preconditions and Effects ( Adds and Deletes)
 	std::string			m_signature;
@@ -170,30 +127,11 @@ protected:
 	unsigned			m_index;
 	bool				m_active;
 
-	/** chao add
-	 *
-	 */
-
-    Fluent_Vec			m_negation_prec_vec;
-    Fluent_Set			m_negation_prec_set;
-    Fluent_Vec			m_negation_add_vec;
-    Fluent_Set			m_negation_add_set;
-    Fluent_Vec			m_negation_del_vec;
-    Fluent_Set			m_negation_del_set;
-    Fluent_Vec			m_negation_edel_vec;
-    Fluent_Set			m_negation_edel_set;
-    Fluent_Vec			m_negation_bwd_edel_vec;
-    Fluent_Set			m_negation_bwd_edel_set;
-    VarVal_Vec			m_negation_prec_varval;
-    Conditional_Effect_Vec		m_negation_cond_effects;
-
-
-
 };
 
 
 
-inline bool	Action::possible_supporter( const Action& a1, const Action& a2, Fluent_Vec& pvec )
+inline bool	Negation_Action::possible_supporter( const Negation_Action& a1, const Negation_Action& a2, Fluent_Vec& pvec )
 {
 	pvec.clear();
 	for ( unsigned k = 0; k < a1.add_vec().size(); k++ )
@@ -202,7 +140,7 @@ inline bool	Action::possible_supporter( const Action& a1, const Action& a2, Flue
 	return !pvec.empty();
 }
 
-inline bool	Action::deletes_precondition_of( const Action& a1, const Action& a2 )
+inline bool	Negation_Action::deletes_precondition_of( const Negation_Action& a1, const Negation_Action& a2 )
 {
 	for ( unsigned k = 0; k < a1.del_vec().size(); k++ )
 		if ( a2.requires( a1.del_vec()[k]) )
@@ -211,7 +149,7 @@ inline bool	Action::deletes_precondition_of( const Action& a1, const Action& a2 
 	return false;
 }
 
-inline bool	Action::deletes_precondition_of( const Action& a1, const Action& a2, Fluent_Vec& deleted )
+inline bool	Negation_Action::deletes_precondition_of( const Negation_Action& a1, const Negation_Action& a2, Fluent_Vec& deleted )
 {
 	for ( unsigned k = 0; k < a1.del_vec().size(); k++ )
 		if ( a2.requires( a1.del_vec()[k]) )
@@ -220,33 +158,33 @@ inline bool	Action::deletes_precondition_of( const Action& a1, const Action& a2,
 	return !deleted.empty();
 }
 
-inline bool	Action::are_effect_interfering( const Action& a1, const Action& a2 )
-{
-	for ( unsigned k = 0; k < a1.add_vec().size(); k++ )
-		if ( a2.retracts( a1.add_vec()[k] ) )
-			return true;
-	for ( unsigned k = 0; k < a1.del_vec().size(); k++ )
-		if ( a2.asserts( a1.del_vec()[k] ) )
-			return true;
-	return false;
-}
+//inline bool	Negation_Action::are_effect_interfering( const Negation_Action& a1, const Negation_Action& a2 )
+//{
+//	for ( unsigned k = 0; k < a1.add_vec().size(); k++ )
+//		if ( a2.retracts( a1.add_vec()[k] ) )
+//			return true;
+//	for ( unsigned k = 0; k < a1.del_vec().size(); k++ )
+//		if ( a2.asserts( a1.del_vec()[k] ) )
+//			return true;
+//	return false;
+//}
 
-inline bool	Action::requires( unsigned f ) const
+inline bool	Negation_Action::requires( unsigned f ) const
 {
 	return prec_set().isset(f);
 }
 
-inline bool	Action::asserts( unsigned f ) const 
+inline bool	Negation_Action::asserts( unsigned f ) const
 {
 	return add_set().isset(f);
 }
 
-inline bool	Action::retracts( unsigned f ) const
+inline bool	Negation_Action::retracts( unsigned f ) const
 {
 	return del_set().isset(f);
 }
 
-inline bool	Action::edeletes( unsigned f ) const
+inline bool	Negation_Action::edeletes( unsigned f ) const
 {
 	return edel_set().isset(f);
 }
@@ -255,7 +193,7 @@ inline bool	Action::edeletes( unsigned f ) const
  *
  */
 
-inline bool	Action::can_be_regressed_from_edit( const State& s,  Bool_Vec& negation) const {
+inline bool	Negation_Action::can_be_regressed_from_edit( const State& s,  Bool_Vec& negation) const {
     // Relevance testing
     bool relevant = false;
     for ( unsigned k = 0; k < add_vec().size() && !relevant; k++ )
@@ -290,7 +228,7 @@ inline bool	Action::can_be_regressed_from_edit( const State& s,  Bool_Vec& negat
     return true;
 }
 
-inline bool	Action::can_be_regressed_from( const State& s ) const {
+inline bool	Negation_Action::can_be_regressed_from( const State& s ) const {
 	// Relevance testing
 	bool relevant = false;
 	for ( unsigned k = 0; k < add_vec().size() && !relevant; k++ )
@@ -320,12 +258,12 @@ inline bool	Action::can_be_regressed_from( const State& s ) const {
 	return true;
 }
 
-inline bool	Action::can_be_applied_on( const State& s ) const
+inline bool	Negation_Action::can_be_applied_on( const State& s ) const
 {
 	return s.entails( prec_vec() );
 }
 
-inline bool	Action::consumes( unsigned f ) const
+inline bool	Negation_Action::consumes( unsigned f ) const
 {
 	return requires(f) && retracts(f);
 }
