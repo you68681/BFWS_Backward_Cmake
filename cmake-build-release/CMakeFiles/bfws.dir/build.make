@@ -200,9 +200,35 @@ CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/mutex_set.cxx.s: cmake_forc
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/mutex_set.cxx.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/chao/BFWS_Backward_Cmake/LAPKT-public/interfaces/agnostic/mutex_set.cxx -o CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/mutex_set.cxx.s
 
+CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/negation_action.cxx.o: CMakeFiles/bfws.dir/flags.make
+CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/negation_action.cxx.o: ../LAPKT-public/interfaces/agnostic/negation_action.cxx
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chao/BFWS_Backward_Cmake/cmake-build-release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/negation_action.cxx.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/negation_action.cxx.o -c /home/chao/BFWS_Backward_Cmake/LAPKT-public/interfaces/agnostic/negation_action.cxx
+
+CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/negation_action.cxx.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/negation_action.cxx.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/chao/BFWS_Backward_Cmake/LAPKT-public/interfaces/agnostic/negation_action.cxx > CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/negation_action.cxx.i
+
+CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/negation_action.cxx.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/negation_action.cxx.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/chao/BFWS_Backward_Cmake/LAPKT-public/interfaces/agnostic/negation_action.cxx -o CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/negation_action.cxx.s
+
+CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/negation_fluent.cxx.o: CMakeFiles/bfws.dir/flags.make
+CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/negation_fluent.cxx.o: ../LAPKT-public/interfaces/agnostic/negation_fluent.cxx
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chao/BFWS_Backward_Cmake/cmake-build-release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/negation_fluent.cxx.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/negation_fluent.cxx.o -c /home/chao/BFWS_Backward_Cmake/LAPKT-public/interfaces/agnostic/negation_fluent.cxx
+
+CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/negation_fluent.cxx.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/negation_fluent.cxx.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/chao/BFWS_Backward_Cmake/LAPKT-public/interfaces/agnostic/negation_fluent.cxx > CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/negation_fluent.cxx.i
+
+CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/negation_fluent.cxx.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/negation_fluent.cxx.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/chao/BFWS_Backward_Cmake/LAPKT-public/interfaces/agnostic/negation_fluent.cxx -o CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/negation_fluent.cxx.s
+
 CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/reachability.cxx.o: CMakeFiles/bfws.dir/flags.make
 CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/reachability.cxx.o: ../LAPKT-public/interfaces/agnostic/reachability.cxx
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chao/BFWS_Backward_Cmake/cmake-build-release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/reachability.cxx.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chao/BFWS_Backward_Cmake/cmake-build-release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/reachability.cxx.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/reachability.cxx.o -c /home/chao/BFWS_Backward_Cmake/LAPKT-public/interfaces/agnostic/reachability.cxx
 
 CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/reachability.cxx.i: cmake_force
@@ -215,7 +241,7 @@ CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/reachability.cxx.s: cmake_f
 
 CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/strips_prob.cxx.o: CMakeFiles/bfws.dir/flags.make
 CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/strips_prob.cxx.o: ../LAPKT-public/interfaces/agnostic/strips_prob.cxx
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chao/BFWS_Backward_Cmake/cmake-build-release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/strips_prob.cxx.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chao/BFWS_Backward_Cmake/cmake-build-release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/strips_prob.cxx.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/strips_prob.cxx.o -c /home/chao/BFWS_Backward_Cmake/LAPKT-public/interfaces/agnostic/strips_prob.cxx
 
 CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/strips_prob.cxx.i: cmake_force
@@ -228,7 +254,7 @@ CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/strips_prob.cxx.s: cmake_fo
 
 CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/strips_state.cxx.o: CMakeFiles/bfws.dir/flags.make
 CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/strips_state.cxx.o: ../LAPKT-public/interfaces/agnostic/strips_state.cxx
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chao/BFWS_Backward_Cmake/cmake-build-release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/strips_state.cxx.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chao/BFWS_Backward_Cmake/cmake-build-release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/strips_state.cxx.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/strips_state.cxx.o -c /home/chao/BFWS_Backward_Cmake/LAPKT-public/interfaces/agnostic/strips_state.cxx
 
 CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/strips_state.cxx.i: cmake_force
@@ -241,7 +267,7 @@ CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/strips_state.cxx.s: cmake_f
 
 CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/succ_gen.cxx.o: CMakeFiles/bfws.dir/flags.make
 CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/succ_gen.cxx.o: ../LAPKT-public/interfaces/agnostic/succ_gen.cxx
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chao/BFWS_Backward_Cmake/cmake-build-release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/succ_gen.cxx.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chao/BFWS_Backward_Cmake/cmake-build-release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/succ_gen.cxx.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/succ_gen.cxx.o -c /home/chao/BFWS_Backward_Cmake/LAPKT-public/interfaces/agnostic/succ_gen.cxx
 
 CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/succ_gen.cxx.i: cmake_force
@@ -254,7 +280,7 @@ CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/succ_gen.cxx.s: cmake_force
 
 CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/watched_lit_succ_gen.cxx.o: CMakeFiles/bfws.dir/flags.make
 CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/watched_lit_succ_gen.cxx.o: ../LAPKT-public/interfaces/agnostic/watched_lit_succ_gen.cxx
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chao/BFWS_Backward_Cmake/cmake-build-release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/watched_lit_succ_gen.cxx.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chao/BFWS_Backward_Cmake/cmake-build-release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/watched_lit_succ_gen.cxx.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/watched_lit_succ_gen.cxx.o -c /home/chao/BFWS_Backward_Cmake/LAPKT-public/interfaces/agnostic/watched_lit_succ_gen.cxx
 
 CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/watched_lit_succ_gen.cxx.i: cmake_force
@@ -267,7 +293,7 @@ CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/watched_lit_succ_gen.cxx.s:
 
 CMakeFiles/bfws.dir/LAPKT-public/interfaces/ff-wrapped/ff_to_aptk.cxx.o: CMakeFiles/bfws.dir/flags.make
 CMakeFiles/bfws.dir/LAPKT-public/interfaces/ff-wrapped/ff_to_aptk.cxx.o: ../LAPKT-public/interfaces/ff-wrapped/ff_to_aptk.cxx
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chao/BFWS_Backward_Cmake/cmake-build-release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/bfws.dir/LAPKT-public/interfaces/ff-wrapped/ff_to_aptk.cxx.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chao/BFWS_Backward_Cmake/cmake-build-release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/bfws.dir/LAPKT-public/interfaces/ff-wrapped/ff_to_aptk.cxx.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bfws.dir/LAPKT-public/interfaces/ff-wrapped/ff_to_aptk.cxx.o -c /home/chao/BFWS_Backward_Cmake/LAPKT-public/interfaces/ff-wrapped/ff_to_aptk.cxx
 
 CMakeFiles/bfws.dir/LAPKT-public/interfaces/ff-wrapped/ff_to_aptk.cxx.i: cmake_force
@@ -280,7 +306,7 @@ CMakeFiles/bfws.dir/LAPKT-public/interfaces/ff-wrapped/ff_to_aptk.cxx.s: cmake_f
 
 CMakeFiles/bfws.dir/LAPKT-public/src/bit_array.cxx.o: CMakeFiles/bfws.dir/flags.make
 CMakeFiles/bfws.dir/LAPKT-public/src/bit_array.cxx.o: ../LAPKT-public/src/bit_array.cxx
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chao/BFWS_Backward_Cmake/cmake-build-release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/bfws.dir/LAPKT-public/src/bit_array.cxx.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chao/BFWS_Backward_Cmake/cmake-build-release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/bfws.dir/LAPKT-public/src/bit_array.cxx.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bfws.dir/LAPKT-public/src/bit_array.cxx.o -c /home/chao/BFWS_Backward_Cmake/LAPKT-public/src/bit_array.cxx
 
 CMakeFiles/bfws.dir/LAPKT-public/src/bit_array.cxx.i: cmake_force
@@ -293,7 +319,7 @@ CMakeFiles/bfws.dir/LAPKT-public/src/bit_array.cxx.s: cmake_force
 
 CMakeFiles/bfws.dir/LAPKT-public/src/bit_set.cxx.o: CMakeFiles/bfws.dir/flags.make
 CMakeFiles/bfws.dir/LAPKT-public/src/bit_set.cxx.o: ../LAPKT-public/src/bit_set.cxx
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chao/BFWS_Backward_Cmake/cmake-build-release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/bfws.dir/LAPKT-public/src/bit_set.cxx.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chao/BFWS_Backward_Cmake/cmake-build-release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/bfws.dir/LAPKT-public/src/bit_set.cxx.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bfws.dir/LAPKT-public/src/bit_set.cxx.o -c /home/chao/BFWS_Backward_Cmake/LAPKT-public/src/bit_set.cxx
 
 CMakeFiles/bfws.dir/LAPKT-public/src/bit_set.cxx.i: cmake_force
@@ -306,7 +332,7 @@ CMakeFiles/bfws.dir/LAPKT-public/src/bit_set.cxx.s: cmake_force
 
 CMakeFiles/bfws.dir/LAPKT-public/src/memory.cxx.o: CMakeFiles/bfws.dir/flags.make
 CMakeFiles/bfws.dir/LAPKT-public/src/memory.cxx.o: ../LAPKT-public/src/memory.cxx
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chao/BFWS_Backward_Cmake/cmake-build-release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/bfws.dir/LAPKT-public/src/memory.cxx.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chao/BFWS_Backward_Cmake/cmake-build-release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/bfws.dir/LAPKT-public/src/memory.cxx.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bfws.dir/LAPKT-public/src/memory.cxx.o -c /home/chao/BFWS_Backward_Cmake/LAPKT-public/src/memory.cxx
 
 CMakeFiles/bfws.dir/LAPKT-public/src/memory.cxx.i: cmake_force
@@ -319,7 +345,7 @@ CMakeFiles/bfws.dir/LAPKT-public/src/memory.cxx.s: cmake_force
 
 CMakeFiles/bfws.dir/src/main.cxx.o: CMakeFiles/bfws.dir/flags.make
 CMakeFiles/bfws.dir/src/main.cxx.o: ../src/main.cxx
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chao/BFWS_Backward_Cmake/cmake-build-release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/bfws.dir/src/main.cxx.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chao/BFWS_Backward_Cmake/cmake-build-release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/bfws.dir/src/main.cxx.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bfws.dir/src/main.cxx.o -c /home/chao/BFWS_Backward_Cmake/src/main.cxx
 
 CMakeFiles/bfws.dir/src/main.cxx.i: cmake_force
@@ -343,6 +369,8 @@ bfws_OBJECTS = \
 "CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/landmark_graph.cxx.o" \
 "CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/match_tree.cxx.o" \
 "CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/mutex_set.cxx.o" \
+"CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/negation_action.cxx.o" \
+"CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/negation_fluent.cxx.o" \
 "CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/reachability.cxx.o" \
 "CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/strips_prob.cxx.o" \
 "CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/strips_state.cxx.o" \
@@ -368,6 +396,8 @@ bfws: CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/fwd_search_prob.cxx.o
 bfws: CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/landmark_graph.cxx.o
 bfws: CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/match_tree.cxx.o
 bfws: CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/mutex_set.cxx.o
+bfws: CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/negation_action.cxx.o
+bfws: CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/negation_fluent.cxx.o
 bfws: CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/reachability.cxx.o
 bfws: CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/strips_prob.cxx.o
 bfws: CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/strips_state.cxx.o
@@ -382,7 +412,7 @@ bfws: CMakeFiles/bfws.dir/build.make
 bfws: ../LAPKT-public/external/libff/libff.a
 bfws: /usr/lib/x86_64-linux-gnu/libboost_program_options.so
 bfws: CMakeFiles/bfws.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/chao/BFWS_Backward_Cmake/cmake-build-release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Linking CXX executable bfws"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/chao/BFWS_Backward_Cmake/cmake-build-release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Linking CXX executable bfws"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/bfws.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

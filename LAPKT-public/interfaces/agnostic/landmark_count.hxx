@@ -140,6 +140,11 @@ public:
 		h_val = 0;
 		for ( std::vector< Landmarks_Graph::Node* >::const_iterator it = m_graph->nodes().begin(); it != m_graph->nodes().end(); it++ ) {
 			Landmarks_Graph::Node*n = *it;
+			/** chao edit
+			 *
+			 */
+//			if (m_strips_model.is_in_goal(n->fluent()))
+//                continue;
 			if( ! n->is_consumed() ) {
 					h_val++;
 				//std::cout<<h_val<<m_strips_model.fluents()[n->fluent()]->signature()<<std::endl;

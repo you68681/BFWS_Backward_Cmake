@@ -378,6 +378,21 @@ public:
 	}
 
 	void apply_state( const Fluent_Vec& fl, Bool_Vec_Ptr*& keep_consumed, Bool_Vec_Ptr*& keep_unconsumed ){
+	    /** chao edit
+	     *
+	     */
+        for(Fluent_Vec::const_iterator it_fl = fl.begin(); it_fl != fl.end(); it_fl++){
+            unsigned p = *it_fl;
+            if( m_graph->is_landmark(p) ){
+                if( m_strips_model.is_in_goal(p) ){
+
+                    Landmarks_Graph::Node* n = m_graph->node(p);
+                    keep_consumed = new Bool_Vec_Ptr;
+                    n->consume( );
+                    keep_consumed->push_back( n->is_consumed_ptr() );
+                }
+            }
+            }
 
 		for(Fluent_Vec::const_iterator it_fl = fl.begin(); it_fl != fl.end(); it_fl++){
 			unsigned p = *it_fl;

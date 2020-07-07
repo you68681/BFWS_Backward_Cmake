@@ -413,9 +413,22 @@ public:
 		    /** chao edit
 		     *
 		     */
-			//m_second_h->eval( *(candidate->state()), candidate->h2n());
+        {    //m_second_h->eval( *(candidate->state()), candidate->h2n());
+            if (candidate->state() == NULL) {
+                static Fluent_Vec added, deleted;
+                added.clear();
+                deleted.clear();
+                candidate->parent()->state()->progress_lazy_state(m_problem.task().actions()[candidate->action()]);
+                m_second_h->eval(*(candidate->state()), candidate->h2n(), (candidate->parent()->state()->fluent_vec()));
+                candidate->parent()->state()->regress_lazy_state(this->problem().task().actions()[candidate->action()],
+                                                                 &added, &deleted);
+            }
+            if (candidate->state() != NULL)
+                m_second_h->eval(*(candidate->state()), candidate->h2n(), candidate->state()->fluent_vec());
+        }
 
-             m_second_h->eval( *(candidate->state()), candidate->h2n(),problem().init());
+
+//             m_second_h->eval( *(candidate->state()), candidate->h2n(),problem().init());
 		
 
 		// if(m_lgm)

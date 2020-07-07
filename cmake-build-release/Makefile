@@ -865,6 +865,60 @@ LAPKT-public/interfaces/agnostic/mutex_set.cxx.s:
 	$(MAKE) -f CMakeFiles/bfws.dir/build.make CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/mutex_set.cxx.s
 .PHONY : LAPKT-public/interfaces/agnostic/mutex_set.cxx.s
 
+LAPKT-public/interfaces/agnostic/negation_action.o: LAPKT-public/interfaces/agnostic/negation_action.cxx.o
+
+.PHONY : LAPKT-public/interfaces/agnostic/negation_action.o
+
+# target to build an object file
+LAPKT-public/interfaces/agnostic/negation_action.cxx.o:
+	$(MAKE) -f CMakeFiles/bfws.dir/build.make CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/negation_action.cxx.o
+.PHONY : LAPKT-public/interfaces/agnostic/negation_action.cxx.o
+
+LAPKT-public/interfaces/agnostic/negation_action.i: LAPKT-public/interfaces/agnostic/negation_action.cxx.i
+
+.PHONY : LAPKT-public/interfaces/agnostic/negation_action.i
+
+# target to preprocess a source file
+LAPKT-public/interfaces/agnostic/negation_action.cxx.i:
+	$(MAKE) -f CMakeFiles/bfws.dir/build.make CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/negation_action.cxx.i
+.PHONY : LAPKT-public/interfaces/agnostic/negation_action.cxx.i
+
+LAPKT-public/interfaces/agnostic/negation_action.s: LAPKT-public/interfaces/agnostic/negation_action.cxx.s
+
+.PHONY : LAPKT-public/interfaces/agnostic/negation_action.s
+
+# target to generate assembly for a file
+LAPKT-public/interfaces/agnostic/negation_action.cxx.s:
+	$(MAKE) -f CMakeFiles/bfws.dir/build.make CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/negation_action.cxx.s
+.PHONY : LAPKT-public/interfaces/agnostic/negation_action.cxx.s
+
+LAPKT-public/interfaces/agnostic/negation_fluent.o: LAPKT-public/interfaces/agnostic/negation_fluent.cxx.o
+
+.PHONY : LAPKT-public/interfaces/agnostic/negation_fluent.o
+
+# target to build an object file
+LAPKT-public/interfaces/agnostic/negation_fluent.cxx.o:
+	$(MAKE) -f CMakeFiles/bfws.dir/build.make CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/negation_fluent.cxx.o
+.PHONY : LAPKT-public/interfaces/agnostic/negation_fluent.cxx.o
+
+LAPKT-public/interfaces/agnostic/negation_fluent.i: LAPKT-public/interfaces/agnostic/negation_fluent.cxx.i
+
+.PHONY : LAPKT-public/interfaces/agnostic/negation_fluent.i
+
+# target to preprocess a source file
+LAPKT-public/interfaces/agnostic/negation_fluent.cxx.i:
+	$(MAKE) -f CMakeFiles/bfws.dir/build.make CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/negation_fluent.cxx.i
+.PHONY : LAPKT-public/interfaces/agnostic/negation_fluent.cxx.i
+
+LAPKT-public/interfaces/agnostic/negation_fluent.s: LAPKT-public/interfaces/agnostic/negation_fluent.cxx.s
+
+.PHONY : LAPKT-public/interfaces/agnostic/negation_fluent.s
+
+# target to generate assembly for a file
+LAPKT-public/interfaces/agnostic/negation_fluent.cxx.s:
+	$(MAKE) -f CMakeFiles/bfws.dir/build.make CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/negation_fluent.cxx.s
+.PHONY : LAPKT-public/interfaces/agnostic/negation_fluent.cxx.s
+
 LAPKT-public/interfaces/agnostic/reachability.o: LAPKT-public/interfaces/agnostic/reachability.cxx.o
 
 .PHONY : LAPKT-public/interfaces/agnostic/reachability.o
@@ -1226,6 +1280,12 @@ help:
 	@echo "... LAPKT-public/interfaces/agnostic/mutex_set.o"
 	@echo "... LAPKT-public/interfaces/agnostic/mutex_set.i"
 	@echo "... LAPKT-public/interfaces/agnostic/mutex_set.s"
+	@echo "... LAPKT-public/interfaces/agnostic/negation_action.o"
+	@echo "... LAPKT-public/interfaces/agnostic/negation_action.i"
+	@echo "... LAPKT-public/interfaces/agnostic/negation_action.s"
+	@echo "... LAPKT-public/interfaces/agnostic/negation_fluent.o"
+	@echo "... LAPKT-public/interfaces/agnostic/negation_fluent.i"
+	@echo "... LAPKT-public/interfaces/agnostic/negation_fluent.s"
 	@echo "... LAPKT-public/interfaces/agnostic/reachability.o"
 	@echo "... LAPKT-public/interfaces/agnostic/reachability.i"
 	@echo "... LAPKT-public/interfaces/agnostic/reachability.s"

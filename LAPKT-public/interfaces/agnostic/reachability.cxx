@@ -106,6 +106,79 @@ void	Reachability_Test::initialize( const Fluent_Vec& s)
         return res;
     }
 
+
+    bool	Reachability_Test::apply_actions_original() {
+
+        bool fixed_point = true;
+        m_reach_next = m_reachable_atoms;
+
+        for ( unsigned i = 0; i < m_problem.actions().size(); i++ )
+        {
+            if ( m_action_mask.isset(i) ) continue;
+
+            const Action* a = m_problem.actions()[i];
+
+            // Check if applicable
+            const Fluent_Vec&	pi = a->prec_vec();
+            bool		applicable = true;
+            for ( unsigned j = 0; j < pi.size(); j++ )
+                if ( !m_reachable_atoms[pi[j]] )
+                {
+                    applicable = false;
+                    break;
+                }
+
+            if ( !applicable ) continue;
+
+#ifdef DEBUG
+            std::cout << "Applying " << a->signature() << std::endl;
+#endif
+
+            // Apply effects
+            const Fluent_Vec& ai = a->add_vec();
+            for ( unsigned j = 0; j < ai.size(); j++ ) {
+                if ( !m_reachable_atoms[ai[j]] ) {
+                    m_reach_next[ai[j]] = true;
+                    fixed_point = false;
+                }
+            }
+
+            bool all_ce_applied = true;
+
+            for( unsigned j = 0; j < a->ceff_vec().size(); j++ ) {
+
+                const Fluent_Vec&	pi = a->ceff_vec()[j]->prec_vec();
+                bool			applicable = true;
+
+                for ( unsigned k = 0; k < pi.size(); k++ )
+                    if ( !m_reachable_atoms[pi[k]] ) {
+                        applicable = false;
+                        break;
+                    }
+
+                if ( !applicable ) {
+                    all_ce_applied = false;
+                    continue;
+                }
+
+                const Fluent_Vec&	ai = a->ceff_vec()[j]->add_vec();
+
+                for ( unsigned k = 0; k < ai.size(); k++ ) {
+
+                    if ( !m_reachable_atoms[ai[k]] ) {
+
+                        m_reach_next[ai[k]] = true;
+                        fixed_point = false;
+                    }
+                }
+
+            }
+            if ( all_ce_applied ) m_action_mask.set(i);
+        }
+        m_reachable_atoms = m_reach_next;
+        return fixed_point;
+    }
+
 bool	Reachability_Test::apply_actions() {
 
 	bool fixed_point = true;
@@ -319,6 +392,39 @@ void	Reachability_Test::get_reachable_actions( const Fluent_Vec& s, const Fluent
 		
 	}
 }
+
+    void	Reachability_Test::get_reachable_actions_original( const Fluent_Vec& s, const Fluent_Vec& g,  Bit_Set& reach_actions ) {
+
+        initialize(s);
+
+        while ( !apply_actions_original() )
+        {
+#ifdef DEBUG
+            std::cout << "Reachable atoms:" << std::endl;
+		print_reachable_atoms();
+#endif
+
+            if ( check( g ) )
+                break;
+        }
+
+        reach_actions.resize( m_problem.actions().size() );
+        for ( unsigned i = 0; i < m_problem.actions().size(); i++ ){
+            const Action* a = m_problem.actions()[i];
+            // Check if applicable
+            const Fluent_Vec& pi = a->prec_vec();
+            bool applicable = true;
+            for ( unsigned j = 0; j < pi.size(); j++ )
+                if ( !m_reachable_atoms[pi[j]] )
+                {
+                    applicable = false;
+                    reach_actions.unset(i);
+                    break;
+                }
+            if(applicable) reach_actions.set(i);
+
+        }
+    }
 
 
     void	Reachability_Test::get_reachable_negation_actions( const Fluent_Vec& s, const Fluent_Vec& g,  Bit_Set& reach_actions ) {

@@ -304,6 +304,18 @@
 		<Unit filename="/home/chao/BFWS_Backward_Cmake/LAPKT-public/interfaces/agnostic/mutex_set.hxx">
 			<Option target="bfws"/>
 		</Unit>
+		<Unit filename="/home/chao/BFWS_Backward_Cmake/LAPKT-public/interfaces/agnostic/negation_action.cxx">
+			<Option target="bfws"/>
+		</Unit>
+		<Unit filename="/home/chao/BFWS_Backward_Cmake/LAPKT-public/interfaces/agnostic/negation_action.hxx">
+			<Option target="bfws"/>
+		</Unit>
+		<Unit filename="/home/chao/BFWS_Backward_Cmake/LAPKT-public/interfaces/agnostic/negation_fluent.cxx">
+			<Option target="bfws"/>
+		</Unit>
+		<Unit filename="/home/chao/BFWS_Backward_Cmake/LAPKT-public/interfaces/agnostic/negation_fluent.hxx">
+			<Option target="bfws"/>
+		</Unit>
 		<Unit filename="/home/chao/BFWS_Backward_Cmake/LAPKT-public/interfaces/agnostic/reachability.cxx">
 			<Option target="bfws"/>
 		</Unit>

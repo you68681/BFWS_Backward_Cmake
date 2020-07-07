@@ -137,38 +137,38 @@ void	get_problem_description( std::string pddl_domain_path,
      *
      */
 
-	Fluent_Vec negFluents;
-	Fluent_Set negFluentsSet;
-	Fluent_Vec negIndexs;
-//	std::set<unsigned > goal_constants;
-
-
-    std::map <unsigned , unsigned > dic;
-    negFluentsSet.resize(strips_problem.fluents().size()+G.size()+I.size());
-
-	for (unsigned p : G){
-//	    for (unsigned c : strips_problem.fluents()[p]->constants()){
-//	        goal_constants.insert(c);
-//	    }
-//        if (conSet.isset(p)){
+//	Fluent_Vec negFluents;
+//	Fluent_Set negFluentsSet;
+//	Fluent_Vec negIndexs;
+////	std::set<unsigned > goal_constants;
+//
+//
+//    std::map <unsigned , unsigned > dic;
+//    negFluentsSet.resize(strips_problem.fluents().size()+G.size()+I.size());
+//
+//	for (unsigned p : G){
+////	    for (unsigned c : strips_problem.fluents()[p]->constants()){
+////	        goal_constants.insert(c);
+////	    }
+////        if (conSet.isset(p)){
+////            continue;
+////        }
+//        if (std::find(I.begin(), I.end(), p) != I.end()){
 //            continue;
+//        } else{
+//            negFluents.push_back(p);
 //        }
-        if (std::find(I.begin(), I.end(), p) != I.end()){
-            continue;
-        } else{
-            negFluents.push_back(p);
-        }
-    }
-	for (unsigned p: negFluents ){
-	    negFluentsSet.set(p);
-	    std::stringstream buffer;
-	    buffer<<"(not-"<<strips_problem.fluents()[p]->signature()<<")";
-	    unsigned  fl_idx = aptk::STRIPS_Problem::add_fluent(strips_problem,buffer.str());
-	    negIndexs.push_back(fl_idx);
-        dic.insert(std::pair<int, int>(p, fl_idx));
-	    I.push_back(fl_idx);
-
-	}
+//    }
+//	for (unsigned p: negFluents ){
+//	    negFluentsSet.set(p);
+//	    std::stringstream buffer;
+//	    buffer<<"(not-"<<strips_problem.fluents()[p]->signature()<<")";
+//	    unsigned  fl_idx = aptk::STRIPS_Problem::add_fluent(strips_problem,buffer.str());
+//	    negIndexs.push_back(fl_idx);
+//        dic.insert(std::pair<int, int>(p, fl_idx));
+//	    I.push_back(fl_idx);
+//
+//	}
 
 
 //	bool object_flag= true;
@@ -367,18 +367,18 @@ void	get_problem_description( std::string pddl_domain_path,
              *
              */
 
-			for ( int j = 0; j < op_adds.size(); j++ ){
-                if (negFluentsSet.isset(op_adds[j])){
-                    op_dels.push_back(dic[op_adds[j]]);
-                    op_precs.push_back(dic[op_adds[j]]);
-                }
-            }
-
-            for ( int j = 0; j < op_dels.size(); j++ ){
-                if (negFluentsSet.isset(op_dels[j])){
-                    op_adds.push_back(dic[op_dels[j]]);
-                }
-            }
+//			for ( int j = 0; j < op_adds.size(); j++ ){
+//                if (negFluentsSet.isset(op_adds[j])){
+//                    op_dels.push_back(dic[op_adds[j]]);
+//                    op_precs.push_back(dic[op_adds[j]]);
+//                }
+//            }
+//
+//            for ( int j = 0; j < op_dels.size(); j++ ){
+//                if (negFluentsSet.isset(op_dels[j])){
+//                    op_adds.push_back(dic[op_dels[j]]);
+//                }
+//            }
 
             /** chao edit
               *  if the flunet occured as the inital sate and doesn't occured in the goal state, this flunets should be added to the add list

@@ -490,8 +490,9 @@ int main( int argc, char** argv ) {
 
 	Gen_Lms_Fwd    gen_lms( search_prob );
 	Landmarks_Graph graph( prob );
-	gen_lms.set_only_goals( true );
-	gen_lms.set_goal_ordering(false );
+	gen_lms.set_only_goals(true );
+	gen_lms.set_goal_ordering(true );
+
 	
 	gen_lms.compute_lm_graph_set_additive( graph );
 	
@@ -505,7 +506,10 @@ int main( int argc, char** argv ) {
 	graph.print_dot(graph_stream);
 	graph_stream.close();
 
-
+//    for(aptk::Fluent *p:prob.fluents()){
+//        std::cout<<p->signature()<<std::endl;
+//    }
+//
 	bool found_plan = false;
 	
 	unsigned max_novelty  = vm["max_novelty"].as<int>();
@@ -753,9 +757,11 @@ int main( int argc, char** argv ) {
 	    /**
 	     * Use landmark count instead of goal count
 	     */
+
 	    Gen_Lms_Fwd    gen_lms( search_prob );
 	    gen_lms.set_only_goals( false);
 	    Landmarks_Graph graph1( prob );
+        gen_lms.allow_lm_in_init();
 	    gen_lms.compute_lm_graph_set_additive( graph1 );
 
 	    Land_Graph_Man lgm( search_prob, &graph1);

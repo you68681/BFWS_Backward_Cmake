@@ -139,6 +139,29 @@ CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/mutex_set.cxx.o
  ../LAPKT-public/interfaces/agnostic/succ_gen.hxx
  ../LAPKT-public/interfaces/agnostic/types.hxx
  /home/chao/BFWS_Backward_Cmake/LAPKT-public/interfaces/agnostic/mutex_set.cxx
+CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/negation_action.cxx.o
+ ../LAPKT-public/include/aptk/bit_array.hxx
+ ../LAPKT-public/include/aptk/bit_set.hxx
+ ../LAPKT-public/interfaces/agnostic/cond_eff.hxx
+ ../LAPKT-public/interfaces/agnostic/fluent.hxx
+ ../LAPKT-public/interfaces/agnostic/match_tree.hxx
+ ../LAPKT-public/interfaces/agnostic/mutex_set.hxx
+ ../LAPKT-public/interfaces/agnostic/negation_action.hxx
+ ../LAPKT-public/interfaces/agnostic/strips_prob.hxx
+ ../LAPKT-public/interfaces/agnostic/strips_state.hxx
+ ../LAPKT-public/interfaces/agnostic/succ_gen.hxx
+ ../LAPKT-public/interfaces/agnostic/types.hxx
+ /home/chao/BFWS_Backward_Cmake/LAPKT-public/interfaces/agnostic/negation_action.cxx
+CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/negation_fluent.cxx.o
+ ../LAPKT-public/include/aptk/bit_array.hxx
+ ../LAPKT-public/include/aptk/bit_set.hxx
+ ../LAPKT-public/interfaces/agnostic/match_tree.hxx
+ ../LAPKT-public/interfaces/agnostic/mutex_set.hxx
+ ../LAPKT-public/interfaces/agnostic/negation_fluent.hxx
+ ../LAPKT-public/interfaces/agnostic/strips_prob.hxx
+ ../LAPKT-public/interfaces/agnostic/succ_gen.hxx
+ ../LAPKT-public/interfaces/agnostic/types.hxx
+ /home/chao/BFWS_Backward_Cmake/LAPKT-public/interfaces/agnostic/negation_fluent.cxx
 CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/reachability.cxx.o
  ../LAPKT-public/include/aptk/bit_array.hxx
  ../LAPKT-public/include/aptk/bit_set.hxx
@@ -165,6 +188,8 @@ CMakeFiles/bfws.dir/LAPKT-public/interfaces/agnostic/strips_prob.cxx.o
  ../LAPKT-public/interfaces/agnostic/fluent.hxx
  ../LAPKT-public/interfaces/agnostic/match_tree.hxx
  ../LAPKT-public/interfaces/agnostic/mutex_set.hxx
+ ../LAPKT-public/interfaces/agnostic/negation_action.hxx
+ ../LAPKT-public/interfaces/agnostic/negation_fluent.hxx
  ../LAPKT-public/interfaces/agnostic/strips_prob.hxx
  ../LAPKT-public/interfaces/agnostic/strips_state.hxx
  ../LAPKT-public/interfaces/agnostic/succ_gen.hxx
@@ -223,6 +248,7 @@ CMakeFiles/bfws.dir/LAPKT-public/interfaces/ff-wrapped/ff_to_aptk.cxx.o
  ../LAPKT-public/interfaces/agnostic/fluent.hxx
  ../LAPKT-public/interfaces/agnostic/match_tree.hxx
  ../LAPKT-public/interfaces/agnostic/mutex_set.hxx
+ ../LAPKT-public/interfaces/agnostic/negation_action.hxx
  ../LAPKT-public/interfaces/agnostic/strips_prob.hxx
  ../LAPKT-public/interfaces/agnostic/strips_state.hxx
  ../LAPKT-public/interfaces/agnostic/succ_gen.hxx

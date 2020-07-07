@@ -144,11 +144,11 @@ public:
 				if(all_actions_edel_q &&  all_actions_edel_p)continue;
 
 				if(all_actions_edel_q){
-					graph.add_landmark_for( q, p );
+					graph.add_landmark_for( p, q );
 					//continue;
 				}
 				if(all_actions_edel_p){
-					graph.add_landmark_for( p, q );
+					graph.add_landmark_for( q, p );
 				}
 
 
@@ -158,116 +158,291 @@ public:
 		}
 
 	}
-  
-	void	compute_lm_graph_set_additive( Landmarks_Graph& graph ) {
+
+    void    build_init_ordering( Landmarks_Graph& graph ){
+        /**
+         * change the m_strips_model.goal() to prob.gaol()
+         */
+
+        //for ( unsigned i = 0; i < m_strips_model.goal().size(); i++ ) {
+        //	unsigned p = m_strips_model.goal()[i];
+        //	for ( unsigned j = i+1; j < m_strips_model.goal().size(); j++ ) {
+        //		unsigned q = m_strips_model.goal()[j];
+
+        for ( Fluent_Vec::const_iterator it = m_strips_model.init().begin();
+              it != m_strips_model.init().end(); it++ ) {
+            Landmarks_Graph::Node* q_node=graph.node(unsigned (*it));
+            if (q_node == NULL ){
+                graph.add_landmark( *it );
+            }
+        }
+
+        for ( unsigned i = 0; i < search_prob.goal().size(); i++ ) {
+
+            unsigned p = search_prob.goal()[i];
+            //if (this->m_strips_model.get_negation()[p]) continue;
+            for ( unsigned j = i+1; j < search_prob.goal().size(); j++ ) {
+                unsigned q = search_prob.goal()[j];
+                //if (this->m_strips_model.get_negation()[q]) continue;
+
+
+                /**
+                 * If all actions adding p edel q, then p must precede q
+                 */
+
+                /** chao edit
+                 *
+                 */
+                const std::vector<const Action*>& add_acts_p = m_strips_model.actions_requiring(p) ;
+                //const std::vector<const Action*>& add_acts_p = m_strips_model.actions_adding( p );
+
+                bool all_actions_edel_q = true;
+                for ( unsigned k = 0; k < add_acts_p.size(); k++ ) {
+                    //add_acts_p[k]->print( m_strips_model, std::cout );
+                    //std::cout << m_strips_model.fluents().at(p)->signature() << " edel " << m_strips_model.fluents().at(q)->signature() << "? " <<std::endl;
+                    //if( ! add_acts_p[k]->edel_set().isset( q ) ){
+                    /** chao edit
+                     *  regression
+                    */
+                    if( ! add_acts_p[k]->bwd_edel_set().isset( q ) ){
+                        all_actions_edel_q = false;
+                        break;
+                    }
+
+                }
+                /**
+                 * If all actions adding q edel p, then q must precede p
+                 */
+                /** chao edit
+                 *
+                 */
+                const std::vector<const Action*>& add_acts_q = m_strips_model.actions_requiring(q);
+                //const std::vector<const Action*>& add_acts_q = m_strips_model.actions_adding( q );
+                bool all_actions_edel_p = true;
+                for ( unsigned k = 0; k < add_acts_q.size(); k++ ) {
+                    //add_acts_q[k]->print( m_strips_model, std::cout );
+                    //std::cout << m_strips_model.fluents().at(q)->signature() << " edel " << m_strips_model.fluents().at(p)->signature() << "? " <<std::endl;
+                    //if( ! add_acts_q[k]->edel_set().isset( p ) ){
+                    /** chao edit
+                     *  rgression
+                     */
+                    if( ! add_acts_q[k]->bwd_edel_set().isset( p ) ){
+                        all_actions_edel_p = false;
+                        break;
+                    }
+                }
+                /**
+                 * Avoid loops in the graph
+                 */
+                if(all_actions_edel_q &&  all_actions_edel_p)continue;
+
+//                if(all_actions_edel_q){
+//                    graph.add_landmark_for( q, p );
+//                    //continue;
+//                }
+//                if(all_actions_edel_p){
+//                    graph.add_landmark_for( p, q );
+//                }
+                if(all_actions_edel_q){
+                    graph.add_landmark_for( p, q );
+                    //continue;
+                }
+                if(all_actions_edel_p){
+                    graph.add_landmark_for( q, p );
+                }
+
+
+            }
+
+
+        }
+
+    }
+
+    void    build_goal_ordering_original( Landmarks_Graph& graph ){
+
+        for ( unsigned i = 0; i < m_strips_model.goal().size(); i++ ) {
+            unsigned p = m_strips_model.goal()[i];
+            for ( unsigned j = i+1; j < m_strips_model.goal().size(); j++ ) {
+                unsigned q = m_strips_model.goal()[j];
+//        for ( unsigned i = 0; i < m_strips_model.init().size(); i++ ) {
+//            unsigned p = m_strips_model.init()[i];
+//            for ( unsigned j = i+1; j < m_strips_model.init().size(); j++ ) {
+//                unsigned q = m_strips_model.init()[j];
+
+                /**
+                 * If all actions adding p edel q, then p must precede q
+                 */
+                const std::vector<const Action*>& add_acts_p = m_strips_model.actions_adding( p );
+
+                bool all_actions_edel_q = true;
+                for ( unsigned k = 0; k < add_acts_p.size(); k++ ) {
+                    //add_acts_p[k]->print( m_strips_model, std::cout );
+                    //std::cout << m_strips_model.fluents().at(p)->signature() << " edel " << m_strips_model.fluents().at(q)->signature() << "? " <<std::endl;
+                    if( ! add_acts_p[k]->edel_set().isset( q ) ){
+                        all_actions_edel_q = false;
+                        break;
+                    }
+
+                }
+                /**
+                 * If all actions adding q edel p, then q must precede p
+                 */
+
+                const std::vector<const Action*>& add_acts_q = m_strips_model.actions_adding( q );
+                bool all_actions_edel_p = true;
+                for ( unsigned k = 0; k < add_acts_q.size(); k++ ) {
+                    //add_acts_q[k]->print( m_strips_model, std::cout );
+                    //std::cout << m_strips_model.fluents().at(q)->signature() << " edel " << m_strips_model.fluents().at(p)->signature() << "? " <<std::endl;
+                    if( ! add_acts_q[k]->edel_set().isset( p ) ){
+                        all_actions_edel_p = false;
+                        break;
+                    }
+                }
+                /**
+                 * Avoid loops in the graph
+                 */
+                if(all_actions_edel_q &&  all_actions_edel_p)continue;
+
+                if(all_actions_edel_q){
+                    graph.add_landmark_for( q, p );
+                    //continue;
+                }
+                if(all_actions_edel_p){
+                    graph.add_landmark_for( p, q );
+                }
+
+
+            }
+
+
+        }
+
+    }
+
+    void	compute_lm_graph_set_additive( Landmarks_Graph& graph ) {
         Bit_Set lm_set( m_strips_model.num_fluents() );
         Bit_Set processed( m_strips_model.num_fluents() );
 
 
 
 		std::deque<unsigned> updated;
-		
+
 		// 1. Insert goal atoms as landmarks
 		/**
 		 * change the m_strips_model.goal() to prob.gaol(), change the is_in_init to is_in_goal
 		 */
-		//for ( Fluent_Vec::const_iterator it = m_strips_model.goal().begin();
-		//     it != m_strips_model.goal().end(); it++ ) {
-		//	graph.add_landmark( *it );
-		//	if ( ! m_strips_model.is_in_init( *it ) ) {
-		//		updated.push_back( *it );
-		//	}
-		//}
-        for ( Fluent_Vec::const_iterator it = search_prob.goal().begin();
-
-             it != search_prob.goal().end(); it++ ) {
-        	graph.add_landmark( *it );
-        	if ( ! m_strips_model.is_in_goal( *it ) ) {
-
-        		updated.push_back( *it );
-        	}
-        }
-
-        while ( !updated.empty() ) {
-            unsigned p = updated.front();
-            updated.pop_front();
-
-
-
-            const std::vector<const Action*>& add_acts = m_strips_model.actions_requiring( p );
-            //std::cout << "Added by " << add_acts.size() << " actions" << std::endl;
-            if ( !add_acts.empty() ) {
-                lm_set.reset();
-                lm_set.add( add_acts[0]->add_set() );
-
-                for ( unsigned k = 1; k < add_acts.size(); k++ )
-                    lm_set.set_intersection( add_acts[k]->add_set() );
-            }
-
-            for (unsigned q : lm_set ) {
-                //if ( !m_collect_lm_in_init && m_strips_model.is_in_init(q) ) {
-                if ( !m_collect_lm_in_init && m_strips_model.is_in_goal(q) ) {
-                    continue;
+		if (m_collect_lm_in_init){
+            for ( Fluent_Vec::const_iterator it = m_strips_model.goal().begin();
+                  it != m_strips_model.goal().end(); it++ ) {
+                graph.add_landmark( *it );
+                if ( ! m_strips_model.is_in_init( *it ) ) {
+                    updated.push_back( *it );
                 }
-
-                if ( !graph.is_landmark(q) )
-                    graph.add_landmark( q );
-
-                graph.add_landmark_for( p, q );
-
-                updated.push_back( q );
             }
-        }
+		} else{
+            for ( Fluent_Vec::const_iterator it = m_strips_model.init().begin();
+                  it != m_strips_model.init().end(); it++ ) {
+                graph.add_landmark( *it );
+                if ( ! m_strips_model.is_in_goal( *it ) ) {
+                    updated.push_back( *it );
+                }
+            }
+		}
+
+
+//        for ( Fluent_Vec::const_iterator it = search_prob.goal().begin();
+//
+//             it != search_prob.goal().end(); it++ ) {
+//        	graph.add_landmark( *it );
+//        	if ( ! m_strips_model.is_in_goal( *it ) ) {
+//
+//        		updated.push_back( *it );
+//        	}
+//        }
+
+//        while ( !updated.empty() ) {
+//            unsigned p = updated.front();
+//            updated.pop_front();
+
+
+//            const std::vector<const Action*>& add_acts = m_strips_model.actions_adding( p );
+////            const std::vector<const Action*>& add_acts = m_strips_model.actions_requiring( p );
+//            //std::cout << "Added by " << add_acts.size() << " actions" << std::endl;
+//            if ( !add_acts.empty() ) {
+//                lm_set.reset();
+////                lm_set.add( add_acts[0]->add_set() );
+//                lm_set.add( add_acts[0]->prec_set() );
+//
+//                for ( unsigned k = 1; k < add_acts.size(); k++ )
+////                    lm_set.set_intersection( add_acts[k]->add_set() );
+//                    lm_set.set_intersection( add_acts[k]->prec_set() );
+//            }
+//
+//            for (unsigned q : lm_set ) {
+//                if ( !m_collect_lm_in_init && m_strips_model.is_in_init(q) ) {
+////                if ( !m_collect_lm_in_init && m_strips_model.is_in_goal(q) ) {
+//                    continue;
+//                }
+//
+//                if ( !graph.is_landmark(q) )
+//                    graph.add_landmark( q );
+//
+//                graph.add_landmark_for( p, q );
+//
+//                updated.push_back( q );
+//            }
+//        }
 
 		if( m_only_goals ){
 			if(m_goal_ordering)
 				build_goal_ordering( graph );
 			return;
 		}
-		
+
 //		Bit_Set lm_set( m_strips_model.num_fluents() );
 //		Bit_Set processed( m_strips_model.num_fluents() );
 
-
-        Bit_Set lm_set_chao( m_strips_model.num_fluents() );
-        Bit_Set processed_chao( m_strips_model.num_fluents() );
-
-        Bit_Set lm_set_chao_edl( m_strips_model.num_fluents() );
-        Bit_Set processed_chao_edl( m_strips_model.num_fluents() );
+//
+//        Bit_Set lm_set_chao( m_strips_model.num_fluents() );
+//        Bit_Set processed_chao( m_strips_model.num_fluents() );
+//
+//        Bit_Set lm_set_chao_edl( m_strips_model.num_fluents() );
+//        Bit_Set processed_chao_edl( m_strips_model.num_fluents() );
 
 		while ( !updated.empty() ) {
 			unsigned p = updated.front();
-			updated.pop_front(); 
+			updated.pop_front();
 
-			if ( processed_chao.isset(p) ) continue;
-			processed_chao.set(p);
-
-            if ( processed_chao_edl.isset(p) ) continue;
-            processed_chao_edl.set(p);
+//			if ( processed_chao.isset(p) ) continue;
+//			processed_chao.set(p);
+//
+//            if ( processed_chao_edl.isset(p) ) continue;
+//            processed_chao_edl.set(p);
 
             /** original version
              *
              */
 			//std::cout << "Processing landmark: " << m_strips_model.fluents()[ p ]->signature() << std::endl;
-//			const std::vector<const Action*>& add_acts = m_strips_model.actions_adding( p );
-//			//std::cout << "Added by " << add_acts.size() << " actions" << std::endl;
-//			if ( !add_acts.empty() ) {
-//				lm_set.reset();
-//				lm_set.add( add_acts[0]->prec_set() );
-//
-//				for ( unsigned k = 1; k < add_acts.size(); k++ )
-//					lm_set.set_intersection( add_acts[k]->prec_set() );
-//			}
-
-            const std::vector<const Action*>& add_acts = m_strips_model.actions_requiring( p );
+			const std::vector<const Action*>& add_acts = m_strips_model.actions_adding( p );
 			//std::cout << "Added by " << add_acts.size() << " actions" << std::endl;
 			if ( !add_acts.empty() ) {
 				lm_set.reset();
-				lm_set.add( add_acts[0]->add_set() );
+				lm_set.add( add_acts[0]->prec_set() );
 
 				for ( unsigned k = 1; k < add_acts.size(); k++ )
-					lm_set.set_intersection( add_acts[k]->add_set() );
+					lm_set.set_intersection( add_acts[k]->prec_set() );
 			}
+
+//            const std::vector<const Action*>& add_acts = m_strips_model.actions_requiring( p );
+//			//std::cout << "Added by " << add_acts.size() << " actions" << std::endl;
+//			if ( !add_acts.empty() ) {
+//				lm_set.reset();
+//				lm_set.add( add_acts[0]->add_set() );
+//
+//				for ( unsigned k = 1; k < add_acts.size(); k++ )
+//					lm_set.set_intersection( add_acts[k]->add_set() );
+//			}
 
 //            if ( !add_acts.empty() ) {
 //                lm_set_chao.reset();
@@ -277,13 +452,13 @@ public:
 //                    lm_set_chao.set_intersection( add_acts[k]->del_set() );
 //            }
 
-            if ( !add_acts.empty() ) {
-                lm_set_chao_edl.reset();
-                lm_set_chao_edl.add( add_acts[0]->edel_set() );
-
-                for ( unsigned k = 1; k < add_acts.size(); k++ )
-                    lm_set_chao_edl.set_intersection( add_acts[k]->edel_set() );
-            }
+//            if ( !add_acts.empty() ) {
+//                lm_set_chao_edl.reset();
+//                lm_set_chao_edl.add( add_acts[0]->edel_set() );
+//
+//                for ( unsigned k = 1; k < add_acts.size(); k++ )
+//                    lm_set_chao_edl.set_intersection( add_acts[k]->edel_set() );
+//            }
 
 //            for (unsigned q : lm_set_chao ) {
 //                if (p==q)continue;
@@ -294,13 +469,13 @@ public:
 //
 //            }
 
-            for (unsigned q : lm_set_chao_edl ) {
-                if (p==q)continue;
-                graph.node(p)->add_edel(graph.generate_edel(q));
-                if (  graph.is_landmark(q) ){
-                    graph.add_landmark_for(q,p);
-                }
-            }
+//            for (unsigned q : lm_set_chao_edl ) {
+//                if (p==q)continue;
+//                graph.node(p)->add_edel(graph.generate_edel(q));
+//                if (  graph.is_landmark(q) ){
+//                    graph.add_landmark_for(q,p);
+//                }
+//            }
 
 
 //			const std::vector< std::pair< unsigned, const Action*> >& add_acts_ce =
@@ -320,25 +495,33 @@ public:
 			 *
 			 */
 			for (unsigned q : lm_set ) {
-				//if ( !m_collect_lm_in_init && m_strips_model.is_in_init(q) ) {
-				  if ( !m_collect_lm_in_init && m_strips_model.is_in_goal(q) ) {
+				if ( !m_collect_lm_in_init && m_strips_model.is_in_init(q) ) {
+//				  if ( !m_collect_lm_in_init && m_strips_model.is_in_goal(q) ) {
 					continue;
 				}
 
 				if ( !graph.is_landmark(q) )
 					graph.add_landmark( q );
+				/** original
+				 *
+				 */
 				//				if ( ! m_strips_model.is_in_goal(p) )
-				graph.add_landmark_for( p, q );
+//				graph.add_landmark_for( p, q );
+               /** chao edit
+                *
+                */
+                graph.add_landmark_for( q, p );
+
 				// else{
 				// 	graph.add_landmark_for( p, q );
 				// 	//graph.node(p)->add_precedent_gn( graph.node(q) );
 				// 	//graph.node(q)->add_requiring_gn( graph.node(p) );
 				// }
 				updated.push_back( q );
-			}	
+			}
 		}
 
-		
+
 		/**
 		 * Compute Greedy Necessary Orderings
 		 */
@@ -375,25 +558,26 @@ public:
 //                }
 //		}
 //        m_reachability->get_reachable_actions( search_prob.init() , search_prob.goal() , reach_actions  );
-        m_reachability->get_reachable_negation_actions( search_prob.init() , search_prob.goal() , reach_actions  );
+        m_reachability->get_reachable_actions_original( search_prob.goal(), search_prob.init(), reach_actions  );
+//        m_reachability->get_reachable_negation_actions( search_prob.init() , search_prob.goal() , reach_actions  );
         float h_goal;
         State init_s( m_strips_model );
         /** chao edit
          *
          */
 //        init_s.set( search_prob.init() );
-        init_s.set( search_prob.goal() );
+        init_s.set( m_strips_model.init());
         m_h1.eval( init_s, h_goal );
 
 		for(unsigned p = 1; p <  m_strips_model.num_fluents(); p++){
-			
-//			if( ! graph.is_landmark(p) ) continue;
 
-            if( std::find(search_prob.init().begin(), search_prob.init().end(), p)==search_prob.init().end() ) continue;
+			if( ! graph.is_landmark(p) ) continue;
+
+//            if( std::find(search_prob.init().begin(), search_prob.init().end(), p)==search_prob.init().end() ) continue;
 			Action_Ptr_Const_Vec best_supp;
-				
+
 			m_h1.get_best_supporters( p, best_supp );
-			
+
 			//const std::vector<const Action*>& add_acts = m_strips_model.actions_adding( p );
 
 			lm_set.reset();
@@ -413,18 +597,18 @@ public:
 				 * if action do contain p as landmark
 				 */
 
-				if( lands_a.isset(p) ){ 
-					//				  std::cout << m_strips_model.actions()[a->index()]->signature() << "NOT first sup of " << m_strips_model.fluents()[p]->signature() << std::endl; 
-				  
-					continue;				
+				if( lands_a.isset(p) ){
+					//				  std::cout << m_strips_model.actions()[a->index()]->signature() << "NOT first sup of " << m_strips_model.fluents()[p]->signature() << std::endl;
+
+					continue;
 				}
-				//std::cout << m_strips_model.actions()[a->index()]->signature() << "first sup of " << m_strips_model.fluents()[p]->signature() << std::endl; 
-				
+				//std::cout << m_strips_model.actions()[a->index()]->signature() << "first sup of " << m_strips_model.fluents()[p]->signature() << std::endl;
+
 				if(k==0)
-					lm_set.add( a->prec_set() ); 
+					lm_set.add( a->prec_set() );
 				else
-					lm_set.set_intersection( a->prec_set() ); 
-				
+					lm_set.set_intersection( a->prec_set() );
+
 
 			}
 
@@ -435,28 +619,38 @@ public:
 				 /**
 				  * chang the m_strips_model.is_in_init to  m_strips_model.is_in_goal
 				  */
-				//if ( !m_collect_lm_in_init && m_strips_model.is_in_init(q) ) {
-                if ( !m_collect_lm_in_init && m_strips_model.is_in_goal(q) ) {
+				if ( !m_collect_lm_in_init && m_strips_model.is_in_init(q) ) {
+//                if ( !m_collect_lm_in_init && m_strips_model.is_in_goal(q) ) {
 					continue;
 				}
 
 				if ( m_verbose )
-					std::cout << m_strips_model.fluents()[q]->signature() << "gn land for " << m_strips_model.fluents()[p]->signature() << std::endl; 
+					std::cout << m_strips_model.fluents()[q]->signature() << "gn land for " << m_strips_model.fluents()[p]->signature() << std::endl;
 				Landmarks_Graph::Node* nq = graph.node(q);
+//				if( nq ){
+//					Landmarks_Graph::Node* np = graph.node(p);
+//					if( ! np->is_preceded_by(nq) )
+//						graph.node(p)->add_precedent_gn( graph.node(q) );
+//					if( ! nq->is_required_by(np) )
+//						graph.node(q)->add_requiring_gn( graph.node(p) );
 				if( nq ){
 					Landmarks_Graph::Node* np = graph.node(p);
-					if( ! np->is_preceded_by(nq) ) 
-						graph.node(p)->add_precedent_gn( graph.node(q) );
-					if( ! nq->is_required_by(np) ) 
-						graph.node(q)->add_requiring_gn( graph.node(p) );
+
+					if( ! nq->is_preceded_by(np) )
+						graph.node(q)->add_precedent_gn( graph.node(p) );
+					if( ! np->is_required_by(nq) )
+						graph.node(p)->add_requiring_gn( graph.node(q) );
 				}
-			}	
+			}
 
 		}
-	
 
-		if(m_goal_ordering)
-			build_goal_ordering( graph );
+
+//		if(m_goal_ordering)
+//			build_goal_ordering_original( graph );
+        if(m_collect_lm_in_init)
+            build_init_ordering( graph );
+
 	
 
 #ifdef DEBUG

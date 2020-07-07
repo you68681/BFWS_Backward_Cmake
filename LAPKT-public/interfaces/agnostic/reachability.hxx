@@ -48,9 +48,15 @@ namespace agnostic {
 		 *
 		 */
         void	get_reachable_negation_actions( const Fluent_Vec& s, const Fluent_Vec& g,  Bit_Set& reach_actions );
+        void	get_reachable_actions_original( const Fluent_Vec& s, const Fluent_Vec& g,  Bit_Set& reach_actions );
 	protected:
 
 		bool	apply_actions();
+		/** chao add
+		 *
+		 * @return
+		 */
+        bool	apply_actions_original();
 		void	initialize( const Fluent_Vec& s );
 		/** chao add
 		 *
